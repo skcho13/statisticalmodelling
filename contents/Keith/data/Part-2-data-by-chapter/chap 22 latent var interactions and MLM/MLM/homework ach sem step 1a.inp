@@ -1,0 +1,28 @@
+TITLE: Homework SEM Stapleton step 1a Famback
+
+
+DATA:
+  FILE IS homework smaller 4.dat;
+
+VARIABLE:
+  MISSING ARE ALL (-99);
+  NAMES ARE sch_id bys81a bys81b bys81c bys81d f1s36a2 f2s25f2 
+  read12 math12 sci12 soc12 FamBack;
+
+
+  USEVARIABLES ARE
+      sch_id FamBack;
+
+	CLUSTER = sch_id;
+
+ANALYSIS:	TYPE = TWOLEVEL;
+MODEL:
+	%WITHIN%	
+        FamBack;
+	%BETWEEN%
+        FamBack;
+
+OUTPUT:  STANDARDIZED SAMPSTAT;
+
+
+

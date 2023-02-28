@@ -1,0 +1,68 @@
+TITLE: Buhs & Ladd 1
+DATA: FILE is buhs & ladd data.txt;
+
+VARIABLE:    NAMES ARE  
+    ave_rat	
+    neg_nom	
+    coop	
+    auto	
+    quant	
+    lang	
+    lone	
+    schavoid;
+
+USEVARIABLES ARE 
+    ave_rat	
+    neg_nom	
+    coop	
+    auto	
+    quant	
+    lang	
+    lone	
+    schavoid;
+
+
+MODEL:        
+    REJECT BY 
+    ave_rat	
+    neg_nom;
+
+
+    CPART BY 
+    coop	
+    auto;
+
+	
+    ACH BY 
+    quant	
+    lang;
+
+	
+    E_ADJ BY
+    lone	
+    schavoid;
+
+
+    E_ADJ ON 
+    CPART 
+    REJECT;
+
+    ACH ON
+    CPART
+    REJECT;
+
+    CPART ON REJECT;
+
+    E_ADJ    WITH    ACH   @0;
+
+    MODEL INDIRECT:
+        E_ADJ IND 
+        CPART 
+        REJECT;
+
+        ACH IND 
+        CPART 
+        REJECT;
+
+OUTPUT:  SAMPSTAT STDYX RESIDUAL; 
+

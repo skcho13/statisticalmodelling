@@ -1,0 +1,18 @@
+TITLE: First order model (DAS-II first 1)
+DATA: FILE IS das2 cov.txt;
+    TYPE IS COVARIANCE;
+    NOBSERVATIONS ARE 800;
+
+VARIABLE:    NAMES ARE worddef verbsim seqquant seqord repict redesign pictsim pattcon
+      namevoc matrix digits digback;
+
+USEVARIABLES = worddef-digback;
+
+MODEL:        
+    Gc by namevoc worddef verbsim;
+    Gf BY pictsim matrix seqquant;
+    Gv BY pattcon redesign repict;
+    Gsm BY Digits digback seqord;
+
+        
+OUTPUT:  SAMPSTAT STDYX RESIDUAL; 

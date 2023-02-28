@@ -1,0 +1,43 @@
+TITLE: Eisenberg et al 1
+DATA: 
+    FILE IS Eisenberg et al 2001.dat;
+    
+
+
+VARIABLE:    NAMES ARE  
+    exp_mo
+    exp_msr	
+    reg_mr	
+    reg_tr
+    ext_mr	
+    ext_tr	
+    soc_mr	
+    soc_tr;	
+    
+MODEL:        
+    Express by exp_mo exp_msr;
+    Regulate by reg_mr reg_tr;
+    External by ext_mr ext_tr;
+    Social by soc_mr soc_tr;
+
+
+    External on Regulate;
+    Social on Regulate;	
+    Regulate on Express;
+    
+    reg_mr with ext_mr;
+    reg_mr with soc_mr;
+    reg_tr with ext_tr;
+    reg_tr with soc_tr;
+    soc_mr with ext_mr;
+    soc_tr with ext_tr;
+    Social with External @0;
+
+MODEL INDIRECT :
+
+    External IND Regulate Express;
+    Social IND Regulate Express;
+
+
+OUTPUT:  SAMPSTAT STDYX RESIDUAL; 
+

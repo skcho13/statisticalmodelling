@@ -1,0 +1,344 @@
+VERSION 1.1.0
+INPUT
+TITLE:
+ Initial multi group model
+DATA:
+ FILE IS HW MG data.txt;
+    TYPE IS STD CORRELATION;
+    NOBSERVATIONS ARE 751 274;
+    NGROUPS IS 2;
+VARIABLE:
+    NAMES ARE
+    BYPARED
+    BYFAMINC
+    PAROCC
+    BYTXRSTD
+    BYTXMSTD
+    BYTXSSTD
+    BYTXHSTD
+    HW_8
+    HW10
+    ENG_12
+    MATH_12
+    SCI_12
+    SS_12;
+USEVARIABLES ARE
+    BYPARED
+    BYFAMINC
+    PAROCC
+    BYTXRSTD
+    BYTXMSTD
+    BYTXSSTD
+    BYTXHSTD
+    HW_8
+    HW10
+    ENG_12
+    MATH_12
+    SCI_12
+    SS_12;
+OUTPUT:
+  SAMPSTAT STDYX RESIDUAL;
+MODEL:
+    FAMBACK BY
+        PAROCC
+        BYPARED
+        BYFAMINC;
+    PREVACH BY
+        BYTXRSTD
+        BYTXMSTD
+        BYTXSSTD
+        BYTXHSTD;
+    HW BY
+        HW10
+        HW_8;
+    GRADES BY
+        ENG_12
+        MATH_12
+        SCI_12
+        SS_12;
+    BYTXRSTD WITH ENG_12;
+    BYTXMSTD WITH MATH_12;
+    BYTXSSTD WITH SCI_12;
+    BYTXHSTD WITH SS_12;
+    PREVACH ON FAMBACK;
+    GRADES ON PREVACH HW;
+    HW ON PREVACH FAMBACK;
+MODEL G2:
+        FAMBACK BY
+        PAROCC@1
+        BYPARED
+        BYFAMINC;
+    PREVACH BY
+        BYTXRSTD@1
+        BYTXMSTD
+        BYTXSSTD
+        BYTXHSTD;
+    HW BY
+        HW10@1
+        HW_8;
+    GRADES BY
+        ENG_12@1
+        MATH_12
+        SCI_12
+        SS_12;
+INPUT_END
+2
+2
+0
+2
+ML
+1
+GENERAL
+2
+G1
+G2
+13
+4
+0
+bypared byfaminc parocc bytxrstd bytxmstd bytxsstd bytxhstd hw_8 hw10 eng_12 math_12 sci_12 ss_12 famback prevach hw grades
+4
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 0 1 2 3
+0
+4
+famback
+parocc bypared byfaminc
+prevach
+bytxrstd bytxmstd bytxsstd bytxhstd
+hw
+hw10 hw_8
+grades
+eng_12 math_12 sci_12 ss_12
+1 1 famback parocc    1.000    0.000
+1 1 famback bypared    0.072    0.004
+1 1 famback byfaminc    0.094    0.007
+1 1 prevach bytxrstd    1.000    0.000
+1 1 prevach bytxmstd    0.997    0.036
+1 1 prevach bytxsstd    0.987    0.035
+1 1 prevach bytxhstd    0.970    0.035
+1 1 hw hw10    1.000    0.000
+1 1 hw hw_8    0.389    0.063
+1 1 grades eng_12    1.000    0.000
+1 1 grades math_12    0.901    0.028
+1 1 grades sci_12    0.972    0.026
+1 1 grades ss_12    1.065    0.026
+1 1 famback prevach    0.299    0.027
+1 1 prevach grades    0.156    0.012
+1 1 hw grades    0.468    0.114
+1 1 prevach hw    0.046    0.009
+1 1 famback hw    0.022    0.006
+2 1 bytxrstd eng_12    0.858    0.289
+2 1 bytxmstd math_12    2.949    0.399
+2 1 bytxsstd sci_12    1.138    0.327
+2 1 bytxhstd ss_12    0.349    0.310
+4 1 bypared    0.430    0.056
+4 1 byfaminc    3.294    0.197
+4 1 parocc  189.028   14.121
+4 1 bytxrstd   29.735    2.043
+4 1 bytxmstd   31.774    2.134
+4 1 bytxsstd   29.387    2.007
+4 1 bytxhstd   30.494    2.044
+4 1 hw_8    1.026    0.066
+4 1 hw10    2.070    0.281
+4 1 eng_12    1.059    0.085
+4 1 math_12    2.398    0.141
+4 1 sci_12    1.643    0.108
+4 1 ss_12    1.260    0.099
+4 1 prevach   55.518    4.253
+4 1 hw    1.269    0.274
+4 1 grades    3.001    0.215
+5 1 famback  201.549   20.380
+1 2 famback parocc    1.000    0.000
+1 2 famback bypared    0.058    0.005
+1 2 famback byfaminc    0.103    0.010
+1 2 prevach bytxrstd    1.000    0.000
+1 2 prevach bytxmstd    1.060    0.057
+1 2 prevach bytxsstd    0.952    0.058
+1 2 prevach bytxhstd    0.943    0.057
+1 2 hw hw10    1.000    0.000
+1 2 hw hw_8    0.802    0.188
+1 2 grades eng_12    1.000    0.000
+1 2 grades math_12    0.897    0.044
+1 2 grades sci_12    0.923    0.040
+1 2 grades ss_12    1.049    0.042
+1 2 famback prevach    0.264    0.032
+1 2 prevach grades    0.141    0.044
+1 2 hw grades    0.803    0.636
+1 2 prevach hw    0.067    0.015
+1 2 famback hw   -0.002    0.005
+2 2 bytxrstd eng_12    0.177    0.455
+2 2 bytxmstd math_12    2.375    0.610
+2 2 bytxsstd sci_12    0.287    0.550
+2 2 bytxhstd ss_12    1.122    0.571
+4 2 bypared    0.694    0.099
+4 2 byfaminc    4.164    0.445
+4 2 parocc  211.627   29.409
+4 2 bytxrstd   25.802    3.003
+4 2 bytxmstd   26.151    3.161
+4 2 bytxsstd   33.064    3.465
+4 2 bytxhstd   32.850    3.429
+4 2 hw_8    0.932    0.126
+4 2 hw10    2.791    0.283
+4 2 eng_12    1.034    0.147
+4 2 math_12    2.310    0.229
+4 2 sci_12    1.662    0.180
+4 2 ss_12    1.644    0.195
+4 2 prevach   46.959    6.021
+4 2 hw    0.267    0.154
+4 2 grades    3.713    0.446
+5 2 famback  360.568   50.999
+11 1 famback parocc    0.718    0.025
+11 1 famback bypared    0.842    0.023
+11 1 famback byfaminc    0.593    0.029
+11 1 prevach bytxrstd    0.844    0.013
+11 1 prevach bytxmstd    0.835    0.013
+11 1 prevach bytxsstd    0.842    0.013
+11 1 prevach bytxhstd    0.833    0.014
+11 1 hw hw10    0.664    0.057
+11 1 hw hw_8    0.441    0.046
+11 1 grades eng_12    0.920    0.008
+11 1 grades math_12    0.815    0.013
+11 1 grades sci_12    0.878    0.010
+11 1 grades ss_12    0.917    0.008
+11 1 famback prevach    0.495    0.034
+11 1 prevach grades    0.555    0.036
+11 1 hw grades    0.248    0.049
+11 1 prevach hw    0.307    0.062
+11 1 famback hw    0.239    0.063
+12 1 bytxrstd eng_12    0.153    0.049
+12 1 bytxmstd math_12    0.338    0.039
+12 1 bytxsstd sci_12    0.164    0.045
+12 1 bytxhstd ss_12    0.056    0.049
+14 1 bypared    0.291    0.039
+14 1 byfaminc    0.649    0.034
+14 1 parocc    0.484    0.036
+14 1 bytxrstd    0.288    0.022
+14 1 bytxmstd    0.303    0.022
+14 1 bytxsstd    0.291    0.022
+14 1 bytxhstd    0.306    0.023
+14 1 hw_8    0.806    0.041
+14 1 hw10    0.559    0.075
+14 1 eng_12    0.153    0.014
+14 1 math_12    0.336    0.022
+14 1 sci_12    0.229    0.017
+14 1 ss_12    0.160    0.014
+14 1 prevach    0.755    0.034
+14 1 hw    0.776    0.049
+14 1 grades    0.514    0.033
+15 1 famback    1.000    0.000
+11 2 famback parocc    0.794    0.034
+11 2 famback bypared    0.799    0.034
+11 2 famback byfaminc    0.693    0.040
+11 2 prevach bytxrstd    0.858    0.020
+11 2 prevach bytxmstd    0.869    0.019
+11 2 prevach bytxsstd    0.815    0.024
+11 2 prevach bytxhstd    0.813    0.024
+11 2 hw hw10    0.409    0.075
+11 2 hw hw_8    0.528    0.084
+11 2 grades eng_12    0.929    0.012
+11 2 grades math_12    0.833    0.021
+11 2 grades sci_12    0.877    0.016
+11 2 grades ss_12    0.902    0.014
+11 2 famback prevach    0.590    0.050
+11 2 prevach grades    0.467    0.144
+11 2 hw grades    0.235    0.171
+11 2 prevach hw    0.755    0.132
+11 2 famback hw   -0.057    0.127
+12 2 bytxrstd eng_12    0.034    0.087
+12 2 bytxmstd math_12    0.306    0.070
+12 2 bytxsstd sci_12    0.039    0.074
+12 2 bytxhstd ss_12    0.153    0.075
+14 2 bypared    0.361    0.054
+14 2 byfaminc    0.520    0.055
+14 2 parocc    0.370    0.054
+14 2 bytxrstd    0.264    0.034
+14 2 bytxmstd    0.244    0.033
+14 2 bytxsstd    0.336    0.039
+14 2 bytxhstd    0.339    0.039
+14 2 hw_8    0.721    0.089
+14 2 hw10    0.833    0.061
+14 2 eng_12    0.137    0.022
+14 2 math_12    0.306    0.034
+14 2 sci_12    0.230    0.029
+14 2 ss_12    0.186    0.025
+14 2 prevach    0.651    0.059
+14 2 hw    0.477    0.152
+14 2 grades    0.569    0.059
+15 2 famback    1.000    0.000
+31 1 famback parocc   14.197    0.718
+31 1 famback bypared    1.024    0.044
+31 1 famback byfaminc    1.336    0.084
+31 1 prevach bytxrstd    8.577    0.307
+31 1 prevach bytxmstd    8.555    0.308
+31 1 prevach bytxsstd    8.469    0.304
+31 1 prevach bytxhstd    8.319    0.305
+31 1 hw hw10    1.279    0.119
+31 1 hw hw_8    0.497    0.056
+31 1 grades eng_12    2.418    0.074
+31 1 grades math_12    2.178    0.080
+31 1 grades sci_12    2.351    0.078
+31 1 grades ss_12    2.576    0.079
+31 1 famback prevach    0.495    0.034
+31 1 prevach grades    0.555    0.036
+31 1 hw grades    0.248    0.049
+31 1 prevach hw    0.307    0.062
+31 1 famback hw    0.239    0.063
+32 1 bytxrstd eng_12    0.858    0.289
+32 1 bytxmstd math_12    2.949    0.399
+32 1 bytxsstd sci_12    1.138    0.327
+32 1 bytxhstd ss_12    0.349    0.310
+34 1 bypared    0.430    0.056
+34 1 byfaminc    3.294    0.197
+34 1 parocc  189.028   14.121
+34 1 bytxrstd   29.735    2.043
+34 1 bytxmstd   31.774    2.134
+34 1 bytxsstd   29.387    2.007
+34 1 bytxhstd   30.494    2.044
+34 1 hw_8    1.026    0.066
+34 1 hw10    2.070    0.281
+34 1 eng_12    1.059    0.085
+34 1 math_12    2.398    0.141
+34 1 sci_12    1.643    0.108
+34 1 ss_12    1.260    0.099
+34 1 prevach    0.755    0.034
+34 1 hw    0.776    0.049
+34 1 grades    0.514    0.033
+35 1 famback    1.000    0.000
+31 2 famback parocc   18.989    1.343
+31 2 famback bypared    1.108    0.078
+31 2 famback byfaminc    1.960    0.164
+31 2 prevach bytxrstd    8.491    0.490
+31 2 prevach bytxmstd    8.998    0.504
+31 2 prevach bytxsstd    8.079    0.505
+31 2 prevach bytxhstd    8.004    0.501
+31 2 hw hw10    0.748    0.147
+31 2 hw hw_8    0.600    0.103
+31 2 grades eng_12    2.555    0.127
+31 2 grades math_12    2.291    0.135
+31 2 grades sci_12    2.358    0.129
+31 2 grades ss_12    2.682    0.140
+31 2 famback prevach    0.590    0.050
+31 2 prevach grades    0.467    0.144
+31 2 hw grades    0.235    0.171
+31 2 prevach hw    0.755    0.132
+31 2 famback hw   -0.057    0.127
+32 2 bytxrstd eng_12    0.177    0.455
+32 2 bytxmstd math_12    2.375    0.610
+32 2 bytxsstd sci_12    0.287    0.550
+32 2 bytxhstd ss_12    1.122    0.571
+34 2 bypared    0.694    0.099
+34 2 byfaminc    4.164    0.445
+34 2 parocc  211.627   29.409
+34 2 bytxrstd   25.802    3.003
+34 2 bytxmstd   26.151    3.161
+34 2 bytxsstd   33.064    3.465
+34 2 bytxhstd   32.850    3.429
+34 2 hw_8    0.932    0.126
+34 2 hw10    2.791    0.283
+34 2 eng_12    1.034    0.147
+34 2 math_12    2.310    0.229
+34 2 sci_12    1.662    0.180
+34 2 ss_12    1.644    0.195
+34 2 prevach    0.651    0.059
+34 2 hw    0.477    0.152
+34 2 grades    0.569    0.059
+35 2 famback    1.000    0.000

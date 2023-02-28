@@ -1,0 +1,35 @@
+TITLE: Homework Ach SEM; Step 6 SES only
+
+DATA:
+  FILE IS homework smaller 4.dat;
+VARIABLE:
+  MISSING ARE ALL (-99);
+  NAMES ARE sch_id bys81a bys81b bys81c bys81d f1s36a2 f2s25f2 
+  read12 math12 sci12 soc12 FamBack;
+
+
+  USEVARIABLES ARE
+      sch_id read12 math12 sci12 soc12 FamBack;
+
+	CLUSTER = sch_id;
+
+    
+ANALYSIS:	TYPE = TWOLEVEL RANDOM;
+            ESTIMATOR IS ML;
+            
+            
+MODEL:
+	%WITHIN%	
+        
+        Ach_w BY read12 math12 sci12 soc12;
+        s1 | Ach_w ON FamBack;
+        
+       
+	%BETWEEN%
+        
+        Ach_b BY read12 math12 sci12 soc12;
+        Ach_b ON FamBack;
+         
+OUTPUT: SAMPSTAT;
+
+

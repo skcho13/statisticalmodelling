@@ -1,0 +1,687 @@
+Mplus VERSION 8
+MUTHEN & MUTHEN
+01/25/2019  10:50 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Buhs & Ladd 1
+  DATA: FILE is buhs & ladd data.txt;
+
+  VARIABLE:    NAMES ARE
+      ave_rat	
+      neg_nom	
+      coop	
+      auto	
+      quant	
+      lang	
+      lone	
+      schavoid;
+
+  USEVARIABLES ARE
+      ave_rat	
+      neg_nom	
+      coop	
+      auto	
+      quant	
+      lang	
+      lone	
+      schavoid;
+
+
+  MODEL:
+      REJECT BY
+      ave_rat	
+      neg_nom;
+
+
+      CPART BY
+      coop	
+      auto;
+
+  	
+      ACH BY
+      quant	
+      lang;
+
+  	
+      E_ADJ BY
+      lone	
+      schavoid;
+
+
+      E_ADJ ON
+      CPART
+      REJECT;
+
+      ACH ON
+      CPART
+      REJECT;
+
+      CPART ON REJECT;
+
+      E_ADJ    WITH    ACH   @0;
+
+      MODEL INDIRECT:
+          E_ADJ IND
+          CPART
+          REJECT;
+
+          ACH IND
+          CPART
+          REJECT;
+
+  OUTPUT:  SAMPSTAT STDYX RESIDUAL;
+
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Buhs & Ladd 1
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         399
+
+Number of dependent variables                                    8
+Number of independent variables                                  0
+Number of continuous latent variables                            4
+
+Observed dependent variables
+
+  Continuous
+   AVE_RAT     NEG_NOM     COOP        AUTO        QUANT       LANG
+   LONE        SCHAVOID
+
+Continuous latent variables
+   REJECT      CPART       ACH         E_ADJ
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  buhs & ladd data.txt
+
+Input data format  FREE
+
+
+SAMPLE STATISTICS
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+                0.120        -0.100         0.000         0.000         5.380
+
+
+           Means
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+                5.360         1.510         2.050
+
+
+           Covariances
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+ AVE_RAT        0.900
+ NEG_NOM        0.651         0.808
+ COOP          -0.174        -0.160         0.359
+ AUTO          -0.108        -0.095         0.138         0.383
+ QUANT         -0.901        -0.681         0.319         0.302         3.911
+ LANG          -0.637        -0.502         0.217         0.090         2.442
+ LONE          -0.145        -0.096         0.060         0.034         0.376
+ SCHAVOID      -0.156        -0.148         0.074         0.061         0.284
+
+
+           Covariances
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+ LANG           3.160
+ LONE           0.299         0.312
+ SCHAVOID       0.239         0.114         0.448
+
+
+           Correlations
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+ AVE_RAT        1.000
+ NEG_NOM        0.763         1.000
+ COOP          -0.307        -0.298         1.000
+ AUTO          -0.184        -0.171         0.371         1.000
+ QUANT         -0.480        -0.383         0.270         0.246         1.000
+ LANG          -0.377        -0.314         0.204         0.082         0.695
+ LONE          -0.273        -0.191         0.180         0.099         0.341
+ SCHAVOID      -0.246        -0.246         0.186         0.146         0.215
+
+
+           Correlations
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+ LANG           1.000
+ LONE           0.301         1.000
+ SCHAVOID       0.201         0.306         1.000
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     AVE_RAT               0.120       0.100      -2.330    0.25%      -0.690     -0.140      0.160
+             399.000       0.900      -0.006       3.100    0.25%       0.380      0.830
+     NEG_NOM              -0.100       0.185      -2.370    0.25%      -0.870     -0.350     -0.080
+             399.000       0.808      -0.153       2.640    0.25%       0.090      0.680
+     COOP                  0.000       0.144      -1.380    0.25%      -0.520     -0.190     -0.030
+             399.000       0.359      -0.265       1.880    0.25%       0.140      0.530
+     AUTO                  0.000       0.134      -1.710    0.25%      -0.520     -0.160     -0.010
+             399.000       0.383       0.028       1.960    0.25%       0.150      0.520
+     QUANT                 5.380      -0.150      -0.860    0.25%       3.840      4.920      5.420
+             399.000       3.911       0.451      11.910    0.25%       5.800      7.030
+     LANG                  5.360      -0.010       0.510    0.25%       3.860      4.790      5.350
+             399.000       3.160      -0.313      10.470    0.25%       5.900      6.790
+     LONE                  1.510      -0.047      -0.020    0.50%       1.020      1.380      1.550
+             399.000       0.312      -0.194       3.120    0.25%       1.660      1.990
+     SCHAVOID              2.050       0.132       0.120    0.25%       1.460      1.870      2.010
+             399.000       0.448      -0.144       4.110    0.25%       2.210      2.610
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       29
+
+Loglikelihood
+
+          H0 Value                       -3712.812
+          H1 Value                       -3691.866
+
+Information Criteria
+
+          Akaike (AIC)                    7483.623
+          Bayesian (BIC)                  7599.303
+          Sample-Size Adjusted BIC        7507.285
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             41.892
+          Degrees of Freedom                    15
+          P-Value                           0.0002
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.067
+          90 Percent C.I.                    0.043  0.092
+          Probability RMSEA <= .05           0.110
+
+CFI/TLI
+
+          CFI                                0.972
+          TLI                                0.947
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            974.300
+          Degrees of Freedom                    28
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.041
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ REJECT   BY
+    AVE_RAT            1.000      0.000    999.000    999.000
+    NEG_NOM            0.802      0.056     14.416      0.000
+
+ CPART    BY
+    COOP               1.000      0.000    999.000    999.000
+    AUTO               0.788      0.138      5.708      0.000
+
+ ACH      BY
+    QUANT              1.000      0.000    999.000    999.000
+    LANG               0.682      0.063     10.761      0.000
+
+ E_ADJ    BY
+    LONE               1.000      0.000    999.000    999.000
+    SCHAVOID           1.140      0.224      5.078      0.000
+
+ E_ADJ    ON
+    CPART              0.288      0.111      2.601      0.009
+    REJECT            -0.118      0.036     -3.282      0.001
+
+ ACH      ON
+    CPART              1.300      0.467      2.784      0.005
+    REJECT            -0.846      0.144     -5.891      0.000
+
+ CPART    ON
+    REJECT            -0.205      0.036     -5.699      0.000
+
+ E_ADJ    WITH
+    ACH                0.000      0.000    999.000    999.000
+
+ Intercepts
+    AVE_RAT            0.120      0.047      2.524      0.012
+    NEG_NOM           -0.100      0.045     -2.223      0.026
+    COOP               0.000      0.030     -0.003      0.998
+    AUTO               0.000      0.031      0.003      0.997
+    QUANT              5.380      0.099     54.343      0.000
+    LANG               5.360      0.089     60.230      0.000
+    LONE               1.510      0.028     53.958      0.000
+    SCHAVOID           2.050      0.033     61.198      0.000
+
+ Variances
+    REJECT             0.811      0.079     10.263      0.000
+
+ Residual Variances
+    AVE_RAT            0.089      0.048      1.877      0.061
+    NEG_NOM            0.286      0.036      7.958      0.000
+    COOP               0.192      0.034      5.713      0.000
+    AUTO               0.280      0.026     10.580      0.000
+    QUANT              0.332      0.287      1.158      0.247
+    LANG               1.493      0.170      8.791      0.000
+    LONE               0.212      0.025      8.441      0.000
+    SCHAVOID           0.317      0.034      9.199      0.000
+    CPART              0.133      0.033      4.058      0.000
+    ACH                2.352      0.335      7.020      0.000
+    E_ADJ              0.064      0.020      3.162      0.002
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ REJECT   BY
+    AVE_RAT            0.949      0.028     33.869      0.000
+    NEG_NOM            0.803      0.029     27.719      0.000
+
+ CPART    BY
+    COOP               0.682      0.068      9.967      0.000
+    AUTO               0.520      0.057      9.093      0.000
+
+ ACH      BY
+    QUANT              0.957      0.038     24.915      0.000
+    LANG               0.726      0.037     19.416      0.000
+
+ E_ADJ    BY
+    LONE               0.567      0.066      8.556      0.000
+    SCHAVOID           0.540      0.065      8.337      0.000
+
+ E_ADJ    ON
+    CPART              0.372      0.118      3.138      0.002
+    REJECT            -0.335      0.095     -3.524      0.000
+
+ ACH      ON
+    CPART              0.281      0.082      3.433      0.001
+    REJECT            -0.403      0.066     -6.119      0.000
+
+ CPART    ON
+    REJECT            -0.451      0.065     -6.943      0.000
+
+ E_ADJ    WITH
+    ACH                0.000      0.000    999.000    999.000
+
+ Intercepts
+    AVE_RAT            0.126      0.050      2.514      0.012
+    NEG_NOM           -0.111      0.050     -2.217      0.027
+    COOP               0.000      0.050     -0.003      0.998
+    AUTO               0.000      0.050      0.003      0.997
+    QUANT              2.721      0.109     25.065      0.000
+    LANG               3.015      0.118     25.576      0.000
+    LONE               2.701      0.108     25.027      0.000
+    SCHAVOID           3.064      0.119     25.648      0.000
+
+ Variances
+    REJECT             1.000      0.000    999.000    999.000
+
+ Residual Variances
+    AVE_RAT            0.099      0.053      1.863      0.062
+    NEG_NOM            0.355      0.047      7.614      0.000
+    COOP               0.536      0.093      5.747      0.000
+    AUTO               0.730      0.059     12.281      0.000
+    QUANT              0.085      0.073      1.155      0.248
+    LANG               0.473      0.054      8.699      0.000
+    LONE               0.679      0.075      9.038      0.000
+    SCHAVOID           0.709      0.070     10.140      0.000
+    CPART              0.796      0.059     13.562      0.000
+    ACH                0.657      0.054     12.223      0.000
+    E_ADJ              0.637      0.092      6.922      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    AVE_RAT            0.901      0.053     16.935      0.000
+    NEG_NOM            0.645      0.047     13.859      0.000
+    COOP               0.464      0.093      4.984      0.000
+    AUTO               0.270      0.059      4.547      0.000
+    QUANT              0.915      0.073     12.458      0.000
+    LANG               0.527      0.054      9.708      0.000
+    LONE               0.321      0.075      4.278      0.000
+    SCHAVOID           0.291      0.070      4.169      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    CPART              0.204      0.059      3.471      0.001
+    ACH                0.343      0.054      6.375      0.000
+    E_ADJ              0.363      0.092      3.944      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.601E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Effects from CPART to E_ADJ
+
+  Total                0.288      0.111      2.601      0.009
+  Total indirect       0.000      0.000    999.000      0.000
+
+  Direct
+    E_ADJ
+    CPART              0.288      0.111      2.601      0.009
+
+
+Effects from REJECT to E_ADJ
+
+  Total               -0.177      0.031     -5.628      0.000
+  Total indirect      -0.059      0.023     -2.607      0.009
+
+  Specific indirect
+
+    E_ADJ
+    CPART
+    REJECT            -0.059      0.023     -2.607      0.009
+
+  Direct
+    E_ADJ
+    REJECT            -0.118      0.036     -3.282      0.001
+
+
+Effects from CPART to ACH
+
+  Total                1.300      0.467      2.784      0.005
+  Total indirect       0.000      0.000    999.000      0.000
+
+  Direct
+    ACH
+    CPART              1.300      0.467      2.784      0.005
+
+
+Effects from REJECT to ACH
+
+  Total               -1.112      0.113     -9.829      0.000
+  Total indirect      -0.266      0.093     -2.851      0.004
+
+  Specific indirect
+
+    ACH
+    CPART
+    REJECT            -0.266      0.093     -2.851      0.004
+
+  Direct
+    ACH
+    REJECT            -0.846      0.144     -5.891      0.000
+
+
+
+STANDARDIZED TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Effects from CPART to E_ADJ
+
+  Total                0.372      0.118      3.138      0.002
+  Total indirect       0.000      0.000      0.000      1.000
+
+  Direct
+    E_ADJ
+    CPART              0.372      0.118      3.138      0.002
+
+
+Effects from REJECT to E_ADJ
+
+  Total               -0.503      0.070     -7.140      0.000
+  Total indirect      -0.168      0.062     -2.713      0.007
+
+  Specific indirect
+
+    E_ADJ
+    CPART
+    REJECT            -0.168      0.062     -2.713      0.007
+
+  Direct
+    E_ADJ
+    REJECT            -0.335      0.095     -3.524      0.000
+
+
+Effects from CPART to ACH
+
+  Total                0.281      0.082      3.433      0.001
+  Total indirect       0.000      0.000      0.000      1.000
+
+  Direct
+    ACH
+    CPART              0.281      0.082      3.433      0.001
+
+
+Effects from REJECT to ACH
+
+  Total               -0.529      0.046    -11.475      0.000
+  Total indirect      -0.127      0.044     -2.908      0.004
+
+  Specific indirect
+
+    ACH
+    CPART
+    REJECT            -0.127      0.044     -2.908      0.004
+
+  Direct
+    ACH
+    REJECT            -0.403      0.066     -6.119      0.000
+
+
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+                0.120        -0.100         0.000         0.000         5.380
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+                5.360         1.510         2.050
+
+
+           Residuals for Means/Intercepts/Thresholds
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means/Intercepts/Thresholds
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+                0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+                0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+                0.000         0.000         0.000
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+ AVE_RAT        0.900
+ NEG_NOM        0.650         0.808
+ COOP          -0.166        -0.133         0.359
+ AUTO          -0.131        -0.105         0.131         0.383
+ QUANT         -0.902        -0.723         0.357         0.281         3.911
+ LANG          -0.615        -0.493         0.244         0.192         2.442
+ LONE          -0.144        -0.115         0.068         0.053         0.209
+ SCHAVOID      -0.164        -0.131         0.077         0.061         0.239
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+ LANG           3.160
+ LONE           0.143         0.312
+ SCHAVOID       0.163         0.114         0.448
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+ AVE_RAT        0.000
+ NEG_NOM        0.001         0.000
+ COOP          -0.008        -0.027         0.000
+ AUTO           0.023         0.009         0.006         0.000
+ QUANT          0.001         0.042        -0.038         0.020         0.000
+ LANG          -0.021        -0.008        -0.027        -0.102         0.000
+ LONE          -0.001         0.019        -0.008        -0.019         0.167
+ SCHAVOID       0.008        -0.017        -0.003         0.000         0.046
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+ LANG           0.000
+ LONE           0.156         0.000
+ SCHAVOID       0.076         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+ AVE_RAT        0.000
+ NEG_NOM        1.180         0.000
+ COOP          -2.411        -2.296         0.000
+ AUTO           1.469         0.515       999.000         0.000
+ QUANT          0.098         1.708        -2.143         1.088         0.014
+ LANG          -1.351        -0.255        -0.844        -2.844         0.000
+ LONE          -0.191         1.510        -0.890        -1.710         4.179
+ SCHAVOID       0.774        -1.053        -0.253        -0.016         0.975
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+ LANG         999.000
+ LONE           3.742         0.000
+ SCHAVOID       1.542         0.000         0.000
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              AVE_RAT       NEG_NOM       COOP          AUTO          QUANT
+              ________      ________      ________      ________      ________
+ AVE_RAT        0.000
+ NEG_NOM        0.014         0.000
+ COOP          -0.284        -0.972         0.000
+ AUTO           0.763         0.336         0.312         0.000
+ QUANT          0.006         0.437        -0.614         0.322         0.000
+ LANG          -0.235        -0.101        -0.494        -1.843         0.000
+ LONE          -0.050         0.747        -0.441        -1.095         2.859
+ SCHAVOID       0.233        -0.536        -0.132        -0.011         0.674
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              LANG          LONE          SCHAVOID
+              ________      ________      ________
+ LANG           0.000
+ LONE           3.000         0.000
+ SCHAVOID       1.247         0.000         0.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\tzkeith\documents\regression book 3\web\instructor materials\chapter 17\mplus\buhs & ladd 1.dgm
+
+     Beginning Time:  10:50:08
+        Ending Time:  10:50:08
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2017 Muthen & Muthen
