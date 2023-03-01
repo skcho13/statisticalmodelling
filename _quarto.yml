@@ -29,6 +29,7 @@ website:
     contents:
       - href: index.qmd
       - href: contents/notice.qmd
+      - text: ---
       - section: R tutorial
         contents:
           - href: contents/setup.ipynb

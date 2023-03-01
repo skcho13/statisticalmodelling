@@ -207,7 +207,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Instructor: 조성균, sk.cho@snu.ac.kr\nOffice Hours: 수업 후\nTeaching Assistant: 홍신영\nClass Meetings: 목 7:00 ~ 9:50PM\nWebsite: r.modellings.art\n과제: Notice\n질문: Communicate/Ask"
+    "text": "강사: 조성균, sk.cho@snu.ac.kr\n면담 시간: 수업 후\n조교: 홍신영\n수업시간: 목 7:00 ~ 9:50PM\nWebsite: r.modellings.art\n과제: Notice\n질문: Communicate/Ask"
   },
   {
     "objectID": "index.html#강의-노트",
@@ -285,5 +285,12 @@
     "title": "Welcome",
     "section": "License",
     "text": "License\n\nThis work by Sungkyun Cho is licensed under CC BY-NC-SA 4.0"
+  },
+  {
+    "objectID": "contents/notice.html#개별-프로젝트",
+    "href": "contents/notice.html#개별-프로젝트",
+    "title": "Notice",
+    "section": "개별 프로젝트",
+    "text": "개별 프로젝트"
   }
 ]

@@ -5,10 +5,10 @@ date: Mar 3, 2023
 author: Sungkyun Cho
 ---
 ## 강의 정보
-Instructor: 조성균, sk.cho@snu.ac.kr  
-Office Hours: 수업 후  
-Teaching Assistant: 홍신영  
-Class Meetings: 목 7:00 ~ 9:50PM  
+강사: 조성균, sk.cho@snu.ac.kr  
+면담 시간: 수업 후  
+조교: 홍신영  
+수업시간: 목 7:00 ~ 9:50PM  
 Website: [r.modellings.art](https://r.modellings.art)
 
 과제: Notice  
