@@ -60,7 +60,7 @@
     "href": "contents/setup.html#r-studio-소개",
     "title": "환경설정",
     "section": "R Studio 소개",
-    "text": "R Studio 소개\n\n4개의 패널로 구성\nproject 단위로 분석\n\n시작시 project을 새로 만들거나 불러와서 실행: filename.Rproj 형태로 저장\nFile > New Project or +R 버튼 > New Directory > New Project\n\nDirectory name, Sub directory\n\n\nworking directory\n\nproject에서 참조하는 최상위 폴더\n하위폴더 지시: 예) data/file.sav\n\n환경설정\n\nTools > Global Options\n\nSave workspace to .RData on exit: working space 자동 저장\nCode >>\n\nsoft-wrap R source files\nUse native pipe operator\n\nAppearance >>\n\nZoom: 전체 보기 줌\nEdiotr font: Cascadia Mono\nEditor font size: 글자 크기\ntheme: Tomorrow Night??\n\n\n\nR script 생성, 저장\nR Studio 닫기, 열기\n\nWorkspace 저장 vs. R script 저장\nWorkspace save/load: .Rdata 형태로 저장\n\nSession\n\nRestart R"
+    "text": "R Studio 소개\n\n4개의 패널로 구성\nproject 단위로 분석\n\n시작시 project을 새로 만들거나 불러와서 실행: filename.Rproj 형태로 저장\nFile > New Project or +R 버튼 > New Directory > New Project\n\nDirectory name, Sub directory\n\n\nworking directory\n\nproject에서 참조하는 최상위 폴더\n하위폴더 지시: 예) data/file.sav\n\n환경설정\n\nTools > Global Options\n\nSave workspace to .RData on exit: working space 자동 저장\nCode >>\n\nsoft-wrap R source files\nUse native pipe operator\n\nAppearance >>\n\nZoom: 전체 보기 줌\nEdiotr font: Cascadia Mono (Win), Menlo (Mac)\nEditor font size: 글자 크기\ntheme: Tomorrow Night??\n\n\n\nR script 생성, 저장\nR Studio 닫기, 열기\n\nWorkspace 저장 vs. R script 저장\nWorkspace save/load: .Rdata 형태로 저장\n\nSession\n\nRestart R"
   },
   {
     "objectID": "contents/setup.html#패키지의-설치",
@@ -88,7 +88,7 @@
     "href": "contents/overview.html",
     "title": "Overview",
     "section": "",
-    "text": "이번 섹션에서는 통계가 어떻게 활용되는지에 대한 전반적인 landscape을 소개하고자 하며, 이는 다양한 통계적 분석 이론들 속에서 자신이 수행하고 있는 분석의 적절성을 대략 이해하며, 어떤 부분이 부족한지를 파악할 수 있도록 도움이 되리라 기대함.\n여기에서 다루는 내용을 모두 수업에서 다룬다는 것은 절대 아님!\n시작하면,\n통계가 활용되는 방식은 크게 3가지로 나누어 볼 수 있음"
+    "text": "이번 섹션에서는 통계가 어떻게 활용되는지에 대한 전반적인 landscape을 소개하고자 하며, 이는 다양한 통계적 분석 이론들 속에서 자신이 수행하고 있는 분석의 적절성을 대략 이해하며, 어떤 부분이 부족한지를 파악할 수 있도록 도움을 주고자 함.\n여기에서 소개하는 내용을 모두 수업에서 다룬다는 것은 절대 아님!\n시작하면,\n통계가 활용되는 방식은 크게 3가지로 나누어 볼 수 있음"
   },
   {
     "objectID": "contents/overview.html#descriptive-기술적-분석",
@@ -207,7 +207,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Instructor: 조성균\nEmail: sk.cho@snu.ac.kr"
+    "text": "Instructor: 조성균\nEmail: sk.cho@snu.ac.kr\nLink: r.modellings.art"
   },
   {
     "objectID": "index.html#강의-노트",

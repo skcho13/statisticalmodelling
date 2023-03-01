@@ -43,7 +43,14 @@ website:
       - text: ---
       - section: Statistics
         contents:
-          - href: contents/overview.ipynb 
+          - href: contents/overview.ipynb
+      - text: ---
+      - section: Communicate
+        contents:
+          - href: https://docs.google.com/document/d/1LjSKjc3bAd0OY9H7BH_0MXp0RhCSOlWhGpq6zoDzAiY/edit?usp=sharing
+            text: Ask
+          - href: https://docs.google.com/document/d/1NjaZzQdVq22csZLMuCI9GDZmTY-hFHypkFlEBb4Yx9s/edit?usp=sharing
+            text: Consult
 
 format:
   html:

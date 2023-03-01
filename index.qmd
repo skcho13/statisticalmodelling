@@ -3,7 +3,8 @@ title: Welcome
 subtitle: 차의과학대학교 임상상담심리대학원 심리통계
 ---
 Instructor: 조성균  
-Email: sk.cho@snu.ac.kr
+Email: sk.cho@snu.ac.kr  
+Link: [r.modellings.art](https://r.modellings.art)
 
 ## 강의 노트
 
