@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sungkyun Cho">
+<meta name="dcterms.date" content="2023-03-03">
 
 <title>CHA Stats in R - Welcome</title>
 <style>
@@ -29,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./contents/setup.html" rel="next">
+<link href="./contents/notice.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -94,6 +96,11 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contents/notice.html" class="sidebar-item-text sidebar-link">Notice</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -172,12 +179,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#강의-노트" id="toc-강의-노트" class="nav-link active" data-scroll-target="#강의-노트">강의 노트</a>
+  <li><a href="#강의-정보" id="toc-강의-정보" class="nav-link active" data-scroll-target="#강의-정보">강의 정보</a></li>
+  <li><a href="#강의-개요" id="toc-강의-개요" class="nav-link" data-scroll-target="#강의-개요">강의 개요</a>
   <ul>
   <li><a href="#교재" id="toc-교재" class="nav-link" data-scroll-target="#교재">교재</a></li>
   <li><a href="#r-참고도서" id="toc-r-참고도서" class="nav-link" data-scroll-target="#r-참고도서">R 참고도서</a></li>
   <li><a href="#통계-참고도서" id="toc-통계-참고도서" class="nav-link" data-scroll-target="#통계-참고도서">통계 참고도서</a></li>
   </ul></li>
+  <li><a href="#수업-활동" id="toc-수업-활동" class="nav-link" data-scroll-target="#수업-활동">수업 활동</a></li>
   </ul>
 </nav>
     </div>
@@ -187,14 +196,26 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Welcome</h1>
-<p class="subtitle lead">차의과학대학교 임상상담심리대학원 심리통계</p>
+<p class="subtitle lead">차의과학대학교 임상상담심리대학원 심리통계, 2023 1학기</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sungkyun Cho </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 3, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -202,13 +223,30 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Instructor: 조성균<br>
-Email: sk.cho@snu.ac.kr<br>
-Link: <a href="https://r.modellings.art">r.modellings.art</a></p>
-<section id="강의-노트" class="level2">
-<h2 class="anchored" data-anchor-id="강의-노트">강의 노트</h2>
-<p>전통적인 통계 커리큘럼에서 조금 벗어나 programming 언어인 R과 graphical tools의 도움을 받아 통계적인 통찰을 얻는 방식으로 진행하고자 함.<br>
-예제를 중심으로 직접 분석하고, 통계 이론의 설명은 체계적으로 전개하기보다는 그때 그때 필요한 부분을 부연 설명하고자 함.</p>
+<section id="강의-정보" class="level2">
+<h2 class="anchored" data-anchor-id="강의-정보">강의 정보</h2>
+<p>Instructor: 조성균, sk.cho@snu.ac.kr<br>
+Office Hours: 수업 후<br>
+Teaching Assistant: 홍신영<br>
+Class Meetings: 목 7:00 ~ 9:50PM<br>
+Website: <a href="https://r.modellings.art">r.modellings.art</a></p>
+<p>과제: Notice<br>
+질문: Communicate/Ask</p>
+</section>
+<section id="강의-개요" class="level2">
+<h2 class="anchored" data-anchor-id="강의-개요">강의 개요</h2>
+<p>전통적인 통계 커리큘럼에서 조금 벗어나 programming 언어인 R과 graphical tools의 도움을 받아 통계적인 통찰을 얻는 방식으로 진행하고자 함. 예제를 중심으로 직접 분석하고, 통계 이론의 설명은 체계적으로 전개하기보다는 그때 그때 필요한 부분을 부연 설명하고자 함.<br>
+본 강의는 주로 회귀분석(regression analysis)에 초점을 맞추며, 그 근본 원리를 이해하고 의미를 파악하여, 현상을 올바로 분석하고, 적절한 분석기법을 적용할 수 있도록 도움을 주고자 함.</p>
+<p>수업은 대략 4개의 섹션으로 나눔</p>
+<ul>
+<li>R tutorial<br>
+</li>
+<li>통계의 활용에 대한 전반적인 소개<br>
+</li>
+<li>회귀 분석 (regression analysis)<br>
+</li>
+<li>인과 분석 (causal analysis)</li>
+</ul>
 <section id="교재" class="level3">
 <h3 class="anchored" data-anchor-id="교재">교재</h3>
 <ul>
@@ -243,20 +281,13 @@ Link: <a href="https://r.modellings.art">r.modellings.art</a></p>
 </div>
 </div>
 </div>
-<hr>
-<p>수업은 대략 다음과 같이 4부로 진행</p>
-<ol type="1">
-<li>R tutorial<br>
-</li>
-<li>통계의 활용에 대한 전반적인 소개<br>
-</li>
-<li>회귀 분석 (regression analysis)<br>
-</li>
-<li>인과 분석 (causal analysis)</li>
-</ol>
-
-
 </section>
+</section>
+<section id="수업-활동" class="level2">
+<h2 class="anchored" data-anchor-id="수업-활동">수업 활동</h2>
+<p>출석 (5%), 일반과제 (15%), 중간고사 대체 과제 (20%), 기말고사 (30%), 개별 프로젝트 (30%)</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -411,8 +442,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./contents/setup.html" class="pagination-link">
-        <span class="nav-page-text">Setup</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./contents/notice.html" class="pagination-link">
+        <span class="nav-page-text">Notice</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

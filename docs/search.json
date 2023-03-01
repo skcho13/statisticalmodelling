@@ -53,14 +53,14 @@
     "href": "contents/setup.html",
     "title": "환경설정",
     "section": "",
-    "text": "R 다운로드 및 설치\n\nWindows인 경우 >> Download R for Windows >> base >> Download R-4.2.2 for Windows\n\n다운로드 링크\n\nMac인 경우 >> Download R for macOS >> R-4.2.2.pkg 또는 R-4.2.2-arm64.pkg (Apple silicon)\n\n다운로드 링크 일반\n\n다운로드 링크 for Apple silicon\n\n\nRStudio 다운로드 및 설치\n\n2: Install RStudio"
+    "text": "R 다운로드 및 설치\n\nWindows인 경우 > Download R for Windows > base > Download R-4.2.2 for Windows\n\n다운로드 링크\n\nMac인 경우 > Download R for macOS > R-4.2.2.pkg 또는 R-4.2.2-arm64.pkg (Apple silicon)\n\n다운로드 링크 일반\n\n다운로드 링크 for Apple silicon\n\n\nRStudio 다운로드 및 설치\n\n2: Install RStudio"
   },
   {
     "objectID": "contents/setup.html#r-studio-소개",
     "href": "contents/setup.html#r-studio-소개",
     "title": "환경설정",
     "section": "R Studio 소개",
-    "text": "R Studio 소개\n\n4개의 패널로 구성\nproject 단위로 분석\n\n시작시 project을 새로 만들거나 불러와서 실행: filename.Rproj 형태로 저장\nFile > New Project or +R 버튼 > New Directory > New Project\n\nDirectory name, Sub directory\n\n\nworking directory\n\nproject에서 참조하는 최상위 폴더\n하위폴더 지시: 예) data/file.sav\n\n환경설정\n\nTools > Global Options\n\nSave workspace to .RData on exit: working space 자동 저장\nCode >>\n\nsoft-wrap R source files\nUse native pipe operator\n\nAppearance >>\n\nZoom: 전체 보기 줌\nEdiotr font: Cascadia Mono (Win), Menlo (Mac)\nEditor font size: 글자 크기\ntheme: Tomorrow Night??\n\n\n\nR script 생성, 저장\nR Studio 닫기, 열기\n\nWorkspace 저장 vs. R script 저장\nWorkspace save/load: .Rdata 형태로 저장\n\nSession\n\nRestart R"
+    "text": "R Studio 소개\n4개의 패널로 구성\nProject 단위로 분석\n\n시작시 project을 새로 만들거나 불러와서 실행: filename.Rproj 형태로 저장\nFile > New Project or +R 버튼 > New Directory > New Project\n\nDirectory name, Sub directory\n\n\nWorking directory\n\nproject에서 참조하는 최상위 폴더\n하위폴더 지시: 예) data/file.sav\n\nR script 생성, 저장\nR Studio 닫기, 열기\n\nWorkspace 저장 vs. R script 저장\nWorkspace save/load: .Rdata 형태로 저장\n\nSession\n\nRestart R\n\n\n환경설정: Tools > Global Options\nSave workspace to .RData on exit: working space 자동 저장\nCode\n\nsoft-wrap R source files\nUse native pipe operator\n\nAppearance\n\nZoom: 전체 보기 줌\nEdiotr font: Cascadia Mono (Win), Menlo (Mac)\nEditor font size: 글자 크기\ntheme: Tomorrow Night??"
   },
   {
     "objectID": "contents/setup.html#패키지의-설치",
@@ -102,7 +102,7 @@
     "href": "contents/overview.html#relational-변수들-간의-진실한-관계를-분석",
     "title": "Overview",
     "section": "Relational: 변수들 간의 진실한 관계를 분석",
-    "text": "Relational: 변수들 간의 진실한 관계를 분석\n\nCase 1\n미혼자에 대한 임금 차별이 있는가? 차별이 의미하는 바는 무엇인가?\n아래 첫번째 그림과 같이 기혼자의 임금이 미혼자에 보다 높은 것으로 나타났다면,\n이는 정말 결혼하지 않은 것이 임금을 책정하는데 영향을 주었는가?\n하지만, 당연하게도 기혼자는 미혼자에 비해 연령이 높으며 (두번째 그림),\n높은 연령은 연차가 높거나 실무능력이 뛰어난 경향으로 인해 임금을 높을 수 있다는 것을 감안하면 (세번째 그림)\n차별처럼 보이는 차이는 차별이라고 볼 수 없을 수도 있음.\n다시 말하면, 연령을 고려한 후에도 기혼자의 임금은 미혼자보다 높은가?\n여전히 높다면, 연령을 고려한 후 혹은 연령을 조정한 후(adjusted for age)의 차이는 얼마라고 봐야하는가?\n연령을 고려한 임금 차이를 조사하는 방법은 무엇이 있겠는가?\n\n연령별로 나누어 비교?\n\nData from the 1985 Current Population Survey\n\n\n\n\n\n연령을 고려한 마라톤 기록?\n70세 노인의 기록 2시간 30분과 20세 청년의 2시간 30분은 마라톤 실력이라는 관점에서 다르게 볼 수도 있음\n예를 들어, “나이 차이가 큰 두 사람의 기록을 비교하는 것은 공평하지 않아”라는 주장에 대해서, 80세 노인의 기록은 “나이를 감안하면 2시간 10분에 해당한다”고 답변할 수 있음\n다시 말하면, 나이와는 무관한/독립적인 마라톤 능력에 대해 말할 수 있음\n이는 동일한 나이의 사람들로만 제한해서 마라톤 기록을 비교하는 것이 공평한 능력의 비교라고 말하는 것과 것이 같은 이치임\n\nSource: https://doi.org/10.1186/2052-1847-6-31\n\n\nCase 2\n기혼여부에 따른 임금의 차이가 남녀별로 다른가?\n연령이 올라감에 따라 임금이 올라가는 패턴에 차이가 있는가?\n\n\n\n\n\n왼편 그림에서 보면, 기혼여부에 따른 임금의 차이가 남녀에 따라 다르게 나타나는 것으로 보임\n이러한 현상을 변수 간에 상호작용(interaction)이 있다고 말함 (moderate라는 표현도 있음)\n말하지면, 기혼여부가 임금에 주는 효과가 성별에 따라 바뀌고, 기혼여부와 성별이 상호작용하여 임금에 영향을 준다라고 표현할 수 있음 (2-way interaction)\n비슷하게, 오른편을 보면, 연령에 따른 임금의 증가 패턴이 남녀에 따라서, 업종에 따라 다르게 나타나는 것으로 보임\n(manag: management, manuf: manufacturing, prof: professional)\n즉, 연령이 임금에 미치는 효과는 성별과 업종에 따라 바뀌고, 연령, 성별, 업종이 상호작용하여 임금에 영향을 준다라고 표현할 수 있음 (3-way interaction)\n\n\n\n\n\n\nWarning\n\n\n\n위의 표현은 모두 효과를 가정한 표현으로 설명을 위해 편의상 그렇게 표현하였음\n또한, 다른 요소들은 단순화를 위해 생략했음. 예를 들어 왼편의 상황에서 나이를 고려하면 다른 양상을 보일 수 있음\n\n\n또 다른 예로는, 나이가 듦(age)에 따라 지구력(endurance)의 감소가 강도 높은 운동을 한 기간(년수)(exercise)에 따라 변화한다는 가설을 테스트한 자료\n\n\n\n\n\n이 경우 운동을 한 기간은 앞의 예에서처럼 카테고리 변수가 아니기 때문에 임의로 3구간으로 나누어 살펴 본 것임.\n나이가 지구력에 미치는 부정적 영향이 운동을 한 기간에 따라 변하는 것으로 보임.\n즉, 나이와 운동기간이 상호작용하여 지구력에 영향을 미친다고 표현할 수 있음\n상호작용은 아래와 같이 상호작용하는 두 변수의 위치를 바꿔 살펴볼 수도 있음\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n시각화를 통해 전반적인 패턴을 살펴보는 것은 통계적 모형을 세워 수학적으로 분석하기 전에 하는 보조 수단임.\n앞에 마라톤 기록의 예처럼 실제 분석은 한 변수를 고려한 후 다른 변수의 변화를 계산하는 방식으로 분석을 하는 것이지, 나이별로 자료를 나누어 보지 않듯이, 운동기간을 위에서처럼 구간으로 쪼개어 분석하는 것은 아님.\n\n\n\n\nCase 3\n임금이 증가하면 삶의 만족도가 높아지는가? 아마도?\n\n\n\n\n\n\n하지만, 특정 A의 임금이 p 에서 q 로 증가할 때, 트렌드대로 움직이겠는가?\n혹은, 특정 B의 임금이 r 에서 s 로 감소할 때, 트렌드대로 움직이겠는가?\n개인의 변화를 살펴보는 종단연구(logitudinal)로 그 갭을 채울 수 있음\n하지만, 그럴지라도 임금으로 “인해” 삶의 만족도가 올라가느냐는 다른 문제임 >> 인과관계의 문제\n\n예를 들어, 연봉의 증가가 삶의 만족도를 올렸다기 보다는 상대적 비교에서 오는 자존감이 증가했기 때문일 수 있음\n연봉이 높은 곳은 직업 특성이 다를 수 있음\n또는, 인맥과 인간관계의 변화에서 오는 차이일 수도 있음\n\n다른 시각에서 보면,\n현재 A의 연봉 2천만원을 갑자기 4천만으로 올리면 삶의 만족도가 트렌드대로 0.8pt 올라가겠는가?\n\n연봉의 증가는 주변의 시기와 질투를 가져와 인관관계에 영향을 줄 수 있음\n\n본인의 자만은 여러 부정적 결과를 초래할 수 있음\n\n\nPrediction vs. intervention\n\nA의 임금이 올라가면 삶의 만족도가 따라서 올라갈 것이라고 (조심스럽게) 예측할 수는 있으나: association\n\n좀 더 정확히 말하면, 임금이 높은 것은 삶의 만족도가 높은 것과 연관이 있다라고 표현\n“올라가면”이라는 표현은 시간 개념을 포함한 것이라 횡단(cross-sectional) 데이터에서는 부적절\n\nA의 임금을 올리면 삶의 만족도가 올라갈 것이라고 단정할 수 없음: causal\nIntervention이 효과가 있으려면, 적어도 진정한 관계를 파악해야만 하며, 더 나아가 인과관계가 만족해야 함.\n진정한 관계의 문제와 인과의 문제는 서로 엮여 있으며 복잡한 문제임.\n\n예를 들어, 오렌지를 섭취하면 괴혈병이 예방되나 사실은 비타민 C의 섭취가 괴혈병을 예방하는 것임\n만약, 장거리 항해에서 상급자(높은 연령)에게만 과일이 제공되어 괴혈병이 덜 생겼다는 현상으로부터 연령과 괴혈병의 관계를 추론해서는 안됨\n\n\n또는, 신앙심이 깊은 노인들의 수명이 더 길다는 현상이 관찰되었을 때, 신앙심 자체가 심리적으로나 신체적으로 긍정적인 효과를 가질 수 있으나, 그 외에도 신앙 활동의 일부로 활동이 늘고 다른 이와의 긍정적 교류가 건강에 영향을 미쳤을 수도 있음.\n\n이 때, 신앙심과 수명과는 진정한 관계가 있다고 볼 수 있으나 그 인과 관계에 대해서도 좀 더 깊은 논의가 필요함.\n다시 말하면, 어떤 노인에게 신앙을 권유했을 때, 수명이 연장되었을지라도 신앙심이 수명을 연장시킨 것인가는 별개의 논의임.\n\n\n\n\nThe strength of relationships\n변수들간의 관계와 그 관계의 크기(stength)는 중요하게 구별될 필요가 있음\n아래 두 그림은 변수 간의 관계는 동일하나 그 크기에 차이가 있음\n오른쪽 그림에서 연봉으로 그 사람의 삶의 만족도 지수를 더 정확히 예측할 수 있으며, 이를 설명력이 높다고 표현\n보통 이 효과의 크기가 클수록 인과관계일 가능성은 높다고 볼 수 있으며,\n왼쪽 박스에서 처럼 variability가 높다는 것은 다른 이유가 있을 가능성이 높음\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n진정한 관계를 탐구하는 것이 어려움에도 불구하고, 관계성을 파악함으로써 통찰을 얻을 수 있음.\n\n\n\n\n복잡한 변수와의 관계를 풀어내려고 노력\nSource: Multiple Regression and Beyond by Timothy Z. Keith"
+    "text": "Relational: 변수들 간의 진실한 관계를 분석\n\nCase 1\n미혼자에 대한 임금 차별이 있는가? 차별이 의미하는 바는 무엇인가?\n아래 첫번째 그림과 같이 기혼자의 임금이 미혼자에 보다 높은 것으로 나타났다면,\n이는 정말 결혼하지 않은 것이 임금을 책정하는데 영향을 주었는가?\n하지만, 당연하게도 기혼자는 미혼자에 비해 연령이 높으며 (두번째 그림),\n높은 연령은 연차가 높거나 실무능력이 뛰어난 경향으로 인해 임금을 높을 수 있다는 것을 감안하면 (세번째 그림)\n차별처럼 보이는 차이는 차별이라고 볼 수 없을 수도 있음.\n다시 말하면, 연령을 고려한 후에도 기혼자의 임금은 미혼자보다 높은가?\n여전히 높다면, 연령을 고려한 후 혹은 연령을 조정한 후(adjusted for age)의 차이는 얼마라고 봐야하는가?\n연령을 고려한 임금 차이를 조사하는 방법은 무엇이 있겠는가?\n\n연령별로 나누어 비교?\n\nData from the 1985 Current Population Survey\n\n\n\n\n\n연령을 고려한 마라톤 기록?\n70세 노인의 기록 2시간 30분과 20세 청년의 2시간 30분은 마라톤 실력이라는 관점에서 다르게 볼 수도 있음\n예를 들어, “나이 차이가 큰 두 사람의 기록을 비교하는 것은 공평하지 않아”라는 주장에 대해서, 80세 노인의 기록은 “나이를 감안하면 2시간 10분에 해당한다”고 답변할 수 있음\n다시 말하면, 나이와는 무관한/독립적인 마라톤 능력에 대해 말할 수 있음\n이는 동일한 나이의 사람들로만 제한해서 마라톤 기록을 비교하는 것이 공평한 능력의 비교라고 말하는 것과 것이 같은 이치임\n\nSource: https://doi.org/10.1186/2052-1847-6-31\n\n\nCase 2\n기혼여부에 따른 임금의 차이가 남녀별로 다른가?\n연령이 올라감에 따라 임금이 올라가는 패턴에 차이가 있는가?\n\n\n\n\n\n왼편 그림에서 보면, 기혼여부에 따른 임금의 차이가 남녀에 따라 다르게 나타나는 것으로 보임\n이러한 현상을 변수 간에 상호작용(interaction)이 있다고 말함 (moderate라는 표현도 있음)\n말하지면, 기혼여부가 임금에 주는 효과가 성별에 따라 바뀌고, 기혼여부와 성별이 상호작용하여 임금에 영향을 준다라고 표현할 수 있음 (2-way interaction)\n비슷하게, 오른편을 보면, 연령에 따른 임금의 증가 패턴이 남녀에 따라서, 업종에 따라 다르게 나타나는 것으로 보임\n(manag: management, manuf: manufacturing, prof: professional)\n즉, 연령이 임금에 미치는 효과는 성별과 업종에 따라 바뀌고, 연령, 성별, 업종이 상호작용하여 임금에 영향을 준다라고 표현할 수 있음 (3-way interaction)\n\n\n\n\n\n\nWarning\n\n\n\n위의 표현은 모두 효과를 가정한 표현으로 설명을 위해 편의상 그렇게 표현하였음\n또한, 다른 요소들은 단순화를 위해 생략했음. 예를 들어 왼편의 상황에서 나이를 고려하면 다른 양상을 보일 수 있음\n\n\n또 다른 예로는, 나이가 듦(age)에 따라 지구력(endurance)의 감소가 강도 높은 운동을 한 기간(년수)(exercise)에 따라 변화한다는 가설을 테스트한 자료\n\n\n\n\n\n이 경우 운동을 한 기간은 앞의 예에서처럼 카테고리 변수가 아니기 때문에 임의로 3구간으로 나누어 살펴 본 것임.\n나이가 지구력에 미치는 부정적 영향이 운동을 한 기간에 따라 변하는 것으로 보임.\n즉, 나이와 운동기간이 상호작용하여 지구력에 영향을 미친다고 표현할 수 있음\n상호작용은 아래와 같이 상호작용하는 두 변수의 위치를 바꿔 살펴볼 수도 있음\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n시각화를 통해 전반적인 패턴을 살펴보는 것은 통계적 모형을 세워 수학적으로 분석하기 전에 하는 보조 수단임.\n앞에 마라톤 기록의 예처럼 실제 분석은 한 변수를 고려한 후 다른 변수의 변화를 계산하는 방식으로 분석을 하는 것이지, 나이별로 자료를 나누어 보지 않듯이, 운동기간을 위에서처럼 구간으로 쪼개어 분석하는 것은 아님.\n\n\n\n\nCase 3\n임금이 증가하면 삶의 만족도가 높아지는가? 아마도?\n\n\n\n\n\n\n하지만, 특정 A의 임금이 p 에서 q 로 증가할 때, 트렌드대로 움직이겠는가?\n혹은, 특정 B의 임금이 r 에서 s 로 감소할 때, 트렌드대로 움직이겠는가?\n개인의 변화를 살펴보는 종단연구(logitudinal)로 그 갭을 채울 수 있음\n\n\n\n\n\n\nNote\n\n\n\nLongitudinal(종단) vs. cross-sectional(횡단)\n\n\n하지만, 그럴지라도 임금으로 “인해” 삶의 만족도가 올라가느냐는 다른 문제임 >> 인과관계의 문제\n\n예를 들어, 연봉의 증가가 삶의 만족도를 올렸다기 보다는 상대적 비교에서 오는 자존감이 증가했기 때문일 수 있음\n연봉이 높은 곳은 직업 특성이 다를 수 있음\n또는, 인맥과 인간관계의 변화에서 오는 차이일 수도 있음\n\n다른 시각에서 보면,\n현재 A의 연봉 2천만원을 갑자기 4천만으로 올리면 삶의 만족도가 트렌드대로 0.8pt 올라가겠는가?\n\n연봉의 증가는 주변의 시기와 질투를 가져와 인관관계에 영향을 줄 수 있음\n\n본인의 자만은 여러 부정적 결과를 초래할 수 있음\n\n\nPrediction vs. intervention\n\nA의 임금이 올라가면 삶의 만족도가 따라서 올라갈 것이라고 (조심스럽게) 예측할 수는 있으나: association\n\n좀 더 정확히 말하면, 임금이 높은 것은 삶의 만족도가 높은 것과 연관이 있다라고 표현\n“올라가면”이라는 표현은 시간 개념을 포함한 것이라 횡단(cross-sectional) 데이터에서는 부적절\n\nA의 임금을 올리면 삶의 만족도가 올라갈 것이라고 단정할 수 없음: causal\nIntervention이 효과가 있으려면, 적어도 진정한 관계를 파악해야만 하며, 더 나아가 인과관계가 만족해야 함.\n진정한 관계의 문제와 인과의 문제는 서로 엮여 있으며 복잡한 문제임.\n\n예를 들어, 오렌지를 섭취하면 괴혈병이 예방되나 사실은 비타민 C의 섭취가 괴혈병을 예방하는 것임\n만약, 장거리 항해에서 상급자(높은 연령)에게만 과일이 제공되어 괴혈병이 덜 생겼다는 현상으로부터 연령과 괴혈병의 관계를 추론해서는 안됨\n\n\n또는, 신앙심이 깊은 노인들의 수명이 더 길다는 현상이 관찰되었을 때, 신앙심 자체가 심리적으로나 신체적으로 긍정적인 효과를 가질 수 있으나, 그 외에도 신앙 활동의 일부로 활동이 늘고 다른 이와의 긍정적 교류가 건강에 영향을 미쳤을 수도 있음.\n\n이 때, 신앙심과 수명과는 진정한 관계가 있다고 볼 수 있으나 그 인과 관계에 대해서도 좀 더 깊은 논의가 필요함.\n다시 말하면, 어떤 노인에게 신앙을 권유했을 때, 수명이 연장되었을지라도 신앙심이 수명을 연장시킨 것인가는 별개의 논의임.\n\n\n\n\nThe strength of relationships\n변수들간의 관계와 그 관계의 크기(stength)는 중요하게 구별될 필요가 있음\n아래 두 그림은 변수 간의 관계는 동일하나 그 크기에 차이가 있음\n오른쪽 그림에서 연봉으로 그 사람의 삶의 만족도 지수를 더 정확히 예측할 수 있으며, 이를 설명력이 높다고 표현\n보통 이 효과의 크기가 클수록 인과관계일 가능성은 높다고 볼 수 있으며,\n왼쪽 박스에서 처럼 variability가 높다는 것은 다른 이유가 있을 가능성이 높음\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n진정한 관계를 탐구하는 것이 어려움에도 불구하고, 관계성을 파악함으로써 통찰을 얻을 수 있음.\n\n\n\n\n복잡한 변수와의 관계를 풀어내려고 노력\nSource: Multiple Regression and Beyond by Timothy Z. Keith"
   },
   {
     "objectID": "contents/overview.html#causal-인과관계의-분석",
@@ -165,21 +165,21 @@
     "href": "contents/baser.html",
     "title": "Base R",
     "section": "",
-    "text": "90년대에 통계 분석을 위해 개발된 R 언어와 대비하여, 좀 더 직관적이고 효율적인 데이터 분석을 위해 새로운 문법이 R내의 패키지 형태로 구현되었는데 이 새로운 생태계 안에 패키지들의 모임은 Tidyverse라는 이름하에 발전하고 있음: Tidyverse\n이 패키지들은 design philosophy, grammar, data structures를 공유하며 유기적으로 작동됨.\n기존 R의 문법과는 상당한 차이가 있어 단점도 지적되고 있고, 소위 base-R을 고수하는 사람들과 tidyverse를 기본으로 사용하는 사람들이 나뉘어 있다고 알려져 있음.\n아마도 빠르게 발전하고 있는 tidyverse/tidymodel 생태계의 언어들이 기본으로 자리잡지 않을까 함.\n본 강의에서는 주로 tidyverse의 언어로만 분석하고자 함."
+    "text": "90년대에 통계 분석을 위해 개발된 R 언어와 대비하여, 좀 더 직관적이고 효율적인 데이터 분석을 위해 새로운 문법이 R내의 패키지 형태로 구현되었는데 이 새로운 생태계 안의 패키지들의 모임이 Tidyverse라는 이름하에 발전하고 있음: Tidyverse\n이 패키지들은 design philosophy, grammar, data structures를 공유하며 유기적으로 작동됨.\n기존 R의 문법과는 상당한 차이가 있어 단점도 지적되고 있고, 소위 base-R을 고수하는 사람들과 tidyverse를 기본으로 사용하는 사람들이 나뉘어 있다고 알려져 있음.\n아마도 빠르게 발전하고 있는 tidyverse/tidymodel 생태계의 언어들이 기본으로 자리잡지 않을까 함.\n본 강의에서는 주로 tidyverse의 언어로만 분석하고자 함."
   },
   {
     "objectID": "contents/baser.html#r의-데이터-구조와-변수-타입",
     "href": "contents/baser.html#r의-데이터-구조와-변수-타입",
     "title": "Base R",
     "section": "R의 데이터 구조와 변수 타입",
-    "text": "R의 데이터 구조와 변수 타입\n주로 벡터와 데이터프레임을 다룸\n\nSource: R in Action by Rob Kabacoff\nData frame의 예\n각 칼럼이 하나의 변수를 구성하고, 한가지 타입의 데이터로 이루어짐\n\nlibrary(tidyverse)\n\ncps <- mosaicData::CPS85 # mosaicData package의 CPS85 데이터셋\ncps\n\n\ncps <- as_tibble(cps)\nprint(cps) # print는 생략해도 됨\n\n# A tibble: 534 × 11\n   wage  educ race  sex   hispanic south married exper union   age sector  \n  <dbl> <int> <fct> <fct> <fct>    <fct> <fct>   <int> <fct> <int> <fct>   \n1   9      10 W     M     NH       NS    Married    27 Not      43 const   \n2   5.5    12 W     M     NH       NS    Married    20 Not      38 sales   \n3   3.8    12 W     F     NH       NS    Single      4 Not      22 sales   \n4  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical\n5  15      12 W     M     NH       NS    Married    40 Union    58 const   \n6   9      16 W     F     NH       NS    Married    27 Not      49 clerical\n# … with 528 more rows\n\n\n\n# Dataset의 설명\nhelp(CPS85, package=\"mosaicData\") # 또는\n?mosaicData::CPS85"
+    "text": "R의 데이터 구조와 변수 타입\n주로 vector (벡터)와 data frame (데이터프레임)을 다룸\n\nSource: R in Action by Rob Kabacoff\nData frame의 예\n\n각 column이 하나의 variable (변수)를 구성하고, 한가지 타입의 데이터로 이루어짐\n\n각 Row가 하나의 observation (관측치)을 구성함.\n\n이러한 형태를 갖춘 데이터를 tidy라고도 부르며, 이를 벗어난 형태의 경우 가공이 필요함.\nex. “m23”: male이고 23세임을 나타내는 표기도 있음\n\n\nlibrary(tidyverse)\n\ncps <- mosaicData::CPS85 # mosaicData package의 CPS85 데이터셋\ncps # data.frame\n\n\ncps <- as_tibble(cps) # tibble vs. data.frame\nprint(cps) # print는 생략해도 됨\n\n# A tibble: 534 × 11\n   wage  educ race  sex   hispanic south married exper union   age sector  \n  <dbl> <int> <fct> <fct> <fct>    <fct> <fct>   <int> <fct> <int> <fct>   \n1   9      10 W     M     NH       NS    Married    27 Not      43 const   \n2   5.5    12 W     M     NH       NS    Married    20 Not      38 sales   \n3   3.8    12 W     F     NH       NS    Single      4 Not      22 sales   \n4  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical\n5  15      12 W     M     NH       NS    Married    40 Union    58 const   \n6   9      16 W     F     NH       NS    Married    27 Not      49 clerical\n# … with 528 more rows\n\n\n\n# Dataset의 설명\nhelp(CPS85, package=\"mosaicData\") # 또는\n?mosaicData::CPS85"
   },
   {
     "objectID": "contents/baser.html#vector",
     "href": "contents/baser.html#vector",
     "title": "Base R",
     "section": "Vector",
-    "text": "Vector\n한 가지 타입으로만 구성: 숫자 (numeric), 문자 (character), 논리형 (logical), factor, etc\n\nvar <- c(1, 2, 5, 3, 6, -2, 4) # 변수에 assign: '=' 대신 '<-'\nnm <- c(\"one\", \"two\", \"three\")\ntf <- c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE)\n\n# 타입 확인\nclass(var)\n## [1] \"numeric\"\n\nclass(nm)\n## [1] \"character\"\n\nclass(tf)\n## [1] \"logical\"\n\n\n원소의 추출 및 대체\n다음은 원소를 추출, 대체하는 R의 native한 방식임\n수업에서는 뒤에서 다룰 tidyverse 문법을 주로 활용할 것임\nVector의 경우\n\nvar[3]\n## [1] 5\n\nvar[c(1, 3, 5)]\n## [1] 1 5 6\n\nvar[2:6] # \":\"\" slicing: c(2, 3, 4, 5, 6)\n## [1]  2  5  3  6 -2\n\nvar[c(1, 3:5)] # 혼합\n## [1] 1 5 3 6\n\nvar[-c(1, 3)] # \"-\"는 제외라는 의미\n## [1]  2  3  6 -2  4\n\nc(10, var, 100, 101) # 추가\n##  [1]  10   1   2   5   3   6  -2   4 100 101\n\nvar[2] <- 55 # 대체\n## var\n## [1]  1 55  5  3  6 -2  4\n\nvar[c(2, 5)] <- c(200, 500) # 대체\n## var\n## [1]   1 200   5   3 500  -2   4\n\n# numeric 벡터의 연산: recycling rule\n1:5 * 2\n## [1]  2  4  6  8 10\n\nc(1, 3, 5) - 5\n## [1] -4 -2  0\n\nc(2, 4, 6) / 2\n## [1] 1 2 3\n\nc(1, 3) * c(2, 4)\n## [1]  2 12\n\nc(1, 3) - c(2, 4)\n## [1] -1 -1"
+    "text": "Vector\n한 가지 타입으로만 구성: 숫자 (numeric), 문자 (character), 논리형 (logical), factor, etc\n\nvar <- c(1, 2, 5, 3, 6, -2, 4) # 변수에 assign: '=' 대신 '<-'\nnm <- c(\"one\", \"two\", \"three\")\ntf <- c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE)\n\n# 타입 확인\nclass(var)\n## [1] \"numeric\"\n\nclass(nm)\n## [1] \"character\"\n\nclass(tf)\n## [1] \"logical\"\n\n\n원소의 추출 및 대체\n다음은 원소를 추출, 대체하는 R의 native한 방식임\n수업에서는 뒤에서 다룰 tidyverse 문법을 주로 활용할 것임\nVector의 경우\n\nvar\n## [1]  1  2  5  3  6 -2  4\n\nvar[3]\n## [1] 5\n\nvar[c(1, 3, 5)]\n## [1] 1 5 6\n\nvar[2:6] # \":\"\" slicing: c(2, 3, 4, 5, 6)\n## [1]  2  5  3  6 -2\n\nvar[c(1, 3:5)] # 혼합\n## [1] 1 5 3 6\n\nvar[-c(1, 3)] # \"-\"는 제외라는 의미\n## [1]  2  3  6 -2  4\n\nc(10, var, 100, 101) # 추가\n##  [1]  10   1   2   5   3   6  -2   4 100 101\n\nvar[2] <- 55 # 대체\n## var\n## [1]  1 55  5  3  6 -2  4\n\nvar[c(2, 5)] <- c(200, 500) # 대체\n## var\n## [1]   1 200   5   3 500  -2   4\n\n# numeric 벡터의 연산: recycling rule\n1:5 * 2\n## [1]  2  4  6  8 10\n\nc(1, 3, 5) - 5\n## [1] -4 -2  0\n\nc(2, 4, 6) / 2\n## [1] 1 2 3\n\nc(1, 3) * c(2, 4)\n## [1]  2 12\n\nc(1, 3) - c(2, 4)\n## [1] -1 -1"
   },
   {
     "objectID": "contents/baser.html#factor",
@@ -200,14 +200,14 @@
     "href": "contents/baser.html#tibble",
     "title": "Base R",
     "section": "Tibble",
-    "text": "Tibble\n\n데이터 프레임 vs. Tibble\nPrinting의 차이\ncps <- mosaicData::CPS85 # data.frame\ncps\n#   wage educ race sex hispanic south married exper union age   sector\n# 1  9.0   10    W   M       NH    NS Married    27   Not  43    const\n# 2  5.5   12    W   M       NH    NS Married    20   Not  38    sales\n# 3  3.8   12    W   F       NH    NS  Single     4   Not  22    sales\n# 4 10.5   12    W   F       NH    NS Married    29   Not  47 clerical\n# 5 15.0   12    W   M       NH    NS Married    40 Union  58    const\n# 6  9.0   16    W   F       NH    NS Married    27   Not  49 clerical\n...\n\ncps_tibble <- as_tibble(cps)\ncps_tibble\n# # A tibble: 534 × 11\n#    wage  educ race  sex   hispanic south married exper union   age sector  \n#   <dbl> <int> <fct> <fct> <fct>    <fct> <fct>   <int> <fct> <int> <fct>   \n# 1   9      10 W     M     NH       NS    Married    27 Not      43 const   \n# 2   5.5    12 W     M     NH       NS    Married    20 Not      38 sales   \n# 3   3.8    12 W     F     NH       NS    Single      4 Not      22 sales   \n# 4  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical\n# 5  15      12 W     M     NH       NS    Married    40 Union    58 const   \n# 6   9      16 W     F     NH       NS    Married    27 Not      49 clerical\n# # … with 528 more rows\n그 외의 차이는 R for Data Science/10.3 Tibbles vs. data.frame을 참고\n\n\n\n\n\n\nTip\n\n\n\nTibble 프린트 옵션\noptions(tibble.width = Inf,    # 보이는 열의 개수, Inf: 모두\n        tibble.print_min = 20) # 보이는 행의 개수\n원래대로 복구\noptions(tibble.width = NULL, \n        tibble.print_min = NULL)"
+    "text": "Tibble\n기존 data.frame의 단점을 보안한 tidyverse에서 기본이 되는 데이터 형식\n\nData frame vs. tibble\nPrinting의 차이\ncps <- mosaicData::CPS85 # data.frame\ncps\n#   wage educ race sex hispanic south married exper union age   sector\n# 1  9.0   10    W   M       NH    NS Married    27   Not  43    const\n# 2  5.5   12    W   M       NH    NS Married    20   Not  38    sales\n# 3  3.8   12    W   F       NH    NS  Single     4   Not  22    sales\n# 4 10.5   12    W   F       NH    NS Married    29   Not  47 clerical\n# 5 15.0   12    W   M       NH    NS Married    40 Union  58    const\n# 6  9.0   16    W   F       NH    NS Married    27   Not  49 clerical\n...\n\ncps_tibble <- as_tibble(cps)\ncps_tibble\n# # A tibble: 534 × 11\n#    wage  educ race  sex   hispanic south married exper union   age sector  \n#   <dbl> <int> <fct> <fct> <fct>    <fct> <fct>   <int> <fct> <int> <fct>   \n# 1   9      10 W     M     NH       NS    Married    27 Not      43 const   \n# 2   5.5    12 W     M     NH       NS    Married    20 Not      38 sales   \n# 3   3.8    12 W     F     NH       NS    Single      4 Not      22 sales   \n# 4  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical\n# 5  15      12 W     M     NH       NS    Married    40 Union    58 const   \n# 6   9      16 W     F     NH       NS    Married    27 Not      49 clerical\n# # … with 528 more rows\n그 외의 차이는 R for Data Science/10.3 Tibbles vs. data.frame을 참고"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Instructor: 조성균\nEmail: sk.cho@snu.ac.kr\nLink: r.modellings.art"
+    "text": "Instructor: 조성균, sk.cho@snu.ac.kr\nOffice Hours: 수업 후\nTeaching Assistant: 홍신영\nClass Meetings: 목 7:00 ~ 9:50PM\nWebsite: r.modellings.art\n과제: Notice\n질문: Communicate/Ask"
   },
   {
     "objectID": "index.html#강의-노트",
@@ -222,5 +222,61 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "contents/setup.html#rstudio-소개",
+    "href": "contents/setup.html#rstudio-소개",
+    "title": "환경설정",
+    "section": "RStudio 소개",
+    "text": "RStudio 소개\n4개의 패널로 구성\nProject 단위로 분석\n\n시작시 project을 새로 만들거나 불러와서 실행: filename.Rproj 형태로 저장\nFile > New Project or +R 버튼 > New Directory > New Project\n\nDirectory name, Sub directory\n\n\nWorking directory\n\nproject에서 참조하는 최상위 폴더\n하위폴더 지시: 예) data/file.sav\n\nR script 생성, 저장\nRStudio 닫기, 열기\n\nWorkspace 저장 vs. R script 저장\nWorkspace save/load: .Rdata 형태로 저장\n\nSession\n\nRestart R\n\n\n환경설정: Tools > Global Options\nSave workspace to .RData on exit: working space 자동 저장\nCode\n\nsoft-wrap R source files\nUse native pipe operator\n\nAppearance\n\nZoom: 전체 보기 줌\nEdiotr font: Cascadia Mono (Win), Menlo (Mac)\nEditor font size: 글자 크기\ntheme: Tomorrow Night??"
+  },
+  {
+    "objectID": "contents/notice.html#과제",
+    "href": "contents/notice.html#과제",
+    "title": "Notice",
+    "section": "과제",
+    "text": "과제"
+  },
+  {
+    "objectID": "contents/notice.html#시험",
+    "href": "contents/notice.html#시험",
+    "title": "Notice",
+    "section": "시험",
+    "text": "시험"
+  },
+  {
+    "objectID": "index.html#강의-개요",
+    "href": "index.html#강의-개요",
+    "title": "Welcome",
+    "section": "강의 개요",
+    "text": "강의 개요\n전통적인 통계 커리큘럼에서 조금 벗어나 programming 언어인 R과 graphical tools의 도움을 받아 통계적인 통찰을 얻는 방식으로 진행하고자 함. 예제를 중심으로 직접 분석하고, 통계 이론의 설명은 체계적으로 전개하기보다는 그때 그때 필요한 부분을 부연 설명하고자 함.\n본 강의는 주로 회귀분석(regression analysis)에 초점을 맞추며, 그 근본 원리를 이해하고 의미를 파악하여, 현상을 올바로 분석하고, 적절한 분석기법을 적용할 수 있도록 도움을 주고자 함.\n수업은 대략 4개의 섹션으로 나눔\n\nR tutorial\n\n통계의 활용에 대한 전반적인 소개\n\n회귀 분석 (regression analysis)\n\n인과 분석 (causal analysis)\n\n\n교재\n\n주로 강의 노트를 위주로!\nR인 액션 - 빅데이터 분석도구, 홍릉 / R in Action (2e) by Rob Kabacoff\nStatistical Modeling (2e) by Daniel T. Kaplan\n\n\n\nR 참고도서\n\nR for Data Science by Wickham & Grolemund / 2nd edition in progress\n\n\n\n통계 참고도서\n\nApplied Multiple Regression/Correlation Analysis for the Behavioral Sciences By Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken\nRegression Analysis and Linear Models by Richard B. Darlington & Andrew F. Hayes\nMultiple Regression and Beyond (3e) by Timothy Z. Keith"
+  },
+  {
+    "objectID": "index.html#수업-활동",
+    "href": "index.html#수업-활동",
+    "title": "Welcome",
+    "section": "수업 활동",
+    "text": "수업 활동\n출석 (5%), 일반과제 (15%), 중간고사 대체 과제 (20%), 기말고사 (30%), 개별 프로젝트 (30%)"
+  },
+  {
+    "objectID": "contents/notice.html#중간고사-대체-과제",
+    "href": "contents/notice.html#중간고사-대체-과제",
+    "title": "Notice",
+    "section": "중간고사 대체 과제",
+    "text": "중간고사 대체 과제"
+  },
+  {
+    "objectID": "contents/notice.html#중간고사-대체-과제-4.20",
+    "href": "contents/notice.html#중간고사-대체-과제-4.20",
+    "title": "Notice",
+    "section": "중간고사 대체 과제 4.20",
+    "text": "중간고사 대체 과제 4.20"
+  },
+  {
+    "objectID": "contents/notice.html#기말시험-6.15",
+    "href": "contents/notice.html#기말시험-6.15",
+    "title": "Notice",
+    "section": "기말시험 6.15",
+    "text": "기말시험 6.15"
   }
 ]

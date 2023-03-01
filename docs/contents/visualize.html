@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-02-11">
+<meta name="dcterms.date" content="2023-02-17">
 
 <title>CHA Stats in R - Visualize</title>
 <style>
@@ -207,6 +207,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Communicate</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://docs.google.com/document/d/1LjSKjc3bAd0OY9H7BH_0MXp0RhCSOlWhGpq6zoDzAiY/edit?usp=sharing" class="sidebar-item-text sidebar-link">Ask</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://docs.google.com/document/d/1NjaZzQdVq22csZLMuCI9GDZmTY-hFHypkFlEBb4Yx9s/edit?usp=sharing" class="sidebar-item-text sidebar-link">Consult</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -259,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 11, 2023</p>
+      <p class="date">February 17, 2023</p>
     </div>
   </div>
   
@@ -677,7 +698,7 @@ Warning message:
 <p><img src="visualize_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="119">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g, <span class="at">fill =</span> sex)) <span class="sc">+</span> <span class="co"># color는 box의 테두리 색, fill은 내부색</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -818,7 +839,7 @@ Warning message:
 <section id="labels" class="level2">
 <h2 class="anchored" data-anchor-id="labels">Labels</h2>
 <p><code>labs()</code> 안에 각 요소별로 지정</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="81">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)</span>
@@ -858,7 +879,7 @@ Note
 </div>
 </div>
 <p>Pipe operator로 다음과 연결될 수 있음</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> island <span class="sc">!=</span> <span class="st">"Torgersen"</span>) <span class="sc">|&gt;</span>  <span class="co"># 성별이 missing이 아니고, Torgersen섬은 제외</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
@@ -876,7 +897,7 @@ Note
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>이전에 다뤘던 CPS85 데이터로 보면,</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="59">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mosaicData<span class="sc">::</span>CPS85) <span class="co"># mosaicData package의 CPS85 데이터셋</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>() <span class="co"># 생략!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -893,7 +914,7 @@ Note
 # … with 528 more rows</code></pre>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="112">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wage, <span class="at">color =</span> married)) <span class="sc">+</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -901,7 +922,7 @@ Note
 <p><img src="visualize_files/figure-html/cell-48-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="115">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wage, <span class="at">color =</span> married)) <span class="sc">+</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
@@ -910,7 +931,7 @@ Note
 <p><img src="visualize_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="122">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> married, <span class="at">y =</span> wage)) <span class="sc">+</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
@@ -920,7 +941,7 @@ Note
 <p><img src="visualize_files/figure-html/cell-52-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="123">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> married, <span class="at">y =</span> wage, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
@@ -929,7 +950,7 @@ Note
 <p><img src="visualize_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="127">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sector, <span class="at">y =</span> wage, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
@@ -938,7 +959,7 @@ Note
 <p><img src="visualize_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="132">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sector, <span class="at">y =</span> wage, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
@@ -948,7 +969,7 @@ Note
 <p><img src="visualize_files/figure-html/cell-57-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="92">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> cps <span class="sc">|&gt;</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> wage)) <span class="sc">+</span></span>
@@ -976,7 +997,7 @@ Important
 <code>coord_cartesian()</code>&nbsp;vs.&nbsp;<code>xlim()</code>&nbsp;or&nbsp;<code>ylim()</code></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="93">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>plot <span class="sc">+</span> <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">40</span>)) <span class="co"># zoom in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
@@ -985,7 +1006,7 @@ Important
 <p><img src="visualize_files/figure-html/cell-60-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="94">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plot <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">18</span>, <span class="dv">40</span>) <span class="co"># data crop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
@@ -998,7 +1019,7 @@ Warning message:
 <p><img src="visualize_files/figure-html/cell-61-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="102">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> sector <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"manag"</span>, <span class="st">"manuf"</span>, <span class="st">"prof"</span>, <span class="st">"sales"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> wage, <span class="at">color =</span> sex)) <span class="sc">+</span></span>

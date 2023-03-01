@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-02-11">
+<meta name="dcterms.date" content="2023-02-17">
 
 <title>CHA Stats in R - Base R</title>
 <style>
@@ -208,6 +208,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Communicate</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://docs.google.com/document/d/1LjSKjc3bAd0OY9H7BH_0MXp0RhCSOlWhGpq6zoDzAiY/edit?usp=sharing" class="sidebar-item-text sidebar-link">Ask</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://docs.google.com/document/d/1NjaZzQdVq22csZLMuCI9GDZmTY-hFHypkFlEBb4Yx9s/edit?usp=sharing" class="sidebar-item-text sidebar-link">Consult</a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -231,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#tibble" id="toc-tibble" class="nav-link" data-scroll-target="#tibble">Tibble</a>
   <ul>
-  <li><a href="#데이터-프레임-vs.-tibble" id="toc-데이터-프레임-vs.-tibble" class="nav-link" data-scroll-target="#데이터-프레임-vs.-tibble">데이터 프레임 vs.&nbsp;Tibble</a></li>
+  <li><a href="#data-frame-vs.-tibble" id="toc-data-frame-vs.-tibble" class="nav-link" data-scroll-target="#data-frame-vs.-tibble">Data frame vs.&nbsp;tibble</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -259,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 11, 2023</p>
+      <p class="date">February 17, 2023</p>
     </div>
   </div>
   
@@ -269,26 +290,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>90년대에 통계 분석을 위해 개발된 R 언어와 대비하여, 좀 더 직관적이고 효율적인 데이터 분석을 위해 새로운 문법이 R내의 패키지 형태로 구현되었는데 이 새로운 생태계 안에 패키지들의 모임은 <strong>Tidyverse</strong>라는 이름하에 발전하고 있음: <a href="https://www.tidyverse.org/">Tidyverse</a><br>
+<p>90년대에 통계 분석을 위해 개발된 R 언어와 대비하여, 좀 더 직관적이고 효율적인 데이터 분석을 위해 새로운 문법이 R내의 패키지 형태로 구현되었는데 이 새로운 생태계 안의 패키지들의 모임이 <strong>Tidyverse</strong>라는 이름하에 발전하고 있음: <a href="https://www.tidyverse.org/">Tidyverse</a><br>
 이 패키지들은 design philosophy, grammar, data structures를 공유하며 유기적으로 작동됨.</p>
 <p>기존 R의 문법과는 상당한 차이가 있어 단점도 지적되고 있고, 소위 base-R을 고수하는 사람들과 tidyverse를 기본으로 사용하는 사람들이 나뉘어 있다고 알려져 있음.</p>
 <p>아마도 빠르게 발전하고 있는 tidyverse/tidymodel 생태계의 언어들이 기본으로 자리잡지 않을까 함.<br>
 본 강의에서는 주로 tidyverse의 언어로만 분석하고자 함.</p>
 <section id="r의-데이터-구조와-변수-타입" class="level2">
 <h2 class="anchored" data-anchor-id="r의-데이터-구조와-변수-타입">R의 데이터 구조와 변수 타입</h2>
-<p>주로 <strong>벡터</strong>와 <strong>데이터프레임</strong>을 다룸</p>
+<p>주로 <strong>vector (벡터)</strong>와 <strong>data frame (데이터프레임)</strong>을 다룸</p>
 <p><img src="images/dataframe.png" class="img-fluid" width="400"><br>
 Source: R in Action by Rob Kabacoff</p>
-<p><strong>Data frame</strong>의 예<br>
-각 칼럼이 하나의 변수를 구성하고, 한가지 타입의 데이터로 이루어짐</p>
+<p><strong>Data frame</strong>의 예</p>
+<ul>
+<li>각 column이 하나의 <strong>variable</strong> (변수)를 구성하고, 한가지 타입의 데이터로 이루어짐<br>
+</li>
+<li>각 Row가 하나의 <strong>observation</strong> (관측치)을 구성함.<br>
+</li>
+<li>이러한 형태를 갖춘 데이터를 tidy라고도 부르며, 이를 벗어난 형태의 경우 가공이 필요함.<br>
+ex. “m23”: male이고 23세임을 나타내는 표기도 있음</li>
+</ul>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> mosaicData<span class="sc">::</span>CPS85 <span class="co"># mosaicData package의 CPS85 데이터셋</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>cps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>cps <span class="co"># data.frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cps)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cps) <span class="co"># tibble vs. data.frame</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cps) <span class="co"># print는 생략해도 됨</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 534 × 11
@@ -333,47 +361,50 @@ Source: R in Action by Rob Kabacoff</p>
 수업에서는 뒤에서 다룰 tidyverse 문법을 주로 활용할 것임</p>
 <p>Vector의 경우</p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>var[<span class="dv">3</span>]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>var</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1  2  5  3  6 -2  4</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>var[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 5 6</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>var[<span class="dv">3</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>var[<span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>] <span class="co"># ":"" slicing: c(2, 3, 4, 5, 6)</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2  5  3  6 -2</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>var[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 5 6</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>var[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)] <span class="co"># 혼합</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 5 3 6</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>var[<span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>] <span class="co"># ":"" slicing: c(2, 3, 4, 5, 6)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2  5  3  6 -2</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>var[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)] <span class="co"># "-"는 제외라는 의미</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2  3  6 -2  4</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>var[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)] <span class="co"># 혼합</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 5 3 6</span></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">10</span>, var, <span class="dv">100</span>, <span class="dv">101</span>) <span class="co"># 추가</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  10   1   2   5   3   6  -2   4 100 101</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>var[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)] <span class="co"># "-"는 제외라는 의미</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2  3  6 -2  4</span></span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>var[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">55</span> <span class="co"># 대체</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">## var</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1 55  5  3  6 -2  4</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>var[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">500</span>) <span class="co"># 대체</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="do">## var</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]   1 200   5   3 500  -2   4</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric 벡터의 연산: recycling rule</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2  4  6  8 10</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">-</span> <span class="dv">5</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -4 -2  0</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">10</span>, var, <span class="dv">100</span>, <span class="dv">101</span>) <span class="co"># 추가</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  10   1   2   5   3   6  -2   4 100 101</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>var[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">55</span> <span class="co"># 대체</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="do">## var</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1 55  5  3  6 -2  4</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>var[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">500</span>) <span class="co"># 대체</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="do">## var</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]   1 200   5   3 500  -2   4</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric 벡터의 연산: recycling rule</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2  4  6  8 10</span></span>
 <span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">-</span> <span class="dv">5</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -4 -2  0</span></span>
 <span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2 12</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3</span></span>
 <span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>) <span class="sc">-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1 -1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  2 12</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>) <span class="sc">-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1 -1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -586,8 +617,9 @@ Source: R in Action by Rob Kabacoff</p>
 </section>
 <section id="tibble" class="level2">
 <h2 class="anchored" data-anchor-id="tibble">Tibble</h2>
-<section id="데이터-프레임-vs.-tibble" class="level3">
-<h3 class="anchored" data-anchor-id="데이터-프레임-vs.-tibble">데이터 프레임 vs.&nbsp;Tibble</h3>
+<p>기존 data.frame의 단점을 보안한 tidyverse에서 기본이 되는 데이터 형식</p>
+<section id="data-frame-vs.-tibble" class="level3">
+<h3 class="anchored" data-anchor-id="data-frame-vs.-tibble">Data frame vs.&nbsp;tibble</h3>
 <p>Printing의 차이</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> mosaicData<span class="sc">::</span>CPS85 <span class="co"># data.frame</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cps</span>
@@ -613,24 +645,6 @@ Source: R in Action by Rob Kabacoff</p>
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 6   9      16 W     F     NH       NS    Married    27 Not      49 clerical</span></span>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co"># # … with 528 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>그 외의 차이는 <a href="https://r4ds.had.co.nz/tibbles.html">R for Data Science/10.3 Tibbles vs.&nbsp;data.frame</a>을 참고</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Tibble 프린트 옵션</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tibble.width =</span> <span class="cn">Inf</span>,    <span class="co"># 보이는 열의 개수, Inf: 모두</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">tibble.print_min =</span> <span class="dv">20</span>) <span class="co"># 보이는 행의 개수</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>원래대로 복구</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tibble.width =</span> <span class="cn">NULL</span>, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">tibble.print_min =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
 
 
 </section>
