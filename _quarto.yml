@@ -13,7 +13,8 @@ website:
 
   page-footer:
     # right: "This page is built with [Quarto](https://quarto.org/)."
-    left: "&copy; Copyright 2023, Sungkyun Cho"
+    left: This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
+    # left: "&copy; Copyright 2023, Sungkyun Cho"
     # background: 
 
   sidebar:
