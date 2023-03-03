@@ -581,16 +581,31 @@ Self-esteem의 이론적 근거를 밝히고자 함. 왜 인간은 self-esteem�
 <p><img src="images/TMT.png" class="img-fluid" width="400"></p>
 <p>Treatment: 자신의 죽음과 고통에 대해 생각해보고 써보도록 하고<br>
 Control: 자신의 치통에 대한 질문에 답</p>
-<p>고정관념에 부정적인 사람에 대해 더 부정적으로 평가: defences their own culural worldview<br>
+<p>측정: 고정관념에 대해 부정적으로 말하는 사람을 어떻게 평가하는가?<br>
+결과: 그들을 더 부정적으로 평가: defences their own culural worldview<br>
 (e.g.&nbsp;<em>Stereotypes and Terror Management: Evidence That Mortality Salience Enhances Stereotypic Thinking and Preferences</em>)</p>
 <ul>
-<li>모두 부정적인 감정을 불러 일으킴<br>
-</li>
-<li>“죽음에 대한 생각”이 정확히 이 효과를 만든 것인가?</li>
+<li>죽음이나 치통에 대해 생각은 모두 두려움을 포함해 부정적 감정을 불러 일으키는데</li>
+<li>그저 두려움에 대한 반응인가? 아니면 정확히 “죽음에 대한 생각”이 효과를 만든 것인가?</li>
+<li>참여자들의 부정적 정서를 실험 마지막에 측정한 후 분석에 고려했음</li>
 </ul>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <p><img src="overview_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>연구 설계시 관심이 있는 효과를 효과적으로 측정하는 것과 동등하게 중요한 것은 어떤 <strong>confounding</strong>들이 존재할 수 있는지를 다각도로 검토한 후 이를 설계에 반영하는 것임.<br>
+예를 들어, 위의 경우 죽음에 대한 생각 자체의 효과가 아닌 죽음을 생각했을때 발생할 수 있는 부수적인 감정들로 인해 효과가 난 것이 아닌가하는 것들을 고려해서 설계할 수 있음.</p>
 </div>
 </div>
 </section>
@@ -609,7 +624,21 @@ Source: <a href="https://www.npr.org/sections/goatsandsoda/2017/07/03/534743719/
 </ul>
 <p>혹시 실험을 진행하는 실험자에 따라 다른 효과가 나타날까? (Experimenter effects)<br>
 처치(treatment)의 효과인가 처지가 일어나는 <strong>상황이</strong> 만든 효과인가?</p>
-<p>마시멜로우 실험의 경우에서 아이들에게 기다리라고 지시한 experimenter들의 정보가 필요함.<br>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>이 연구에서도 여러 <strong>confounding</strong>들을 생각해볼 수 있음<br>
+위에서 언급한 것들 외에 어떤 것들이 있을까?</p>
+</div>
+</div>
+<p>적어도 마시멜로우 실험의 경우에서 아이들에게 기다리라고 지시한 experimenter들의 정보를 고려할 필요가 있음.<br>
 그럼, 각 experimenter별로 자료를 분석해야 하는가?</p>
 <p>좀 더 확장하면,</p>
 <ul>
@@ -630,7 +659,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Multi-level analysis</strong> (mixed effect model)</p>
-<p>이는 위에서 언급한 longitudinal (종단) 데이터가 지닌 관측치의 <strong>dependency</strong>를 고려하는 일반적인 접근임. 관측치들이 군집을 이루면서 군집끼리 비슷한 경향을 보인다면, 이를 고려한 분석이 요구됨. 보통 dependency는 데이터를 어떻게 수집했는지를 알아야 파악할 수 있으며, 데이터 자체로는 찾아내기 어려움. (clustering analysis 같은 machine learning 분야에서 개발되는 알고리즘적 분석들이 있음)</p>
+<p>이는 위에서 언급한 longitudinal (종단) 데이터가 지닌 관측치의 <strong>dependency</strong>를 고려하는 일반적인 접근임. 관측치들이 군집을 이루면서 군집끼리 비슷한 경향을 보인다면, 이를 고려한 분석이 요구됨. 보통 dependency는 데이터를 어떻게 수집했는지를 알아야 파악할 수 있으며, 데이터 내에서 찾아내기 어려움. (clustering analysis 같은 machine learning 분야에서 개발되는 알고리즘적 분석들이 있음)</p>
 <p>만약, 군집을 이루는 단위가 충분히 많다면,<br>
 예를 들어, 10개의 병원에서 30명의 의사가 각각 50명의 환자에게 새롭게 개발된 처방을 처치하여 그 효과를 볼 때,</p>
 <ul>
@@ -640,8 +669,8 @@ Note
 <ul>
 <li>학교의 효과 vs.&nbsp;선생님의 효과 vs.&nbsp;수업의 효과를 분리해 볼 수 있음</li>
 </ul>
-<p>분석을 위해 각 선생님 마다 혹은 학교마다 따로 분석하는 방식이 아닌 모든 샘플을 동시에 이용한 고급 통계 방법</p>
-<p>사회과학 자료에서도 만일 가족단위로 데이터 수집이 이루어진다면, 가족 간의 무언가 톡특한 특성이 연구결과에 반영될 수 밖에 없는데, 가족의 특성을 분리해야 연구자가 살펴보는 관심 변수들 간의 관계를 올바로 파악할 수 있음. 연구에서 가족의 특성을 직접 측정해서 고려한다는 의미가 아니고, 자료가 품고 있는 가족간의 유사성이 통계적으로 파악되어 고려되는 것임.</p>
+<p><strong>분석을 위해 각 선생님 마다 혹은 학교마다 따로 분석하는 것도 아니며, 학교별 혹은 선생님별 특성을 측정하여 고려한다든가 하는 방식이 아님.</strong> 자료가 품고 있는 관측치들의 유사성이 통계적으로 파악되어 고려되는 것으로, 모든 샘플을 동시에 이용한 고급 통계 방법</p>
+<p>사회과학 자료에서도 만일 가족단위로 데이터 수집이 이루어진다면, 가족 간의 무언가 톡특한 특성이 연구결과에 반영될 수 밖에 없는데, 가족의 특성을 분리해야 연구자가 살펴보는 관심 변수들 간의 관계를 올바로 파악할 수 있음. 다시 지적하면, 연구에서 가족의 특성을 직접 측정해서 고려한다는 의미가 아니고, 자료가 품고 있는 가족간의 유사성이 통계적으로 파악되어 고려되는 것임.</p>
 </div>
 </div>
 </section>

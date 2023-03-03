@@ -16,3 +16,16 @@ author: Sungkyun Cho
 
 ## 개별 프로젝트 
 
+## 강의 계획 (tentative)
+1주 ~ 4주: R tutorial  
+5주 ~ 6주: 통계 전반적 소개 - Statistics/overview  
+7주: correlation/simple linear regression  
+8주: multiple regression: residualize  
+9주: multiple regression: pattern of association  
+10주: multiple regression: measure of association  
+11주: interaction effect 1  
+12주: interaction effect 2  
+13주: diagnosis of assumptions 1  
+14주: diagnosis of assumptions 2  
+15주: beyond multiple regression  
+16주: final exam  
