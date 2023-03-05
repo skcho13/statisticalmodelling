@@ -197,6 +197,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#case-2-1" id="toc-case-2-1" class="nav-link" data-scroll-target="#case-2-1">Case 2</a></li>
   </ul></li>
   <li><a href="#uncertainty" id="toc-uncertainty" class="nav-link" data-scroll-target="#uncertainty">Uncertainty</a></li>
+  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression analysis</a></li>
   <li><a href="#그-외" id="toc-그-외" class="nav-link" data-scroll-target="#그-외">그 외</a></li>
   </ul>
 </nav>
@@ -280,9 +281,9 @@ ul.task-list li input[type="checkbox"] {
 <li>연령별로 나누어 비교?</li>
 </ul>
 <p><em>Data from the 1985 Current Population Survey</em></p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>연령을 고려한 마라톤 기록?<br>
@@ -299,7 +300,7 @@ Source: <a href="https://doi.org/10.1186/2052-1847-6-31">https://doi.org/10.1186
 연령이 올라감에 따라 임금이 올라가는 패턴에 차이가 있는가?</p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>왼편 그림에서 보면, 기혼여부에 따른 임금의 차이가 남녀에 따라 다르게 나타나는 것으로 보임<br>
@@ -325,7 +326,7 @@ Warning
 <p>또 다른 예로는, 나이가 듦(age)에 따라 지구력(endurance)의 감소가 강도 높은 운동을 한 기간(년수)(exercise)에 따라 변화한다는 가설을 테스트한 자료</p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>이 경우 운동을 한 기간은 앞의 예에서처럼 카테고리 변수가 아니기 때문에 임의로 3구간으로 나누어 살펴 본 것임.<br>
@@ -334,7 +335,7 @@ Warning
 <p>상호작용은 아래와 같이 상호작용하는 두 변수의 위치를 바꿔 살펴볼 수도 있음</p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="22">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="callout-important callout callout-style-default callout-captioned">
@@ -357,7 +358,7 @@ Important
 <p>임금이 증가하면 삶의 만족도가 높아지는가? 아마도?</p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><img src="images/snu.png" class="img-fluid" width="400"><br>
@@ -426,7 +427,7 @@ Note
 왼쪽 박스에서처럼 variability가 높다는 것은 다른 이유가 있을 가능성이 높음</p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -596,7 +597,7 @@ Control: 자신의 치통에 대한 질문에 답</p>
 </ul>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="callout-important callout callout-style-default callout-captioned">
@@ -680,14 +681,14 @@ Note
 </div>
 </section>
 </section>
-<section id="uncertainty" class="level1">
-<h1>Uncertainty</h1>
+<section id="uncertainty" class="level2">
+<h2 class="anchored" data-anchor-id="uncertainty">Uncertainty</h2>
 <p>관찰자가 관찰한 대상으로부터 얻은 결과를 관찰하지 않은 더 넓은 대상으로 일반화할 수 있는가?<br>
 가령, 다음과 같이 150명에 대해 조사한 “연령이 임금에 미치는 효과”를 일반화 할 수 있는가?<br>
 한 나라의 국민 전체?</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p><strong>Statistical inference</strong> (통계적 추론)</p>
@@ -698,14 +699,17 @@ Note
 <li>사람에게도 적용될 수 있는가?</li>
 </ul>
 <p>사실상 난해한 통계 이론의 상당부분을 차지함.<br>
-하지만, 통계적 추론의 논리는 개념적으로는 다음과 같이 의외로 간단함.</p>
+하지만, 통계적 추론의 논리는 개념적으로는 다음과 같이 볼 수 있음.</p>
 <p>앞서 논의한 모든 내용은 “특정 샘플” 내에서 변수들 간의 관계에 대한 분석일 뿐 그 샘플을 벗어나서 논의한 것이 아님. 통계적 추론은 수많은 같은 수의 샘플들, 가령 N = 150인 즉, 150명으로 이루어진 샘플들을 반복적으로 관찰한다면 그 샘플들 간의 편차들이 어떠하겠는가에 대한 논의임.</p>
 <ul>
-<li>첫번째 그림에서처럼 (알수는 없지만) 어떤 population을 가정하는데, 그 모집단에는 age와 wage의 true relationship이 존재한다고 가정함. 연구자가 한번에 150명으로 이루어진 sample을 반복적으로 관찰한다면, 샘플마다 age와 wage의 관계는 다르게 나타날 것임 (두번째 그림).</li>
+<li>첫번째 그림에서처럼 (알수는 없지만) 어떤 population을 가정하는데, 그 모집단에는 age와 wage의 true relationship이 선형적으로 존재한다고 가정함. 연구자가 한번에 150명으로 이루어진 sample을 반복적으로 관찰한다면, 샘플마다 age와 wage의 관계는 다르게 나타날 것임 (두번째 그림).</li>
 <li>예를 들어, 그 기울기에 관심이 있다면, 샘플들로부터 나타나는 기울기들의 분포를 살펴봄으로써 (세번째 그림) 샘플에서 나타날 수 있는 기울기값이 어떠한가를 파악할 수 있음.<br>
 </li>
 <li>이 분포를 <strong>sampling distribution</strong>이라고 부름</li>
 <li>이 분포에 따르면 평균이 0.066이고, 기울기 값들의 95%가 0.005 ~ 0.140 범위에 있음을 알 수 있음.</li>
+<li>다시말하면, 연구자가 관찰한 샘플로부터 연구자는 (age와 wage의 선형성을 가정한다면), 매우 큰 확신을 갖고 나이가 10세 늘때마다 시간당 임금의 증가율은 0.05에서 1.4달러 사이에 있을 것이라고 말할 수 있음.</li>
+<li>확신이 커지려면 임금증가율의 범위가 넓어져야 함. 예를 들어, 99%의 확신을 갖고 나이가 10세 늘때 시간당 임금의 증가율은 -0.18에서 1.67달러 사이에 있을 것이라고 말할 수 있음. 별로 의미없는 발언이 될 수 있음.</li>
+<li>반대로, 확신에 대해서는 양보하는 대신 임금증가율에 대한 범위폭을 줄일 수 있음. 예를 들어 90%의 조금 낮은 확신을 갖고 임금증가율은 0.14에서 1.3달러 사이에 있을 것이라고 말할 수 있음</li>
 </ul>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -721,7 +725,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <div class="cell quarto-layout-panel" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="72">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="overview_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
@@ -734,8 +738,36 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 age            0.066 0.005  0.140</code></pre>
 </div>
 </div>
-<hr>
-<p>Linear regression results (선형 회귀)</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>위와 같이 어떤 분포를 가정하고 파라미터(기울기 등등)를 포함해 상정한 모델에 대한 통계적 추정과 추론을 하는데 대한 비판이 오래전부터 있어왔음. 현실의 실제적 현상에 적용할 때는 이론적인 통계의 원리와는 별개의 더 깊은 논의가 필요함.<br>
+e.g:<br>
+Breiman, L. (2001). Statistical modeling: The two cultures (with comments and a rejoinder by the author). Statistical science, 16(3), 199-231.<br>
+Wasserstein, R. L., &amp; Lazar, N. A. (2016). The ASA statement on p-values: context, process, and purpose. The American Statistician, 70(2), 129-133.<br>
+Pearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Cause and Effect. Basic books.</p>
+</div>
+</div>
+</section>
+<section id="regression-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="regression-analysis">Regression analysis</h2>
+<p>앞서 다뤘던 임금과 연령의 관계에 대한 간단한 회귀 분석의 예들 <br></p>
+<ol type="1">
+<li>선형 관계를 가정한 <strong>임금과 연령의 관계</strong>에 대한 회귀분석 (N=150)</li>
+</ol>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<p><img src="overview_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Model: <code>lm(wage ~ age, data = cps)</code></p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="28">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
@@ -757,14 +789,18 @@ age                 0.066   -0.001   0.133    1.944   0.054
 </div>
 </div>
 </div>
-<p>맨 처음 든 예를 회귀분석하면</p>
+<p><br></p>
+<ol start="2" type="1">
+<li>맨 처음 든 예, 즉 <strong>연령을 고려한/통제한</strong> “기혼여부에 따른 임금차이”를 회귀분석하면 (N=465)</li>
+</ol>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
 <div class="cell-output cell-output-display">
-<p><img src="overview_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+<p><img src="overview_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>결혼여부에 따른 평균 임금의 차이는 미혼일 때 -0.97 (dollars/hr) 낮음.<br>
+<p>우선, 결혼여부에 따른 평균 임금의 차이는 미혼일 때 -0.97 (dollars/hr) 낮음.<br>
 하지만, 모집단에서 그 차이는 (95% 확률로) -1.93에서 -0.02 사이에 있을 것이라고 추정할 수 있음</p>
+<p>Model: <code>lm(wage ~ married, data = cps)</code></p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
@@ -797,6 +833,7 @@ marriedSingle         -0.97   -1.93   -0.02    -2.00   0.05
 </div>
 </div>
 </div>
+<p>Model: <code>lm(wage ~ married + age + I(age^2), data = cps)</code></p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="31">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
