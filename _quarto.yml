@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  resources: CNAME
 
 website:
   page-navigation: true
@@ -36,13 +37,10 @@ website:
             text: Setup
           - href: contents/baser.ipynb
           - href: contents/tidyverse.ipynb
+          - href: contents/import.ipynb
+          - href: contents/cleaning.ipynb
           - href: contents/visualize.ipynb
-          # - href: contents/transform.ipynb
-          # - section: contents/pandas.ipynb
-          #   contents: 
-          #   - href: contents/inspection.ipynb
-          # - href: contents/vis.ipynb
-          #   text: Data visualization
+
       - text: ---
       - section: Statistics
         contents:
@@ -54,6 +52,8 @@ website:
             text: Ask
           - href: https://docs.google.com/document/d/1NjaZzQdVq22csZLMuCI9GDZmTY-hFHypkFlEBb4Yx9s/edit?usp=sharing
             text: Consult
+          - href: https://docs.google.com/document/d/1rznMbrQOfHBnYIJvWE-T6YW5jN0yBXQGiohDVLS5Qp4/edit?usp=sharing
+            text: Group Project
 
 format:
   html:
