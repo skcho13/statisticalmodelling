@@ -45,6 +45,15 @@ website:
       - section: Statistics
         contents:
           - href: contents/overview.ipynb
+          - href: contents/regression1.ipynb
+            text: Simple Regression
+          - href: contents/regression2.ipynb
+          - href: contents/categories.ipynb
+            text: Categorical IVs
+          - href: contents/interaction.ipynb
+            text: Interactions
+          - href: contents/inference.ipynb
+            text: Inference
       - text: ---
       - section: Communicate
         contents:
