@@ -322,7 +322,7 @@ ul.task-list li input[type="checkbox"] {
 <li>연령별로 나누어 비교?</li>
 </ul>
 <p><em>Data from the 1985 Current Population Survey</em></p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <p><img src="overview_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
@@ -339,7 +339,7 @@ Source: <a href="https://doi.org/10.1186/2052-1847-6-31">https://doi.org/10.1186
 <h3 class="anchored" data-anchor-id="case-2">Case 2</h3>
 <p>기혼여부에 따른 임금의 차이가 남녀별로 다른가?<br>
 연령이 올라감에 따라 임금이 올라가는 패턴에 차이가 있는가?</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <p><img src="overview_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
@@ -727,7 +727,7 @@ Note
 <p>관찰자가 관찰한 대상으로부터 얻은 결과를 관찰하지 않은 더 넓은 대상으로 일반화할 수 있는가?<br>
 가령, 다음과 같이 150명에 대해 조사한 “연령이 임금에 미치는 효과”를 일반화 할 수 있는가?<br>
 한 나라의 국민 전체?</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <p><img src="overview_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
@@ -803,13 +803,13 @@ Pearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Caus
 <ol type="1">
 <li>선형 관계를 가정한 <strong>임금과 연령의 관계</strong>에 대한 회귀분석 (N=150)</li>
 </ol>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <p><img src="overview_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Model: <code>lm(wage ~ age, data = cps)</code></p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="28">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -817,16 +817,16 @@ Pearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Caus
 <span style="font-style:italic">Dependent Variable:</span> wage
 <span style="font-style:italic">Type:</span> OLS linear regression 
 <span style="text-decoration:underline">MODEL FIT:</span>
-<span style="font-style:italic">F</span>(1,148) = 3.777, <span style="font-style:italic">p</span> = 0.054
-<span style="font-style:italic">R² = </span>0.025
-<span style="font-style:italic">Adj. R² = </span>0.018 
+<span style="font-style:italic">F</span>(1,148) = 8.755, <span style="font-style:italic">p</span> = 0.004
+<span style="font-style:italic">R&lt;U+00B2&gt; = </span>0.056
+<span style="font-style:italic">Adj. R&lt;U+00B2&gt; = </span>0.049 
 <span style="font-style:italic">Standard errors: OLS</span>
------------------------------------------------------------
-                     Est.     2.5%   97.5%   t val.       p
------------------ ------- -------- ------- -------- -------
-(Intercept)         6.563    3.982   9.145    5.024   0.000
-age                 0.066   -0.001   0.133    1.944   0.054
------------------------------------------------------------</pre>
+----------------------------------------------------------
+                     Est.    2.5%   97.5%   t val.       p
+----------------- ------- ------- ------- -------- -------
+(Intercept)         5.375   2.970   7.780    4.417   0.000
+age                 0.092   0.031   0.154    2.959   0.004
+----------------------------------------------------------</pre>
 </div>
 </div>
 </div>
@@ -834,7 +834,7 @@ age                 0.066   -0.001   0.133    1.944   0.054
 <ol start="2" type="1">
 <li>맨 처음 든 예, 즉 <strong>연령을 고려한/통제한</strong> “기혼여부에 따른 임금차이”를 회귀분석하면 (N=465)</li>
 </ol>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="28">
 <div class="cell-output cell-output-display">
 <p><img src="overview_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
 </div>
@@ -842,23 +842,23 @@ age                 0.066   -0.001   0.133    1.944   0.054
 <p>우선, 결혼여부에 따른 평균 임금의 차이는 미혼일 때 -0.97 (dollars/hr) 낮음.<br>
 하지만, 모집단에서 그 차이는 (95% 확률로) -1.93에서 -0.02 사이에 있을 것이라고 추정할 수 있음</p>
 <p>Model: <code>lm(wage ~ married, data = cps)</code></p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
-<span style="font-style:italic">Observations:</span> 465
+<span style="font-style:italic">Observations:</span> 533
 <span style="font-style:italic">Dependent Variable:</span> wage
 <span style="font-style:italic">Type:</span> OLS linear regression 
 <span style="text-decoration:underline">MODEL FIT:</span>
-<span style="font-style:italic">F</span>(1,463) = 4.02, <span style="font-style:italic">p</span> = 0.05
-<span style="font-style:italic">R² = </span>0.01
-<span style="font-style:italic">Adj. R² = </span>0.01 
+<span style="font-style:italic">F</span>(1,531) = 8.34, <span style="font-style:italic">p</span> = 0.00
+<span style="font-style:italic">R&lt;U+00B2&gt; = </span>0.02
+<span style="font-style:italic">Adj. R&lt;U+00B2&gt; = </span>0.01 
 <span style="font-style:italic">Standard errors: OLS</span>
 -----------------------------------------------------------
                        Est.    2.5%   97.5%   t val.      p
 ------------------- ------- ------- ------- -------- ------
-(Intercept)            9.35    8.80    9.90    33.34   0.00
-marriedSingle         -0.97   -1.93   -0.02    -2.00   0.05
+(Intercept)            9.40    8.89    9.91    36.07   0.00
+marriedSingle         -1.28   -2.16   -0.41    -2.89   0.00
 -----------------------------------------------------------</pre>
 </div>
 </div>
@@ -875,32 +875,65 @@ marriedSingle         -0.97   -1.93   -0.02    -2.00   0.05
 </div>
 </div>
 <p>Model: <code>lm(wage ~ married + age + I(age^2), data = cps)</code></p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="31">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
-<span style="font-style:italic">Observations:</span> 465
+<span style="font-style:italic">Observations:</span> 533
 <span style="font-style:italic">Dependent Variable:</span> wage
 <span style="font-style:italic">Type:</span> OLS linear regression 
 <span style="text-decoration:underline">MODEL FIT:</span>
-<span style="font-style:italic">F</span>(3,461) = 14.42, <span style="font-style:italic">p</span> = 0.00
-<span style="font-style:italic">R² = </span>0.09
-<span style="font-style:italic">Adj. R² = </span>0.08 
+<span style="font-style:italic">F</span>(4,528) = 23.70, <span style="font-style:italic">p</span> = 0.00
+<span style="font-style:italic">R&lt;U+00B2&gt; = </span>0.15
+<span style="font-style:italic">Adj. R&lt;U+00B2&gt; = </span>0.15 
 <span style="font-style:italic">Standard errors: OLS</span>
 ------------------------------------------------------------
                        Est.     2.5%   97.5%   t val.      p
 ------------------- ------- -------- ------- -------- ------
-(Intercept)           -5.21   -10.18   -0.24    -2.06   0.04
-marriedSingle          0.11    -0.87    1.09     0.23   0.82
-age                    0.69     0.43    0.94     5.34   0.00
-I(age^2)              -0.01    -0.01   -0.00    -4.79   0.00
+(Intercept)           -6.43   -10.87   -2.00    -2.85   0.00
+marriedSingle         -0.17    -1.04    0.70    -0.38   0.70
+sexM                   2.44     1.67    3.22     6.18   0.00
+age                    0.68     0.46    0.91     5.95   0.00
+I(age^2)              -0.01    -0.01   -0.00    -5.26   0.00
 ------------------------------------------------------------</pre>
 </div>
 </div>
 </div>
-<p>“나이를 고려했을 때”, 미혼이 기혼보다 그 임금이 오히려 0.11 (dollars/hr) 높은데,<br>
-모집단에서 그 차이는 -0.87 ~ 1.09 사이에 있을 확률이 매우 높은 것으로 추론됨. (95% 확률로)<br>
+<p>“나이를 고려했을 때”, 미혼이 기혼보다 그 임금이 0.17 (dollars/hr) 낮은데,<br>
+모집단에서 그 차이는 -1.04 ~ 0.70 사이에 있을 확률이 매우 높은 것으로 추론됨. (95% 확률로)<br>
 이는 사실상 임금 차이가 있다고 볼 확신을 거의 갖기 어려움</p>
+<p>결혼여부와 성별이 <strong>상호작용</strong>하는 것을 고려하고, 임금의 분포를 고려해서 log 변환하면,</p>
+<p>Model2: <code>lm(log_wage ~ married * sex + age + I(age^2), data = cps)</code></p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="46">
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span style="text-decoration:underline">MODEL INFO:</span>
+<span style="font-style:italic">Observations:</span> 530
+<span style="font-style:italic">Dependent Variable:</span> log_wage
+<span style="font-style:italic">Type:</span> OLS linear regression 
+<span style="text-decoration:underline">MODEL FIT:</span>
+<span style="font-style:italic">F</span>(5,524) = 25.06, <span style="font-style:italic">p</span> = 0.00
+<span style="font-style:italic">R&lt;U+00B2&gt; = </span>0.19
+<span style="font-style:italic">Adj. R&lt;U+00B2&gt; = </span>0.19 
+<span style="font-style:italic">Standard errors: OLS</span>
+----------------------------------------------------------------
+                            Est.    2.5%   97.5%   t val.      p
+------------------------ ------- ------- ------- -------- ------
+(Intercept)                 0.23   -0.23    0.68     0.98   0.33
+marriedSingle               0.07   -0.05    0.20     1.17   0.24
+sexM                        0.34    0.24    0.43     6.82   0.00
+age                         0.08    0.06    0.11     7.06   0.00
+I(age^2)                   -0.00   -0.00   -0.00    -6.45   0.00
+marriedSingle:sexM         -0.21   -0.38   -0.05    -2.51   0.01
+----------------------------------------------------------------</pre>
+</div>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
+<div class="cell-output cell-output-display">
+<p><img src="overview_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
