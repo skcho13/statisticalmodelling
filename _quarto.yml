@@ -1,0 +1,85 @@
+project:
+  type: website
+  output-dir: docs
+  resources: CNAME
+
+website:
+  page-navigation: true
+  title: "CHA Stats in R"
+  description: "Lecture notes for statistical modelling in R"
+
+  # site-url:
+  # repo-url:
+  # repo-actions: [edit, issue]
+
+  page-footer:
+    # right: "This page is built with [Quarto](https://quarto.org/)."
+    left: This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
+    # left: "&copy; Copyright 2023, Sungkyun Cho"
+    # background: 
+
+  sidebar:
+    # background: "#F6F6FF"
+    # logo: 
+    pinned: true
+    align: center
+    style: "docked"
+    search: true
+    # collapse-level: 1
+    
+    contents:
+      - href: index.qmd
+      - href: contents/notice.qmd
+      - text: ---
+      - section: R tutorial
+        contents:
+          - href: contents/setup.ipynb
+            text: Setup
+          - href: contents/baser.ipynb
+          - href: contents/tidyverse.ipynb
+          - href: contents/import.ipynb
+          - href: contents/cleaning.ipynb
+          - href: contents/visualize.ipynb
+
+      - text: ---
+      - section: Statistics
+        contents:
+          - href: contents/overview.ipynb
+          - href: contents/regression1.ipynb
+            text: Simple Regression
+          - href: contents/regression2.ipynb
+          - href: contents/categories.ipynb
+            text: Categorical IVs
+          - href: contents/interaction.ipynb
+            text: Interactions
+          - href: contents/inference.ipynb
+            text: Inference
+          - href: contents/repeated.ipynb
+      - text: ---
+      - section: Communicate
+        contents:
+          - href: https://docs.google.com/document/d/1LjSKjc3bAd0OY9H7BH_0MXp0RhCSOlWhGpq6zoDzAiY/edit?usp=sharing
+            text: Ask
+          - href: https://docs.google.com/document/d/1NjaZzQdVq22csZLMuCI9GDZmTY-hFHypkFlEBb4Yx9s/edit?usp=sharing
+            text: Consult
+          - href: https://docs.google.com/document/d/1rznMbrQOfHBnYIJvWE-T6YW5jN0yBXQGiohDVLS5Qp4/edit?usp=sharing
+            text: Group Project
+
+format:
+  html:
+        toc: true
+        toc-depth: 4
+        toc-location: right
+        code-fold: false
+        code-overflow: scroll
+        code-summary: "Show the code"
+        theme: [sandstone, theme-light.scss]
+        fontsize: 0.95em
+        linestretch: 1.7
+        code-copy: true
+        highlight-style: Ayu-light
+        link-external-newwindow: true
+        # css: styles.css
+
+
+
