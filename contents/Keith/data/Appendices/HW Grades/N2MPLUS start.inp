@@ -1,0 +1,7 @@
+DATA:
+  FILE IS HW latent 8-12.dat;
+VARIABLE:
+  MISSING ARE ALL (-999);
+  NAMES ARE bytxrstd bytxmstd bytxsstd bytxhstd parocc HW10 
+  HW12 eng12 math12 sci12 soc12 Female byfaminc bypared 
+  Minority;

@@ -1,0 +1,1040 @@
+Mplus VERSION 8
+MUTHEN & MUTHEN
+04/25/2018   7:53 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Homework Achievement Minority measured
+  DATA:
+      FILE IS hw latent matrix.txt;
+      TYPE IS MEANS STDEVIATIONS CORRELATION;
+      NOBSERVATIONS ARE 1000;
+
+
+  VARIABLE:    NAMES ARE
+      Minority
+      BYPARED	
+      BYFAMINC	
+      PAROCC	
+      BYTXRSTD	
+      BYTXMSTD	
+      BYTXSSTD	
+      BYTXHSTD	
+      HW_8	
+      HW10	
+      ENG_12	
+      MATH_12	
+      SCI_12	
+      SS_12;
+
+  USEVARIABLES ARE
+      Minority
+      BYPARED	
+      BYFAMINC	
+      PAROCC	
+      BYTXRSTD	
+      BYTXMSTD	
+      BYTXSSTD	
+      BYTXHSTD	
+      HW_8	
+      HW10	
+      ENG_12	
+      MATH_12	
+      SCI_12	
+      SS_12;
+
+
+  MODEL:
+
+
+      FAMBACK BY
+          PAROCC
+          BYPARED	
+          BYFAMINC;	
+
+      PREVACH BY
+          BYTXRSTD	
+          BYTXMSTD	
+          BYTXSSTD	
+          BYTXHSTD;	
+
+      HW BY
+          HW10
+          HW_8;	
+
+      GRADES BY
+          ENG_12	
+          MATH_12	
+          SCI_12	
+          SS_12;
+
+      BYTXRSTD	WITH ENG_12;
+      BYTXMSTD	WITH MATH_12;	
+      BYTXSSTD	WITH SCI_12;
+      BYTXHSTD	WITH SS_12;	
+
+      PREVACH ON FAMBACK Minority;
+      GRADES ON PREVACH HW;
+      HW ON PREVACH FAMBACK Minority;
+
+      Minority WITH FAMBACK;
+
+  MODEL INDIRECT :
+
+      GRADES IND PREVACH FAMBACK;
+      GRADES IND HW PREVACH;
+      GRADES IND HW FAMBACK;
+      HW IND PREVACH FAMBACK;
+
+
+  OUTPUT:  SAMPSTAT STDYX RESIDUAL TECH1 TECH8;
+
+
+
+
+*** WARNING in OUTPUT command
+  TECH8 option is available only with analysis types MIXTURE, RANDOM, or
+  TWOLEVEL with estimators ML, MLF, or MLR or ALGORITHM=INTEGRATION.
+  Request for TECH8 is ignored.
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Homework Achievement Minority measured
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        1000
+
+Number of dependent variables                                   13
+Number of independent variables                                  1
+Number of continuous latent variables                            4
+
+Observed dependent variables
+
+  Continuous
+   BYPARED     BYFAMINC    PAROCC      BYTXRSTD    BYTXMSTD    BYTXSSTD
+   BYTXHSTD    HW_8        HW10        ENG_12      MATH_12     SCI_12
+   SS_12
+
+Observed independent variables
+   MINORITY
+
+Continuous latent variables
+   FAMBACK     PREVACH     HW          GRADES
+
+
+Estimator                                                       ML
+Information matrix                                        EXPECTED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  hw latent matrix.txt
+
+Input data format  FREE
+
+
+SAMPLE STATISTICS
+
+
+     SAMPLE STATISTICS
+
+
+           Means/Intercepts/Thresholds
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+                3.203         9.917        51.694        51.984        52.545
+
+
+           Means/Intercepts/Thresholds
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+               51.883        51.653         1.731         3.381         6.250
+
+
+           Means/Intercepts/Thresholds
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+                5.703         5.952         6.418         0.728
+
+
+           Covariances/Correlations/Residual Correlations
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+ BYPARED        1.648
+ BYFAMINC       1.703         6.367
+ PAROCC        17.429        28.560       466.507
+ BYTXRSTD       5.094         7.491        75.242       105.894
+ BYTXMSTD       5.733         8.762        81.217        76.308       107.745
+ BYTXSSTD       5.081         7.623        71.666        76.178        77.036
+ BYTXHSTD       5.180         7.908        76.046        76.563        71.370
+ HW_8           0.244         0.214         2.575         2.626         3.178
+ HW10           0.509         0.746         7.126         4.293         5.642
+ ENG_12         1.146         1.638        14.995        14.419        15.694
+ MATH_12        1.005         1.527        12.939        11.824        16.724
+ SCI_12         1.011         1.416        13.397        13.353        16.036
+ SS_12          1.210         1.831        16.416        15.355        16.895
+ MINORITY       0.096         0.312         2.322         0.934         0.743
+
+
+           Covariances/Correlations/Residual Correlations
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+ BYTXSSTD     106.453
+ BYTXHSTD      76.476       103.679
+ HW_8           2.575         1.930         1.279
+ HW10           4.043         4.007         0.584         3.623
+ ENG_12        12.416        13.357         0.618         1.593         7.149
+ MATH_12       11.775        11.453         0.539         1.511         5.587
+ SCI_12        13.638        13.000         0.584         1.438         5.759
+ SS_12         14.365        15.174         0.587         1.552         6.537
+ MINORITY       1.061         0.952         0.002         0.047         0.116
+
+
+           Covariances/Correlations/Residual Correlations
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+ MATH_12        7.546
+ SCI_12         5.589         7.194
+ SS_12          5.879         6.123         8.253
+ MINORITY       0.087         0.099         0.142         0.198
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       53
+
+Loglikelihood
+
+          H0 Value                      -33331.239
+          H1 Value                      -33228.912
+
+Information Criteria
+
+          Akaike (AIC)                   66768.478
+          Bayesian (BIC)                 67028.589
+          Sample-Size Adjusted BIC       66860.258
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            204.654
+          Degrees of Freedom                    66
+          P-Value                           0.0000
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.046
+          90 Percent C.I.                    0.039  0.053
+          Probability RMSEA <= .05           0.825
+
+CFI/TLI
+
+          CFI                                0.983
+          TLI                                0.977
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           8392.064
+          Degrees of Freedom                    91
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.027
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ FAMBACK  BY
+    PAROCC             1.000      0.000    999.000    999.000
+    BYPARED            0.062      0.003     21.618      0.000
+    BYFAMINC           0.100      0.005     19.224      0.000
+
+ PREVACH  BY
+    BYTXRSTD           1.000      0.000    999.000    999.000
+    BYTXMSTD           0.997      0.030     33.754      0.000
+    BYTXSSTD           0.990      0.030     33.537      0.000
+    BYTXHSTD           0.967      0.029     32.925      0.000
+
+ HW       BY
+    HW10               1.000      0.000    999.000    999.000
+    HW_8               0.453      0.060      7.553      0.000
+
+ GRADES   BY
+    ENG_12             1.000      0.000    999.000    999.000
+    MATH_12            0.896      0.024     37.832      0.000
+    SCI_12             0.957      0.022     43.705      0.000
+    SS_12              1.062      0.022     48.218      0.000
+
+ PREVACH  ON
+    FAMBACK            0.279      0.020     13.734      0.000
+
+ GRADES   ON
+    PREVACH            0.145      0.012     12.580      0.000
+    HW                 0.601      0.132      4.569      0.000
+
+ HW       ON
+    PREVACH            0.053      0.008      6.636      0.000
+    FAMBACK            0.013      0.004      3.108      0.002
+
+ PREVACH  ON
+    MINORITY           1.678      0.610      2.748      0.006
+
+ HW       ON
+    MINORITY          -0.266      0.116     -2.294      0.022
+
+ MINORITY WITH
+    FAMBACK            2.136      0.277      7.709      0.000
+
+ BYTXRSTD WITH
+    ENG_12             0.704      0.248      2.844      0.004
+
+ BYTXMSTD WITH
+    MATH_12            2.856      0.342      8.350      0.000
+
+ BYTXSSTD WITH
+    SCI_12             0.920      0.285      3.227      0.001
+
+ BYTXHSTD WITH
+    SS_12              0.533      0.277      1.927      0.054
+
+ Means
+    MINORITY           0.728      0.014     51.761      0.000
+
+ Intercepts
+    BYPARED            3.203      0.041     78.933      0.000
+    BYFAMINC           9.917      0.080    124.348      0.000
+    PAROCC            51.694      0.683     75.723      0.000
+    BYTXRSTD          50.763      0.549     92.500      0.000
+    BYTXMSTD          51.327      0.550     93.340      0.000
+    BYTXSSTD          50.674      0.545     92.924      0.000
+    BYTXHSTD          50.472      0.535     94.424      0.000
+    HW_8               1.789      0.053     33.590      0.000
+    HW10               3.510      0.106     33.238      0.000
+    ENG_12             6.150      0.127     48.408      0.000
+    MATH_12            5.613      0.120     46.643      0.000
+    SCI_12             5.856      0.124     47.081      0.000
+    SS_12              6.312      0.136     46.534      0.000
+
+ Variances
+    MINORITY           0.198      0.009     22.361      0.000
+    FAMBACK          280.916     21.604     13.003      0.000
+
+ Residual Variances
+    BYPARED            0.580      0.046     12.697      0.000
+    BYFAMINC           3.528      0.193     18.276      0.000
+    PAROCC           185.124     13.017     14.222      0.000
+    BYTXRSTD          28.555      1.718     16.625      0.000
+    BYTXMSTD          31.233      1.821     17.153      0.000
+    BYTXSSTD          30.165      1.767     17.067      0.000
+    BYTXHSTD          30.864      1.774     17.399      0.000
+    HW_8               1.018      0.058     17.562      0.000
+    HW10               2.352      0.202     11.639      0.000
+    ENG_12             1.052      0.074     14.115      0.000
+    MATH_12            2.378      0.122     19.545      0.000
+    SCI_12             1.653      0.094     17.625      0.000
+    SS_12              1.364      0.090     15.133      0.000
+    PREVACH           53.193      3.515     15.131      0.000
+    HW                 0.915      0.182      5.022      0.000
+    GRADES             3.150      0.202     15.604      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ FAMBACK  BY
+    PAROCC             0.776      0.019     41.471      0.000
+    BYPARED            0.805      0.018     44.563      0.000
+    BYFAMINC           0.667      0.022     30.489      0.000
+
+ PREVACH  BY
+    BYTXRSTD           0.855      0.011     80.703      0.000
+    BYTXMSTD           0.844      0.011     76.448      0.000
+    BYTXSSTD           0.846      0.011     76.992      0.000
+    BYTXHSTD           0.837      0.011     73.318      0.000
+
+ HW       BY
+    HW10               0.592      0.045     13.089      0.000
+    HW_8               0.451      0.040     11.261      0.000
+
+ GRADES   BY
+    ENG_12             0.924      0.006    144.908      0.000
+    MATH_12            0.820      0.011     72.141      0.000
+    SCI_12             0.878      0.009    103.166      0.000
+    SS_12              0.914      0.007    133.778      0.000
+
+ PREVACH  ON
+    FAMBACK            0.530      0.030     17.839      0.000
+
+ GRADES   ON
+    PREVACH            0.518      0.038     13.752      0.000
+    HW                 0.274      0.049      5.552      0.000
+
+ HW       ON
+    PREVACH            0.412      0.060      6.892      0.000
+    FAMBACK            0.197      0.062      3.179      0.001
+
+ PREVACH  ON
+    MINORITY           0.085      0.031      2.757      0.006
+
+ HW       ON
+    MINORITY          -0.105      0.045     -2.313      0.021
+
+ MINORITY WITH
+    FAMBACK            0.286      0.033      8.767      0.000
+
+ BYTXRSTD WITH
+    ENG_12             0.128      0.044      2.946      0.003
+
+ BYTXMSTD WITH
+    MATH_12            0.331      0.034      9.704      0.000
+
+ BYTXSSTD WITH
+    SCI_12             0.130      0.039      3.332      0.001
+
+ BYTXHSTD WITH
+    SS_12              0.082      0.042      1.963      0.050
+
+ Means
+    MINORITY           1.637      0.048     33.840      0.000
+
+ Intercepts
+    BYPARED            2.496      0.064     38.910      0.000
+    BYFAMINC           3.932      0.093     42.083      0.000
+    PAROCC             2.395      0.062     38.507      0.000
+    BYTXRSTD           4.928      0.126     39.134      0.000
+    BYTXMSTD           4.931      0.125     39.475      0.000
+    BYTXSSTD           4.918      0.126     39.179      0.000
+    BYTXHSTD           4.965      0.126     39.278      0.000
+    HW_8               1.583      0.058     27.493      0.000
+    HW10               1.845      0.067     27.362      0.000
+    ENG_12             2.299      0.071     32.362      0.000
+    MATH_12            2.081      0.065     31.920      0.000
+    SCI_12             2.176      0.068     31.952      0.000
+    SS_12              2.197      0.069     31.765      0.000
+
+ Variances
+    MINORITY           1.000      0.000    999.000    999.000
+    FAMBACK            1.000      0.000    999.000    999.000
+
+ Residual Variances
+    BYPARED            0.353      0.029     12.133      0.000
+    BYFAMINC           0.555      0.029     18.981      0.000
+    PAROCC             0.397      0.029     13.665      0.000
+    BYTXRSTD           0.269      0.018     14.858      0.000
+    BYTXMSTD           0.288      0.019     15.479      0.000
+    BYTXSSTD           0.284      0.019     15.279      0.000
+    BYTXHSTD           0.299      0.019     15.612      0.000
+    HW_8               0.797      0.036     22.055      0.000
+    HW10               0.650      0.054     12.142      0.000
+    ENG_12             0.147      0.012     12.480      0.000
+    MATH_12            0.327      0.019     17.520      0.000
+    SCI_12             0.228      0.015     15.256      0.000
+    SS_12              0.165      0.012     13.245      0.000
+    PREVACH            0.686      0.030     22.829      0.000
+    HW                 0.722      0.049     14.775      0.000
+    GRADES             0.516      0.030     17.449      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    BYPARED            0.647      0.029     22.281      0.000
+    BYFAMINC           0.445      0.029     15.244      0.000
+    PAROCC             0.603      0.029     20.736      0.000
+    BYTXRSTD           0.731      0.018     40.352      0.000
+    BYTXMSTD           0.712      0.019     38.224      0.000
+    BYTXSSTD           0.716      0.019     38.496      0.000
+    BYTXHSTD           0.701      0.019     36.659      0.000
+    HW_8               0.203      0.036      5.630      0.000
+    HW10               0.350      0.054      6.544      0.000
+    ENG_12             0.853      0.012     72.454      0.000
+    MATH_12            0.673      0.019     36.070      0.000
+    SCI_12             0.772      0.015     51.583      0.000
+    SS_12              0.835      0.012     66.889      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    PREVACH            0.314      0.030     10.454      0.000
+    HW                 0.278      0.049      5.682      0.000
+    GRADES             0.484      0.030     16.367      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.882E-05
+       (ratio of smallest to largest eigenvalue)
+
+
+TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Effects from FAMBACK to GRADES
+
+  Sum of indirect      0.048      0.005     10.754      0.000
+
+  Specific indirect
+
+    GRADES
+    PREVACH
+    FAMBACK            0.040      0.004      9.554      0.000
+
+    GRADES
+    HW
+    FAMBACK            0.008      0.003      2.717      0.007
+
+
+Effects from PREVACH to GRADES
+
+  Indirect             0.032      0.008      3.951      0.000
+
+Effects from FAMBACK to HW
+
+  Indirect             0.015      0.002      6.095      0.000
+
+
+STANDARDIZED TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Effects from FAMBACK to GRADES
+
+  Sum of indirect      0.328      0.027     12.285      0.000
+
+  Specific indirect
+
+    GRADES
+    PREVACH
+    FAMBACK            0.274      0.026     10.634      0.000
+
+    GRADES
+    HW
+    FAMBACK            0.054      0.020      2.733      0.006
+
+
+Effects from PREVACH to GRADES
+
+  Indirect             0.113      0.028      4.002      0.000
+
+Effects from FAMBACK to HW
+
+  Indirect             0.219      0.034      6.417      0.000
+
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+                3.203         9.917        51.694        51.984        52.545
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+               51.883        51.653         1.731         3.381         6.250
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+                5.703         5.952         6.418         0.728
+
+
+           Residuals for Means/Intercepts/Thresholds
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means/Intercepts/Thresholds
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means/Intercepts/Thresholds
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+ BYPARED        1.646
+ BYFAMINC       1.738         6.361
+ PAROCC        17.303        28.212       466.041
+ BYTXRSTD       5.041         8.220        81.846       106.105
+ BYTXMSTD       5.028         8.197        81.622        77.339       108.361
+ BYTXSSTD       4.991         8.137        81.025        76.773        76.564
+ BYTXHSTD       4.874         7.946        79.122        74.969        74.765
+ HW_8           0.208         0.340         3.381         2.231         2.225
+ HW10           0.460         0.750         7.465         4.926         4.913
+ ENG_12         1.009         1.645        16.376        14.930        14.187
+ MATH_12        0.903         1.473        14.665        12.739        15.561
+ SCI_12         0.965         1.574        15.671        13.613        13.576
+ SS_12          1.072         1.747        17.398        15.113        15.072
+ MINORITY       0.132         0.214         2.136         0.927         0.925
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+ BYTXSSTD     106.168
+ BYTXHSTD      74.218       103.338
+ HW_8           2.208         2.157         1.278
+ HW10           4.877         4.762         0.574         3.619
+ ENG_12        14.083        13.752         0.669         1.478         7.156
+ MATH_12       12.612        12.315         0.599         1.323         5.467
+ SCI_12        14.397        13.160         0.640         1.414         5.842
+ SS_12         14.962        15.143         0.711         1.570         6.485
+ MINORITY       0.918         0.896         0.011         0.025         0.149
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+ MATH_12        7.274
+ SCI_12         5.232         7.244
+ SS_12          5.808         6.206         8.255
+ MINORITY       0.134         0.143         0.159         0.198
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+ BYPARED        0.000
+ BYFAMINC      -0.037         0.000
+ PAROCC         0.109         0.320         0.000
+ BYTXRSTD       0.047        -0.736        -6.678        -0.317
+ BYTXMSTD       0.700         0.556        -0.486        -1.107        -0.723
+ BYTXSSTD       0.085        -0.522        -9.431        -0.671         0.396
+ BYTXHSTD       0.302        -0.046        -3.152         1.518        -3.466
+ HW_8           0.036        -0.126        -0.808         0.393         0.950
+ HW10           0.049        -0.005        -0.347        -0.638         0.724
+ ENG_12         0.137        -0.008        -1.396        -0.525         1.492
+ MATH_12        0.101         0.052        -1.739        -0.927         1.147
+ SCI_12         0.044        -0.159        -2.288        -0.274         2.444
+ SS_12          0.137         0.082        -0.998         0.227         1.806
+ MINORITY      -0.035         0.097         0.184         0.006        -0.183
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+ BYTXSSTD       0.179
+ BYTXHSTD       2.182         0.237
+ HW_8           0.364        -0.228         0.000
+ HW10          -0.837        -0.759         0.010         0.000
+ ENG_12        -1.679        -0.408        -0.052         0.114        -0.014
+ MATH_12       -0.848        -0.874        -0.061         0.186         0.114
+ SCI_12        -0.773        -0.173        -0.057         0.023        -0.089
+ SS_12         -0.611         0.015        -0.124        -0.019         0.045
+ MINORITY       0.142         0.055        -0.010         0.023        -0.033
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+ MATH_12        0.265
+ SCI_12         0.352        -0.057
+ SS_12          0.065        -0.089        -0.010
+ MINORITY      -0.047        -0.044        -0.017         0.000
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+ BYPARED        0.000
+ BYFAMINC      -2.120         0.000
+ PAROCC         0.935         0.739         0.005
+ BYTXRSTD       0.234        -1.481        -1.946       999.000
+ BYTXMSTD       3.100         1.050        -0.131        -2.460        -2.124
+ BYTXSSTD       0.406        -1.023        -2.703        -1.381         0.540
+ BYTXHSTD       1.394        -0.089        -0.865         1.974       999.000
+ HW_8           1.113        -1.768        -1.476         1.845         4.196
+ HW10           1.117        -0.045        -0.453        -2.228         2.255
+ ENG_12         1.854        -0.053        -1.144        -2.063         3.685
+ MATH_12        1.208         0.295        -1.245        -2.076         2.495
+ SCI_12         0.586        -0.974        -1.804        -0.736         5.136
+ SS_12          1.718         0.470        -0.749         0.591         3.970
+ MINORITY      -5.164         4.136         1.271         0.098        -2.893
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+ BYTXSSTD       0.492
+ BYTXHSTD       2.455         0.695
+ HW_8           1.668        -1.073         0.000
+ HW10          -2.831        -2.516         1.025         0.000
+ ENG_12        -5.987        -1.198        -1.265         1.926       999.000
+ MATH_12       -1.837        -1.890        -1.029         1.950         1.674
+ SCI_12        -2.671        -0.438        -1.187         0.323       999.000
+ SS_12         -1.660         0.045        -2.748        -0.294         1.714
+ MINORITY       2.104         0.816        -0.794         1.651        -1.301
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+ MATH_12        2.690
+ SCI_12         3.892       999.000
+ SS_12          0.913       999.000       999.000
+ MINORITY      -1.600        -1.637        -0.619         0.000
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+ BYPARED        0.000
+ BYFAMINC      -0.319         0.000
+ PAROCC         0.105         0.165         0.000
+ BYTXRSTD       0.106        -0.862        -0.901        -0.067
+ BYTXMSTD       1.528         0.637        -0.065        -0.267        -0.150
+ BYTXSSTD       0.190        -0.609        -1.275        -0.162         0.095
+ BYTXHSTD       0.679        -0.054        -0.429         0.370        -0.860
+ HW_8           0.765        -1.389        -1.041         1.042         2.473
+ HW10           0.617        -0.031        -0.263        -1.007         1.115
+ ENG_12         1.194        -0.039        -0.741        -0.535         1.481
+ MATH_12        0.873         0.233        -0.907        -0.958         1.098
+ SCI_12         0.391        -0.727        -1.218        -0.283         2.408
+ SS_12          1.119         0.345        -0.492         0.215         1.668
+ MINORITY      -1.932         2.634         0.587         0.041        -1.235
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+ BYTXSSTD       0.038
+ BYTXHSTD       0.532         0.051
+ HW_8           0.963        -0.619         0.000
+ HW10          -1.322        -1.214         0.135         0.000
+ ENG_12        -1.757        -0.426        -0.533         0.678        -0.045
+ MATH_12       -0.875        -0.915        -0.614         1.081         0.392
+ SCI_12        -0.793        -0.181        -0.584         0.137        -0.306
+ SS_12         -0.587         0.014        -1.190        -0.105         0.141
+ MINORITY       0.953         0.377        -0.598         0.850        -0.875
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+ MATH_12        0.785
+ SCI_12         1.205        -0.177
+ SS_12          0.209        -0.287        -0.027
+ MINORITY      -1.216        -1.156        -0.422         0.000
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           NU
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+                 11            12            13             0
+
+
+           LAMBDA
+              FAMBACK       PREVACH       HW            GRADES        MINORITY
+              ________      ________      ________      ________      ________
+ BYPARED           14             0             0             0             0
+ BYFAMINC          15             0             0             0             0
+ PAROCC             0             0             0             0             0
+ BYTXRSTD           0             0             0             0             0
+ BYTXMSTD           0            16             0             0             0
+ BYTXSSTD           0            17             0             0             0
+ BYTXHSTD           0            18             0             0             0
+ HW_8               0             0            19             0             0
+ HW10               0             0             0             0             0
+ ENG_12             0             0             0             0             0
+ MATH_12            0             0             0            20             0
+ SCI_12             0             0             0            21             0
+ SS_12              0             0             0            22             0
+ MINORITY           0             0             0             0             0
+
+
+           THETA
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+ BYPARED           23
+ BYFAMINC           0            24
+ PAROCC             0             0            25
+ BYTXRSTD           0             0             0            26
+ BYTXMSTD           0             0             0             0            27
+ BYTXSSTD           0             0             0             0             0
+ BYTXHSTD           0             0             0             0             0
+ HW_8               0             0             0             0             0
+ HW10               0             0             0             0             0
+ ENG_12             0             0             0            32             0
+ MATH_12            0             0             0             0            34
+ SCI_12             0             0             0             0             0
+ SS_12              0             0             0             0             0
+ MINORITY           0             0             0             0             0
+
+
+           THETA
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+ BYTXSSTD          28
+ BYTXHSTD           0            29
+ HW_8               0             0            30
+ HW10               0             0             0            31
+ ENG_12             0             0             0             0            33
+ MATH_12            0             0             0             0             0
+ SCI_12            36             0             0             0             0
+ SS_12              0            38             0             0             0
+ MINORITY           0             0             0             0             0
+
+
+           THETA
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+ MATH_12           35
+ SCI_12             0            37
+ SS_12              0             0            39
+ MINORITY           0             0             0             0
+
+
+           ALPHA
+              FAMBACK       PREVACH       HW            GRADES        MINORITY
+              ________      ________      ________      ________      ________
+                  0             0             0             0            40
+
+
+           BETA
+              FAMBACK       PREVACH       HW            GRADES        MINORITY
+              ________      ________      ________      ________      ________
+ FAMBACK            0             0             0             0             0
+ PREVACH           41             0             0             0            42
+ HW                43            44             0             0            45
+ GRADES             0            46            47             0             0
+ MINORITY           0             0             0             0             0
+
+
+           PSI
+              FAMBACK       PREVACH       HW            GRADES        MINORITY
+              ________      ________      ________      ________      ________
+ FAMBACK           48
+ PREVACH            0            49
+ HW                 0             0            50
+ GRADES             0             0             0            51
+ MINORITY          52             0             0             0            53
+
+
+     STARTING VALUES
+
+
+           NU
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+                3.203         9.917        51.694        51.984        52.545
+
+
+           NU
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+               51.883        51.653         1.731         3.381         6.250
+
+
+           NU
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+                5.703         5.952         6.418         0.000
+
+
+           LAMBDA
+              FAMBACK       PREVACH       HW            GRADES        MINORITY
+              ________      ________      ________      ________      ________
+ BYPARED        1.000         0.000         0.000         0.000         0.000
+ BYFAMINC       1.000         0.000         0.000         0.000         0.000
+ PAROCC         1.000         0.000         0.000         0.000         0.000
+ BYTXRSTD       0.000         1.000         0.000         0.000         0.000
+ BYTXMSTD       0.000         1.000         0.000         0.000         0.000
+ BYTXSSTD       0.000         1.000         0.000         0.000         0.000
+ BYTXHSTD       0.000         1.000         0.000         0.000         0.000
+ HW_8           0.000         0.000         1.000         0.000         0.000
+ HW10           0.000         0.000         1.000         0.000         0.000
+ ENG_12         0.000         0.000         0.000         1.000         0.000
+ MATH_12        0.000         0.000         0.000         1.000         0.000
+ SCI_12         0.000         0.000         0.000         1.000         0.000
+ SS_12          0.000         0.000         0.000         1.000         0.000
+ MINORITY       0.000         0.000         0.000         0.000         1.000
+
+
+           THETA
+              BYPARED       BYFAMINC      PAROCC        BYTXRSTD      BYTXMSTD
+              ________      ________      ________      ________      ________
+ BYPARED        0.824
+ BYFAMINC       0.000         3.184
+ PAROCC         0.000         0.000       233.254
+ BYTXRSTD       0.000         0.000         0.000        52.947
+ BYTXMSTD       0.000         0.000         0.000         0.000        53.873
+ BYTXSSTD       0.000         0.000         0.000         0.000         0.000
+ BYTXHSTD       0.000         0.000         0.000         0.000         0.000
+ HW_8           0.000         0.000         0.000         0.000         0.000
+ HW10           0.000         0.000         0.000         0.000         0.000
+ ENG_12         0.000         0.000         0.000         0.000         0.000
+ MATH_12        0.000         0.000         0.000         0.000         0.000
+ SCI_12         0.000         0.000         0.000         0.000         0.000
+ SS_12          0.000         0.000         0.000         0.000         0.000
+ MINORITY       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              BYTXSSTD      BYTXHSTD      HW_8          HW10          ENG_12
+              ________      ________      ________      ________      ________
+ BYTXSSTD      53.227
+ BYTXHSTD       0.000        51.840
+ HW_8           0.000         0.000         0.640
+ HW10           0.000         0.000         0.000         1.811
+ ENG_12         0.000         0.000         0.000         0.000         3.574
+ MATH_12        0.000         0.000         0.000         0.000         0.000
+ SCI_12         0.000         0.000         0.000         0.000         0.000
+ SS_12          0.000         0.000         0.000         0.000         0.000
+ MINORITY       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              MATH_12       SCI_12        SS_12         MINORITY
+              ________      ________      ________      ________
+ MATH_12        3.773
+ SCI_12         0.000         3.597
+ SS_12          0.000         0.000         4.126
+ MINORITY       0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              FAMBACK       PREVACH       HW            GRADES        MINORITY
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.728
+
+
+           BETA
+              FAMBACK       PREVACH       HW            GRADES        MINORITY
+              ________      ________      ________      ________      ________
+ FAMBACK        0.000         0.000         0.000         0.000         0.000
+ PREVACH        0.000         0.000         0.000         0.000         0.000
+ HW             0.000         0.000         0.000         0.000         0.000
+ GRADES         0.000         0.000         0.000         0.000         0.000
+ MINORITY       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              FAMBACK       PREVACH       HW            GRADES        MINORITY
+              ________      ________      ________      ________      ________
+ FAMBACK        0.050
+ PREVACH        0.000         0.050
+ HW             0.000         0.000         0.050
+ GRADES         0.000         0.000         0.000         0.050
+ MINORITY       0.000         0.000         0.000         0.000         0.099
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\tzkeith\documents\regression book 3\part 2\chap 22\latent interaction\hw latent minor measured.dgm
+
+     Beginning Time:  07:53:08
+        Ending Time:  07:53:08
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2017 Muthen & Muthen

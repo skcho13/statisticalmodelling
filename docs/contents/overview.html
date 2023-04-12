@@ -184,6 +184,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../contents/inference.html" class="sidebar-item-text sidebar-link">Inference</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/repeated.html" class="sidebar-item-text sidebar-link">Repeated ANOVA</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -874,7 +879,7 @@ marriedSingle         -1.28   -2.16   -0.41    -2.89   0.00
 </div>
 </div>
 </div>
-<p>Model: <code>lm(wage ~ married + age + I(age^2), data = cps)</code></p>
+<p>Model: <code>lm(wage ~ married + sex + age + I(age^2), data = cps)</code></p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">

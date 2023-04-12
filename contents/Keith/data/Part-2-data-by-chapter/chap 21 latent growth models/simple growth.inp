@@ -1,0 +1,37 @@
+TITLE:
+          Math simple growth
+
+          
+DATA:
+         FILE IS math growth final.csv;
+  VARIABLE:
+          NAMES ARE math1 math2 math3 math4 math5 sex
+		  Age ParEd Cog;
+          MISSING = ALL (999);
+          USEV are math1-math5;
+ 
+  ANALYSIS:
+          TYPE = MEANSTRUCTURE;
+
+  MODEL:
+          Level BY math1-math5@1;
+          Slope BY math1@0 math2@1 math3@2 math4@3 math5@4;
+          
+          [math1-math5@0];
+          [Level Slope];
+          math1*(v1);
+          math2* (v1);
+          math3* (v1);
+          math4* (v1);
+          math5* (v1);
+
+        
+
+           Level WITH Slope;
+          
+ 
+
+
+  OUTPUT:  STANDARDIZED;
+
+

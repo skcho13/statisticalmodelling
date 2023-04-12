@@ -54,6 +54,7 @@ website:
             text: Interactions
           - href: contents/inference.ipynb
             text: Inference
+          - href: contents/repeated.ipynb
       - text: ---
       - section: Communicate
         contents:
