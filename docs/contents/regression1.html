@@ -243,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/Interaction.html" class="sidebar-item-text sidebar-link">Interactions</a>
+  <a href="../contents/interaction.html" class="sidebar-item-text sidebar-link">Interactions</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -308,12 +308,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#모형-세우기" id="toc-모형-세우기" class="nav-link" data-scroll-target="#모형-세우기">모형 세우기</a></li>
   <li><a href="#fit-a-model-to-data" id="toc-fit-a-model-to-data" class="nav-link" data-scroll-target="#fit-a-model-to-data">Fit a model to data</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
   <li><a href="#case-2" id="toc-case-2" class="nav-link" data-scroll-target="#case-2">Case 2</a>
   <ul class="collapse">
   <li><a href="#변수의-정규화" id="toc-변수의-정규화" class="nav-link" data-scroll-target="#변수의-정규화">변수의 정규화</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a></li>
   </ul>
 </nav>
     </div>
@@ -323,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title d-none d-lg-block">Correlation/Simple Regression</h1>
-<p class="subtitle lead">Applied Multiple Regression/Correlation Analysis for the Behavioral by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. AikenSciences</p>
+<p class="subtitle lead">Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken</p>
 </div>
 
 
@@ -514,17 +516,7 @@ Tip
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="do">## pubs   0.01 0.00   0.02</span></span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="do">## salary 0.00 0.02   0.00</span></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  To see confidence intervals of the correlations, print with the short=FALSE option</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># rstatix 패키지의 cor_test() 이용</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">cor_test</span>(acad0) <span class="co"># NA를 pairwise deletion으로 처리해줌</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   var1   var2     cor    statistic         p conf.low conf.high method </span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  </span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 time   time    1          Inf    0            1         1     Pearson</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 time   pubs    0.66         3.14 7.83e-  3    0.218     0.875 Pearson</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 time   salary  0.71         3.64 3   e-  3    0.311     0.896 Pearson</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  To see confidence intervals of the correlations, print with the short=FALSE option</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -664,42 +656,65 @@ Y가 X에 의해 영향을 받거나 X에 의해 예측되는 변수라는 연�
 </ul>
 <p>선형관계임을 가정하고, 데이터에 <strong>가장 근접한</strong> 직선을 구함<br>
 이 직선을 주어진 데이터로부터 두 변수 간의 관계를 가장 잘 represent하는 <strong>model</strong> (모형)이라고 말함.<br>
-이는 확장된 의미에서 물리법칙에서 변수 간의 관계를 수학식으로 표현하고, 자연의 질서를 모델링한 것으로 이해할 수 있는 것과 같음.</p>
+이는 확장된 의미에서 물리법칙에서 변수 간의 관계를 수학식으로 표현하고, 자연현상을 모델링한 것으로 이해할 수 있는 것과 같음.</p>
+<p>예를 들어, 다음과 같이 x와 y의 관계가 나타난 경우,</p>
+<ul>
+<li>패턴: 강한 선형 관계</li>
+</ul>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <p><img src="regression1_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p>x와 y의 관계에 대한 모형을 세우는데, 모형은 두 부분으로 나눌 수 있음.</p>
+<ol type="1">
+<li><p><strong>A family of models</strong>를 정의: generic 패턴을 표현해 줄 수 있는 모델 타입</p>
+<p>예를 들어,</p>
 <ul>
-<li>패턴: 강한 선형 관계</li>
-<li>선형 모델 family인 &nbsp; <span class="math inline">\(Y = a_2 X + a_1\)</span>을 세움</li>
+<li><p>만약, 선형적인 관계라면 선형 모델인 <span class="math inline">\(y = a_2 x + a_1\)</span></p></li>
+<li><p>곡선 관계라면 가령, <span class="math inline">\(y = a_3 x^2 + a_2 x + a_1\)</span></p>
+<p><span class="math inline">\(a_1, a_2, a_3\)</span>는 패턴을 잡아 낼수 있도록 변하는 파라미터</p></li>
+</ul></li>
+<li><p><strong>A fitted model</strong>을 생성: 데이터에 가장 가까운(적합한) 파라미터에 해당하는 특정 모델을 선택;<br>
+”fit a model to data”</p>
+<p>예를 들어,</p>
+<ul>
+<li><span class="math inline">\(y = 3x+7\)</span></li>
+<li><span class="math inline">\(y = 2x^2 - 4x + 1\)</span></li>
+</ul>
+<p>A fitted model은 a family of models 중에 데이터에 가장 가까운 모델임</p>
+<ul>
+<li>이는 소위 “<strong>best</strong>” model일 뿐</li>
+<li>“good” model임을 뜻하지 않고, “true” model임을 뜻하는 것은 더더욱 아님</li>
+</ul></li>
+</ol>
+<p>이제 위의 예를 보면, 선형성을 가정하고</p>
+<ul>
+<li>선형 모델 family인 &nbsp; <span class="math inline">\(y = a_2 x + a_1\)</span>을 세울 수 있음</li>
 <li>무수히 많은 <span class="math inline">\(a_1, a_2\)</span>의 값들 중 위 데이터에 <strong>가장 가까운</strong> 값을 찾음
 <ul>
-<li>이를 “fit a model to data”라고 하고, 특정 모델을 fitted model이라고 함</li>
-<li>그 예로, 데이터와 꽤 가까운 임의의 20개의 선형 모델을 그려보면</li>
+<li>이를 “fit a model to data”라고 하고, 그 특정 모델을 fitted model이라고 함</li>
 </ul></li>
-</ul>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
-<div class="cell-output cell-output-display">
-<p><img src="regression1_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<ul>
-<li>즉, 선형모델 중 데이터에 가장 <strong>가까운</strong> 모델을 찾고자 하는데,<br>
-</li>
 <li>가깝다는 것을 정의하기 위해 데이터와 모델과의 <strong>거리</strong>를 정의해야 함; <span class="math inline">\(d =|~data - model~|\)</span></li>
-<li>그 중 모델과 데이터의 수직 차이 (<strong>잔차; residuals</strong>)의 총체로 거리를 정의할 수 있음</li>
+<li>대표적으로 모델과 데이터의 수직 차이 (<strong>잔차; residuals</strong>)의 총체로 거리를 정의할 수 있음</li>
+<li>최적의 모델은 이 거리를 최소로 함</li>
 </ul>
 <p><br>   <img src="images/residual.jpg" class="img-fluid" width="600"> <br> <br></p>
 <p><img src="images/model2.png" class="img-fluid" width="600"></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>특히, 다음과 같은 RMSE (root-mean-square deviation)을 기본적인 거리로 정의하고</li>
 </ul>
 <p>    <span class="math inline">\(RMSE = \displaystyle\sqrt{\frac{1}{n} \sum_{i=1}^{n}{(Y_i -\hat Y_i)^2}},\)</span>   <span class="math inline">\(Y_i -\hat Y_i\)</span> : <em>residual</em> (잔차)</p>
-<ul>
-<li>최적의 모델은 이 거리를 최소로 하며,</li>
-<li>이 때, 잔차의 합은 0; &nbsp; <span class="math inline">\(\displaystyle \sum_{i=1}^{n}{(Y_i -\hat Y_i)} = 0\)</span></li>
-</ul>
 <blockquote class="blockquote">
 <dl>
 <dt>Mean absolute error: <span class="math inline">\(MAE = \displaystyle\frac{1}{n} \sum_{i=1}^{n}{|~Y_i -\hat Y_i~|}\)</span></dt>
@@ -708,12 +723,26 @@ Y가 X에 의해 영향을 받거나 X에 의해 예측되는 변수라는 연�
 </dd>
 </dl>
 </blockquote>
+</div>
+</div>
 <p>이 거리를 이용해서 모델의 파라미터를 추정하는 것을 ordinary least square (OLS) esimate이라고 함</p>
+<ul>
+<li>이 때, 잔차의 합은 0; &nbsp; <span class="math inline">\(\displaystyle \sum_{i=1}^{n}{(Y_i -\hat Y_i)} = 0\)</span></li>
+</ul>
+<p>이제, 위 예제의 데이터와 꽤 가까운 임의의 20개의 선형 모델을 그려보면 다음과 같고, 이 중 거리가 최소인 모델이 fitted model이 됨</p>
+<ul>
+<li>이 때, fitted model의 기울기는 2.05, y절편은 4.22임</li>
+</ul>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<p><img src="regression1_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 <p>R은 여러 형태의 a family of models을 구성할 수 있는 효율적인 툴을 제공</p>
 <ul>
 <li>Linear (regression) models: <span class="math inline">\(Y = a_0 + a_1 X_1 + a_2 X_2 + ~... ~ + a_n X_n\)</span>
 <ul>
-<li><p>앞의 예는 <span class="math inline">\(n=1\)</span> 에 해당하며, <span class="math inline">\(y =a_0 +a_1X_1\)</span>에 대해서 다음과 같이 편리하게 적용할 수 있음</p>
+<li><p>앞의 예는 <span class="math inline">\(n=1\)</span> 에 해당하며, <span class="math inline">\(Y =a_0 +a_1X_1\)</span>에 대해서 다음과 같이 편리하게 적용할 수 있음</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sim1_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> sim1)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(sim1_mod) <span class="co"># 모델의 parameter 즉, coefficients를 내줌</span></span>
@@ -918,7 +947,7 @@ Important
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -927,7 +956,7 @@ graphical representation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="images/plot_variance.png" class="img-fluid" width="700"></p>
 </div>
@@ -1006,7 +1035,7 @@ Important
 <p>Overlap in variance of correlated variables<br>
 <img src="images/ballantines.png" class="img-fluid" width="450"></p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1015,7 +1044,7 @@ ANOVA
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>모형 자체에 대한 분석으로 ANOVA 결과는 <code>anova()</code>함수를 써서 볼 수 있음</p>
 <ul>
@@ -1034,7 +1063,8 @@ ANOVA
 </div>
 </div>
 </div>
-<p>다음은 SPSS 결과 테이블:<br>
+<p>모형 <span class="math inline">\(\widehat{salary} = a_0 + a_1time\)</span> 에 대한<br>
+SPSS 결과 테이블:<br>
 <img src="images/anova.png" class="img-fluid" width="600"></p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1083,7 +1113,9 @@ Important
 </div>
 </div>
 </div>
-<p>Exercises</p>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <p>출판물의 수(<code>pubs</code>)가 연봉(<code>salary</code>)에 어떻게 영향을 미치는지 살펴보세요.</p>
 </section>
 </section>
@@ -1098,24 +1130,29 @@ demgroup 1: those who will not be diagnosed with dementia (none group = 1; 72.55
 demgroup 2: those who will eventually be diagnosed with dementia later in the study (future group = 2; 19.82%)<br>
 demgroup 3: those who already have been diagnosed with dementia (current group = 3; 7.64%)</p>
 </blockquote>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="114">
+<p><a href="https://www.dropbox.com/s/vt1kq4wlc7b7oiw/spss_chapter2.csv?dl=1">spss_chapter2.csv</a></p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/spss_chapter2.csv"</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 550 × 6
-  PersonID cognition   age  grip sexMW demgroup
-     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
-1        1        23  92.6     9     1        1
-2        2        24  91.8    11     0        2
-3        3        29  92.6    12     0        1
-4        4        16  94.4     6     1        1
-5        5        27  85.8     9     1        1
-6        6        37  83.1    11     0        1
-# … with 544 more rows</code></pre>
+<pre><code># A tibble: 550 x 6
+   PersonID cognition   age  grip sexMW demgroup
+      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1        1        23  92.6     9     1        1
+ 2        2        24  91.8    11     0        2
+ 3        3        29  92.6    12     0        1
+ 4        4        16  94.4     6     1        1
+ 5        5        27  85.8     9     1        1
+ 6        6        37  83.1    11     0        1
+ 7        7         2  93.9    10     1        2
+ 8        8        39  83.3     9     0        1
+ 9        9        38  80.6    11     0        1
+10       10        32  85.9    10     0        1
+# i 540 more rows</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1124,7 +1161,7 @@ code for ggpairs
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>trendlines <span class="ot">&lt;-</span> <span class="cf">function</span>(data, mapping, ...){</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="at">data =</span> data, <span class="at">mapping =</span> mapping) <span class="sc">+</span> </span>
@@ -1141,7 +1178,7 @@ code for ggpairs
 </div>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="69">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <p><img src="regression1_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
 </div>
@@ -1160,18 +1197,42 @@ sexMW         -0.24  0.05 -0.40  1.00     0.01
 demgroup      -0.41  0.01  0.04  0.01     1.00</code></pre>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(cognition, age, grip) <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">corr.test</span>()</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>          cognition   age  grip</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cognition      1.00 -0.17  0.24</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># age           -0.17  1.00 -0.18</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># grip           0.24 -0.18  1.00</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">corr.test</span>(cognition[<span class="st">"cognition"</span>], cognition[<span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"grip"</span>)])</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation matrix </span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#             age grip</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co"># cognition -0.17 0.24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="regression1_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mod_cog <span class="ot">&lt;-</span> <span class="fu">lm</span>(cognition <span class="sc">~</span> grip, <span class="at">data =</span> cognition)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_cog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mod_cog <span class="ot">&lt;-</span> <span class="fu">lm</span>(cognition <span class="sc">~</span> grip, <span class="at">data =</span> cognition)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_cog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -1186,7 +1247,7 @@ Coefficients:
 (Intercept)  16.7033     1.4640  11.409  &lt; 2e-16 ***
 grip          0.8909     0.1527   5.834 9.24e-09 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 10.67 on 548 degrees of freedom
 Multiple R-squared:  0.05848,   Adjusted R-squared:  0.05677 
@@ -1194,6 +1255,41 @@ F-statistic: 34.04 on 1 and 548 DF,  p-value: 9.244e-09</code></pre>
 </div>
 </div>
 <p>기울기 0.89를 의미있게 해석할 수 있는가?</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip: summ()
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jtools)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod_cog)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># MODEL INFO:</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Observations: 550</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Dependent Variable: cognition</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Type: OLS linear regression </span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># MODEL FIT:</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># F(1,548) = 34.04, p = 0.00</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co"># R&lt;U+00B2&gt; = 0.06</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Adj. R&lt;U+00B2&gt; = 0.06 </span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard errors: OLS</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                      Est.   S.E.   t val.      p</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------- ------- ------ -------- ------</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="co"># (Intercept)         16.70   1.46    11.41   0.00</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="co"># grip                 0.89   0.15     5.83   0.00</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <section id="변수의-정규화" class="level3">
 <h3 class="anchored" data-anchor-id="변수의-정규화">변수의 정규화</h3>
 <p>standardize/normalize: &nbsp; <span class="math inline">\(\displaystyle z = \frac{x-m}{sd}; ~ax+b\)</span> : zoom + translate</p>
@@ -1212,15 +1308,15 @@ F-statistic: 34.04 on 1 and 548 DF,  p-value: 9.244e-09</code></pre>
 </ul></li>
 <li>반면, 주어진 샘플의 평균과 표준편차를 사용하므로 샘플마다 변동이 생길 수 있음을 인지해야 함.</li>
 </ul>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="115">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a> cognition <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">select</span>(<span class="at">cog_std =</span> cognition, <span class="at">grip_std =</span> grip) <span class="sc">|&gt;</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale</span>() <span class="sc">|&gt;</span>  <span class="co"># standardize 함수</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">bind_cols</span>(cognition)  <span class="co"># column bind: 열 방향으로 두 데이터프레임을 붙힘</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a> cognition <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">select</span>(<span class="at">cog_std =</span> cognition, <span class="at">grip_std =</span> grip) <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale</span>() <span class="sc">|&gt;</span>  <span class="co"># standardize 함수</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">bind_cols</span>(cognition)  <span class="co"># column bind: 열 방향으로 두 데이터프레임을 붙힘</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 550 × 8
+<pre><code># A tibble: 550 x 8
   cog_std grip_std PersonID cognition   age  grip sexMW demgroup
     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
 1 -0.166   -0.0378        1        23  92.6     9     1        1
@@ -1229,20 +1325,20 @@ F-statistic: 34.04 on 1 and 548 DF,  p-value: 9.244e-09</code></pre>
 4 -0.803   -1.04          4        16  94.4     6     1        1
 5  0.198   -0.0378        5        27  85.8     9     1        1
 6  1.11     0.633         6        37  83.1    11     0        1
-# … with 544 more rows</code></pre>
+# i 544 more rows</code></pre>
 </div>
 </div>
 <div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip_std, <span class="at">y =</span> cog_std)) <span class="sc">+</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip_std, <span class="at">y =</span> cog_std)) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression1_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
@@ -1254,16 +1350,16 @@ F-statistic: 34.04 on 1 and 548 DF,  p-value: 9.244e-09</code></pre>
 </div>
 </div>
 <div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cognition, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_overlay_normal_density</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_overlay_normal_density</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cognition, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_overlay_normal_density</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_overlay_normal_density</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="108">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -1279,8 +1375,8 @@ F-statistic: 34.04 on 1 and 548 DF,  p-value: 9.244e-09</code></pre>
 <p><img src="images/normal.png" class="img-fluid" width="600"><br>
 &nbsp; Source: <em>The Truthful Art</em> by Albert Cairo</p>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>mod_cog_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(cog_std <span class="sc">~</span> grip_std, <span class="at">data =</span> cognition)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_cog_std) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mod_cog_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(cog_std <span class="sc">~</span> grip_std, <span class="at">data =</span> cognition)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_cog_std) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1303,11 +1399,32 @@ F-statistic:  34 on 1 and 548 DF,  p-value: 9.2e-09
 </code></pre>
 </div>
 </div>
-<p><span class="math inline">\(R^2\)</span> 와 <em>p values</em>는 변함이 없으며, intercept (y 절편)은 0</p>
-
-
+<ul>
+<li><span class="math inline">\(R^2\)</span> 와 <em>p values</em>는 변함이 없으며, y intercept (y 절편)은 0</li>
+<li>기울기 0.24는 두 변수 간의 Pearson’s 상관계수와 같음</li>
+</ul>
+<hr>
 </section>
 </section>
+</section>
+<section id="연습문제" class="level1">
+<h1>연습문제</h1>
+<p>다음은 Multiple Regression and Beyond (3e) by Timothy Z. Keith의 p.69, p.87에서 제시된 경로모형입니다. 저자가 설정한 인과관계를 참고하여 데이터를 cleaning하고 변수들 간의 관계를 탐색해보세요.</p>
+<ul>
+<li>데이터 <a href="https://www.dropbox.com/s/x232sv7w4zhrikp/nels88_sample.csv?dl=1">NELS88 sample.csv</a></li>
+<li>Figure 4.10, 4.11에서는 숙제(homework)이 학업성취에 미치는 영향에 대해 설정한 관계를 보여줍니다.</li>
+<li>Figure 5.9에서는 자존감과 자기통제력이 학업성취도에 미치는 영향에 대해 설정한 관계를 보여줍니다.</li>
+<li>다음 링크 (<a href="https://docs.google.com/spreadsheets/d/1mrfGrgTXcoEcsCeODE_9yombgQrzo1jIwUJpzmbSRWQ/edit?usp=sharing">NELS88</a>)에서 변수들에 대한 자세한 설명을 확인하세요.
+<ul>
+<li>Self-esteem과 locus of control에 대해서 composite score 만들고</li>
+<li>Sex 변수는 factor로 변환하여 male, female로 표시합니다.</li>
+<li>SES의 여러 변수들을 적절히 factor로 변환하거나 prestige score값을 사용하거나, composite score인 <code>byses</code>를 사용합니다.</li>
+</ul></li>
+</ul>
+<p><img src="images/fig410.png" class="img-fluid" width="700"></p>
+<p><img src="images/fig59.png" class="img-fluid" width="620"></p>
+
+
 </section>
 
 </main> <!-- /main -->
