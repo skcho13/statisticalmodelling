@@ -47,7 +47,7 @@ website:
           - href: contents/overview.ipynb
           - href: contents/regression1.ipynb
             text: Simple Regression
-          - href: contents/regression2.ipynb
+          - href: contents/regression2.qmd
           - href: contents/categories.ipynb
             text: Categorical IVs
           - href: contents/interaction.ipynb
