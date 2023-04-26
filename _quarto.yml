@@ -1,7 +1,7 @@
 project:
   type: website
   output-dir: docs
-  resources: CNAME
+  resources: CNAME plot3d.html
 
 website:
   page-navigation: true

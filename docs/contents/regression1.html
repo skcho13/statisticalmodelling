@@ -243,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/interaction.html" class="sidebar-item-text sidebar-link">Interactions</a>
+  <a href="../contents/Interaction.html" class="sidebar-item-text sidebar-link">Interactions</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -314,6 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#변수의-정규화" id="toc-변수의-정규화" class="nav-link" data-scroll-target="#변수의-정규화">변수의 정규화</a></li>
   </ul></li>
+  <li><a href="#case-3" id="toc-case-3" class="nav-link" data-scroll-target="#case-3">Case 3</a></li>
   </ul></li>
   <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a></li>
   </ul>
@@ -403,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="linear-correlation의-계산">Linear correlation의 계산</h2>
 <p>교수의 연봉(salary), 학위를 받은 후 지난 시간(time since Ph.D.), 출판물의 수(pubs)의 관계<br>
 Data: <a href="https://www.dropbox.com/s/c5gb1lme5crkql5/C0301DT.csv?dl=1">c0301dt.csv</a></p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 x 3
     time  pubs salary
@@ -926,7 +927,7 @@ Important
 </div>
 </div></li>
 </ul>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
 <div class="cell-output cell-output-stdout">
 <pre><code>   time salary  pred  resid (pred-m)^2 resid^2 (salary-m)^2
 1     3  51.88 47.33   4.54      32.65   20.65         1.37
@@ -1035,21 +1036,27 @@ Important
 <p>Overlap in variance of correlated variables<br>
 <img src="images/ballantines.png" class="img-fluid" width="450"></p>
 <div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
 ANOVA
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>모형 자체에 대한 분석으로 ANOVA 결과는 <code>anova()</code>함수를 써서 볼 수 있음</p>
+<p>모집단에 대한 추론: 모형의 설명력이 모집단에서 0은 아닐 것이라는 추론;</p>
 <ul>
-<li>Residuals과 predictions에 대한 분산을 이용해</li>
-<li>residuals 변량 대비 얼마나 predictions의 변량이 얼마나 큰지로부터 F분포를 이용해 통계적 추론이 이루어짐</li>
+<li>Null 모형 대비 주어진 모형이 잔차를 얼마나 줄였는가를 테스트함으로써 주어진 모형의 설명력이 0은 아님을 보임
+<ul>
+<li>Null 모형: <code>y ~ 1</code> (예측변수가 없는 모형, 설명력 0)</li>
+</ul></li>
+<li>잔차 변량(SSE) 대비 예측 변량(SSR)이 얼마나 큰가를 F분포를 이용해 통계적 추론이 이루어짐
+<ul>
+<li>[주어진 모형의 잔차 변량 (SSE)] - [null 모형의 잔차 변량] = SSE - SSY = SSR</li>
+<li>즉, 추가된 예측 변수에 의해 설명되는 변량 정도가 sampling error, 즉 표본 추출에 따른 우연성에 의해 나타날 수 있을 확률을 계산</li>
+</ul></li>
 </ul>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod1)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis of Variance Table</span></span>
@@ -1060,7 +1067,12 @@ ANOVA
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals 13 431.73   33.21                  </span></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ---</span></span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<ul>
+<li>대략, (예측변수로 설명되지 않는 Y인) 잔차의 평균 변량: <span class="math inline">\(\sqrt{mean~of~SSE} = \sqrt{33.21} = 5.763\)</span>
+<ul>
+<li>대략 말하면, 모형이 예측한 연봉과 실제 연봉의 차이는 평균 $5,763 정도 된다는 것을 의미함</li>
+</ul></li>
+</ul>
 </div>
 </div>
 <p>모형 <span class="math inline">\(\widehat{salary} = a_0 + a_1time\)</span> 에 대한<br>
@@ -1122,7 +1134,7 @@ Important
 <section id="case-2" class="level2">
 <h2 class="anchored" data-anchor-id="case-2">Case 2</h2>
 <p>다음 데이터는 the Octogenarian Twin Study of Aging에서 나타나는 패턴을 기반으로 생성한 데이터</p>
-<p><a href="https://www.pilesofvariance.com/index.html"><em>Longitudinal Analysis: Modeling Within-Person Fluctuation and Change</em></a> by Lesa Hoffman</p>
+<p>출처: <a href="https://www.pilesofvariance.com/index.html"><em>Longitudinal Analysis: Modeling Within-Person Fluctuation and Change</em></a> by Lesa Hoffman</p>
 <blockquote class="blockquote">
 <p>includes 550 older adults age 80 to 97 years.<br>
 Cognition was assessed by the Information Test, a measure of general world knowledge (i.e., crystallized intelligence; range = 0 to 44)<br>
@@ -1131,24 +1143,20 @@ demgroup 2: those who will eventually be diagnosed with dementia later in the st
 demgroup 3: those who already have been diagnosed with dementia (current group = 3; 7.64%)</p>
 </blockquote>
 <p><a href="https://www.dropbox.com/s/vt1kq4wlc7b7oiw/spss_chapter2.csv?dl=1">spss_chapter2.csv</a></p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/spss_chapter2.csv"</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 550 x 6
-   PersonID cognition   age  grip sexMW demgroup
-      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
- 1        1        23  92.6     9     1        1
- 2        2        24  91.8    11     0        2
- 3        3        29  92.6    12     0        1
- 4        4        16  94.4     6     1        1
- 5        5        27  85.8     9     1        1
- 6        6        37  83.1    11     0        1
- 7        7         2  93.9    10     1        2
- 8        8        39  83.3     9     0        1
- 9        9        38  80.6    11     0        1
-10       10        32  85.9    10     0        1
-# i 540 more rows</code></pre>
+  PersonID cognition   age  grip sexMW demgroup
+     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+1        1        23  92.6     9     1        1
+2        2        24  91.8    11     0        2
+3        3        29  92.6    12     0        1
+4        4        16  94.4     6     1        1
+5        5        27  85.8     9     1        1
+6        6        37  83.1    11     0        1
+# i 544 more rows</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -1183,7 +1191,7 @@ code for ggpairs
 <p><img src="regression1_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="67">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corr.test</span>(cognition[<span class="sc">-</span><span class="dv">1</span>])<span class="sc">$</span>r <span class="sc">|&gt;</span>  <span class="co"># r만 선택, inference부분 제외</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="dv">2</span>) <span class="sc">|&gt;</span></span>
@@ -1230,7 +1238,7 @@ Tip
 <p><img src="regression1_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>mod_cog <span class="ot">&lt;-</span> <span class="fu">lm</span>(cognition <span class="sc">~</span> grip, <span class="at">data =</span> cognition)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_cog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1254,7 +1262,12 @@ Multiple R-squared:  0.05848,   Adjusted R-squared:  0.05677
 F-statistic: 34.04 on 1 and 548 DF,  p-value: 9.244e-09</code></pre>
 </div>
 </div>
-<p>기울기 0.89를 의미있게 해석할 수 있는가?</p>
+<ul>
+<li>기울기 0.89를 의미있게 해석할 수 있는가?<br>
+</li>
+<li>절편 16.7은?</li>
+<li><span class="math inline">\(R^2\)</span> = 0.058; 악력의 변량으로 인지능력 변량의 5.8%가 설명됨</li>
+</ul>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1308,7 +1321,7 @@ Tip: summ()
 </ul></li>
 <li>반면, 주어진 샘플의 평균과 표준편차를 사용하므로 샘플마다 변동이 생길 수 있음을 인지해야 함.</li>
 </ul>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a> cognition <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">select</span>(<span class="at">cog_std =</span> cognition, <span class="at">grip_std =</span> grip) <span class="sc">|&gt;</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale</span>() <span class="sc">|&gt;</span>  <span class="co"># standardize 함수</span></span>
@@ -1374,7 +1387,7 @@ Tip: summ()
 <p>Normal distribution 정규 분포; 사실상 sd만으로 결정되는 분포 곡선</p>
 <p><img src="images/normal.png" class="img-fluid" width="600"><br>
 &nbsp; Source: <em>The Truthful Art</em> by Albert Cairo</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="113">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mod_cog_std <span class="ot">&lt;-</span> <span class="fu">lm</span>(cog_std <span class="sc">~</span> grip_std, <span class="at">data =</span> cognition)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_cog_std) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1391,7 +1404,7 @@ Coefficients:
 (Intercept)  1.2e-16    4.1e-02     0.0        1    
 grip_std     2.4e-01    4.1e-02     5.8    9e-09 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 0.97 on 548 degrees of freedom
 Multiple R-squared:  0.058, Adjusted R-squared:  0.057 
@@ -1403,8 +1416,259 @@ F-statistic:  34 on 1 and 548 DF,  p-value: 9.2e-09
 <li><span class="math inline">\(R^2\)</span> 와 <em>p values</em>는 변함이 없으며, y intercept (y 절편)은 0</li>
 <li>기울기 0.24는 두 변수 간의 Pearson’s 상관계수와 같음</li>
 </ul>
-<hr>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip: <code>summ(df, scale = TRUE, transform.response = TRUE)</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jtools)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scale: predictors 표준화, transform.response: response 표준화</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod_cog_std, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">transform.response =</span> <span class="cn">TRUE</span>)  <span class="co"># digits = 3, center = TRUE</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                      Est.   S.E.   t val.      p</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------- ------- ------ -------- ------</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (Intercept)         -0.00   0.04    -0.00   1.00</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co"># grip_std             0.24   0.04     5.83   0.00</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Continuous variables are mean-centered and scaled by 1 s.d.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
+</section>
+<section id="case-3" class="level2">
+<h2 class="anchored" data-anchor-id="case-3">Case 3</h2>
+<p>성별에 따라 인지능력(<code>cognition</code>)에 차이가 있는가?<br>
+성별에 따라 악력(<code>grip</code>)에 차이가 있는가?</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sexMW, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)))</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 550 x 9
+  cog_std grip_std PersonID cognition   age  grip sexMW demgroup sex   
+    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt; 
+1 -0.166   -0.0378        1        23  92.6     9     1        1 female
+2 -0.0748   0.633         2        24  91.8    11     0        2 male  
+3  0.380    0.968         3        29  92.6    12     0        1 male  
+4 -0.803   -1.04          4        16  94.4     6     1        1 female
+5  0.198   -0.0378        5        27  85.8     9     1        1 female
+6  1.11     0.633         6        37  83.1    11     0        1 male  
+# i 544 more rows</code></pre>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="175">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sex, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Cognition predicted by sex"</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sex, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="regression1_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="173">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sex, <span class="at">y =</span> grip)) <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(sex)), <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Grip predicted by sex"</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sex, <span class="at">y =</span> grip)) <span class="sc">+</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"red"</span>)</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">6</span>, <span class="at">bw =</span> <span class="fl">1.5</span>)</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="regression1_files/figure-html/cell-49-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>성별(<code>sex</code>)로 악력(<code>grip</code>)을 예측하는 모형을 세우면,</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jtools)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>mod_grip <span class="ot">&lt;-</span> <span class="fu">lm</span>(grip <span class="sc">~</span> sex, <span class="at">data =</span> cognition)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod_grip, <span class="at">model.info =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span style="text-decoration:underline">MODEL FIT:</span>
+<span style="font-style:italic">F</span>(1,548) = 106.41, <span style="font-style:italic">p</span> = 0.00
+<span style="font-style:italic">R&lt;U+00B2&gt; = </span>0.16
+<span style="font-style:italic">Adj. R&lt;U+00B2&gt; = </span>0.16 
+<span style="font-style:italic">Standard errors: OLS</span>
+------------------------------------------------
+                     Est.   S.E.   t val.      p
+----------------- ------- ------ -------- ------
+(Intercept)         10.55   0.18    58.16   0.00
+sexfemale           -2.44   0.24   -10.32   0.00
+------------------------------------------------</pre>
+</div>
+</div>
+</div>
+<p>Model: <span class="math inline">\(\widehat{grip} = -2.44\cdot sexfemale + 10.55\)</span></p>
+<p>우선, 잔차의 합이 0이므로 <span class="math inline">\(\displaystyle \sum_{i=1}^{n}{(y_i - \hat{y})} = 0,~~ \hat{y} = \frac{\sum_{i=1}^{n}{y_i}}{n}\)</span> for each <span class="math inline">\(x\)</span><br>
+즉, 각 카테고리 값에 대해서 모형은 평균으로 예측</p>
+<ul>
+<li>기울기 -2.44는 남성과 여성의 평균 악력 차이를 의미함; 남성(0)에서 여성(1)로 1증가할 때, 악력의 증가량</li>
+<li>절편 10.55는 남성(0)일 때의 평균 악력을 의미함.</li>
+<li>따라서, 여성의 평균 약력은 -2.44 * (1) + 10.55 = 8.11</li>
+<li><span class="math inline">\(R^2\)</span>= 0.16; 성별로 악력의 변량의 16%를 설명할 수 있음.</li>
+</ul>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 550 x 5
+    grip sex    sexfemale  pred  resid
+   &lt;dbl&gt; &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1     9 female         1  8.11  0.895
+ 2    11 male           0 10.5   0.454
+ 3    12 male           0 10.5   1.45 
+ 4     6 female         1  8.11 -2.11 
+ 5     9 female         1  8.11  0.895
+ 6    11 male           0 10.5   0.454
+ 7    10 female         1  8.11  1.89 
+ 8     9 male           0 10.5  -1.55 
+ 9    11 male           0 10.5   0.454
+10    10 male           0 10.5  -0.546
+# i 540 more rows</code></pre>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_grip) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: grip
+           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+sex         1  794.3  794.33  106.41 &lt; 2.2e-16 ***
+Residuals 548 4090.7    7.46                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="146">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_matrix</span>(cognition, <span class="at">formula =</span> grip <span class="sc">~</span> sex) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 550 x 2
+  `(Intercept)` sexfemale
+          &lt;dbl&gt;     &lt;dbl&gt;
+1             1         1
+2             1         0
+3             1         0
+4             1         1
+5             1         1
+6             1         0
+# i 544 more rows</code></pre>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>전통적으로 카테고리 변수에 대한 분석은 ANOVA 프레임워크에서 실시되었음.<br>
+특히, 위의 경우와 같이 두 집단 간의 차이, 즉 남성과 여성의 약력의 평균 차이를 분석할 때 t-test를 실시.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grip <span class="sc">~</span> sex, <span class="at">data =</span> cognition, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)  <span class="co"># varance가 동일하다는 가정</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Two Sample t-test</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data:  grip by sex</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co"># t = 10.316, df = 548, p-value &lt; 2.2e-16</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative hypothesis: true difference in means between group male and group female is not equal to 0</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 95 percent confidence interval:</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co">#  1.976174 2.905811</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sample estimates:</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   mean in group male mean in group female </span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co">#            10.546256             8.105263 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Formula는 factor/카테고리 변수가 predictor인 경우 카테고리 값(levels)들을 수치화해줌.<br>
+여러 방식이 있느나, 기본은 <strong>dummy coding</strong>으로, 각 카테고리를 0과 1로 표현하며, <strong>memership</strong>으로 이해하는 것이 적절함.<br>
+그 값을 새로운 변수인 dummy variable/indicator variable로 만드는데, 1에 해당하는 level을 변수명에 표시함.<br>
+예를 들어, 다음과 같이 female에 속하면(membership) 1, female에 속하지 않으면 0</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_matrix</span>(cognition, <span class="at">formula =</span> grip <span class="sc">~</span> sex) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 550 x 2</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   `(Intercept)` sexfemale</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1             1         1</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2             1         0</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3             1         0</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 4             1         1</span></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 5             1         1</span></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 6             1         0</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # i 544 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Coding을 어떠한 방식으로 하느냐에 따라 회귀 계수의 의미가 달라짐.<br>
+예를 들어, effect coding의 경우 (female: -1, male: 1)</p>
+<p><span class="math inline">\(\displaystyle b_0 = \frac{\overline{Y}_1 + \overline{Y}_2}{2},~~ b_1 = \overline{Y}_1 - \frac{\overline{Y}_1 + \overline{Y}_2}{2}\)</span></p>
+<p>Sequential coding, Helmert coding, effect coding 등등 여러 다른 coding 방식에 대해서는 책을 참고.<br>
+10.1 Alternative Coding Systems in <em>Regression Analysis and Linear Models by Richard B. Darlington &amp; Andrew F. Hayes</em></p>
+</div>
+</div>
+<p>Factor의 levels을 formula 안에서 간단히 변경하려면, <code>fct_relevel()</code></p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="150">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mod_grip2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grip <span class="sc">~</span> <span class="fu">fct_relevel</span>(sex, <span class="st">"female"</span>), <span class="at">data =</span> cognition)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는 relevel(sex, ref = "female")</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">model_matrix</span>(cognition, mod_grip2) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 550 x 2
+  `(Intercept)` `relevel(sex, ref = "female")male`
+          &lt;dbl&gt;                              &lt;dbl&gt;
+1             1                                  0
+2             1                                  1
+3             1                                  1
+4             1                                  0
+5             1                                  0
+6             1                                  1
+# i 544 more rows</code></pre>
+</div>
+</div>
+<hr>
 </section>
 </section>
 <section id="연습문제" class="level1">
