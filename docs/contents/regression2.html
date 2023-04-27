@@ -357,13 +357,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>앞서 연봉에 대한 예측모형을 다음과 같이 얻었는데,</p>
 <ul>
-<li>Model 1: <span class="math inline">\(\widehat{salary} = \$43,659 + \$1,224\:time\)</span></li>
-<li>Model 2 : <span class="math inline">\(\widehat{salary} = \$46,357 + \$336\:pubs\)</span></li>
+<li>Model 1: <span class="math inline">\(\widehat{salary} = \$1,224\:time + \$43,659\)</span></li>
+<li>Model 2 : <span class="math inline">\(\widehat{salary} = \$336\:pubs + \$46,357\)</span></li>
 </ul>
 <p>다음과 같이 연차가 늘면 논문의 수도 따라서 늘어나는 경향이 있기 때문에, 연차 또는 논문 수의 고유한 효과를 추정하기 어려움.</p>
 <ul>
-<li><span class="math inline">\(\widehat{pubs} = 4.73 + 1.98\:time\)</span></li>
-<li><span class="math inline">\(\widehat{time} = 3.33 + 0.22\:pubs\)</span></li>
+<li><span class="math inline">\(\widehat{pubs} = 1.98\:time + 4.73\)</span></li>
+<li><span class="math inline">\(\widehat{time} = 0.22\:pubs + 3.33\)</span></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>acad0 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/c0301dt.csv"</span>)</span>
@@ -393,17 +393,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time, <span class="at">data =</span> acad0)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> pubs, <span class="at">data =</span> acad0)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time <span class="sc">+</span> pubs, <span class="at">data =</span> acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time <span class="sc">+</span> pubs, <span class="at">data =</span> acad0)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(mod3) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)        time        pubs 
+   43082.39      982.87      121.80 </code></pre>
+</div>
 </div>
 <section id="두-개의-예측변수를-모두-포함한-모형" class="level3">
 <h3 class="anchored" data-anchor-id="두-개의-예측변수를-모두-포함한-모형">두 개의 예측변수를 모두 포함한 모형</h3>
-<p>Model 3: <span class="math inline">\(\widehat{Y} = a_0 + a_1 X_1 + a_2 X_2 ~ (z=2x-y+1)\)</span></p>
-<p><span class="math inline">\(\widehat{salary} = \$43,659 + \$1,224\:time\)</span></p>
-<div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 70.0%;justify-content: center;">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1679a12f34ea97d13967" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1679a12f34ea97d13967">{"x":{"visdat":{"10376a4f4a77":["function () ","plotlyVisDat"]},"cur_data":"10376a4f4a77","attrs":{"10376a4f4a77":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"y":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#683531"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"y":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#683531"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Model 3: <span class="math inline">\(\widehat{Y} = a_1 X_1 + a_2 X_2 + a_0 ~ (z=2x-y+1)\)</span></p>
+<p><span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pubs + \$43,082\)</span></p>
+<p>The regression plane:<br>
+<img src="images/regression_plane.png" class="img-fluid" width="400"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+3d plot
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7478eaf8ede5c41b8c97" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-7478eaf8ede5c41b8c97">{"x":{"visdat":{"3a43239bd613":["function () ","plotlyVisDat"]},"cur_data":"3a43239bd613","attrs":{"3a43239bd613":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -413,6 +433,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>수학적으로 보면, 각 예측변수의 기울기는 다른 예측변수의 값에 상관없이 일정하므로, 다른 예측변수들을 (임의의 값에) <strong>고정시키는 효과</strong>를 가짐</li>
 <li>즉, 다른 변수와는 독립적인, <strong>고유한 효과</strong>를 추정하게 됨</li>
 </ul>
+<p>세 모형을 비교하면,</p>
+<p>Model 1: <span class="math inline">\(\widehat{salary} = \$1,224\:time + \$43,659\)</span><br>
+Model 2 : <span class="math inline">\(\widehat{salary} = \$336\:pubs + \$46,357\)</span><br>
+Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pubs + \$43,082\)</span></p>
+<ul>
+<li>연차(time)의 효과는 $1,224에서 $984로 낮아졌고,</li>
+<li>논문수(pubs)의 효과는 $336에서 $122로 낮아졌음</li>
+</ul>
+<p>각각의 효과가 줄어든 것은 연차와 논문수 정보의 redundancy로부터 발생한 것임.</p>
+<p>다른 변수가 <strong>partial out</strong> 된 후의 효과. 실제로 연차로 예측되지 않는 논문수(residuals)로 연봉을 예측할 때의 기울기</p>
+<p>해석은, 만약 논문 수가 일정할 때, 예를 들어 10편의 논문을 쓴 경우만 봤을 때, 연차가 1년 늘 때마다 연봉은 $984 증가함</p>
+<p>또는 만약, 연차가 일정할 때, 예를 들어 연차가 12년차인 경우만 봤을 때, 논문이 1편 늘 때마다 연봉은 $336 증가함</p>
+<p>이는 다른 <strong>변수를 고려(통제, controlling for)했을 때 혹은 다른 변수의 효과를 제거(partial out)했을 때</strong>, 각 변수의 <strong>고유한 효과</strong>를 의미함 (<em>holding constant</em> or <em>controlling for, partialing the effects of,</em> or <em>residualizing)</em></p>
+<p>뒤집어 말하면, 연차만 고려했을때 연차가 1년 늘면 $1,224 연봉이 증가하는 효과는 연차가 늘때 함께 늘어나는 논문 수의 효과가 함께 섞여 나온 효과라고 말할 수 있음.</p>
+<p>이는 인과관계에 있는 변수들의 진정한 효과를 찾는 것이 얼마나 어려운지를 보여줌</p>
+<p><img src="images/partials.png" class="img-fluid" width="800"></p>
 
 
 </section>
