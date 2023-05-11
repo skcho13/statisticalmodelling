@@ -94,7 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contents/categories.html" rel="next">
+<link href="../contents/case1.html" rel="next">
 <link href="../contents/regression1.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -236,11 +236,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../contents/regression1.html" class="sidebar-item-text sidebar-link">Simple Regression</a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../contents/regression2.html" class="sidebar-item-text sidebar-link active">Multiple Regression</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/regression2.html" class="sidebar-item-text sidebar-link active">Multiple Regression</a>
+  <a href="../contents/case1.html" class="sidebar-item-text sidebar-link">Case Study 1</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/case2.html" class="sidebar-item-text sidebar-link">Case Study 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/case3.html" class="sidebar-item-text sidebar-link">Case Study 3</a>
+  </div>
+</li>
+      </ul>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/categories.html" class="sidebar-item-text sidebar-link">Categorical IVs</a>
@@ -259,6 +279,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/repeated.html" class="sidebar-item-text sidebar-link">Repeated ANOVA</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/report.html" class="sidebar-item-text sidebar-link">Report</a>
   </div>
 </li>
       </ul>
@@ -300,18 +325,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#multiple-linearregression-models" id="toc-multiple-linearregression-models" class="nav-link active" data-scroll-target="#multiple-linearregression-models">Multiple linear/regression models</a>
   <ul>
-  <li><a href="#두-개의-예측변수를-모두-포함한-모형" id="toc-두-개의-예측변수를-모두-포함한-모형" class="nav-link" data-scroll-target="#두-개의-예측변수를-모두-포함한-모형">두 개의 예측변수를 모두 포함한 모형</a></li>
-  <li><a href="#measures-of-association" id="toc-measures-of-association" class="nav-link" data-scroll-target="#measures-of-association">Measures of Association</a></li>
+  <li><a href="#measures-of-association" id="toc-measures-of-association" class="nav-link" data-scroll-target="#measures-of-association">Measures of Association</a>
+  <ul class="collapse">
   <li><a href="#회귀계수의-상대적-중요성" id="toc-회귀계수의-상대적-중요성" class="nav-link" data-scroll-target="#회귀계수의-상대적-중요성">회귀계수의 상대적 중요성</a>
   <ul class="collapse">
   <li><a href="#표준화-회귀계수-beta" id="toc-표준화-회귀계수-beta" class="nav-link" data-scroll-target="#표준화-회귀계수-beta">표준화 회귀계수 (<span class="math inline">\(\beta\)</span>)</a></li>
   </ul></li>
   <li><a href="#model-comparison" id="toc-model-comparison" class="nav-link" data-scroll-target="#model-comparison">Model Comparison</a></li>
+  </ul></li>
   <li><a href="#patterns-of-association" id="toc-patterns-of-association" class="nav-link" data-scroll-target="#patterns-of-association">Patterns of Association</a>
   <ul class="collapse">
-  <li><a href="#direct-and-indirect-effects" id="toc-direct-and-indirect-effects" class="nav-link" data-scroll-target="#direct-and-indirect-effects">Direct and Indirect Effects</a></li>
-  <li><a href="#causal-relations" id="toc-causal-relations" class="nav-link" data-scroll-target="#causal-relations">Causal Relations</a></li>
+  <li><a href="#direct-and-indirect-effects" id="toc-direct-and-indirect-effects" class="nav-link" data-scroll-target="#direct-and-indirect-effects">Direct and Indirect Effects</a>
+  <ul class="collapse">
+  <li><a href="#case-study-1" id="toc-case-study-1" class="nav-link" data-scroll-target="#case-study-1">Case study 1</a></li>
   </ul></li>
+  <li><a href="#causal-relations" id="toc-causal-relations" class="nav-link" data-scroll-target="#causal-relations">Causal Relations</a>
+  <ul class="collapse">
+  <li><a href="#case-study-2" id="toc-case-study-2" class="nav-link" data-scroll-target="#case-study-2">Case study 2</a></li>
+  <li><a href="#case-study-3" id="toc-case-study-3" class="nav-link" data-scroll-target="#case-study-3">Case study 3</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul>
+  <li><a href="#a.-mireault-1990" id="toc-a.-mireault-1990" class="nav-link" data-scroll-target="#a.-mireault-1990">A. Mireault (1990)</a></li>
+  <li><a href="#b.-malcarne-compas-epping-and-howell-1995" id="toc-b.-malcarne-compas-epping-and-howell-1995" class="nav-link" data-scroll-target="#b.-malcarne-compas-epping-and-howell-1995">B. Malcarne, Compas, Epping, and Howell (1995)</a></li>
+  <li><a href="#c.-guber-1999" id="toc-c.-guber-1999" class="nav-link" data-scroll-target="#c.-guber-1999">C. Guber (1999)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -416,83 +455,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time, <span class="at">data =</span> acad0)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> pubs, <span class="at">data =</span> acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="두-개의-예측변수를-모두-포함한-모형" class="level3">
-<h3 class="anchored" data-anchor-id="두-개의-예측변수를-모두-포함한-모형">두 개의 예측변수를 모두 포함한 모형</h3>
+<p><strong>두 개의 예측변수를 모두 포함한 모형</strong></p>
 <p>Model 3: <span class="math inline">\(\widehat{Y} = a_1 X_1 + a_2 X_2 + a_0 ~ (z=2x-y+1)\)</span></p>
 <p><span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pubs + \$43,082\)</span></p>
 <div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time <span class="sc">+</span> pubs, <span class="at">data =</span> acad0)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod3)  <span class="co"># library(jtools)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod3) <span class="sc">|&gt;</span> <span class="fu">print</span>()  <span class="co"># library(jtools)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>MODEL INFO:
+Observations: 15
+Dependent Variable: salary
+Type: OLS linear regression 
 
-<table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<tbody>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> Observations </td>
-   <td style="text-align:right;"> 15 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> Dependent variable </td>
-   <td style="text-align:right;"> salary </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> Type </td>
-   <td style="text-align:right;"> OLS linear regression </td>
-  </tr>
-</tbody>
-</table> <table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<tbody>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> F(2,12) </td>
-   <td style="text-align:right;"> 6.78 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> R² </td>
-   <td style="text-align:right;"> 0.53 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> Adj. R² </td>
-   <td style="text-align:right;"> 0.45 </td>
-  </tr>
-</tbody>
-</table> <table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> Est. </th>
-   <th style="text-align:right;"> S.E. </th>
-   <th style="text-align:right;"> t val. </th>
-   <th style="text-align:right;"> p </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> (Intercept) </td>
-   <td style="text-align:right;"> 43082.39 </td>
-   <td style="text-align:right;"> 3099.49 </td>
-   <td style="text-align:right;"> 13.90 </td>
-   <td style="text-align:right;"> 0.00 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> time </td>
-   <td style="text-align:right;"> 982.87 </td>
-   <td style="text-align:right;"> 452.06 </td>
-   <td style="text-align:right;"> 2.17 </td>
-   <td style="text-align:right;"> 0.05 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> pubs </td>
-   <td style="text-align:right;"> 121.80 </td>
-   <td style="text-align:right;"> 149.70 </td>
-   <td style="text-align:right;"> 0.81 </td>
-   <td style="text-align:right;"> 0.43 </td>
-  </tr>
-</tbody>
-<tfoot><tr><td style="padding: 0; " colspan="100%">
-<sup></sup> Standard errors: OLS</td></tr></tfoot>
-</table>
+MODEL FIT:
+F(2,12) = 6.78, p = 0.01
+R² = 0.53
+Adj. R² = 0.45 
+
+Standard errors: OLS
+------------------------------------------------------
+                        Est.      S.E.   t val.      p
+----------------- ---------- --------- -------- ------
+(Intercept)         43082.39   3099.49    13.90   0.00
+time                  982.87    452.06     2.17   0.05
+pubs                  121.80    149.70     0.81   0.43
+------------------------------------------------------</code></pre>
 </div>
 </div>
 </div>
@@ -513,8 +502,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5ca8c1bd78730824fef0" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5ca8c1bd78730824fef0">{"x":{"visdat":{"5edf6916debb":["function () ","plotlyVisDat"]},"cur_data":"5edf6916debb","attrs":{"5edf6916debb":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f72ada70dfc598917f28" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f72ada70dfc598917f28">{"x":{"visdat":{"21976dc412b6":["function () ","plotlyVisDat"]},"cur_data":"21976dc412b6","attrs":{"21976dc412b6":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -535,14 +524,13 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <li>논문수(<code>pubs</code>)의 효과는 $336에서 $122로 낮아졌음.</li>
 </ul>
 <p>각 회귀계수를 partial regression coefficient (부분 회귀 계수) 라고 부름.</p>
-<p>다른 변수가 <strong>partial out</strong> 된 후의 효과.<br>
-실제로 $122는 연차로 (선형적으로) 예측되지 않는 논문수(residuals)로 연봉을 예측할 때의 기울기</p>
+<p><strong>부분 회귀 계수의 첫번째 해석</strong>:</p>
 <ul>
-<li>해석은, 만약 논문 수가 일정할 때, 예를 들어 10편의 논문을 쓴 경우만 봤을 때, 연차가 1년 늘 때마다 연봉은 $984 증가함; 평면의 선형모형을 가정했기에 이 관계는 논문 수에 상관없음.<br>
+<li>만약 논문 수가 일정할 때, 예를 들어 10편의 논문을 쓴 경우만 봤을 때, 연차가 1년 늘 때마다 연봉은 $984 증가함; 평면의 선형모형을 가정했기에 이 관계는 논문 수에 상관없음.<br>
 </li>
 <li>연차가 일정할 때, 예를 들어 연차가 12년차인 경우만 봤을 때, 논문이 1편 늘 때마다 연봉은 $336 증가함; 평면의 선형모형을 가정했기에 이 관계는 연차에 상관없음.</li>
 </ul>
-<p>이는 다른 <strong>변수를 고려 (통제, controlling for) 했을 때 혹은 다른 변수의 효과를 제거 (partial out) 했을 때</strong>, 각 변수의 <strong>고유한 효과</strong>를 의미함. (<em>holding constant</em> or <em>controlling for, partialing the effects of,</em> or <em>residualizing)</em></p>
+<p>이는 다른 <strong>변수를 고려 (통제, controlling for) 했을 때 혹은 다른 변수의 효과를 제거 (partial out) 했을 때</strong>, 각 변수의 <strong>고유한 효과</strong>를 의미함; <strong><em>holding constant, controlling for, partialing out, adjusted for, residualizing</em></strong></p>
 <p>뒤집어 말하면, 연차만 고려했을때 연차가 1년 늘면 $1,224 연봉이 증가하는 효과는 연차가 늘 때 함께 늘어나는 논문 수의 효과가 함께 섞여 나온 효과라고 말할 수 있음.</p>
 <p>이는 인과관계에 있는 변수들의 진정한 효과를 찾는 것이 얼마나 어려운지를 보여줌</p>
 <div class="quarto-figure quarto-figure-left">
@@ -553,6 +541,12 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <blockquote class="blockquote">
 <p>The partial regression coefficients, $983 and $122, are the empirical estimates, respectively, of h and g, the causal effects of our independent variables accompanying the arrows in the causal diagram (Fig. 3.1.1) (p.&nbsp;69).</p>
 </blockquote>
+<p><strong>부분 회귀 계수에 대한 두번째 해석</strong></p>
+<ul>
+<li>다른 변수들이 <strong>partial out</strong> 된 후의 효과.<br>
+</li>
+<li>실제로 $122는 연차로 (선형적으로) 예측되지 않는 논문수(residuals)로 연봉을 예측할 때의 기울기</li>
+</ul>
 <p>논문 수(<span class="math inline">\(X_2\)</span>)에 대한 부분 회귀 계수에 대해 자세히 들여다 보면,</p>
 <p>  <img src="images/partial1.png" class="img-fluid" width="260"></p>
 <p><span class="math inline">\(\widehat{Y_1}: X_1\)</span> 으로만 <span class="math inline">\(Y\)</span>를 예측했을 때의 예측치, &nbsp; <span class="math inline">\(\widehat{Y}_{12}: X_1\)</span>과 <span class="math inline">\(X_2\)</span> 로 함께 <span class="math inline">\(Y\)</span>를 예측했을 때의 예측치<br>
@@ -573,20 +567,38 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 </div>
 <p><strong>Partial regression plots</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod3)  <span class="co"># partial regression plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod3) <span class="co"># partial regression plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="regression2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
+<p>Marginal vs.&nbsp;Conditional Plots</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="regression2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <section id="measures-of-association" class="level2">
 <h2 class="anchored" data-anchor-id="measures-of-association">Measures of Association</h2>
-<p><img src="images/partial3.png" class="img-fluid" width="320"><br>
-<span class="math inline">\(R\)</span> : <span class="math inline">\(Y\)</span> 와 <span class="math inline">\(\widehat Y\)</span> 의 correlation 즉, Y와 예측값의 (선형적) 상관 관계의 정도.<br>
-또는 예측변수들의 최적의 선형 조합과 Y의 상관 관계의 정도.</p>
-<p><span class="math inline">\(R^2\)</span>: (평면의) 선형모형에 의해 설명된 Y의 변량의 비율.<br>
-또는 예측변수들의 최적의 선형 조합에 의해 설명된 Y의 변량의 비율.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="fragment">
+<p><span class="math inline">\(R\)</span>: <strong>Multiple correlation coefficient</strong></p>
+<ul>
+<li><span class="math inline">\(Y\)</span> 와 <span class="math inline">\(\widehat Y\)</span> 의 correlation 즉, Y와 회귀모형이 예측한 값의 (선형적) 상관 관계의 정도; 회귀모형의 예측의 정확성<br>
+</li>
+<li>다시말하면, 예측변수들의 최적의 선형 조합과 Y의 상관 관계의 정도.</li>
+</ul>
+<p><span class="math inline">\(R^2\)</span>: (평면의) 선형모형에 의해 설명된 Y 변량의 비율.<br>
+또는 예측변수들의 최적의 선형 조합에 의해 설명된 Y 변량의 비율.</p>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="fragment">
+<p><img src="images/partial3.png" class="img-fluid" width="320"></p>
+</div>
+</div>
+</div>
 <p><strong>Partial Associations</strong></p>
 <ul>
 <li>Partial correlation <em>(pr)</em></li>
@@ -607,114 +619,16 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <p><span class="math inline">\(sr^2\)</span> : 연봉의 변량 중 “연차로 설명되지 않는 논문수”의 변량으로 설명되는 비율<br>
 즉, 연차를 논문수에서만 partial out 시켰을 때 남은(residualized) 논문수의 변량과 연봉의 변량의 중복 정도.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod3, <span class="at">part.corr =</span> <span class="cn">TRUE</span>, <span class="at">model.info =</span> <span class="cn">FALSE</span>, <span class="at">model.fit =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-
-<table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Est.
-</th>
-<th style="text-align:right;">
-S.E.
-</th>
-<th style="text-align:right;">
-t val.
-</th>
-<th style="text-align:right;">
-p
-</th>
-<th style="text-align:right;">
-partial.r
-</th>
-<th style="text-align:right;">
-part.r
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;font-weight: bold;">
-(Intercept)
-</td>
-<td style="text-align:right;">
-43082.39
-</td>
-<td style="text-align:right;">
-3099.49
-</td>
-<td style="text-align:right;">
-13.90
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-weight: bold;">
-time
-</td>
-<td style="text-align:right;">
-982.87
-</td>
-<td style="text-align:right;">
-452.06
-</td>
-<td style="text-align:right;">
-2.17
-</td>
-<td style="text-align:right;">
-0.05
-</td>
-<td style="text-align:right;">
-0.53
-</td>
-<td style="text-align:right;">
-0.43
-</td>
-</tr>
-<tr>
-<td style="text-align:left;font-weight: bold;">
-pubs
-</td>
-<td style="text-align:right;">
-121.80
-</td>
-<td style="text-align:right;">
-149.70
-</td>
-<td style="text-align:right;">
-0.81
-</td>
-<td style="text-align:right;">
-0.43
-</td>
-<td style="text-align:right;">
-0.23
-</td>
-<td style="text-align:right;">
-0.16
-</td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; " colspan="100%">
-<sup></sup> Standard errors: OLS
-</td>
-</tr>
-</tfoot>
-
-</table>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod3, <span class="at">part.corr =</span> <span class="cn">TRUE</span>, <span class="at">model.info =</span> <span class="cn">FALSE</span>, <span class="at">model.fit =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard errors: OLS
+---------------------------------------------------------------------------
+                        Est.      S.E.   t val.      p   partial.r   part.r
+----------------- ---------- --------- -------- ------ ----------- --------
+(Intercept)         43082.39   3099.49    13.90   0.00                     
+time                  982.87    452.06     2.17   0.05        0.53     0.43
+pubs                  121.80    149.70     0.81   0.43        0.23     0.16
+---------------------------------------------------------------------------</code></pre>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -729,35 +643,35 @@ Correlations tables
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">partial.r</span>(acad0, <span class="fu">c</span>(<span class="st">"salary"</span>, <span class="st">"time"</span>), <span class="st">"pubs"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># partial correlations </span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#        salary time</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># salary   1.00 0.53</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># time     0.53 1.00</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">partial.r</span>(acad0, <span class="fu">c</span>(<span class="st">"salary"</span>, <span class="st">"pubs"</span>), <span class="st">"time"</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># partial correlations </span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#        salary pubs</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># salary   1.00 0.23</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># pubs     0.23 1.00</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cor2</span>(acad0[<span class="fu">c</span>(<span class="st">"time"</span>, <span class="st">"pubs"</span>)], acad0[<span class="st">"salary"</span>])</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#      salary</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># time   0.71</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># pubs   0.59</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">partial.r</span>(acad0, <span class="fu">c</span>(<span class="st">"salary"</span>, <span class="st">"time"</span>), <span class="st">"pubs"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># partial correlations </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#        salary time</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># salary   1.00 0.53</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># time     0.53 1.00</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">partial.r</span>(acad0, <span class="fu">c</span>(<span class="st">"salary"</span>, <span class="st">"pubs"</span>), <span class="st">"time"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># partial correlations </span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#        salary pubs</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># salary   1.00 0.23</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># pubs     0.23 1.00</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cor2</span>(acad0[<span class="fu">c</span>(<span class="st">"time"</span>, <span class="st">"pubs"</span>)], acad0[<span class="st">"salary"</span>])</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#      salary</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># time   0.71</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># pubs   0.59</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <p>Correlations with <code>salary</code></p>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table">
 <thead>
 <tr class="header">
 <th style="text-align: center;"></th>
-<th style="text-align: center;"><span class="math inline">\(r\)</span> <em>(zero-order)</em></th>
+<th style="text-align: center;"><span class="math inline">\(r\)</span> <em>(simple)</em></th>
 <th style="text-align: center;"><span class="math inline">\(pr\)</span> <em>(partial)</em></th>
 <th style="text-align: center;"><span class="math inline">\(sr\)</span> <em>(semi-partial)</em></th>
 </tr>
@@ -781,7 +695,7 @@ Correlations tables
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 2.0%;justify-content: center;">
 <p>&nbsp;</p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 38.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 48.0%;justify-content: center;">
 <table class="table">
 <thead>
 <tr class="header">
@@ -812,41 +726,46 @@ Correlations tables
 <blockquote class="blockquote">
 <p>Summarizing the results for the running example, we found <span class="math inline">\(sr^2\)</span> = .1850, <span class="math inline">\(pr^2\)</span> = .2826 and <span class="math inline">\(sr^2\)</span> = .0258, <span class="math inline">\(pr^2\)</span> = .0522. Whichever base we use, it is clear that number of publications (<span class="math inline">\(X_2\)</span>) has virtually no unique relationship to salary, that is, no relationship beyond what can be accounted for by time since doctorate (<span class="math inline">\(X_1\)</span>). On the other hand, time since doctorate (<span class="math inline">\(X_1\)</span>) is uniquely related to salary (<span class="math inline">\(sr_1\)</span>) and to salary holding publications constant (<span class="math inline">\(pr_1\)</span>) to a quite substantial degree. (p.75)</p>
 </blockquote>
-</section>
-<section id="회귀계수의-상대적-중요성" class="level2">
-<h2 class="anchored" data-anchor-id="회귀계수의-상대적-중요성">회귀계수의 상대적 중요성</h2>
+<section id="회귀계수의-상대적-중요성" class="level3">
+<h3 class="anchored" data-anchor-id="회귀계수의-상대적-중요성">회귀계수의 상대적 중요성</h3>
 <p>참고: Chapter 8. Assessing the Importance of Regressors,<br>
 in <em>Regression Analysis and Linear Models by Richard B. Darlington &amp; Andrew F. Hayes</em></p>
 <p>모든 상황에 적용할 수 있는 하나의 방법은 없으며,<br>
-연구 내용과 측정 변수들의 특성에 따라 적절한 방법을 선택. (여전히 논쟁 중이며, 새로운 방법 개발 중)</p>
+연구 내용과 측정 변수들의 특성에 따라 적절한 방법을 선택. (여전히 논쟁 중이며, 연구 중)</p>
 <ul>
 <li>표준화 회귀계수 (standardized regression coefficient)</li>
 <li><strong>Semi-partial correlation</strong> coefficient <em>(sr)</em> **</li>
+<li><strong>Semi-partial correlation</strong> squared <em>(<span class="math inline">\(sr^2\)</span>)</em> (by David C. Howell)</li>
 <li>Dominance analysis</li>
 </ul>
-<section id="표준화-회귀계수-beta" class="level3">
-<h3 class="anchored" data-anchor-id="표준화-회귀계수-beta">표준화 회귀계수 (<span class="math inline">\(\beta\)</span>)</h3>
+<section id="표준화-회귀계수-beta" class="level4">
+<h4 class="anchored" data-anchor-id="표준화-회귀계수-beta">표준화 회귀계수 (<span class="math inline">\(\beta\)</span>)</h4>
 <p>Standardized regression coefficient</p>
 <ul>
 <li>표준화하여 각 변수들의 단위가 1sd로 같아져 계수들 간에 비교가 용이하나</li>
 <li>표준화는 현 표본의 특성을 반영할 뿐 아니라 표준화가 무의미한 변수들도 존재하여 표준화에 (심각하게) 반대하는 의견도 있음.</li>
+<li>일반적으로 예측변수들간에 상관관계가 높은 경우, 회귀계수는 샘플마다 크게 달라질 수 있음에 유의.</li>
+<li>Simple regression의 경우, <span class="math inline">\(\beta = r\)</span> 이므로 표준화 회귀계수는 상관계수와 동일.
+<ul>
+<li><span class="math inline">\(b = r\)</span>, &nbsp; (<span class="math inline">\(b=r \frac{sd_Y}{sd_X}\)</span>)</li>
+</ul></li>
 </ul>
-<p>R에서 표준화 계수를 구하는 방식: <code>scale()</code>, <code>lm.beta()</code>, <code>summ()</code></p>
+<p>R에서 표준화 계수를 구하는 방식: <code>scale()</code>, <code>summ()</code></p>
 <ol type="1">
 <li><code>scale()</code> 함수로 각 변수들을 직접 표준화<br>
 참고: 표준화 한 후 estimate한 방식 vs.&nbsp;estimate한 후 표준화한 방식</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>acad0 <span class="ot">&lt;-</span> acad0 <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_std =</span> <span class="fu">scale</span>(time),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pubs_std =</span> <span class="fu">scale</span>(pubs),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary_std =</span> <span class="fu">scale</span>(salary)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>acad0 <span class="ot">&lt;-</span> acad0 <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">time_std =</span> <span class="fu">scale</span>(time),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pubs_std =</span> <span class="fu">scale</span>(pubs),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">salary_std =</span> <span class="fu">scale</span>(salary)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>또는 formula에서 직접 처리</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(<span class="fu">lm</span>(<span class="fu">scale</span>(salary) <span class="sc">~</span> <span class="fu">scale</span>(time) <span class="sc">+</span> <span class="fu">scale</span>(pubs), <span class="at">data =</span> acad0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(<span class="fu">lm</span>(<span class="fu">scale</span>(salary) <span class="sc">~</span> <span class="fu">scale</span>(time) <span class="sc">+</span> <span class="fu">scale</span>(pubs), <span class="at">data =</span> acad0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   term        estimate std.error statistic p.value
@@ -857,363 +776,70 @@ in <em>Regression Analysis and Linear Models by Richard B. Darlington &amp; Andr
 </div>
 </div>
 <ol start="2" type="1">
-<li><code>lm.beta()</code> 함수로 표준화 계수를 추가</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lm.beta)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(<span class="fu">lm.beta</span>(mod3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 6
-  term        estimate std_estimate std.error statistic       p.value
-  &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-1 (Intercept)   43082.       NA         3099.    13.9   0.00000000926
-2 time            983.        0.570      452.     2.17  0.0504       
-3 pubs            122.        0.213      150.     0.814 0.432        </code></pre>
-</div>
-</div>
-<ol start="3" type="1">
 <li><code>summ()</code> 함수의 옵션 <code>scale</code>, <code>transform.response</code>을 이용</li>
 </ol>
 <ul>
 <li>선별적으로 표준화할 변수를 지정할 수 없어서 부적절한 경우 존재</li>
 </ul>
-<div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod3, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">transform.response =</span> <span class="cn">TRUE</span>, <span class="at">model.info =</span> <span class="cn">FALSE</span>, <span class="at">model.fit =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod3, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">transform.response =</span> <span class="cn">TRUE</span>, <span class="at">model.info =</span> <span class="cn">FALSE</span>, <span class="at">model.fit =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard errors: OLS
+-----------------------------------------------
+                    Est.   S.E.   t val.      p
+----------------- ------ ------ -------- ------
+(Intercept)         0.00   0.19     0.00   1.00
+time                0.57   0.26     2.17   0.05
+pubs                0.21   0.26     0.81   0.43
+-----------------------------------------------
+
+Continuous variables are mean-centered and scaled by 1 s.d.</code></pre>
+</div>
+</div>
+<p>mod3에서 연봉에 미치는 연차와 논문수의 상대적 중요성에 대한 지표 비교</p>
+<div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div><div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-
-</div><table class="table table-striped table-hover table-condensed table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
-
+<table class="table">
 <thead>
-
-
-<tr>
-
-<th style="text-align:left;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></th>
-
-<th style="text-align:right;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-Est.
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></th>
-
-
-<th style="text-align:right;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-S.E.
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></th>
-
-<th style="text-align:right;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-t val.
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></th>
-
-
-<th style="text-align:right;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-p
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></th>
-
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\beta\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(sr\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(sr^2\)</span></th>
 </tr>
-
-
 </thead>
-
 <tbody>
-
-
-<tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-(Intercept)
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-
-<td style="text-align:right;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.00
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-<td style="text-align:right;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.19
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-
-<td style="text-align:right;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.00
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-<td style="text-align:right;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-1.00
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-
+<tr class="odd">
+<td style="text-align: center;">time</td>
+<td style="text-align: center;">0.57</td>
+<td style="text-align: center;">0.43</td>
+<td style="text-align: center;">0.18</td>
 </tr>
-
-<tr>
-
-
-<td style="text-align:left;font-weight: bold;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-time
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-<td style="text-align:right;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.57
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-
-<td style="text-align:right;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.26
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-<td style="text-align:right;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-2.17
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-
-<td style="text-align:right;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.05
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
+<tr class="even">
+<td style="text-align: center;">pubs</td>
+<td style="text-align: center;">0.21</td>
+<td style="text-align: center;">0.16</td>
+<td style="text-align: center;">0.03</td>
 </tr>
-
-
-<tr>
-
-<td style="text-align:left;font-weight: bold;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-pubs
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-
-<td style="text-align:right;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.21
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-<td style="text-align:right;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.26
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-
-<td style="text-align:right;">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.81
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-<td style="text-align:right;">
-
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-0.43
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-
-</tr>
-
 </tbody>
-
-
-<tfoot>
-
-<tr>
-
-
-<td style="padding: 0; " colspan="100%">
-
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<sup></sup> Standard errors: OLS; Continuous variables are mean-centered and scaled by 1 s.d.
-</div>
-
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-</div></div></td>
-
-</tr>
-
-
-</tfoot>
-
 </table>
 </div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 2.0%;justify-content: center;">
+<p>&nbsp;</p>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="model-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="model-comparison">Model Comparison</h2>
+<section id="model-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="model-comparison">Model Comparison</h3>
 <ol type="1">
 <li>mod1 vs.&nbsp;mod3: nested model</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time, <span class="at">data =</span> acad0)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time <span class="sc">+</span> pubs, <span class="at">data =</span> acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time, <span class="at">data =</span> acad0)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time <span class="sc">+</span> pubs, <span class="at">data =</span> acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -1231,7 +857,7 @@ pubs
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod1)  <span class="co"># library(broom)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod1)  <span class="co"># library(broom)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 12
   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
@@ -1239,7 +865,7 @@ pubs
 1     0.505         0.466 5763.      13.2 0.00300     1  -150.  306.  308.
 # ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 12
   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
@@ -1250,7 +876,7 @@ pubs
 </div>
 <p><span class="math inline">\(\Delta R^2\)</span> 가 통계적으로 유의한지, 즉 유의하지 증가했는지를 확인</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod1, mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod1, mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   Res.Df        RSS    Df `Sum of Sq`      F `Pr(&gt;F)`
@@ -1261,8 +887,8 @@ pubs
 </div>
 <p><br> 2. mod2 vs.&nbsp;mod3: nested model</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> pubs, <span class="at">data =</span> acad0)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time <span class="sc">+</span> pubs, <span class="at">data =</span> acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> pubs, <span class="at">data =</span> acad0)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time <span class="sc">+</span> pubs, <span class="at">data =</span> acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -1280,7 +906,7 @@ pubs
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod2)  <span class="co"># library(broom)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod2)  <span class="co"># library(broom)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 12
   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
@@ -1288,7 +914,7 @@ pubs
 1     0.346         0.295 6624.      6.86  0.0212     1  -152.  310.  312.
 # ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 12
   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
@@ -1299,7 +925,7 @@ pubs
 </div>
 <p><span class="math inline">\(\Delta R^2\)</span> 가 통계적으로 유의한지, 즉 유의하지 증가했는지를 확인</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod2, mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod2, mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   Res.Df        RSS    Df `Sum of Sq`     F `Pr(&gt;F)`
@@ -1308,6 +934,7 @@ pubs
 2     12 409159359.     1  161181042.  4.73   0.0504</code></pre>
 </div>
 </div>
+</section>
 </section>
 <section id="patterns-of-association" class="level2">
 <h2 class="anchored" data-anchor-id="patterns-of-association">Patterns of Association</h2>
@@ -1327,17 +954,17 @@ pubs
 </ul>
 <p>만약, 연차의 효과 $1224이 논문수를 고려했을 때 줄어든($983) 수준을 훨씬 넘어 통계적으로 유의하지 않을 정도로 0에 가까워진다면, 연차의 효과는 모두 논문의 효과를 거쳐 나타나는 것이라고 말할 수 있음. 이 때, 완전 매개 (fully mediate)한다고 표현함.</p>
 <p><img src="images/salary_model3.png" class="img-fluid" width="400"></p>
-<p>매개효과의 통계적 분석 절차는 여러 방식이 제시되고 있으나, 일반적인 절차는 부트스랩핑(bootstraping)을 통해 추정하는 것임.</p>
+<p>매개효과의 통계적 분석 절차는 여러 방식이 제시되고 있으나, 일반적인 절차는 부트스랩핑(bootstraping)을 통해 추정.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mod_med <span class="ot">&lt;-</span> <span class="fu">mediate</span>(salary <span class="sc">~</span> time <span class="sc">+</span> (pubs), <span class="at">data =</span> acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>mod_med <span class="ot">&lt;-</span> <span class="fu">mediate</span>(salary <span class="sc">~</span> time <span class="sc">+</span> (pubs), <span class="at">data =</span> acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/mediation_salary.png" class="img-fluid" width="500"></p>
 <div class="cell">
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_med)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_med)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: mediate(y = salary ~ time + (pubs), data = acad0)
 
@@ -1365,20 +992,119 @@ pubs  121.8 149.7 0.81 12 0.432
 
  'ab'  effect estimates (through all  mediators)
      salary   boot     sd   lower  upper
-time 241.53 228.65 278.32 -313.47 801.27</code></pre>
+time 241.53 230.25 280.14 -290.91 792.83</code></pre>
 </div>
 </div>
+<section id="case-study-1" class="level4">
+<h4 class="anchored" data-anchor-id="case-study-1">Case study 1</h4>
+<p><strong>Leerkes and Crockenberg (1999)</strong>의 육아에 대한 효능감 연구<br>
+섹션 참고</p>
 <hr>
+</section>
 </section>
 <section id="causal-relations" class="level3">
 <h3 class="anchored" data-anchor-id="causal-relations">Causal Relations</h3>
 <p>일반적인 인과관계의 형태에 대해서 분류해보면, (p.76)</p>
 <p><img src="images/causal_rel2.png" class="img-fluid" style="width:100.0%"></p>
 <p>흔히 나타나는 partial redundancy인 Model B의 예를 보면,</p>
-<p><img src="images/causal_rel3.png" class="img-fluid" width="430"></p>
-
-
+<p><img src="images/causal_rel3.png" class="img-fluid" width="800"></p>
+<section id="case-study-2" class="level4">
+<h4 class="anchored" data-anchor-id="case-study-2">Case study 2</h4>
+<p><strong>Guber (1999)</strong>의 SAT 점수와 주(states)의 교육지출 사이의 관계<br>
+섹션 참고</p>
 </section>
+<section id="case-study-3" class="level4">
+<h4 class="anchored" data-anchor-id="case-study-3">Case study 3</h4>
+<p><strong>National Education Longitudinal Study of 1988</strong>: 10학년 학생들의 과제와 성적과의 관계<br>
+섹션 참고</p>
+<hr>
+</section>
+</section>
+</section>
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<p>Source: p 570, Statistical Methods for Psychology (8e) by Dave C. Howell</p>
+<section id="a.-mireault-1990" class="level3">
+<h3 class="anchored" data-anchor-id="a.-mireault-1990">A. Mireault (1990)</h3>
+<p>Data: <a href="https://www.dropbox.com/s/3pjycx17hium0km/mireault.csv?dl=1">Mireault.csv</a></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Data Description
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Mireault (1990) collected data from 381 college students, some of whom had lost a parent by death during their childhood. She had three groups of students. Group I was composed of subjects who had lost a parent. Group 2 was composed of subjects whose parents were still alive and married to each other. Group 3 consisted of students whose parents were divorced. Mireault was interested in observing the effects of parental loss on the person’s current level of symptomatology (as measured by the Brief Symptom Inventory, Derogatis, 1983) and on the individual’s self-perceived vulnerability to future loss. In the interest of space, the data set includes only the total vulnerability measure, and not the subscales. There is also a single measure for social support. For all measures, a higher score represents more of the concept being measured. The variables, and their location in the file, are listed following the sample data. Missing data are represented by a period. The first three lines of data are shown below as an example.</p>
+<p>ID 1-3 Subject identification number<br>
+Group 5 1 = loss; 2 = married; 3 = divorced<br>
+Gender 7 1 = male; 2 = female<br>
+YearColl 9 1 = first year; 2 = sophomore; and so on<br>
+College 11 1 = arts and sciences; 2 = health; 3 = engineering; 4 = business; 5 = agriculture<br>
+GPA 13 4 = A; 3 = B; 2 = C; 1 = D; 0 = F<br>
+LostPGen 15 Gender of lost parent<br>
+AgeAtLos 17-18 Age at parent’s death<br>
+SomT 20-21 Somatization T score<br>
+ObsessT 23-24 Obsessive-compulsive T score<br>
+SensitT 26-27 Interpersonal sensitivity T score<br>
+DepressT 29-30 Depression T score<br>
+AnxT 32-33 Anxiety T score<br>
+HostT 35-36 Hostility T score<br>
+PhobT 38-39 Phobic anxiety T score<br>
+ParT 41-42 Paranoid ideation T score<br>
+PsyT 44-45 Psychoticism T score<br>
+GSIT 47-48 Global symptom index T score<br>
+PVTotal 50-52 Perceived vulnerability total score<br>
+PVLoss 54-56 Perceived vulnerability to loss<br>
+SuppTotl 58-60 Social support score</p>
+</div>
+</div>
+</div>
+<p>15.26 Use the data set Mireault.dat from Mireault (1990), described in the Appendix and found on the Web site for this book, to examine the relationship between current levels of depression and other variables. A reasonable model might propose that depression (DepressT) is a function of (1) the person’s current perceived level of vulnerability to additional loss (PVLoss), (2) the person’s level of social support (SuppTotl), and (3) the age at which the person lost a parent during childhood (AgeAtLos). Use any statistical package to evaluate the model outlined here. (Because only subjects in Group 1 lost a parent to death during childhood, your analysis will be restricted to that group.)</p>
+<p><img src="images/mireault1.png" class="img-fluid" width="450"></p>
+<p>15.28 In Exercise 15.26 we posited a model in which depression was a function of perceived vulnerability, social support, and age at loss. An alternative, or additional, view might be that vulnerability itself is a function of social support and age at loss. (If you lost a parent when you were very young and you have little social support, then you might feel particularly vulnerable to future loss.)</p>
+<p><img src="images/mireault2.png" class="img-fluid" width="450"></p>
+<p>15.24 Notice that in the diagram in Exercise 15.28 SuppTotl has both a direct and an indirect effect on Depression. Its direct effect is the arrow that goes from SuppTotl to DepressT. The indirect effect (which here is not significant) comes from the fact that SuppTotl influences PVLoss, which in turn affects DepressT. Explain these direct and indirect effects in terms of semipartial regression coefficients.</p>
+<p>15.25 A compulsive researcher who wants to cover all possibilities might throw in the total score on perceived vulnerability (PVTotal) as well as PVLoss. (The total includes vulnerability to accidents, illness, and life-style related problems.)</p>
+<ol type="a">
+<li>Run this analysis adding PVTotal to the variables used in Exercise 15.26.</li>
+<li>What effect did the inclusion of PVTotal have on <span class="math inline">\(R^2\)</span>? What effect did it have on the standard error of the regression coefficient for PVLoss? If your program will also give you tolerance and VIF, what effect does the inclusion of PVTotal have on them?</li>
+<li>What would you conclude about the addition of PVTotal to our model?</li>
+</ol>
+<p>15.29 Repeat the analysis of Exercise 15.26, requesting statistics on regression diagnostics.</p>
+<ol type="a">
+<li>What, if anything, do these statistics tell you about the data set?</li>
+<li>Delete the subject with the largest measure of influence (usually indexed by Cook’s D). What effect does that have for this particular data set?</li>
+</ol>
+</section>
+<section id="b.-malcarne-compas-epping-and-howell-1995" class="level3">
+<h3 class="anchored" data-anchor-id="b.-malcarne-compas-epping-and-howell-1995">B. Malcarne, Compas, Epping, and Howell (1995)</h3>
+<p>Pre-test, Post-test 변화</p>
+<p>Data: <a href="https://www.dropbox.com/s/8jsmgu7a8pfdoaz/Malcarne.csv?dl=1">Malcarne.csv</a></p>
+<p><img src="images/malcarne.png" class="img-fluid" width="450"></p>
+<p>15.36 Malcarne, Compas, Epping, and Howell (1995) examined 126 cancer patients soon after they were diagnosed with cancer and at a four-month follow-up. At the initial interviews (Time 1) they collected data on the patients’ current levels of distress (Distres1), the degree to which they attributed the blame for the cancer to the type of person they are (BlamPer), and the degree to which they attributed the cancer to the kind of behaviors in which they had engaged, such as smoking or high fat diets (BlamBeh). At the four-month follow-up (Time 2) the authors again collected data on the levels of psychological distress that the patients reported (Distres2). (They also collected data on a number of other variables, which do not concern us here.) The data are available on the Web site for this course and named Malcarne.dat.</p>
+<ol type="a">
+<li>What would you conclude if you attempt to predict Distres2 from Distres1 and BlamPer?</li>
+<li>Why would I want to include Distres1 in the analysis for part a?</li>
+<li>How would you interpret the results if you predict the difference between Distres2 and Distres1 instead of predicting Distres2 only?</li>
+</ol>
+</section>
+<section id="c.-guber-1999" class="level3">
+<h3 class="anchored" data-anchor-id="c.-guber-1999">C. Guber (1999)</h3>
+<p>Case study 2의 연장</p>
+<ul>
+<li>SAT 테스트보다 ACT 테스트에 대해 교육지출의 효과를 보는 것이 교육의 질에 대한 논의에서 더 타당할 수 있음.</li>
+<li>두 모형을 비교해 보고 차이를 살펴보도록 하세요.</li>
+<li>Data: <a href="https://www.dropbox.com/s/ezviy8cdz7039cn/ACT.csv?dl=1">ACT.csv</a></li>
+</ul>
+<p>15.40 This chapter we spent a lot of time with Guber’s study of educational expenditures and found that when we controlled for the percentage of students taking the SAT exam, Expend was not a significant predictor. However, the SAT is not a good dependent variable in discussing the quality of education in a state. Perhaps a ACT, which tests something somewhat different, is a better predictor. Use SPSS and the data set, which is available on the book’s Web site and named Tab15-1.dat, to answer that question. Be complete in your answer, examining the individual variables and the residuals.</p>
+
+
 </section>
 </section>
 
@@ -1537,8 +1263,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/categories.html" class="pagination-link">
-        <span class="nav-page-text">Categorical IVs</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contents/case1.html" class="pagination-link">
+        <span class="nav-page-text">Case Study 1</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
