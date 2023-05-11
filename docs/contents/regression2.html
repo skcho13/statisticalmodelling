@@ -502,8 +502,8 @@ pubs                  121.80    149.70     0.81   0.43
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f72ada70dfc598917f28" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f72ada70dfc598917f28">{"x":{"visdat":{"21976dc412b6":["function () ","plotlyVisDat"]},"cur_data":"21976dc412b6","attrs":{"21976dc412b6":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-092b23af96600be0deb7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-092b23af96600be0deb7">{"x":{"visdat":{"2c683dfad31d":["function () ","plotlyVisDat"]},"cur_data":"2c683dfad31d","attrs":{"2c683dfad31d":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -545,7 +545,7 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <ul>
 <li>다른 변수들이 <strong>partial out</strong> 된 후의 효과.<br>
 </li>
-<li>실제로 $122는 연차로 (선형적으로) 예측되지 않는 논문수(residuals)로 연봉을 예측할 때의 기울기</li>
+<li>실제로 $122는 연차로 (선형적으로) 예측되지 않는 논문수(residuals)로 [연차로 예측되지 않는] 연봉을 예측할 때의 기울기</li>
 </ul>
 <p>논문 수(<span class="math inline">\(X_2\)</span>)에 대한 부분 회귀 계수에 대해 자세히 들여다 보면,</p>
 <p>  <img src="images/partial1.png" class="img-fluid" width="260"></p>
@@ -565,7 +565,8 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <p><img src="images/partial_regression.png" class="img-fluid figure-img" width="810"></p>
 </figure>
 </div>
-<p><strong>Partial regression plots</strong></p>
+<p><strong>Added-variable plots</strong><br>
+Partial regression plots</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod3) <span class="co"># partial regression plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -991,8 +992,8 @@ time      1.98 0.63 3.14 13 0.00783
 pubs  121.8 149.7 0.81 12 0.432
 
  'ab'  effect estimates (through all  mediators)
-     salary   boot     sd   lower  upper
-time 241.53 230.25 280.14 -290.91 792.83</code></pre>
+     salary   boot    sd   lower  upper
+time 241.53 223.39 274.7 -310.41 772.58</code></pre>
 </div>
 </div>
 <section id="case-study-1" class="level4">
