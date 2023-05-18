@@ -52,6 +52,7 @@ website:
               - href: contents/case1.qmd
               - href: contents/case2.qmd
               - href: contents/case3.qmd
+              - href: contents/case4.qmd
           - href: contents/categories.ipynb
             text: Categorical IVs
           - href: contents/interaction.ipynb

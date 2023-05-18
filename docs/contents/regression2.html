@@ -259,6 +259,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../contents/case3.html" class="sidebar-item-text sidebar-link">Case Study 3</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/case4.html" class="sidebar-item-text sidebar-link">Salary</a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item">
@@ -335,16 +340,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#patterns-of-association" id="toc-patterns-of-association" class="nav-link" data-scroll-target="#patterns-of-association">Patterns of Association</a>
   <ul class="collapse">
-  <li><a href="#direct-and-indirect-effects" id="toc-direct-and-indirect-effects" class="nav-link" data-scroll-target="#direct-and-indirect-effects">Direct and Indirect Effects</a>
-  <ul class="collapse">
-  <li><a href="#case-study-1" id="toc-case-study-1" class="nav-link" data-scroll-target="#case-study-1">Case study 1</a></li>
-  </ul></li>
-  <li><a href="#causal-relations" id="toc-causal-relations" class="nav-link" data-scroll-target="#causal-relations">Causal Relations</a>
-  <ul class="collapse">
-  <li><a href="#case-study-2" id="toc-case-study-2" class="nav-link" data-scroll-target="#case-study-2">Case study 2</a></li>
-  <li><a href="#case-study-3" id="toc-case-study-3" class="nav-link" data-scroll-target="#case-study-3">Case study 3</a></li>
+  <li><a href="#direct-and-indirect-effects" id="toc-direct-and-indirect-effects" class="nav-link" data-scroll-target="#direct-and-indirect-effects">Direct and Indirect Effects</a></li>
+  <li><a href="#spurious-relationships" id="toc-spurious-relationships" class="nav-link" data-scroll-target="#spurious-relationships">Spurious Relationships</a></li>
+  <li><a href="#causal-relations" id="toc-causal-relations" class="nav-link" data-scroll-target="#causal-relations">Causal Relations</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies">Case studies</a></li>
+  <li><a href="#path-analysis-latent-variables" id="toc-path-analysis-latent-variables" class="nav-link" data-scroll-target="#path-analysis-latent-variables">Path Analysis &amp; Latent Variables</a>
+  <ul>
+  <li><a href="#latent-variable-model-잠재-변수-모형" id="toc-latent-variable-model-잠재-변수-모형" class="nav-link" data-scroll-target="#latent-variable-model-잠재-변수-모형">Latent variable model (잠재 변수 모형)</a></li>
   </ul></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul>
@@ -502,8 +506,8 @@ pubs                  121.80    149.70     0.81   0.43
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e32e9195a4a68dcf591b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-e32e9195a4a68dcf591b">{"x":{"visdat":{"33e93259d89d":["function () ","plotlyVisDat"]},"cur_data":"33e93259d89d","attrs":{"33e93259d89d":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-aad2951f91057f21930b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-aad2951f91057f21930b">{"x":{"visdat":{"4dbccbf111f":["function () ","plotlyVisDat"]},"cur_data":"4dbccbf111f","attrs":{"4dbccbf111f":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -566,7 +570,7 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 </figure>
 </div>
 <p><strong>Added-variable plots</strong><br>
-Partial regression plots</p>
+aka partial regression plots</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod3) <span class="co"># partial regression plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -591,8 +595,9 @@ Partial regression plots</p>
 </li>
 <li>다시말하면, 예측변수들의 최적의 선형 조합과 Y의 상관 관계의 정도.</li>
 </ul>
-<p><span class="math inline">\(R^2\)</span>: (평면의) 선형모형에 의해 설명된 Y 변량의 비율.<br>
-또는 예측변수들의 최적의 선형 조합에 의해 설명된 Y 변량의 비율.</p>
+<p><span class="math inline">\(R^2\)</span>: (평면의) 선형모형에 의해 설명된 Y 변량의 비율:<br>
+또는 예측변수들의 최적의 선형 조합에 의해 설명된 Y 변량의 비율.<br>
+즉, <span class="math inline">\(\displaystyle\frac{V(\widehat{Y})}{V(Y)}\)</span> 또는 <span class="math inline">\(\displaystyle 1 - \frac{V(e)}{V(Y)}\)</span></p>
 </div>
 </div><div class="column" style="width:40%;">
 <div class="fragment">
@@ -744,11 +749,16 @@ in <em>Regression Analysis and Linear Models by Richard B. Darlington &amp; Andr
 <p>Standardized regression coefficient</p>
 <ul>
 <li>표준화하여 각 변수들의 단위가 1sd로 같아져 계수들 간에 비교가 용이하나</li>
-<li>표준화는 현 표본의 특성을 반영할 뿐 아니라 표준화가 무의미한 변수들도 존재하여 표준화에 (심각하게) 반대하는 의견도 있음.</li>
-<li>일반적으로 예측변수들간에 상관관계가 높은 경우, 회귀계수는 샘플마다 크게 달라질 수 있음에 유의.</li>
-<li>Simple regression의 경우, <span class="math inline">\(\beta = r\)</span> 이므로 표준화 회귀계수는 상관계수와 동일.
+<li>표준화에 (심각하게) 반대하는 의견도 있음.
+<ul>
+<li>현 표본의 특성을 반영하여, 샘플들마다 계수값이 크게 달라질 수 있음. (특히, 변수들간의 상관이 큰 경우)</li>
+<li>표준화가 무의미한 변수들도 존재하며; ex. 성별</li>
+<li>인과적 의미를 지니려면 원 단위로 표현하는 것이 더 적절함. (1sd 만큼 늘어났다는 것이 의미가 있을까?)</li>
+</ul></li>
+<li>Simple regression의 경우, <span class="math inline">\(\beta = r\)</span> 즉, 표준화 회귀계수는 상관계수와 같음.
 <ul>
 <li><span class="math inline">\(b = r\)</span>, &nbsp; (<span class="math inline">\(b=r \frac{sd_Y}{sd_X}\)</span>)</li>
+<li><span class="math inline">\(b_i = \beta_i \frac{sd_Y}{sd_i}\)</span></li>
 </ul></li>
 </ul>
 <p>R에서 표준화 계수를 구하는 방식: <code>scale()</code>, <code>summ()</code></p>
@@ -962,9 +972,6 @@ Continuous variables are mean-centered and scaled by 1 s.d.</code></pre>
 </div>
 <p><img src="images/mediation_salary.png" class="img-fluid" width="500"></p>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_med)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: mediate(y = salary ~ time + (pubs), data = acad0)
@@ -992,35 +999,171 @@ time      1.98 0.63 3.14 13 0.00783
 pubs  121.8 149.7 0.81 12 0.432
 
  'ab'  effect estimates (through all  mediators)
-     salary   boot     sd  lower  upper
-time 241.53 225.65 275.74 -290.5 774.38</code></pre>
+     salary   boot     sd   lower  upper
+time 241.53 233.73 282.85 -298.35 797.55</code></pre>
 </div>
 </div>
-<section id="case-study-1" class="level4">
-<h4 class="anchored" data-anchor-id="case-study-1">Case study 1</h4>
-<p><strong>Leerkes and Crockenberg (1999)</strong>의 육아에 대한 효능감 연구<br>
-섹션 참고</p>
-<hr>
+<p><br></p>
 </section>
+<section id="spurious-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="spurious-relationships">Spurious Relationships</h3>
+<p>사실, 위에서 다룬 데이터(N=15)로만 보자면,<br>
+논문수(<code>pubs</code>)와 연봉(<code>salary</code>)의 관계는 <strong>spurious</strong>한 관계라고 잠정적으로 말할 수 있음.</p>
+<ul>
+<li>연차(<code>time</code>)가 “통계적으로 통제” 혹은 “partial out” 되었을 때,<br>
+partial correlation <span class="math inline">\(pr\)</span> = 0.23 이며, 그 제곱 <span class="math inline">\(pr^2\)</span> = 0.05</li>
+<li>뿐만 아니라, <em>not significant</em></li>
+</ul>
+<p>연차(<code>time</code>)를 논문수와 연봉의 <strong>common cause</strong> 라고 말하며, <strong>confounding</strong>이 되어 논문수와 연봉의 인과관계는 실제로 없을 수 있음을 암시함.</p>
+<p><img src="images/salary_model4.png" class="img-fluid" width="500"></p>
+<hr>
 </section>
 <section id="causal-relations" class="level3">
 <h3 class="anchored" data-anchor-id="causal-relations">Causal Relations</h3>
-<p>일반적인 인과관계의 형태에 대해서 분류해보면, (p.76)</p>
+<p>세 변수 간의 일반적인 인과관계의 형태에 대해서 분류해보면, (p.76, p.458)</p>
 <p><img src="images/causal_rel2.png" class="img-fluid" style="width:100.0%"></p>
 <p>흔히 나타나는 partial redundancy인 Model B의 예를 보면,</p>
 <p><img src="images/causal_rel3.png" class="img-fluid" width="800"></p>
-<section id="case-study-2" class="level4">
-<h4 class="anchored" data-anchor-id="case-study-2">Case study 2</h4>
-<p><strong>Guber (1999)</strong>의 SAT 점수와 주(states)의 교육지출 사이의 관계<br>
-섹션 참고</p>
-</section>
-<section id="case-study-3" class="level4">
-<h4 class="anchored" data-anchor-id="case-study-3">Case study 3</h4>
-<p><strong>National Education Longitudinal Study of 1988</strong>: 10학년 학생들의 과제와 성적과의 관계<br>
-섹션 참고</p>
+<p>Moderators (조절변수): interaction effects<br>
+ex. 연령(X)에 따라 지구력(Y)이 감소하는 관계가 운동한 기간(Z)에 따라 변화</p>
+<p><img src="images/causal_rel4.png" class="img-fluid" width="380"></p>
 <hr>
 </section>
 </section>
+</section>
+<section id="case-studies" class="level1">
+<h1>Case studies</h1>
+<ul>
+<li><strong>Leerkes and Crockenberg (1999)</strong>의 육아에 대한 효능감 연구<br>
+</li>
+<li><strong>Guber (1999)</strong>의 SAT 점수와 주(states)의 교육지출 사이의 관계<br>
+</li>
+<li><strong>National Education Longitudinal Study of 1988</strong>: 10학년 학생들의 과제와 성적과의 관계</li>
+</ul>
+<hr>
+</section>
+<section id="path-analysis-latent-variables" class="level1">
+<h1>Path Analysis &amp; Latent Variables</h1>
+<p>연봉에 미치는 영향에 대한 full model (p.461)<br>
+<img src="images/salary_model_full.png" class="img-fluid" width="550"></p>
+<ul>
+<li>Exogenous and endogenous variables</li>
+<li><span class="math inline">\(U_Y\)</span>: “<span class="math inline">\(e_Y\)</span> (for error variance) or <span class="math inline">\(U_Y\)</span> (for <strong>unmeasured causes</strong>), representing the miscellaneous unknown or unmeasured(”random”) causes of variables, about which our data, and perhaps our theory as well, are silent”</li>
+<li><span class="math inline">\(U_Y\)</span>는 모든 측정된 변수와 독립임을 가정: 그렇지 않으면 인과를 유추하기 어려워짐. 숨은 confounder가 존재할 수 있는 가능성이 존재.</li>
+</ul>
+<blockquote class="blockquote">
+<p>An important set of residual causes of our variables as measured in the behavioral sciences are those collectively referred to as <strong><em>measurement error</em></strong>, and including such things as day to day or moment to moment fluctuation in response probability, unclean test tubes or imperfectly standardized reagents, the impact of temporary illness or fatigue, or that miscellany of item content that is irrelevant to the main thrust of the measures included in the model. (p.&nbsp;459)</p>
+</blockquote>
+<p>Causal claim를 하기 위해서는 항상 주의해야 하며,<br>
+회귀계수가 인과관계를 올바르게 표현하려면, 주요한 confounding이 모형에 포함되어 있어 모형을 심각히 왜곡하는 spurious한 관계들이 제거되어야 함.</p>
+<ul>
+<li>앞서 다룬 예제에서보면, 논문 한 편의 증가가 연봉을 평균적으로 $336 증가시킨다고 말하는 것은 연차라는 common cause가 존재하지 않을 때에 가능함.</li>
+<li>실제로 연차를 모형에 포함함으로써 논문의 영향력은 $122로 줄었음.</li>
+</ul>
+<p>모든 spurious한 관계를 다 제거할 수 없기는 하나 중요한 confounder을 찾아 모형에 포함시키는 노력이 필요.<br>
+적어도 mediator들이 빠진 것은 모형을 심각히 저해하지는 않음.</p>
+<ul>
+<li>예를 들어 학장과의 정치적 단결, 다른 대학으로부터의 취업 제안을 알리거나, 대학에서의 과거 및 현재 다른 활동들이 연봉에 영향을 미칠 수 있음.</li>
+<li>하지만, 이는 mediator들이 될 수 있으나 confounder들은 아님.</li>
+</ul>
+<p>연구자가 설정한 모형이 데이터와 일치하는가에 대한 모형 적합도 (model fit)를 살펴볼 수 있는데, 다음과 같이<br>
+<strong>model implied/predicted covariance</strong> 과 actual covariance (saturated model)가 얼마나 불일치하는지에 대한 다양한 지표들을 이용해 설정한 모형이 틀린 모형은 아닐 것이라고 추정할 수 있음.</p>
+<p>예를 들어, 연구자가 다음 그림의 두번째 모형을 세웠다면,</p>
+<p><img src="images/sem_salary.png" class="img-fluid" width="700"></p>
+<div class="cell">
+
+</div>
+<p><em>회귀계수의 비교</em> (<code>salary</code> 단위: 1000)</p>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>       salary  time  pubs
+salary      0 0.983 0.122
+time        0 0.000 0.217
+pubs        0 0.000 0.000</code></pre>
+</div>
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>       salary time  pubs
+salary      0    0 0.336
+time        0    0 0.217
+pubs        0    0 0.000</code></pre>
+</div>
+</div>
+</div>
+<p><em>상관계수의 비교</em></p>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>       salary  time  pubs
+salary  1.000            
+time    0.710 1.000      
+pubs    0.588 0.657 1.000</code></pre>
+</div>
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>       salary  time  pubs
+salary  1.000            
+time    0.386 1.000      
+pubs    0.588 0.657 1.000</code></pre>
+</div>
+</div>
+</div>
+<p><em>상관계수의 차이</em><br>
+actual correlation/covariance (saturated model) vs.&nbsp;<strong>model implied/predicted</strong> correlation/covariance matrix</p>
+<ul>
+<li>raw vs.&nbsp;standardized</li>
+</ul>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>       salary  time  pubs
+salary  0.000            
+time    0.324 0.000      
+pubs    0.000 0.000 0.000</code></pre>
+</div>
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>       salary  time  pubs
+salary  0.000            
+time    1.818 0.000      
+pubs    0.000 0.000 0.000</code></pre>
+</div>
+</div>
+</div>
+<p>위의 covariance matrix를 이용하여 다양한 지표들이 이용해 모형의 적합도를 추정</p>
+<ul>
+<li>산술적 차이나 비율등의 차이로 비교 (residual covariance matrix, 잔차 행렬)
+<ul>
+<li>SRMR : 잔차 covariace 값들의 평균 정도를 수량화</li>
+</ul></li>
+<li>inferential vs.&nbsp;descriptive indices
+<ul>
+<li><span class="math inline">\(\chi^2\)</span> : saturated 모형과 설정한 모형이 같다는 가설을 통계적으로 검정</li>
+<li>GFI, NFI 등</li>
+</ul></li>
+<li>alternatives: RMSEA, CFI 등</li>
+</ul>
+<section id="latent-variable-model-잠재-변수-모형" class="level4">
+<h4 class="anchored" data-anchor-id="latent-variable-model-잠재-변수-모형">Latent variable model (잠재 변수 모형)</h4>
+<p>앞서 논의한 회귀분석은 구체적으로 측정한 변수들간의 관계에 대한 것이었는데, 연구자는 원래 좀 더 추상적이고 개념적인 대상인 <strong>construct</strong>에 대해 이론적 논의를 하고자 하는 취지에서 시작한 것일 수 있음. 예를 들어, 아래 그림과 같이 (p.471)</p>
+<ul>
+<li>연봉은 사회의 보상체계 (reward system)의 한 단면을 본 것이고,</li>
+<li>논문수는 개인의 생산성 (productivity)를</li>
+<li>인용수는 개인의 역량/우수성 (eminence)를</li>
+<li>연차는 개인의 연륜 (seniority)를</li>
+<li>성별은 사회적 지위 (status position)라는 construct를 구성하는 요소로 볼 수 있음.</li>
+</ul>
+<p><img src="images/salary_latent.png" class="img-fluid" width="700"></p>
+<p>연구자는 대학기관에서 보상체계에 영향을 주는 이론적 construct의 상대적 영향을 탐구할 목적으로, 구체적인 한 단면을 들여다 봄으로써 그 영향력에 대해 살펴볼 수 있었고, 궁극적으로 다른 기관들 (ex. 정부기관, 기업체 등)에서의 사회보상체계에 대해서도 비교해볼 수 있음.</p>
+<p>한편, 이론적인 construct의 프레임워크에서 탐구하고자 한다면, 각 construct의 다양한 면을 모두 포함하도록 하는 것이 이상적이며, 이를 construct를 상징하는 (unobserved) latent variable (잠재 변수)로 취급하여 latent variable model (잠재 변수 모형)을 구성할 수 있음.</p>
+<ul>
+<li>잠재변수의 구성에 관한 <strong>measuremnt model (측정 모형)</strong> 부분과 (factor analysis)</li>
+<li>잠재변수들간의 관계에 관한 <strong>structural model (구조 모형)</strong> 부분으로 구성됨.</li>
+<li>장점 중의 하나는 the error-free constructs의 효과를 추정</li>
+<li>두번째 장점은 an overall test of the fit of the model to the data</li>
+</ul>
+<p>많은 (측정) 변수들을 동시에 고려해서 잠재 변수 모형을 세우기보다는 3, 4개의 변수들로 이루어진 2, 3개의 잠재 변수들로 구성된 모형의 일부분을 하나씩 살펴보는 것이 효과적이며, 이후 변수들을 추가하거나 모형의 다른 부분을 탐색하는 것이 적절함.</p>
+<p>인과모형에서 가장 중요한 것은 논리적이고 이론적인 뒷받침하에 그 타당성이 힘을 얻는 것임을 명심.<br>
+예를 들어, 논문수가 인용수에 영향을 미친다고 설정한 모형과 그 반대로 설정한 모형 중 어느 모형이 더 타당한지는 데이터로 실증적으로 검증할 수 없음. (소위 equivalent models)</p>
+<hr>
 </section>
 </section>
 <section id="exercises" class="level1">

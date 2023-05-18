@@ -9,7 +9,7 @@
 <meta name="author" content="Sungkyun Cho">
 <meta name="dcterms.date" content="2023-02-17">
 
-<title>CHA Stats in R - Interaction Effects</title>
+<title>CHA Stats in R - Salary</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../contents/inference.html" rel="next">
-<link href="../contents/categories.html" rel="prev">
+<link href="../contents/categories.html" rel="next">
+<link href="../contents/case3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Interaction Effects</h1>
+      <h1 class="quarto-secondary-nav-title">Salary</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -167,11 +167,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../contents/regression2.html" class="sidebar-item-text sidebar-link">Multiple Regression</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/case1.html" class="sidebar-item-text sidebar-link">Case Study 1</a>
@@ -189,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/case4.html" class="sidebar-item-text sidebar-link">Salary</a>
+  <a href="../contents/case4.html" class="sidebar-item-text sidebar-link active">Salary</a>
   </div>
 </li>
       </ul>
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/Interaction.html" class="sidebar-item-text sidebar-link active">Interactions</a>
+  <a href="../contents/Interaction.html" class="sidebar-item-text sidebar-link">Interactions</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,8 +259,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Interaction Effects</h1>
-<p class="subtitle lead">Applied Multiple Regression/Correlation Analysis for the Behavioral by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. AikenSciences</p>
+<h1 class="title d-none d-lg-block">Salary</h1>
+<p class="subtitle lead">Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken</p>
 </div>
 
 
@@ -287,10 +287,22 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<ul>
-<li>두 예측변수를 동시에 보고, regression plane의 입장에서 보았을 때</li>
-<li>한 예측변수가 변할 때, 다른 예측변수와 Y의 관계를 보았을 때</li>
-</ul>
+<div class="cell">
+
+</div>
+<p>연봉에 미치는 영향에 대한 full model (p.461)<br>
+<img src="images/salary_model_full.png" class="img-fluid" width="550"></p>
+<p>다음과 같이 회귀계수들과 여러 연관된 값들을 직접 구해보세요.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/salary_model_full_coef.png" class="img-fluid" width="550"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/salary_model_full_table.png" class="img-fluid" width="550"></p>
+</div>
+</div>
+</div>
 
 
 
@@ -444,13 +456,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../contents/categories.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Categorical IVs</span>
+      <a href="../contents/case3.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Case Study 3</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/inference.html" class="pagination-link">
-        <span class="nav-page-text">Inference</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contents/categories.html" class="pagination-link">
+        <span class="nav-page-text">Categorical IVs</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
