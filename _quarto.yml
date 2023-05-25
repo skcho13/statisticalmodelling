@@ -25,7 +25,7 @@ website:
     align: center
     style: "docked"
     search: true
-    collapse-level: 2
+    collapse-level: 3
     
     contents:
       - href: index.qmd
@@ -52,8 +52,10 @@ website:
               - href: contents/case1.qmd
               - href: contents/case2.qmd
               - href: contents/case3.qmd
+              - href: contents/case3_sol.qmd
+                text: Case Study 3 Sol
               - href: contents/case4.qmd
-          - href: contents/categories.ipynb
+          - href: contents/categorical.qmd
             text: Categorical IVs
           - href: contents/interaction.ipynb
             text: Interactions

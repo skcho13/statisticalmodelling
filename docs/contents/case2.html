@@ -253,6 +253,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../contents/case3_sol.html" class="sidebar-item-text sidebar-link">Case Study 3 Sol</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../contents/case4.html" class="sidebar-item-text sidebar-link">Salary</a>
   </div>
 </li>
@@ -260,12 +265,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/categories.html" class="sidebar-item-text sidebar-link">Categorical IVs</a>
+  <a href="../contents/categorical.html" class="sidebar-item-text sidebar-link">Categorical IVs</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contents/Interaction.html" class="sidebar-item-text sidebar-link">Interactions</a>
+  <a href="../contents/interaction.html" class="sidebar-item-text sidebar-link">Interactions</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -590,39 +595,61 @@ Expend                11.13    3.26     3.41   0.00        0.45     0.17
 </div>
 </div>
 </div>
-<p><em>D. 예측변수의 추가</em></p>
+<p><em>D. 예측변수의 추가</em><br>
+예측변수가 3개인 경우</p>
+<p><img src="images/SAT.png" class="img-fluid" width="400"></p>
+<div class="cell">
+
+</div>
 <div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(SAT <span class="sc">~</span> Salary, <span class="at">data =</span> act)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mod4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(SAT <span class="sc">~</span> Salary <span class="sc">+</span> Expend, <span class="at">data =</span> act)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mod5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(SAT <span class="sc">~</span> Salary <span class="sc">+</span> Expend <span class="sc">+</span> LogPctSAT, <span class="at">data =</span> act)</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod3, mod4, mod5, <span class="at">error_format =</span> <span class="st">"({p.value})"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod0, mod2, mod3, mod4, mod5, <span class="at">model.names =</span> <span class="fu">c</span>(<span class="st">"mod0"</span>, <span class="st">"mod2"</span>, <span class="st">"mod3"</span>, <span class="st">"mod4"</span>, <span class="st">"mod5"</span>)) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<pre><code>           ─────────────────────────────────────────────────────────
-                             Model 1       Model 2       Model 3    
-                         ───────────────────────────────────────────
-             (Intercept)   1158.86 ***   1159.35 ***   1133.11 ***  
-                             (0.00)&nbsp;&nbsp;&nbsp;     (0.00)&nbsp;&nbsp;&nbsp;     (0.00)&nbsp;&nbsp;&nbsp;  
-             Salary          -5.54 **&nbsp;     -5.63&nbsp;&nbsp;&nbsp;&nbsp;      1.20&nbsp;&nbsp;&nbsp;&nbsp;  
-                             (0.00)&nbsp;&nbsp;&nbsp;     (0.10)&nbsp;&nbsp;&nbsp;     (0.37)&nbsp;&nbsp;&nbsp;  
-             Expend            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      0.47&nbsp;&nbsp;&nbsp;&nbsp;      7.10&nbsp;&nbsp;&nbsp;&nbsp;  
-                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     (0.97)&nbsp;&nbsp;&nbsp;     (0.20)&nbsp;&nbsp;&nbsp;  
-             LogPctSAT         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    -79.51 ***  
-                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     (0.00)&nbsp;&nbsp;&nbsp;  
-                         ───────────────────────────────────────────
-             N               50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-             R2               0.19&nbsp;&nbsp;&nbsp;&nbsp;      0.19&nbsp;&nbsp;&nbsp;&nbsp;      0.89&nbsp;&nbsp;&nbsp;&nbsp;  
-           ─────────────────────────────────────────────────────────
-             *** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05.                
+<pre><code>───────────────────────────────────────────────────────────────────────────────
+                  mod0         mod2         mod3         mod4         mod5     
+             ──────────────────────────────────────────────────────────────────
+  (Intercept      1089.29      1147.10      1158.86      1159.35      1133.11  
+  )                   ***          ***          ***          ***          ***  
+               (44.39)&nbsp;&nbsp;&nbsp;   (16.70)&nbsp;&nbsp;&nbsp;   (57.66)&nbsp;&nbsp;&nbsp;   (60.22)&nbsp;&nbsp;&nbsp;   (22.73)&nbsp;&nbsp;&nbsp;  
+  Expend       -20.89 **&nbsp;    11.13 **&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     0.47&nbsp;&nbsp;&nbsp;&nbsp;     7.10&nbsp;&nbsp;&nbsp;&nbsp;  
+                (7.33)&nbsp;&nbsp;&nbsp;    (3.26)&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   (14.58)&nbsp;&nbsp;&nbsp;    (5.50)&nbsp;&nbsp;&nbsp;  
+  LogPctSAT       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   -78.20 ***      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   -79.51 ***  
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    (4.47)&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    (4.71)&nbsp;&nbsp;&nbsp;  
+  Salary          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    -5.54 **&nbsp;    -5.63&nbsp;&nbsp;&nbsp;&nbsp;     1.20&nbsp;&nbsp;&nbsp;&nbsp;  
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    (1.63)&nbsp;&nbsp;&nbsp;    (3.34)&nbsp;&nbsp;&nbsp;    (1.32)&nbsp;&nbsp;&nbsp;  
+             ──────────────────────────────────────────────────────────────────
+  N             50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+  R2             0.14&nbsp;&nbsp;&nbsp;&nbsp;     0.89&nbsp;&nbsp;&nbsp;&nbsp;     0.19&nbsp;&nbsp;&nbsp;&nbsp;     0.19&nbsp;&nbsp;&nbsp;&nbsp;     0.89&nbsp;&nbsp;&nbsp;&nbsp;  
+───────────────────────────────────────────────────────────────────────────────
+  *** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05.                                      
 
-Column names: names, Model 1, Model 2, Model 3</code></pre>
+Column names: names, mod0, mod2, mod3, mod4, mod5</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcPlots</span>(mod4, <span class="at">overlaid =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="case2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod5) <span class="co"># library(car)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="case2_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Q: <code>Salary</code>와 <code>Expend</code> 중 하나는 제거해야 되나???</p>
+<ul>
+<li>상관관계가 높은 변수들은 서로 partial out되어 남은 잔차들의 변량이 줄어 Y와의 관계를 온전히 테스트하기 어려워짐</li>
+<li>구체적으로는 standard error를 높여서 회귀계수에 대한 모집단에 대한 신뢰도를 낮춤</li>
+<li>이를 다중공선성(multicollinearity)이라고 함</li>
+<li>이들을 하나의 “묶음”(set)으로 취급해도 무방함</li>
+</ul>
 
 
 </section>
