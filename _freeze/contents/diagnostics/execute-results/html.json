@@ -1,0 +1,14 @@
+{
+  "hash": "7c1cb9d956911276999a8c6a33137ab8",
+  "result": {
+    "markdown": "---\ntitle: Diagnostics\nsubtitle: 'Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken'\ndate: 'Feb 17, 2023'\nauthor: Sungkyun Cho\nexecute:\n  warning: false\n  freeze: auto\nformat: \n   html:\n    df-print: tibble\n   # monofont: 'FiraCode-Regular'\n---\n\n::: {.cell}\n\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

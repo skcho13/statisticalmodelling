@@ -57,8 +57,10 @@ website:
               - href: contents/case4.qmd
           - href: contents/categorical.qmd
             text: Categorical IVs
-          - href: contents/interaction.ipynb
+          - href: contents/interaction.qmd
             text: Interactions
+          - href: contents/diagnostics.qmd
+            text: Diagnostics
           - href: contents/inference.ipynb
             text: Inference
           - href: contents/repeated.ipynb
