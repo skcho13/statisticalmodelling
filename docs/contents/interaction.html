@@ -1107,36 +1107,87 @@ F-statistic: 6.722 on 5 and 144 DF,  p-value: 1.167e-05
 <section id="실험연구의-예" class="level3">
 <h3 class="anchored" data-anchor-id="실험연구의-예">실험연구의 예</h3>
 <p>실험연구 분석에 대한 더 논의가 필요함…</p>
-<p>Data: <a href="https://www.dropbox.com/s/6hjg2fxdkubxupy/C0901DT.csv?dl=1">C0901DT.csv</a> <!-- ```{r}
-#| fig-width: 6
-#| fig-height: 3
-rats <- read_csv("data/C0901DT.csv")
-rats <- rats |> rename_with(str_to_lower)  # 변수명 소문자로 변경
-rats |> sample_n(6)
-rats |> group_by(lesion, drug) |> summarise(yc_mean = mean(yc))
+<p>Data: <a href="https://www.dropbox.com/s/6hjg2fxdkubxupy/C0901DT.csv?dl=1">C0901DT.csv</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>rats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/C0901DT.csv"</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>rats <span class="ot">&lt;-</span> rats <span class="sc">|&gt;</span> <span class="fu">rename_with</span>(str_to_lower)  <span class="co"># 변수명 소문자로 변경</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">sample_n</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+     ya    yb    yc lesion  drug   
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+1  4.29  4.29  2.29 SHAM    ACTIVE 
+2  9.50 13.5  11.5  SHAM    PLACEBO
+3  9.01 13.0  11.0  SHAM    PLACEBO
+4  4.33  4.33  2.33 SHAM    ACTIVE 
+5  9.72  9.72 11.7  SURGERY PLACEBO
+6  8.33 12.3  10.3  SHAM    PLACEBO</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  lesion  drug    yc_mean
+  &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;
+1 SHAM    ACTIVE     2.00
+2 SHAM    PLACEBO    9.99
+3 SURGERY ACTIVE     8.02
+4 SURGERY PLACEBO   12.0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(yb <span class="sc">~</span> lesion <span class="sc">*</span> drug, <span class="at">data =</span> rats)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call: lm(formula = yb ~ lesion * drug, data = rats)
 
-mod <- lm(yb ~ lesion * drug, data = rats)
-S(mod)
-predictorEffects(mod, ~drug) |> plot()
-``` --> Data: <a href="https://www.dropbox.com/s/9qmrra523pffikh/C0902DT.csv?dl=1">C0902DT.csv</a> <!-- ```{r}
-#| fig-width: 9
-#| fig-height: 4
-treat <- read_csv("data/C0902DT.csv")
-treat <- treat |> rename_with(str_to_lower) # 변수명 소문자로 변경
-treat |> head(5)
+Coefficients:
+                          Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 3.9965     0.1524   26.23   &lt;2e-16 ***
+lesionSURGERY              10.0251     0.2302   43.55   &lt;2e-16 ***
+drugPLACEBO                 8.0141     0.2056   38.98   &lt;2e-16 ***
+lesionSURGERY:drugPLACEBO -12.0336     0.3256  -36.96   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-treat <- treat |> 
-  mutate(hospital = factor(hospital), treatmen = factor(treatmen))
-mod <- lm(y ~ hospital * treatmen, data = treat)
-predictorEffects(mod, ~treatmen) |> plot()
-``` --></p>
+Residual standard deviation: 0.9758 on 147 degrees of freedom
+Multiple R-squared: 0.9401
+F-statistic: 768.6 on 3 and 147 DF,  p-value: &lt; 2.2e-16 
+   AIC    BIC 
+427.07 442.15 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod, <span class="sc">~</span>drug) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="interaction_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>Data: <a href="https://www.dropbox.com/s/9qmrra523pffikh/C0902DT.csv?dl=1">C0902DT.csv</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/C0902DT.csv"</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> treat <span class="sc">|&gt;</span> <span class="fu">rename_with</span>(str_to_lower) <span class="co"># 변수명 소문자로 변경</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>treat <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  hospital treatmen     y
+     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+1        1        1  66.8
+2        1        1  42.4
+3        1        1  20.7
+4        1        1  46.4
+5        1        1  54.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> treat <span class="sc">|&gt;</span> </span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hospital =</span> <span class="fu">factor</span>(hospital), <span class="at">treatmen =</span> <span class="fu">factor</span>(treatmen))</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> hospital <span class="sc">*</span> treatmen, <span class="at">data =</span> treat)</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod, <span class="sc">~</span>treatmen) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="interaction_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
 </section>
 <section id="관찰연구의-예" class="level3">
 <h3 class="anchored" data-anchor-id="관찰연구의-예">관찰연구의 예</h3>
 <p>성별과 결혼 여부에 따른 임금차이</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> mosaicData<span class="sc">::</span>CPS85 <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> mosaicData<span class="sc">::</span>CPS85 <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 11
    wage  educ race  sex   hispanic south married exper union   age sector  
@@ -1147,8 +1198,8 @@ predictorEffects(mod, ~treatmen) |> plot()
 4  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical
 5  15      12 W     M     NH       NS    Married    40 Union    58 const   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> sex <span class="sc">*</span> married, <span class="at">data =</span> cps)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> sex <span class="sc">*</span> married, <span class="at">data =</span> cps)</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = wage ~ sex * married, data = cps)
 
@@ -1167,27 +1218,27 @@ F-statistic: 13.94 on 3 and 530 DF,  p-value: 9.234e-09
     AIC     BIC 
 3232.05 3253.45 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="interaction_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="864"></p>
 </div>
 </div>
 <p>관찰연구의 경우 confounding이 될만한 통제 변수를 충분히 고려해야 하고, 나이가 성별과 결혼 여부와 상관관계가 있으므로 통제 변수로 포함.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="fu">select</span>(age, sex, married) <span class="sc">|&gt;</span> <span class="fu">lowerCor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="fu">select</span>(age, sex, married) <span class="sc">|&gt;</span> <span class="fu">lowerCor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         age   sex*  mrrd*
 age       1.00            
 sex*     -0.08  1.00      
 married* -0.28  0.01  1.00</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># age와 wage의 관계는 비선형적: spline regression (piecewise polynomial) fit을 고려할 필요있음</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> sex <span class="sc">*</span> married <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps)  </span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod2, <span class="sc">~</span> sex <span class="sc">+</span> married) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># age와 wage의 관계는 비선형적: spline regression (piecewise polynomial) fit을 고려할 필요있음</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> sex <span class="sc">*</span> married <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps)  </span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod2, <span class="sc">~</span> sex <span class="sc">+</span> married) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="interaction_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="864"></p>
 </div>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = wage ~ sex * married + age + I(age^2), data = cps)
 
@@ -1212,8 +1263,8 @@ F-statistic:  15.8 on 5 and 528 DF,  p-value: 1.649e-14
 <p>결혼 유무에 따른 임금의 차이는 여성의 경우 미혼이 $1.32(p = 0.047) 높음.<br>
 남성의 경우는 아래와 같이 factor level을 변경해서 보면, 남성인 경우 미혼이 $1.29(p = 0.041) 낮음.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>mod2_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> <span class="fu">fct_relevel</span>(sex, <span class="st">"M"</span>) <span class="sc">*</span> married <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps)</span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod2_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>mod2_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> <span class="fu">fct_relevel</span>(sex, <span class="st">"M"</span>) <span class="sc">*</span> married <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps)</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod2_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = wage ~ fct_relevel(sex, "M") * married + age + I(age^2),
          data = cps)
@@ -1255,8 +1306,8 @@ demgroup 3: those who already have been diagnosed with dementia (current group =
 <li>선형모형 <code>cognition ~ grip * age + demgroup * sexMW</code>을 세우고, 해석해보세요.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/spss_chapter2.csv"</span>)</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/spss_chapter2.csv"</span>)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 6
   PersonID cognition   age  grip sexMW demgroup
