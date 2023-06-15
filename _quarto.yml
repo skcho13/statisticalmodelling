@@ -64,7 +64,7 @@ website:
           - href: contents/inference.ipynb
             text: Inference
           - href: contents/repeated.ipynb
-          - href: contents/report.qmd
+          #- href: contents/report.qmd
       - text: ---
       - section: Communicate
         contents:

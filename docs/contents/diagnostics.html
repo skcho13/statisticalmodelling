@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -62,6 +125,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -224,11 +288,6 @@ ul.task-list li input[type="checkbox"] {
   <a href="../contents/repeated.html" class="sidebar-item-text sidebar-link">Repeated ANOVA</a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../contents/report.html" class="sidebar-item-text sidebar-link">Report</a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -262,7 +321,33 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ordinary-least-squares-ols" id="toc-ordinary-least-squares-ols" class="nav-link active" data-scroll-target="#ordinary-least-squares-ols">Ordinary least squares (OLS)</a>
+  <ul>
+  <li><a href="#linear-least-squared-regression의-가정들" id="toc-linear-least-squared-regression의-가정들" class="nav-link" data-scroll-target="#linear-least-squared-regression의-가정들">Linear Least Squared Regression의 가정들</a>
+  <ul class="collapse">
+  <li><a href="#가정에-위배되는-연구자료들" id="toc-가정에-위배되는-연구자료들" class="nav-link" data-scroll-target="#가정에-위배되는-연구자료들">가정에 위배되는 연구/자료들</a></li>
+  <li><a href="#대처방안대안들" id="toc-대처방안대안들" class="nav-link" data-scroll-target="#대처방안대안들">대처방안/대안들</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#ols에서-모집단에-대한-가정들에-대한-진단" id="toc-ols에서-모집단에-대한-가정들에-대한-진단" class="nav-link" data-scroll-target="#ols에서-모집단에-대한-가정들에-대한-진단">OLS에서 모집단에 대한 가정들에 대한 진단</a>
+  <ul>
+  <li><a href="#plotting-residuals" id="toc-plotting-residuals" class="nav-link" data-scroll-target="#plotting-residuals">Plotting Residuals</a></li>
+  <li><a href="#added-variable-plots" id="toc-added-variable-plots" class="nav-link" data-scroll-target="#added-variable-plots">Added-Variable Plots</a></li>
+  <li><a href="#unusual-data" id="toc-unusual-data" class="nav-link" data-scroll-target="#unusual-data">Unusual Data</a>
+  <ul class="collapse">
+  <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers"><strong>Outliers</strong></a></li>
+  <li><a href="#influential-points에-대한-지표들" id="toc-influential-points에-대한-지표들" class="nav-link" data-scroll-target="#influential-points에-대한-지표들"><strong>Influential points에 대한 지표들</strong></a></li>
+  </ul></li>
+  <li><a href="#선형성에-대한-진단" id="toc-선형성에-대한-진단" class="nav-link" data-scroll-target="#선형성에-대한-진단">선형성에 대한 진단</a></li>
+  <li><a href="#변수의-변환transform-및-고차원-모형" id="toc-변수의-변환transform-및-고차원-모형" class="nav-link" data-scroll-target="#변수의-변환transform-및-고차원-모형">변수의 변환(transform) 및 고차원 모형</a></li>
+  <li><a href="#다중공선성에-대한-진단" id="toc-다중공선성에-대한-진단" class="nav-link" data-scroll-target="#다중공선성에-대한-진단">다중공선성에 대한 진단</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -300,8 +385,690 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
+<section id="ordinary-least-squares-ols" class="level1">
+<h1>Ordinary least squares (OLS)</h1>
+<ul>
+<li>Mean function: <span class="math inline">\(E(Y | X = x_i) = \beta_0 + \beta_1 x_i\)</span></li>
+<li>Variance function: <span class="math inline">\(Var(Y | X = x_i) = \sigma^2\)</span></li>
+<li>Distribution: <span class="math inline">\((Y | X = x_i) \sim N(\beta_0 + \beta_1 x_i, \sigma^2)\)</span></li>
+</ul>
+<p><img src="images/ols.png" class="img-fluid" width="650"><br>
+Source: p.107, <em>Applied Regression Analysis and Generalized Linear Models (3e), by John Fox</em></p>
+<p><img src="images/glm.png" class="img-fluid" width="800"><br>
+Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3e), by Cohen, J., Cohen, P., West, S. G., &amp; Aiken, L. S.</em></p>
+<p>Source: Beyond Multiple Linear Regression, by Paul Roback, Julie Legler.</p>
+<section id="linear-least-squared-regression의-가정들" class="level2">
+<h2 class="anchored" data-anchor-id="linear-least-squared-regression의-가정들">Linear Least Squared Regression의 가정들</h2>
+<ul>
+<li>L (linearity, 선형성): X의 각 값에 해당하는 Y값들의 평균들은 X와 선형적인 관계를 가짐.
+<ul>
+<li>Mean function: <span class="math inline">\(E(Y | X = x_i) = \beta_0 + \beta_1 x_i\)</span></li>
+</ul></li>
+<li>I (independence, 독립성): 잔차들(errors)은 서로 독립.</li>
+<li>N (normally distributed, 정규성): X의 각 값에 해당하는 Y값들은 정규분포를 이룸.
+<ul>
+<li><span class="math inline">\((Y | X = x_i) \sim N(\beta_0 + \beta_1 x_i, \sigma^2)\)</span></li>
+</ul></li>
+<li>E (equal variance, 등분산성): X의 각 값에 해당하는 Y값들의 표준편차들은 모두 동일함.
+<ul>
+<li><span class="math inline">\(Var(Y | X = x_i) = \sigma^2\)</span></li>
+</ul></li>
+</ul>
+<section id="가정에-위배되는-연구자료들" class="level3">
+<h3 class="anchored" data-anchor-id="가정에-위배되는-연구자료들">가정에 위배되는 연구/자료들</h3>
+<ul>
+<li>공부한 시간에 따른 합격 여부
+<ul>
+<li>Y가 성공/실패 명목변수로서 0, 1로 코딩된다고 하면, Y는 정규분포를 이루지 않음.</li>
+<li>이런 경우 generalized linear model(GLM)의 일부로서 logistic regression 모형으로 fit을 하는 것이 더 적절함.</li>
+</ul></li>
+<li>부유한 가정은 더 적은 아이들을 가지는 경향이 있는가?
+<ul>
+<li>가족의 크기는 정규분포를 이루기보단 한쪽으로 치우친(skewed) 분포를 이룸.</li>
+<li>가족의 크기는 0, 1, 2,… 등의 정수값을 가져, 연속형 변수로 보기 어려워 정규분포의 가정을 만족하기 어려움.</li>
+<li>이런 경우 가족의 크기는 Poisson 분포에 더 가깝다고 보고, Poisson regression 모형이나 그 변형들로 fit을 하는 것이 더 적절함.</li>
+</ul></li>
+<li>대학 안에서 임의로 선정한 남녀 학생들의 운동시간과 몸무게의 관계
+<ul>
+<li>운동을 전혀 하지 않는 학생들의 몸무게의 변량이 규칙적으로 한 학생들에 비해 더 넓게 분포할 가능성이 큼: 이는 equal variance 가정을 위배함.</li>
+<li>만약, 대학 내에서 특정 장소에서 학생들을 섭외했다면, 예를 들어, 피트니스 센터에서 섭외된 학생들의 데이터는 서로 연관성이 높을 수 있음: 이는 independent 가정에 위배됨.</li>
+</ul></li>
+<li>특정 질병을 가진 환자들에 대한 특정 수술에 대한 효과를 연구한다면,
+<ul>
+<li>동일한 의사에게 수술을 받은 환자들의 데이터는 서로 연관성이 높을 수 있음: 이는 independence 가정에 위배됨.</li>
+<li>동일한 병원에서 수술을 받은 환자들의 데이터는 서로 연관성이 높을 수 있음: 이는 independence 가정에 위배됨.</li>
+</ul></li>
+</ul>
+</section>
+<section id="대처방안대안들" class="level3">
+<h3 class="anchored" data-anchor-id="대처방안대안들">대처방안/대안들</h3>
+<ul>
+<li><strong>Linearity</strong>의 가정에 위배되는 경우: 변수들을 변환(transform)하거나 고차 다항식 혹은 확장된 모형(eg. spline)을 사용</li>
+<li><strong>Normality</strong>의 가정에 위배되는 경우: 변수들을 변환(transform)하거나 generalized linear model(GLM)을 사용</li>
+<li><strong>Equal variance</strong>의 가정에 위배되는 경우: 변수들을 변환(transform)하거나 weighted least squares regression을 사용</li>
+<li><strong>Independence</strong>의 가정에 위배되는 경우: multi-level (mixed-effects) 모형을 사용</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="ols에서-모집단에-대한-가정들에-대한-진단" class="level1">
+<h1>OLS에서 모집단에 대한 가정들에 대한 진단</h1>
+<p>Source: <em>An R Companion to Applied Regression (3e), by John Fox, Sanford Weisberg.</em></p>
+<p>연구자는 기본적으로 변수 간의 <strong>true relationship</strong>이 존재할 것이라고 믿으며, 모집단에서 그 관계가 완전한 형태로 존재한다고 가정하고, 그 관계를 표본으로부터 최대한 추론하고자 함.<br>
+OLS 방식으로 모집단에 대한 추론을 하려면, OLS가 요구하는 <strong>모집단에 대한 가정</strong>들이 위배되지 않아야 함.<br>
+연구자는 관찰된 표본이 “LINE 가정들을 만족하는 모집단”으로부터 표집된 표본이라고 볼만한 충분한 확신이 있어야 함.<br>
+이를 위해서 표본들로부터 대략적인 추정을 할 수 밖에 없음.</p>
+<p>예제: Prestige 데이터셋</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Prestige <span class="ot">&lt;-</span> Prestige <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">factor</span>(type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"bc"</span>, <span class="st">"wc"</span>, <span class="st">"prof"</span>)))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Prestige</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 102 × 6
+   education income women prestige census type 
+       &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;int&gt; &lt;fct&gt;
+ 1      13.1  12351 11.2      68.8   1113 prof 
+ 2      12.3  25879  4.02     69.1   1130 prof 
+ 3      12.8   9271 15.7      63.4   1171 prof 
+ 4      11.4   8865  9.11     56.8   1175 prof 
+ 5      14.6   8403 11.7      73.5   2111 prof 
+ 6      15.6  11030  5.13     77.6   2113 prof 
+ 7      15.1   8258 25.6      72.6   2133 prof 
+ 8      15.4  14163  2.69     78.1   2141 prof 
+ 9      14.5  11377  1.03     73.1   2143 prof 
+10      14.6  11023  0.94     68.8   2153 prof 
+# ℹ 92 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mod_prestige <span class="ot">&lt;-</span> <span class="fu">lm</span>(prestige <span class="sc">~</span> education <span class="sc">+</span> income <span class="sc">+</span> type, <span class="at">data =</span> Prestige)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_prestige)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call: lm(formula = prestige ~ education + income + type, data = Prestige)
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -0.6229292  5.2275255  -0.119    0.905    
+education    3.6731661  0.6405016   5.735 1.21e-07 ***
+income       0.0010132  0.0002209   4.586 1.40e-05 ***
+typewc      -2.7372307  2.5139324  -1.089    0.279    
+typeprof     6.0389707  3.8668551   1.562    0.122    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard deviation: 7.095 on 93 degrees of freedom
+  (4 observations deleted due to missingness)
+Multiple R-squared: 0.8349
+F-statistic: 117.5 on 4 and 93 DF,  p-value: &lt; 2.2e-16 
+   AIC    BIC 
+669.02 684.52 </code></pre>
+</div>
+</div>
+<section id="plotting-residuals" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-residuals">Plotting Residuals</h2>
+<p>잔차들의 분포: <span class="math inline">\((e | X = x_i) \sim N(0, \sigma^2)\)</span><br>
+즉, 특별한 패턴이 없어야 함</p>
+<ul>
+<li>선형적 관계성(Linearity)이 확보되고,</li>
+<li>등분산성(Equal variance)이 확보됨.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  mod_prestige, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id=</span><span class="fu">list</span>(<span class="at">n=</span><span class="dv">3</span>), <span class="co"># outliers의 수</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth=</span><span class="cn">TRUE</span>, <span class="co"># loess smooth 커브</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">quadratic=</span><span class="cn">FALSE</span> <span class="co"># 3차 fitted 커브</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Test stat Pr(&gt;|Test stat|)   
+education    -0.6836         0.495942   
+income       -2.8865         0.004854 **
+type                                    
+Tukey test   -2.6104         0.009043 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 특정 변수만 선택</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(mod_prestige, <span class="sc">~</span> income, <span class="at">fitted=</span><span class="cn">FALSE</span>, <span class="at">smooth=</span><span class="cn">TRUE</span>, <span class="at">id=</span><span class="fu">list</span>(<span class="at">n=</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="480"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Test stat Pr(&gt;|Test stat|)   
+income   -2.8865         0.004854 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQplot: 전체적인 잔차의 분포가 정규분포를 따르는지 확인: y=x 라인에 가까울수록 정규분포를 따름</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(mod_prestige, <span class="at">id=</span><span class="fu">list</span>(<span class="at">n=</span><span class="dv">3</span>)) <span class="co"># qq plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="480"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31 54 82</code></pre>
+</div>
+</div>
+<p>등분산성(equal variance)이 심하게 위배되는 경우;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mod_transact <span class="ot">&lt;-</span> <span class="fu">lm</span>(time <span class="sc">~</span> t1 <span class="sc">+</span> t2, <span class="at">data=</span>Transact)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(mod_transact, <span class="at">test=</span><span class="cn">FALSE</span>, <span class="at">layout=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>통계적으로 등분산성(equal variance)을 테스트할 수 있음: <code>ncvTest()</code></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>등분산성을 만족하지 않는 경우: Heteroskedasticity</p>
+<ul>
+<li>Weighted least squares (WLS) 방식으로 추정</li>
+<li>좀 더 자연스러운 generalized linear model (GLM) with the identity link and gamma errors(확률 분포).</li>
+<li>등분산성은 회귀계수 값 자체는 크게 영향을 주지 않으므로, OLS로 회귀계수는 추정하되, 유의성 검증(SE, p values)은 <strong>bootstrap</strong>을 이용하거나 <strong>a sandwich coefficient-variance estimator</strong>로 계산하는 방식을 선택.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parameters)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(mod_transact) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">digits=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parameter   | Coefficient |      SE |            95% CI | t(258) |      p
+-------------------------------------------------------------------------
+(Intercept) |     144.369 | 170.544 | [-191.47, 480.21] |  0.847 | 0.398 
+t1          |       5.462 |   0.433 | [   4.61,   6.32] | 12.607 | &lt; .001
+t2          |       2.035 |   0.094 | [   1.85,   2.22] | 21.567 | &lt; .001</code></pre>
+</div>
+</div>
+<ol type="1">
+<li><strong>Sandwich coefficient-variance estimator</strong></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(mod_transact, <span class="at">vcov =</span> <span class="st">"HC3"</span>) <span class="co"># HC3 방식</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 9
+  Parameter   Coefficient      SE    CI  CI_low CI_high      t df_error        p
+  &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;    &lt;int&gt;    &lt;dbl&gt;
+1 (Intercept)      144.   203.     0.95 -256.    544.    0.711      258 4.78e- 1
+2 t1                 5.46   0.729  0.95    4.03    6.90  7.49       258 1.06e-12
+3 t2                 2.03   0.163  0.95    1.71    2.36 12.4        258 3.60e-28</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Bootstrap</strong></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parameters)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bootstrap_parameters</span>(mod_transact, <span class="at">ci_method =</span> <span class="st">"BCI"</span>) <span class="co"># BCI 방식</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  Parameter   Coefficient  CI_low CI_high     p
+  &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+1 (Intercept)      149.   -284.    513.    0.46
+2 t1                 5.47    3.99    6.58  0   
+3 t2                 2.03    1.75    2.37  0   </code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="added-variable-plots" class="level2">
+<h2 class="anchored" data-anchor-id="added-variable-plots">Added-Variable Plots</h2>
+<p>Partial regression plot이라고도 함.<br>
+다른 변수들을 partial out시킨 잔차들로 그림.</p>
+<ul>
+<li>각 회귀계수에 대한 precision을 살펴볼 수 있음</li>
+<li>각 관측치에 대한 leverage를 살펴볼 수 있음</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 수평선 중심에서 가장 먼 점들 2개</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 잔차의 값이 가장 큰 점들 2개</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod_prestige, <span class="at">id=</span><span class="fu">list</span>(<span class="at">n=</span><span class="dv">2</span>, <span class="at">cex=</span><span class="fl">0.8</span>)) <span class="co"># id: outliers의 수, cex: 점의 크기 80%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 특정 관측치 제거 후 다시 그림</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mod_prestige_1 <span class="ot">=</span> <span class="fu">update</span>(mod_prestige, <span class="at">subset =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">24</span>))  <span class="co"># 2, 24번째 관측치 제거</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod_prestige_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compareCoefs</span>(mod_prestige, mod_prestige_1, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">pvals =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Calls:
+1: lm(formula = prestige ~ education + income + type, data = Prestige)
+2: lm(formula = prestige ~ education + income + type, data = Prestige, 
+  subset = -c(2, 24))
+
+            Model 1 Model 2
+(Intercept)  -0.623   0.749
+Pr(&gt;|z|)      0.905   0.889
+                           
+education      3.67    3.31
+Pr(&gt;|z|)    9.8e-09 1.5e-06
+                           
+income      0.00101 0.00133
+Pr(&gt;|z|)    4.5e-06 1.2e-05
+                           
+typewc        -2.74   -1.66
+Pr(&gt;|z|)      0.276   0.526
+                           
+typeprof       6.04    7.18
+Pr(&gt;|z|)      0.118   0.071
+                           </code></pre>
+</div>
+</div>
+</section>
+<section id="unusual-data" class="level2">
+<h2 class="anchored" data-anchor-id="unusual-data">Unusual Data</h2>
+<ul>
+<li>outliers: 모형의 예측값과 크게 다른 관측치</li>
+<li>high-leverage points: 예측변수들의 공간에서 중심으로부터 멀리 떨어진 관측치</li>
+<li>influential points: outlier이면서 high-leverage point인 관측치</li>
+</ul>
+<p>우선, 위에서 다룬 add-variable plots를 통해서 두 변수의 joint로써 influential points를 찾을 수 있음.</p>
+<p>다음은 각 변수들 내에서의 influential points에 관한 진단임.</p>
+<p>예제: Duncan 데이터셋</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Duncan <span class="ot">&lt;-</span> Duncan <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>Duncan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 45 × 4
+   type  income education prestige
+   &lt;fct&gt;  &lt;int&gt;     &lt;int&gt;    &lt;int&gt;
+ 1 prof      62        86       82
+ 2 prof      72        76       83
+ 3 prof      75        92       90
+ 4 prof      55        90       76
+ 5 prof      64        86       90
+ 6 prof      21        84       87
+ 7 prof      64        93       93
+ 8 prof      80       100       90
+ 9 wc        67        87       52
+10 prof      72        86       88
+# ℹ 35 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mod_duncan <span class="ot">&lt;-</span> <span class="fu">lm</span> (prestige <span class="sc">~</span> income <span class="sc">+</span> education, <span class="at">data=</span>Duncan)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_duncan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call: lm(formula = prestige ~ income + education, data = Duncan)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -6.06466    4.27194  -1.420    0.163    
+income       0.59873    0.11967   5.003 1.05e-05 ***
+education    0.54583    0.09825   5.555 1.73e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard deviation: 13.37 on 42 degrees of freedom
+Multiple R-squared: 0.8282
+F-statistic: 101.2 on 2 and 42 DF,  p-value: &lt; 2.2e-16 
+   AIC    BIC 
+365.96 373.19 </code></pre>
+</div>
+</div>
+<section id="outliers" class="level3">
+<h3 class="anchored" data-anchor-id="outliers"><strong>Outliers</strong></h3>
+<p><code>qqPlot()</code>: 95% pointwise confidence envelope for the Studentized residuals, using a parametric version of the bootstrap.<br>
+<code>outlierTest()</code>: Bonferroni-adjusted p-values for the Studentized residuals.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(mod_duncan, <span class="at">id=</span><span class="fu">list</span>(<span class="at">n=</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  6  9 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">outlierTest</span>(mod_duncan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>No Studentized residuals with Bonferroni p &lt; 0.05
+Largest |rstudent|:
+  rstudent unadjusted p-value Bonferroni p
+6 3.134519          0.0031772      0.14297</code></pre>
+</div>
+</div>
+</section>
+<section id="influential-points에-대한-지표들" class="level3">
+<h3 class="anchored" data-anchor-id="influential-points에-대한-지표들"><strong>Influential points에 대한 지표들</strong></h3>
+<ul>
+<li>Cook’s distance: i번째 관측치가 제거되었을 때 회귀계수의 변화량에 대한 요약치</li>
+<li>Studentized residuals: 표준화한 잔차</li>
+<li>Bonferroni-adjusted p-values: 잔차의 분포에 대한 p-value를 Bonferroni 방식으로 보정한 값</li>
+<li>hat-values: 예측변수들의 공간에서 중심으로부터 멀리 떨어진 정도</li>
+</ul>
+<p>가장 큰 값들에 해당하는 관측치들을 제거해보고 회귀분석을 한 후 결과를 비교<br>
+원칙적으로 한번에 한 관측치만 제거하고, 차례로 진단을 해야 함; 전체적인 fit이 변하므로</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">influenceIndexPlot</span>(mod_duncan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="768"></p>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6번째 관측치 제거</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>mod_duncan2 <span class="ot">&lt;-</span> <span class="fu">update</span>(mod_duncan, <span class="at">subset =</span> <span class="sc">-</span><span class="dv">6</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compareCoefs</span>(mod_duncan, mod_duncan2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Calls:
+1: lm(formula = prestige ~ income + education, data = Duncan)
+2: lm(formula = prestige ~ income + education, data = Duncan, subset = -6)
+
+            Model 1 Model 2
+(Intercept)   -6.06   -6.63
+SE             4.27    3.89
+                           
+income        0.599   0.732
+SE            0.120   0.117
+                           
+education    0.5458  0.4330
+SE           0.0983  0.0963
+                           </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># leave-one-out deletion diagnostics</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># i번째 관측치를 제거했을 때, 각 예측변수들의 변화량을 나타냄</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dfbeta: 차이, debetas: SE로 표준화한 차이</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dfbetas</span>(mod_duncan) <span class="sc">|&gt;</span> <span class="fu">head</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  (Intercept)   income education
+1    -2.3e-02  0.00067   0.03594
+2    -2.5e-02  0.05088  -0.00812
+3    -9.2e-03  0.00648   0.00562
+4    -4.7e-05 -0.00006   0.00014
+5    -6.6e-02  0.01700   0.08678
+6     1.4e-01 -1.22094   1.26302</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dfbetas를 플랏으로 나타내면,</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">dfbetas</span>(mod_duncan) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>income, <span class="at">y=</span>education)) <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">row.names</span>(df)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>Added-variable plot으로도 확인해 볼 수 있음</p>
+<ul>
+<li>Influential points가 각 예측변수에서 살펴보는 것과는 다르게</li>
+<li>Added-variable plot은 joint로써의 영향력을 보고 outliers를 찾을 수 있음</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod_duncan, <span class="at">id=</span><span class="fu">list</span>(<span class="at">n=</span><span class="dv">3</span>, <span class="at">method=</span><span class="st">"mahal"</span>)) <span class="co"># 중심으로부터의 거리(mahalanobis distance)만 표시</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6, 16번째 관측치 제거</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>mod_duncan3 <span class="ot">&lt;-</span> <span class="fu">update</span>(mod_duncan, <span class="at">subset =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">16</span>))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compareCoefs</span>(mod_duncan, mod_duncan3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Calls:
+1: lm(formula = prestige ~ income + education, data = Duncan)
+2: lm(formula = prestige ~ income + education, data = Duncan, subset = -c(6,
+   16))
+
+            Model 1 Model 2
+(Intercept)   -6.06   -6.41
+SE             4.27    3.65
+                           
+income        0.599   0.867
+SE            0.120   0.122
+                           
+education    0.5458  0.3322
+SE           0.0983  0.0987
+                           </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="선형성에-대한-진단" class="level2">
+<h2 class="anchored" data-anchor-id="선형성에-대한-진단">선형성에 대한 진단</h2>
+<p>Component-Plus-Residual (partial-residual plots): <span class="math inline">\(\displaystyle e+{\hat {\beta }}_{i}X_{i}\)</span><br>
+<code>crPlots()</code></p>
+<p>초기 탐색적 분석이나 모형을 세우 후 <code>residualPlots</code>으로도 살펴볼 수 있음.</p>
+<p>비선형성에 대해서는 변수를 변환(transform)하거나 고차 다항함수 모형, 혹은 더 복잡한 spline 모형을 이용.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>mod_prestige_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(prestige <span class="sc">~</span> income <span class="sc">+</span> education <span class="sc">+</span> women, <span class="at">data=</span>Prestige)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod_prestige_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="변수의-변환transform-및-고차원-모형" class="level2">
+<h2 class="anchored" data-anchor-id="변수의-변환transform-및-고차원-모형">변수의 변환(transform) 및 고차원 모형</h2>
+<p>선형성, 등분산성, 정규성 등은 각각 다른 개념이나 변수의 변형을 통해 동시에 해결되기도 함.</p>
+<ul>
+<li><code>log</code>변환은 정규성과 선형성을 동시에 해결해주는 경우가 많음.</li>
+<li>또한 의미적으로도 해석이 용이함. 몇 배의 의미로 바뀜.</li>
+<li>복잡한 변환에 대해서 다음을 참조
+<ul>
+<li>Box-Cox Power Transformations</li>
+<li><code>powerTransform()</code></li>
+</ul></li>
+</ul>
+<p>예제: UN in carData</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>UN <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ppgdp)) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>UN <span class="sc">|&gt;</span> </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>infantMortality)) <span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>UN <span class="sc">|&gt;</span> </span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ppgdp, <span class="at">y=</span>infantMortality)) <span class="sc">+</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>UN <span class="sc">|&gt;</span> </span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(ppgdp), <span class="at">y=</span><span class="fu">log</span>(infantMortality))) <span class="sc">+</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="480"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid" width="480"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid" width="480"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-18-4.png" class="img-fluid" width="480"></p>
+</div>
+</div>
+</div>
+<p>위의 Presitge의 예의 경우, <code>income</code>을 log변환하는 것이 적절함.</p>
+<div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mod_prestige <span class="ot">&lt;-</span> <span class="fu">lm</span>(prestige <span class="sc">~</span> education <span class="sc">+</span> income <span class="sc">+</span> type, <span class="at">data =</span> Prestige)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>mod_prestige_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(prestige <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">log2</span>(income) <span class="sc">+</span> type, <span class="at">data =</span> Prestige)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(mod_prestige, <span class="sc">~</span>income, <span class="at">test=</span><span class="cn">FALSE</span>, <span class="at">fitted=</span><span class="cn">FALSE</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(mod_prestige_log, <span class="sc">~</span><span class="fu">log2</span>(income), <span class="at">test=</span><span class="cn">FALSE</span>, <span class="at">fitted=</span><span class="cn">FALSE</span>)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_prestige_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>Call: lm(formula = prestige ~ education + log2(income) + type, data = Prestige)
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -81.2019    13.7431  -5.909 5.63e-08 ***
+education      3.2845     0.6081   5.401 5.06e-07 ***
+log2(income)   7.2694     1.1900   6.109 2.31e-08 ***
+typewc        -1.4394     2.3780  -0.605   0.5465    
+typeprof       6.7509     3.6185   1.866   0.0652 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard deviation: 6.637 on 93 degrees of freedom
+  (4 observations deleted due to missingness)
+Multiple R-squared: 0.8555
+F-statistic: 137.6 on 4 and 93 DF,  p-value: &lt; 2.2e-16 
+   AIC    BIC 
+655.93 671.44 </code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>이 때, <code>log2(income)</code>에 대한 회귀계수의 해석은 <code>income</code>이 2배 늘면(=<code>log2(income)</code>이 1증가하면) prestige가 7.27점 증가하는지를 나타냄.</p>
+<p>변수의 변환이 아닌 <strong>모형의 복잡도</strong>를 높혀 좀 더 나은 fit을 얻을 수도 있음.</p>
+<ul>
+<li>다항함수 모형</li>
+<li>Spline 모형</li>
+</ul>
+<p>예제: CPS85 in mosaicData</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> mosaicData<span class="sc">::</span>CPS85 <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>cps2 <span class="ot">&lt;-</span> cps <span class="sc">|&gt;</span> </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_wage =</span> <span class="fu">log</span>(wage)) <span class="sc">|&gt;</span> </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> log_wage <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>cps2 <span class="sc">|&gt;</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> wage)) <span class="sc">+</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">label_dollar</span>()) <span class="sc">+</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"wage (dollars per hour)"</span>)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>cps2 <span class="sc">|&gt;</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wage)) <span class="sc">+</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="576"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mod_cps_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_wage <span class="sc">~</span> married <span class="sc">*</span> sex <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps2) <span class="co"># 2차 다항함수</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(mod_cps_poly, <span class="at">test=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>Spline 모형: piece-wise polynomial<br>
+<code>bs()</code>, <code>ns()</code> in splines 패키지</p>
+<ul>
+<li><code>ns()</code>: natural spline 모형 (boundary constraints)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splines)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>mod_cps_ns <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_wage <span class="sc">~</span> married <span class="sc">*</span> sex <span class="sc">+</span> <span class="fu">ns</span>(age, <span class="dv">3</span>), <span class="at">data =</span> cps2) <span class="co"># 3-piecewise natural spline</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다항함수 모형과 spline 모형의 비교</p>
+<div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predictorEffects</span>(mod_cps_poly, <span class="sc">~</span>age))</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predictorEffects</span>(mod_cps_ns, <span class="sc">~</span>age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="384"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="diagnostics_files/figure-html/unnamed-chunk-23-2.png" class="img-fluid" width="384"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="다중공선성에-대한-진단" class="level2">
+<h2 class="anchored" data-anchor-id="다중공선성에-대한-진단">다중공선성에 대한 진단</h2>
+<p>OLS의 가정과는 관계없으나, 통계적 파워를 낮추는 요인이 됨.<br>
+탐색적 분석 과정에서 변수들 간에 심각하게 상관계수(r)가 높은 경우 주의</p>
+<p>지표로는 Variance Inflation Factor(VIF)</p>
+<ul>
+<li>예를 들어, <span class="math inline">\(X_1\)</span>에 대한 VIF: <span class="math inline">\(\displaystyle {1 - R^2_{1.23}}\)</span> 의 역수</li>
+<li>즉, <span class="math inline">\(X_2, X_3\)</span>로 <span class="math inline">\(X_1\)</span>이 설명되지 않는, 즉 독립적인 정도의 역수</li>
+<li>다른 예측 변수들로 잘 설명되는 예측변수라면, standard error(SE)가 증폭되어 회귀계수의 신뢰성이 떨어짐. (불안정하다는 의미)</li>
+<li>VIF 값은 예측변수들이 서로 독립적일 때에 비해 SE가 얼마나 증폭되는지를 나타냄.</li>
+<li>VIF 값이 10 이면 <span class="math inline">\(\sqrt{10}=3.16\)</span> 배의 SE 증폭이 발생.</li>
+<li>VIF 값이 10 이상이면 심각한 다중공선성이 발생했다고 판단.</li>
+<li><strong>상호작용항이 포함된 경우</strong>, (두 변수의 곱으로 만든 항이므로) centering을 하지 않은 경우, VIF값이 크게 나올 수 있으나 실질적인 문제는 전혀 없음.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>mod_prestige_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(prestige <span class="sc">~</span> income <span class="sc">+</span> education <span class="sc">+</span> women, <span class="at">data=</span>Prestige)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod_prestige_2, <span class="at">vif=</span><span class="cn">TRUE</span>, <span class="at">model.info =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MODEL FIT:
+F(3,98) = 129.19, p = 0.00
+R² = 0.80
+Adj. R² = 0.79 
+
+Standard errors: OLS
+-------------------------------------------------------
+                     Est.   S.E.   t val.      p    VIF
+----------------- ------- ------ -------- ------ ------
+(Intercept)         -6.79   3.24    -2.10   0.04       
+income               0.00   0.00     4.73   0.00   2.28
+education            4.19   0.39    10.77   0.00   1.85
+women               -0.01   0.03    -0.29   0.77   1.53
+-------------------------------------------------------</code></pre>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
