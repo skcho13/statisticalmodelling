@@ -346,6 +346,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#변수의-변환transform-및-고차원-모형" id="toc-변수의-변환transform-및-고차원-모형" class="nav-link" data-scroll-target="#변수의-변환transform-및-고차원-모형">변수의 변환(transform) 및 고차원 모형</a></li>
   <li><a href="#다중공선성에-대한-진단" id="toc-다중공선성에-대한-진단" class="nav-link" data-scroll-target="#다중공선성에-대한-진단">다중공선성에 대한 진단</a></li>
   </ul></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a></li>
   </ul>
 </nav>
     </div>
@@ -613,9 +614,9 @@ t2          |       2.035 |   0.094 | [   1.85,   2.22] | 21.567 | &lt; .001</co
 <pre><code># A tibble: 3 × 5
   Parameter   Coefficient  CI_low CI_high     p
   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 (Intercept)      149.   -284.    513.    0.46
-2 t1                 5.47    3.99    6.58  0   
-3 t2                 2.03    1.75    2.37  0   </code></pre>
+1 (Intercept)      165.   -223.    531.   0.366
+2 t1                 5.51    4.28    6.77 0    
+3 t2                 2.02    1.73    2.33 0    </code></pre>
 </div>
 </div>
 </div>
@@ -1065,9 +1066,46 @@ women               -0.01   0.03    -0.29   0.77   1.53
 -------------------------------------------------------</code></pre>
 </div>
 </div>
-
-
+<hr>
 </section>
+</section>
+<section id="연습문제" class="level1">
+<h1>연습문제</h1>
+<p>다음은 Multiple Regression and Beyond (3e) by Timothy Z. Keith의 p.87에서 제시된 경로모형입니다. 지난 번에 cleaning한 데이터를 이용해도 되고, 다음 데이터를 이용해도 됩니다.</p>
+<ul>
+<li>데이터 <a href="https://www.dropbox.com/s/x232sv7w4zhrikp/nels88_sample.csv?dl=1">NELS88 sample.csv</a></li>
+<li>Figure 5.9에서는 자존감과 자기통제력이 학업성취도에 미치는 영향에 대해 설정한 관계를 보여줍니다.</li>
+</ul>
+<p><img src="images/fig59.png" class="img-fluid" width="620"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>nels <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/nels88_sample.csv"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>nels <span class="ot">&lt;-</span> nels <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="at">self =</span> f1cncpt2, <span class="at">locus =</span> f1locus2, <span class="at">ses =</span> byses, <span class="at">grade =</span> f1txhstd, <span class="at">previous =</span> bygrads, sex) <span class="sc">|&gt;</span> </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)))</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>nels <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+   self locus    ses grade previous sex   
+  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt; 
+1 -0.64 -0.6  -0.41   47.8      2.5 female
+2  0.14  0.07  0.528  59.5      3.8 male  
+3  1.16  0.74  0.958  53.2      3.3 male  </code></pre>
+</div>
+</div>
+<ul>
+<li>Achievement에 영향을 주는 것으로 보이는 a, b, c, d의 회귀계수를 추정하고, 해석해 보세요.</li>
+<li>Self-esteem이 Achievement에 주는 직접효과(a)와 간접효과(e –&gt; d)에 대해 분석하고, 해석해 보세요.</li>
+<li>다음과 같이 소위 “위계적 분석” 방식으로 각 모형의 회귀계수와 <span class="math inline">\(R^2\)</span>값이 어떻게 바뀌는지 보고, 그 의미를 해석해 보세요.</li>
+<li>마지막 모형 <code>mod5</code>에 대해 회귀분석 가정들에 대한 진단을 수행하면서, 특이한 관측치들도 제거하고 그 변화를 살펴 보세요.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> self, <span class="at">data =</span> nels)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> self <span class="sc">+</span> locus, <span class="at">data =</span> nels)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> self <span class="sc">+</span> locus <span class="sc">+</span> ses, <span class="at">data =</span> nels)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>mod4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> self <span class="sc">+</span> locus <span class="sc">+</span> ses <span class="sc">+</span> previous, <span class="at">data =</span> nels)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>mod5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grade <span class="sc">~</span> self <span class="sc">+</span> locus <span class="sc">+</span> ses <span class="sc">+</span> previous <span class="sc">+</span> sex, <span class="at">data =</span> nels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
