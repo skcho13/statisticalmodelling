@@ -340,7 +340,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#실험연구의-예" id="toc-실험연구의-예" class="nav-link" data-scroll-target="#실험연구의-예">실험연구의 예</a></li>
   <li><a href="#관찰연구의-예" id="toc-관찰연구의-예" class="nav-link" data-scroll-target="#관찰연구의-예">관찰연구의 예</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul>
+  <li><a href="#a.-다음-데이터는-the-octogenarian-twin-study-of-aging에서-나타나는-패턴을-기반으로-생성한-데이터" id="toc-a.-다음-데이터는-the-octogenarian-twin-study-of-aging에서-나타나는-패턴을-기반으로-생성한-데이터" class="nav-link" data-scroll-target="#a.-다음-데이터는-the-octogenarian-twin-study-of-aging에서-나타나는-패턴을-기반으로-생성한-데이터">A. 다음 데이터는 the Octogenarian Twin Study of Aging에서 나타나는 패턴을 기반으로 생성한 데이터</a></li>
+  <li><a href="#b.-다음-데이터는-tv-시청시간tv과-개인적인-능력ability이-학생들의-학업성취도achieve에-미치는-영향을-알아보기-위한-연구의-일부입니다." id="toc-b.-다음-데이터는-tv-시청시간tv과-개인적인-능력ability이-학생들의-학업성취도achieve에-미치는-영향을-알아보기-위한-연구의-일부입니다." class="nav-link" data-scroll-target="#b.-다음-데이터는-tv-시청시간tv과-개인적인-능력ability이-학생들의-학업성취도achieve에-미치는-영향을-알아보기-위한-연구의-일부입니다.">B. 다음 데이터는 TV 시청시간(<code>tv</code>)과 개인적인 능력(<code>ability</code>)이 학생들의 학업성취도(<code>achieve</code>)에 미치는 영향을 알아보기 위한 연구의 일부입니다.</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1109,14 +1113,14 @@ F-statistic: 6.722 on 5 and 144 DF,  p-value: 1.167e-05
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">sample_n</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
-     ya    yb     yc lesion drug   
-  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  
-1  5.03  5.03  3.03  SHAM   ACTIVE 
-2  6.72 10.7   8.72  SHAM   PLACEBO
-3  1.83  1.83  0.826 SHAM   ACTIVE 
-4  2.83  2.83  0.829 SHAM   ACTIVE 
-5  9.84 13.8  11.8   SHAM   PLACEBO
-6  3.12  3.12  1.12  SHAM   ACTIVE </code></pre>
+     ya    yb    yc lesion  drug   
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+1  8.95  8.95 11.0  SURGERY PLACEBO
+2  7.26 11.3   9.26 SHAM    PLACEBO
+3  7.26 11.3   9.26 SHAM    PLACEBO
+4  8.20 12.2  10.2  SHAM    PLACEBO
+5  5.81 13.8   7.81 SURGERY ACTIVE 
+6  8.34 12.3  10.3  SHAM    PLACEBO</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1286,7 +1290,8 @@ F-statistic:  15.8 on 5 and 528 DF,  p-value: 1.649e-14
 </section>
 <section id="exercises" class="level1">
 <h1>Exercises</h1>
-<p>A. 다음 데이터는 the Octogenarian Twin Study of Aging에서 나타나는 패턴을 기반으로 생성한 데이터</p>
+<section id="a.-다음-데이터는-the-octogenarian-twin-study-of-aging에서-나타나는-패턴을-기반으로-생성한-데이터" class="level4">
+<h4 class="anchored" data-anchor-id="a.-다음-데이터는-the-octogenarian-twin-study-of-aging에서-나타나는-패턴을-기반으로-생성한-데이터">A. 다음 데이터는 the Octogenarian Twin Study of Aging에서 나타나는 패턴을 기반으로 생성한 데이터</h4>
 <p>출처: <a href="https://www.pilesofvariance.com/index.html"><em>Longitudinal Analysis: Modeling Within-Person Fluctuation and Change</em></a> by Lesa Hoffman</p>
 <blockquote class="blockquote">
 <p>includes 550 older adults age 80 to 97 years.<br>
@@ -1314,8 +1319,10 @@ demgroup 3: those who already have been diagnosed with dementia (current group =
 5        5        27  85.8     9     1        1</code></pre>
 </div>
 </div>
-<p>B. 다음 데이터는 TV 시청시간(<code>tv</code>)과 개인적인 능력(<code>ability</code>)이 학생들의 학업성취도(<code>achieve</code>)에 미치는 영향을 알아보기 위한 연구의 일부입니다.<br>
-Source: <em>Multiple Regression and Beyond (3e) by Timothy Z. Keith</em><br>
+</section>
+<section id="b.-다음-데이터는-tv-시청시간tv과-개인적인-능력ability이-학생들의-학업성취도achieve에-미치는-영향을-알아보기-위한-연구의-일부입니다." class="level4">
+<h4 class="anchored" data-anchor-id="b.-다음-데이터는-tv-시청시간tv과-개인적인-능력ability이-학생들의-학업성취도achieve에-미치는-영향을-알아보기-위한-연구의-일부입니다.">B. 다음 데이터는 TV 시청시간(<code>tv</code>)과 개인적인 능력(<code>ability</code>)이 학생들의 학업성취도(<code>achieve</code>)에 미치는 영향을 알아보기 위한 연구의 일부입니다.</h4>
+<p>Source: <em>Multiple Regression and Beyond (3e) by Timothy Z. Keith</em><br>
 Data: <a href="https://www.dropbox.com/s/v1f14em6qx7fwf9/tv_ability.csv?dl=1">tv_ability.csv</a></p>
 <ul>
 <li>TV 시청시간(<code>tv</code>)이 학업성취도(<code>achieve</code>)에 미치는 부정적인 영향이 개인적인 능력(<code>ability</code>)에 따라 차등적으로 발생한다는 가설을 테스트하기 위한 분석을 해보세요. 즉, 개인적인 능력이 moderator가 되는지를 알아보세요.</li>
@@ -1343,6 +1350,7 @@ Data: <a href="https://www.dropbox.com/s/v1f14em6qx7fwf9/tv_ability.csv?dl=1">tv
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
