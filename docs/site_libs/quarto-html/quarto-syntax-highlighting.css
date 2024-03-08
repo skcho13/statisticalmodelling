@@ -33,10 +33,11 @@
 
 /* other quarto variables */
 :root {
-  --quarto-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --quarto-font-monospace: "JetBrains Mono", monospace;
 }
 
 code span.al {
+  background-color: #faefef;
   font-weight: bold;
   color: #f51818;
 }
@@ -148,6 +149,7 @@ code span.pp {
 }
 
 code span.re {
+  background-color: #ddecf3;
   color: #399ee6;
 }
 

@@ -2,9 +2,17 @@ project:
   type: website
   output-dir: docs
   resources: CNAME
+  render: 
+    - "*.qmd"
+    - "*.ipynb"
+    - "!contents/ignore/"
+    #- "!exercise*.ipynb"
+    - "!contents/case3_sol.qmd"
+    - "!contents/repeated.ipynb"
 
 website:
   page-navigation: true
+  bread-crumbs: false
   title: "CHA Stats in R"
   description: "Lecture notes for statistical modelling in R"
 
@@ -14,7 +22,7 @@ website:
 
   page-footer:
     # right: "This page is built with [Quarto](https://quarto.org/)."
-    left: This work © 2023 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
+    left: This work © 2024 by Sungkyun Cho is licensed under CC BY-NC-SA 4.0 
     # left: "&copy; Copyright 2023, Sungkyun Cho"
     # background: 
 
@@ -22,8 +30,8 @@ website:
     # background: "#F6F6FF"
     # logo: 
     pinned: true
-    align: center
-    style: "docked"
+    alignment: left
+    style: "floating"
     search: true
     collapse-level: 3
     
@@ -35,7 +43,7 @@ website:
         contents:
           - href: contents/setup.ipynb
             text: Setup
-          - href: contents/baser.ipynb
+          - href: contents/baser.qmd
           - href: contents/tidyverse.ipynb
           - href: contents/import.ipynb
           - href: contents/cleaning.ipynb
@@ -52,8 +60,8 @@ website:
               - href: contents/case1.qmd
               - href: contents/case2.qmd
               - href: contents/case3.qmd
-              - href: contents/case3_sol.qmd
-                text: Case Study 3 Sol
+              # - href: contents/case3_sol.qmd
+                # text: Case Study 3 Sol
               - href: contents/case4.qmd
           - href: contents/categorical.qmd
             text: Categorical IVs
@@ -63,17 +71,17 @@ website:
             text: Diagnostics
           - href: contents/inference.ipynb
             text: Inference
-          - href: contents/repeated.ipynb
+          # - href: contents/repeated.ipynb
           #- href: contents/report.qmd
       - text: ---
       - section: Communicate
         contents:
-          - href: https://docs.google.com/document/d/1LjSKjc3bAd0OY9H7BH_0MXp0RhCSOlWhGpq6zoDzAiY/edit?usp=sharing
+          - href: https://docs.google.com/document/d/1OQ1D7d4MxEfMZmo_FLj29rGWqvWADKmGc_QD9g5h_ho/edit?usp=sharing
             text: Ask
-          - href: https://docs.google.com/document/d/1NjaZzQdVq22csZLMuCI9GDZmTY-hFHypkFlEBb4Yx9s/edit?usp=sharing
-            text: Consult
-          - href: https://docs.google.com/document/d/1rznMbrQOfHBnYIJvWE-T6YW5jN0yBXQGiohDVLS5Qp4/edit?usp=sharing
-            text: Group Project
+          # - href: https://docs.google.com/document/d/1NjaZzQdVq22csZLMuCI9GDZmTY-hFHypkFlEBb4Yx9s/edit?usp=sharing
+          #   text: Consult
+          # - href: https://docs.google.com/document/d/1rznMbrQOfHBnYIJvWE-T6YW5jN0yBXQGiohDVLS5Qp4/edit?usp=sharing
+          #   text: Group Project
 
 format:
   html:
@@ -85,9 +93,11 @@ format:
     code-summary: "Show the code"
     theme: [sandstone, theme-light.scss]
     # monofont: 'FiraCode-Light'
-    fontsize: 0.95em
-    linestretch: 1.7
+    fontsize: 1.1em
+    linestretch: 2
     code-copy: true
     highlight-style: Ayu-light
     link-external-newwindow: true
-    # css: styles.css
+    grid:
+      body-width: 900px
+      margin-width: 200px
