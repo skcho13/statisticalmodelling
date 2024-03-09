@@ -16,8 +16,8 @@ website:
   bread-crumbs: false
   title: "{{< fa chart-bar >}} CHA Statistics in R"
   description: "Lecture notes for statistical modelling in R"
-
-  # site-url:
+  site-url: "https://r.modellings.art"
+  site-path: "/"
   # repo-url:
   # repo-actions: [edit, issue]
 

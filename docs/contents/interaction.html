@@ -1225,14 +1225,14 @@ F-statistic: 6.722 on 5 and 144 DF,  p-value: 1.167e-05
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">sample_n</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
-     ya    yb     yc lesion  drug   
-  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
-1  1.83  1.83  0.826 SHAM    ACTIVE 
-2 10.1  10.1  12.1   SURGERY PLACEBO
-3  8.25 12.2  10.2   SHAM    PLACEBO
-4  8.06 12.1  10.1   SHAM    PLACEBO
-5  6.85 10.8   8.85  SHAM    PLACEBO
-6  7.80 11.8   9.80  SHAM    PLACEBO</code></pre>
+     ya    yb    yc lesion  drug   
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
+1  8.34 12.3  10.3  SHAM    PLACEBO
+2  7.88 11.9   8.88 SHAM    PLACEBO
+3 10.2  10.2  12.2  SURGERY PLACEBO
+4  9.49  9.49 11.5  SURGERY PLACEBO
+5  6.96 11.0   8.96 SHAM    PLACEBO
+6  7.26 11.3   9.26 SHAM    PLACEBO</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1563,7 +1563,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/r\.modellings\.art");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
