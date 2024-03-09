@@ -11,6 +11,7 @@ project:
     - "!contents/repeated.ipynb"
 
 website:
+  google-analytics: "G-3JGE58SZ6T"
   page-navigation: true
   bread-crumbs: false
   title: "{{< fa chart-bar >}} CHA Statistics in R"
