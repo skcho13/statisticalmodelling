@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-08">
+<meta name="dcterms.date" content="2024-03-22">
 
 <title> CHA Statistics in R - Overview</title>
 <style>
@@ -330,8 +330,13 @@ window.Quarto = {
   </ul></li>
   <li><a href="#causal-인과관계의-분석" id="toc-causal-인과관계의-분석" class="nav-link" data-scroll-target="#causal-인과관계의-분석">Causal: 인과관계의 분석</a>
   <ul>
+  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a></li>
+  <li><a href="#experimental-study" id="toc-experimental-study" class="nav-link" data-scroll-target="#experimental-study">Experimental study</a></li>
   <li><a href="#case-1-1" id="toc-case-1-1" class="nav-link" data-scroll-target="#case-1-1">Case 1</a></li>
   <li><a href="#case-2-1" id="toc-case-2-1" class="nav-link" data-scroll-target="#case-2-1">Case 2</a></li>
+  <li><a href="#case-3-1" id="toc-case-3-1" class="nav-link" data-scroll-target="#case-3-1">Case 3</a></li>
+  <li><a href="#case-4" id="toc-case-4" class="nav-link" data-scroll-target="#case-4">Case 4</a></li>
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">Selection Bias</a></li>
   </ul></li>
   <li><a href="#uncertainty" id="toc-uncertainty" class="nav-link" data-scroll-target="#uncertainty">Uncertainty</a></li>
   <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression analysis</a></li>
@@ -361,7 +366,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 8, 2024</p>
+      <p class="date">March 22, 2024</p>
     </div>
   </div>
   
@@ -373,14 +378,19 @@ window.Quarto = {
 </header>
 
 
-<p>이번 섹션에서는 통계가 어떻게 활용되는지에 대한 전반적인 landscape을 소개하고자 하며, 이는 다양한 통계적 분석 이론들 속에서 자신이 수행하고 있는 분석의 적절성을 대략 이해하며, 어떤 부분이 부족한지를 파악할 수 있도록 도움을 주고자 함.<br>
+<p>이번 섹션에서는 통계가 어떻게 활용되는지에 대한 전반적인 landscape을 소개하고자 하며, 이는 다양한 통계적 분석 이론들 속에서 자신이 수행하고 있는 분석의 적절성을 대략 이해하며, 어떤 부분이 부족한지를 파악할 수 있도록 하고자 함.<br>
 여기에서 소개하는 내용을 모두 수업에서 다룬다는 것은 <strong>절대</strong> 아님!</p>
-<p>시작하면,<br>
-통계가 활용되는 방식은 크게 3가지로 나누어 볼 수 있음</p>
+<p>통계 분석은 크게 세 가지 주제로 나눌 수 있음.</p>
+<ul>
+<li><strong>Associations</strong>: 변수들 간의 관계를 파악; regression coefficient</li>
+<li><strong>Strength of associations</strong>: 그 관계의 크기, 예측의 정확성; R-squared, correlation coefficient, effect size</li>
+<li><strong>Inference</strong>: 그 관계와 크기가 모집단에서는 어떠할지 추론; confidence interval, p-value</li>
+</ul>
+<p>통계가 활용되는 방식을 분류하면,</p>
 <ol type="1">
 <li>기술적 분석 (descriptive)</li>
 <li>변수들 간의 진실한 관계를 분석 (relational)</li>
-<li>인과 관계의 파악과 개입 (causual)</li>
+<li>인과 관계의 파악과 개입 (causal/intervention)</li>
 </ol>
 <section id="descriptive-기술적-분석" class="level2">
 <h2 class="anchored" data-anchor-id="descriptive-기술적-분석">Descriptive: 기술적 분석</h2>
@@ -389,17 +399,20 @@ window.Quarto = {
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p>통계청의 조사 결과와 같이 현상에 대한 기술 <br><br>
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>통계청의 조사 결과와 같이 현상에 대한 기술<br>
 단순한 기술은 자칫 오해의 여지와 호도할 위험이 존재<br>
-예를 들어,<br>
-- 남녀 임금의 차이에 대한 통계치를 제시하는 경우<br>
-- 외국의 경우, 인종별 범죄율에 대한 통계치 등등 <br><br>
-만일, 좀 더 자세히 나눠어서, 연령별, 직업군별로 남녀 임금의 차이를 본다면 만족스러운가?<br>
+예를 들어,</p>
+<ul>
+<li>남녀 임금의 차이에 대한 통계치를 제시하는 경우<br>
+</li>
+<li>외국의 경우, 인종별 범죄율에 대한 통계치 등등</li>
+</ul>
+<p>만일, 좀 더 자세히 나눠어서, 연령별, 직업군별로 남녀 임금의 차이를 본다면 만족스러운가?<br>
 얼마나 더 상세히 나누어야 하는가?<br>
 그 차이는 의미있는 차이인가?</p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="images/wage.png" class="img-fluid" width="300"></p>
 </div>
 </div>
@@ -431,13 +444,18 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>연령을 고려한 마라톤 기록?<br>
-70세 노인의 기록 2시간 30분과 20세 청년의 2시간 30분은 마라톤 실력이라는 관점에서 다르게 볼 수도 있음<br>
-예를 들어, “나이 차이가 큰 두 사람의 기록을 비교하는 것은 공평하지 않아”라는 주장에 대해서, 70세 노인의 기록은 “나이를 감안하면 2시간 10분에 해당한다”고 답변할 수 있음<br>
-다시 말하면, 나이와는 <strong>무관한/독립적인</strong> 마라톤 능력에 대해 말할 수 있음<br>
-이는 동일한 나이의 사람들로만 제한해서 마라톤 기록을 비교하는 것이 공평한 능력의 비교라고 말하는 것과 것이 같은 이치임</p>
-<p><img src="images/marathon.png" class="img-fluid" width="400"><br>
-Source: <a href="https://doi.org/10.1186/2052-1847-6-31">https://doi.org/10.1186/2052-1847-6-31</a></p>
+<p><strong>연령을 고려한 마라톤 기록?</strong></p>
+<p>70세 노인과 20세 청년이 동일하게 2시간 30분의 기록을 세웠다면?</p>
+<ul>
+<li>“나이 차이가 큰 두 사람의 기록을 비교하는 것은 공평하지 않아”</li>
+<li>나이를 감안한 마라톤 실력?</li>
+<li>다시 말하면, 나이와는 <strong>무관한/독립적인</strong> 마라톤 능력에 대해 말하고자 함</li>
+<li>이는 동일한 나이의 사람들로만 제한해서 마라톤 기록을 비교하는 것이 공평한 능력의 비교라고 말하는 것과 같은 이치임</li>
+</ul>
+<p><img src="images/marathon.png" class="img-fluid" width="450"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: https://doi.org/10.1186/2052-1847-6-31</p>
+</div>
 </section>
 <section id="case-2" class="level3">
 <h3 class="anchored" data-anchor-id="case-2">Case 2</h3>
@@ -549,12 +567,13 @@ Note
 <li>연봉이 높은 곳은 직업 특성이 다를 수 있음</li>
 <li>또는, 인맥과 인간관계의 변화에서 오는 차이일 수도 있음</li>
 </ul>
-<p>다른 시각에서 보면,<br>
-현재 A의 연봉 2천만원을 갑자기 4천만으로 올리면 삶의 만족도가 트렌드대로 0.8pt 올라가겠는가?</p>
+<p>다른 시각에서 보면, 인과 관계를 가정하더라고 <strong>개입(intervention)</strong>하는 것은 또다른 문제임: 개입은 인과의 매커니즘을 교란시킬 수 있음.</p>
+<p>예를 들어, 현재 A의 연봉 2천만원을 갑자기 4천만으로 올리면 삶의 만족도가 트렌드대로 0.8pt 올라가겠는가?</p>
 <ul>
 <li>연봉의 증가는 주변의 시기와 질투를 가져와 인관관계에 영향을 줄 수 있음<br>
 </li>
 <li>본인의 자만은 여러 부정적 결과를 초래할 수 있음</li>
+<li>노력에 의해 얻은 것이 아니라는 점은 다른 부작용을 낳을 수 있음</li>
 </ul>
 <section id="prediction-vs.-intervention" class="level4">
 <h4 class="anchored" data-anchor-id="prediction-vs.-intervention"><strong>Prediction vs.&nbsp;intervention</strong></h4>
@@ -625,7 +644,16 @@ Source: <em>Multiple Regression and Beyond</em> by Timothy Z. Keith</p>
 </div>
 </div>
 </div>
-<p><img src="images/latent.png" class="img-fluid" width="650"> <br></p>
+<p><strong>Latent variable model (잠재 변수 모형)</strong></p>
+<p>구체적으로 측정한 변수들간의 관계를 넘어서서, 연구자는 좀 더 추상적이고 개념적인 construct에 대해 이론적 논의를 하고자 한다면, 그 construct를 대변해줄 수 있다고 간주되는 측정가능한 요인들로 “잠재 변수”를 구성하여, 그 잠재 변수들 간의 관계를 파악함.</p>
+<ul>
+<li><p>학업성취도에 미치는 요인들<br>
+<img src="images/latent.png" class="img-fluid" width="650"><br>
+Source: <em>Multiple Regression and Beyond</em> by Timothy Z. Keith</p></li>
+<li><p>사회의 보상체계를 결정하는 요인들<br>
+<img src="images/reward_system.png" class="img-fluid" width="960"><br>
+Source: <em>Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences</em> by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -636,6 +664,8 @@ Source: <em>Multiple Regression and Beyond</em> by Timothy Z. Keith</p>
 좀 더 분명한 관계를 파악하기 위해 실험 연구가 요구되곤 함<br>
 하지만, 많은 경우 실험이 불가능할 뿐 아니라,<br>
 실험이 반드시 최선인 것은 아니며, 실험은 나름데로 큰 약점을 갖고 있음.</p>
+<section id="confounding" class="level3">
+<h3 class="anchored" data-anchor-id="confounding">Confounding</h3>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -646,9 +676,9 @@ Source: <em>Multiple Regression and Beyond</em> by Timothy Z. Keith</p>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>일반적으로, 표면적으로 드러난 변수간의 관계가 숨겨진 다른 변수(lurking third variable)에 의해 매개되어 있어 진실한 관계가 아닌 경우, confounding 혹은 confounder가 존재한다고 함.<br>
+<p>일반적으로, 표면적으로 드러난 변수간의 관계가 숨겨진 다른 변수들(lurking third variable)에 의해 매개되어 있어 진실한 관계가 아닌 경우, confounding 혹은 confounder가 존재한다고 함.<br>
 사회과학에서 오래된 가장 핵심적인 문제이나 최근까지도 정확히 정의하기 어려움 개념이었음.<br>
-<strong>Causal analysis</strong>라는 통계와는 별개의 개념으로 발전되어 최근에야 이론적으로 완성이 되어 관심이 높아짐.</p>
+<strong>Causal inference</strong>라는 통계와는 별개의 개념으로 발전되어 최근에야 이론적으로 완성이 되어 관심이 높아짐.</p>
 <p>극단적이지만 이해하지 쉬운 예로는</p>
 <ul>
 <li>초등학생 발 사이즈 → 독해력<br>
@@ -673,6 +703,7 @@ Answer!
 </div>
 </div>
 </div>
+<p><strong>Common cause/Fork</strong></p>
 <p>맨 처음 든 예도 마찬가지로   <img src="images/path3.png" class="img-fluid" width="210"></p>
 <p>올바른 관계를 파악하려면, 동일한 나이에 대해 그 관계를 파악한 후 각 나이에서의 효과를 (weighted) 평균해서 살펴봐야함</p>
 <p>통계에서는 이를 나이를 <strong>통제 (control for age)</strong>한다고 표현하며, 같은 의미로 다음과 같은 표현을 씀<br>
@@ -687,7 +718,6 @@ Answer!
 왜 그렇게 나타나는가?</p>
 <p><img src="images/simpson.jpg" class="img-fluid" width="600"><br>
 Source: <em>The book of why</em> by Judea Pearl</p>
-<p>관찰 데이터로부터 진정한 관계를 파악하기 위해서는 이와 같은 <strong>통계적인 통제</strong>를 통해 혹은 <strong>인과분석</strong>이라는 좀 더 큰 프레임에서 분석해야 하며, 깊은 논의가 필요함</p>
 <p>마지막 예를 들면,<br>
 은퇴한 노인들을 대상으로 규칙적인 걷기가 사망율을 감소시킬 것이라는 가설을 확인하기 위해 1965년 이후 8000명 가량의 남성들을 추적조사한 데이터의 일부를 이용했는데,<br>
 Source: <em>The book of why</em> by Judea Pearl</p>
@@ -735,6 +765,17 @@ Yes and No!</p>
 그러한 연구는 어떤 요소들을 고려했는지에 대해 밝힘으로써 추후 연구에서 어떤 부분이 더 추가적으로 고려되야 할지 알 수 있게 함.</p>
 </div>
 </div>
+<p>관찰 데이터로부터 진정한 관계를 파악하기 위해서는 이와 같은 <strong>인과 추론</strong>이라는 좀 더 큰 프레임에서 분석해야 하며, 통계 안에서 해결하기 어려움.<br>
+예를 들어, <strong>colider</strong>인 경우 통제하면 spurious association이 생길 수 있음.</p>
+<p>운동능력이 뛰어나면 지능이 떨어지는가? <br></p>
+<p><img src="images/colider.png" class="img-fluid" width="300"></p>
+<p><strong>학생들의 과제는 성적에 영향을 주는가?</strong><br>
+Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
+<p><img src="images/path4.png" class="img-fluid" width="450"></p>
+<hr>
+</section>
+<section id="experimental-study" class="level3">
+<h3 class="anchored" data-anchor-id="experimental-study">Experimental study</h3>
 <p>앞서 살펴본 관찰 연구들이 모두 confounding의 위험을 안고 있기에 결정적인 인과관계를 파악하기 위해, 전통적으로 “통계학”의 시각에서 인과문제에 대해서는 보통 임상테스트에서 실시하는 RCT (randomized controlled trial)라고 부르는 소위 gold standard한 <strong>실험 연구</strong>를 통해서 해결하고자 했음<br>
 개념적으로는 <strong>물리적 통제</strong>라고 볼 수 있으며, 두 그룹으로 집단을 <strong>randomly assign</strong>(무선/무작위 배정/할당)하면 모든 면에서 동질한 성향을 가짐. 예를 들어, 두 집단의 연령이 평균적으로 동일해짐.<br>
 <br></p>
@@ -744,11 +785,14 @@ Yes and No!</p>
 <p>분야마다 효과를 제대로 검증하기 위한 많은 실험 설계들이 발전되었음 &gt;&gt; 연구방법론</p>
 <p>그럼에도 불구하고, 실험 연구는 자체로 한계를 지님</p>
 <ul>
-<li>많은 경우 실험이 불가능하며</li>
-<li>실험에서 처치한 구체적인 상황에서만 유효하고</li>
-<li>그 효과는 어떻게 표현할 것인가?</li>
+<li>많은 경우 실험이 불가능하거나 완전한 통제가 어려움</li>
+<li>실험에서 <strong>처치한 구체적인 상황</strong>에서만 유효하고; 어느 지형을 어느 속도로 누구와 어떻게 걸었는지에 대한 실험 통제하에서</li>
+<li>따라서 그 효과 또한 일반화되어 표현하기 어려움</li>
+<li>반대로, 덜 통제된 실험의 경우 어떤 요인의 효과인지 불분명</li>
+<li>완전한 통제를 할수록 더 인위적인 상황이 연출됨; 자연스러운/현실적인 상황에서 적용된다는 보장이 없음</li>
 <li>실험 참여자는 어떻게 왜 참여한 것인가?</li>
 </ul>
+</section>
 <section id="case-1-1" class="level3">
 <h3 class="anchored" data-anchor-id="case-1-1">Case 1</h3>
 <p>Terror Management Theory (TMT)<br>
@@ -762,9 +806,9 @@ Control: 자신의 치통에 대한 질문에 답</p>
 <ul>
 <li>죽음이나 치통에 대한 생각은 모두 두려움을 포함해 부정적 감정을 불러 일으키는데</li>
 <li>그저 두려움에 대한 반응인가? 아니면 정확히 “죽음에 대한 생각”이 효과를 만든 것인가?</li>
-<li>참여자들의 부정적 정서를 실험 마지막에 측정한 후 분석에 고려했음</li>
+<li>참여자들의 부정적 정서를 실험 마지막에 측정한 후 분석에 고려했음; covariate</li>
 </ul>
-<div id="cell-42" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
+<div id="cell-44" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -800,6 +844,7 @@ Source: <a href="https://www.npr.org/sections/goatsandsoda/2017/07/03/534743719/
 <li>어른들 즉, 권위에 대한 복종인가?</li>
 <li>더 많이 먹기 위한 욕심인가?</li>
 <li>눈 앞에 이익을 빨리 취하는 것은 좋은 전략일 수 있지 않은가?</li>
+<li>제3의 common cause가 있을 수 있는가? 지능? 양육 스타일?</li>
 </ul>
 <p>혹시 실험을 진행하는 실험자에 따라 다른 효과가 나타날까? (Experimenter effects)<br>
 처치(treatment)의 효과인가 처지가 일어나는 <strong>상황이</strong> 만든 효과인가?</p>
@@ -853,13 +898,99 @@ Note
 </div>
 </div>
 </section>
+<section id="case-3-1" class="level3">
+<h3 class="anchored" data-anchor-id="case-3-1">Case 3</h3>
+<p>상담치료 (dialectical behavior therapy)에 대한 효과 검증</p>
+<p>Zeifman, R. J., Boritz, T., Barnhart, R., Labrish, C., &amp; McMain, S. F. (2020). The independent roles of mindfulness and distress tolerance in treatment outcomes in dialectical behavior therapy skills training. Personality Disorders: Theory, Research, and Treatment, 11(3), 181.</p>
+<p><strong>연구 절차</strong></p>
+<p><img src="images/DBT.png" class="img-fluid" width="600"></p>
+<p><strong>연구 설계</strong></p>
+<p><img src="images/DBT1.png" class="img-fluid" width="1000"></p>
+<p><strong>치료 효과에 대한 모형</strong></p>
+<p><img src="images/DBT2.png" class="img-fluid" width="550"></p>
+<ul>
+<li>정말 DBT 치료의 효과인가?
+<ul>
+<li>아무런 처지도 하지 않은 통제집단은 적절한가?</li>
+</ul></li>
+<li>매개변수의 효과(매커니즘)를 추론할 수 있는가?</li>
+<li>경계성 인격장애의 기준이 문제가 되지 않는가?
+<ul>
+<li>경계성 인격 장애의 정도가 치료 효과에 영향을 미치지 않는가?</li>
+<li>이 연구결과는 어떤 대상으로 일반화될 수 있는가?</li>
+</ul></li>
+<li>20주를 다 채우지 않은 참여자들에 대해서 문제가 되는가?</li>
+<li>표본의 수가 충분한가?</li>
+</ul>
+</section>
+<section id="case-4" class="level3">
+<h3 class="anchored" data-anchor-id="case-4">Case 4</h3>
+<p>요양원의 노인들을 대상으로, 독립적 행동의 기회 증가가 그들의 정신 건강에 미치는 영향</p>
+<p>Langer, E. J., &amp; Rodin, J. (1976). The effects of choice and enhanced personal responsibility for the aged: <strong>A field experiment</strong> in an institutional setting. Journal of Personality and Social Psychology, 34, 191–198.</p>
+<p><img src="images/nursing_home.png" class="img-fluid" width="900"></p>
+<ul>
+<li>두 층의 노인들의 특성은 동일한가?
+<ul>
+<li>pretest에서 두 그룹 간의 특성이 유사한지에 대한 체크 문항: 모두 측정할 수는 없음!</li>
+</ul></li>
+<li>간호사 스탭들의 효과?
+<ul>
+<li>두 층의 할당된 간호사들의 차이?</li>
+<li>스텝들 자신들도 변화된 요양원의 지침에 반응했는가? 또한 그 변화에 노인들도 반응했는가?</li>
+</ul></li>
+<li>두 층에서 동일하게 활동이나 환경의 변화가 일어났는가? 예, 간호사의 변경</li>
+<li>두 층의 노인들 간의 교류? 오염 요인</li>
+<li>구체적으로 어떤 요인이 효과를 낸 것인가?
+<ul>
+<li>“treatment package”</li>
+<li>갑작스러운 변화 자체?</li>
+</ul></li>
+<li>이 요양원에 들어온 노인들의 특성이 있는가?
+<ul>
+<li>사회경제적 수준이 높은 노인들의 경우 독립적 생활에 대한 더 긍정적 효과가 발현?</li>
+<li>다른 특성의 요양원의 노인들에게도 적용가능한가?</li>
+</ul></li>
+</ul>
+</section>
+<section id="selection-bias" class="level3">
+<h3 class="anchored" data-anchor-id="selection-bias">Selection Bias</h3>
+<p>수집된 데이터의 성격에 따라 인과추론을 방해하거나(confounding), 일반화할 수 있는 대상의 범위가 제한됨(external validity)</p>
+<ul>
+<li>노인에 관한 데이터: 누가 사망했는가?</li>
+<li>과거 기록을 이용?</li>
+<li>회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화</li>
+<li>누가 참여했는가? 어떤 방식으로 참여했는가?</li>
+<li>관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?</li>
+<li>어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?</li>
+<li>코호트/특정세대의 특성: 그들의 특성인가?</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>설문(서베이)을 통한 실험연구도 온라인 서베이 툴이 발전함에 따라 용이해졌음.</p>
+<ul>
+<li>가령, 300명의 참여자들이 온라인 설문에 참여했을 때, 참여자의 1/3 각각에 대해 서로 다른 설문 세트 A, B, C가 무작위로 배정되도록 할 수 있으며,</li>
+<li>각 설문 세트에서도 인터랙티브하게 조건에 따라 다른 문항들에 노출되도록 할 수 있음.</li>
+<li>대표적인 서베이 툴: <a href="https://www.qualtrics.com">Qualtrics</a></li>
+<li>온라인 서베이 참여자 풀: M-turk, Prolific</li>
+</ul>
+</div>
+</div>
+</section>
 </section>
 <section id="uncertainty" class="level2">
 <h2 class="anchored" data-anchor-id="uncertainty">Uncertainty</h2>
 <p>관찰자가 관찰한 대상으로부터 얻은 결과를 관찰하지 않은 더 넓은 대상으로 일반화할 수 있는가?<br>
 가령, 다음과 같이 150명에 대해 조사한 “연령이 임금에 미치는 효과”를 일반화 할 수 있는가?<br>
 한 나라의 국민 전체?</p>
-<div id="cell-47" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
+<div id="cell-53" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -879,14 +1010,76 @@ Note
 하지만, 통계적 추론의 논리는 개념적으로는 다음과 같이 볼 수 있음.</p>
 <p>앞서 논의한 모든 내용은 “특정 샘플” 내에서 변수들 간의 관계에 대한 분석일 뿐 그 샘플을 벗어나서 논의한 것이 아님. 통계적 추론은 수많은 같은 수의 샘플들, 가령 N = 150인 즉, 150명으로 이루어진 샘플들을 반복적으로 관찰한다면 그 샘플들 간의 편차들이 어떠하겠는가에 대한 논의임.</p>
 <ul>
-<li>첫번째 그림에서처럼 (알수는 없지만) 어떤 population을 가정하는데, 그 모집단에는 age와 wage의 true relationship이 선형적으로 존재한다고 가정함. 연구자가 한번에 150명으로 이루어진 sample을 반복적으로 관찰한다면, 샘플마다 age와 wage의 관계는 다르게 나타날 것임 (두번째 그림).</li>
-<li>예를 들어, 그 기울기에 관심이 있다면, 샘플들로부터 나타나는 기울기들의 분포를 살펴봄으로써 (세번째 그림) 샘플에서 나타날 수 있는 기울기값이 어떠한가를 파악할 수 있음.<br>
+<li>첫번째 그림에서처럼 (알수는 없지만) 어떤 모집단(population)을 가정하는데, 그 모집단에는 남녀 간의 시간당 임금(wage)의 차이에 대한 true relationship이 존재한다고 가정함.</li>
+<li>연구자가 한번에 150명으로 이루어진 표본(sample)을 반복적으로 관찰한다면, 표본마다 남녀 간의 임금 격차는 다르게 나타날 것임 (두번째 그림).</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="images/sampling.png" class="img-fluid" width="420"><br>
+Source: <em>The Truthful Art</em> by Albert Cairo.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/sampling3.png" class="img-fluid" width="380"></p>
+</div>
+</div>
+</div>
+<ul>
+<li>샘플들로부터 나타나는 임금 차이 값의 분포를 살펴봄으로써 샘플에서 나타날 수 있는 남녀 간의 임금 차이가 어떠한가를 파악할 수 있음.<br>
 </li>
-<li>이 분포를 <strong>sampling distribution</strong>이라고 부름</li>
+<li>이 분포를 <strong>sampling distribution</strong>(표본 분포)이라고 부름</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/bootstrap_gender1.png" class="img-fluid" width="380"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/bootstrap_gender2.png" class="img-fluid" width="380"></p>
+</div>
+</div>
+</div>
+<ul>
+<li>이 분포에 따르면 평균이 $2.27이고, 임금 차이 값들의 95%가 $1.47 ~ $3.04 범위에 있음을 알 수 있음.</li>
+<li>다시말하면, 연구자가 관찰한 샘플로부터 연구자는 매우 큰 확신(95%)을 갖고 남녀의 시간당 임금의 차이는 1.47달러에서 3.04달러 사이에 있을 것이라고 말할 수 있음.</li>
+</ul>
+<hr>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><img src="images/sampling.png" class="img-fluid" width="420"><br>
+Source: <em>The Truthful Art</em> by Albert Cairo.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/bootstrap.png" class="img-fluid" width="380"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/bootstrap_age1.png" class="img-fluid" width="380"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/bootstrap_age2.png" class="img-fluid" width="380"></p>
+</div>
+</div>
+</div>
+<p>비슷하게, 어떤 모집단에서 나이(age)와 시간당 임금(wage)의 true relationship이 선형적으로 존재한다고 가정했을 때,</p>
+<p>연구자가 한번에 150명으로 이루어진 sample을 반복적으로 관찰한다면, 샘플마다 age와 wage의 관계는 다르게 나타날 것임 (두번째 그림).</p>
+<ul>
+<li>예를 들어, 샘플들로부터 나타나는 기울기들의 분포를 살펴봄으로써 (세번째 그림) 샘플에서 나타날 수 있는 기울기값이 어떠한가를 파악할 수 있음.<br>
+</li>
+<li>이 분포를 <strong>sampling distribution</strong>(표본 분포)이라고 부름</li>
 <li>이 분포에 따르면 평균이 0.066이고, 기울기 값들의 95%가 0.005 ~ 0.140 범위에 있음을 알 수 있음.</li>
 <li>다시말하면, 연구자가 관찰한 샘플로부터 연구자는 (age와 wage의 선형성을 가정한다면), 매우 큰 확신을 갖고 나이가 10세 늘때마다 시간당 임금의 증가율은 0.05에서 1.4달러 사이에 있을 것이라고 말할 수 있음.</li>
-<li>확신이 커지려면 임금증가율의 범위가 넓어져야 함. 예를 들어, 99%의 확신을 갖고 나이가 10세 늘때 시간당 임금의 증가율은 -0.18에서 1.67달러 사이에 있을 것이라고 말할 수 있음. 별로 의미없는 발언이 될 수 있음.</li>
-<li>반대로, 확신에 대해서는 양보하는 대신 임금증가율에 대한 범위폭을 줄일 수 있음. 예를 들어 90%의 조금 낮은 확신을 갖고 임금증가율은 0.14에서 1.3달러 사이에 있을 것이라고 말할 수 있음</li>
 </ul>
 <div>
 
@@ -905,14 +1098,14 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <div>
 
 </div>
-<div id="cell-51" class="cell quarto-layout-panel" data-execution_count="72" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-60" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="72" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="overview_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<div id="cell-52" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="73">
+<div id="cell-61" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="73">
 <div class="cell-output cell-output-stdout">
 <pre><code>Bootstrap bca confidence intervals
 
@@ -945,7 +1138,7 @@ Pearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Caus
 <ol type="1">
 <li>선형 관계를 가정한 <strong>임금과 연령의 관계</strong>에 대한 회귀분석 (N=150)</li>
 </ol>
-<div id="cell-55" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
+<div id="cell-64" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -955,7 +1148,7 @@ Pearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Caus
 </div>
 </div>
 <p>Model: <code>lm(wage ~ age, data = cps)</code></p>
-<div id="cell-57" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
+<div id="cell-66" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -980,7 +1173,7 @@ age                 0.092   0.031   0.154    2.959   0.004
 <ol start="2" type="1">
 <li>맨 처음 든 예, 즉 <strong>연령을 고려한/통제한</strong> “기혼여부에 따른 임금차이”를 회귀분석하면 (N=465)</li>
 </ol>
-<div id="cell-59" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="28">
+<div id="cell-68" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="28">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -992,7 +1185,7 @@ age                 0.092   0.031   0.154    2.959   0.004
 <p>우선, 결혼여부에 따른 평균 임금의 차이는 미혼일 때 -0.97 (dollars/hr) 낮음.<br>
 하지만, 모집단에서 그 차이는 (95% 확률로) -1.93에서 -0.02 사이에 있을 것이라고 추정할 수 있음</p>
 <p>Model: <code>lm(wage ~ married, data = cps)</code></p>
-<div id="cell-61" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
+<div id="cell-70" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -1028,7 +1221,7 @@ marriedSingle         -1.28   -2.16   -0.41    -2.89   0.00
 </div>
 </div>
 <p>Model: <code>lm(wage ~ married + sex + age + I(age^2), data = cps)</code></p>
-<div id="cell-64" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
+<div id="cell-73" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -1057,7 +1250,7 @@ I(age^2)              -0.01    -0.01   -0.00    -5.26   0.00
 이는 사실상 임금 차이가 있다고 볼 확신을 거의 갖기 어려움</p>
 <p>결혼여부와 성별이 <strong>상호작용</strong>하는 것을 고려하고, 임금의 분포를 고려해서 log 변환하면,</p>
 <p>Model2: <code>lm(log_wage ~ married * sex + age + I(age^2), data = cps)</code></p>
-<div id="cell-66" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="46">
+<div id="cell-75" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="46">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -1082,7 +1275,7 @@ marriedSingle:sexM         -0.21   -0.38   -0.05    -2.51   0.01
 </div>
 </div>
 </div>
-<div id="cell-67" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
+<div id="cell-76" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-02-17">
+<meta name="dcterms.date" content="2024-03-22">
 
 <title> CHA Statistics in R - Cleaning</title>
 <style>
@@ -328,6 +328,7 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
   <li><a href="#변수명-수정" id="toc-변수명-수정" class="nav-link" data-scroll-target="#변수명-수정">변수명 수정</a></li>
   <li><a href="#문항을-더할-때" id="toc-문항을-더할-때" class="nav-link" data-scroll-target="#문항을-더할-때">문항을 더할 때</a></li>
   <li><a href="#문항을-평균낼-때" id="toc-문항을-평균낼-때" class="nav-link" data-scroll-target="#문항을-평균낼-때">문항을 평균낼 때</a></li>
+  <li><a href="#표준화-및-중심화" id="toc-표준화-및-중심화" class="nav-link" data-scroll-target="#표준화-및-중심화">표준화 및 중심화</a></li>
   <li><a href="#카테고리-변수-및-연산" id="toc-카테고리-변수-및-연산" class="nav-link" data-scroll-target="#카테고리-변수-및-연산">카테고리 변수 및 연산</a></li>
   <li><a href="#행의-삭제" id="toc-행의-삭제" class="nav-link" data-scroll-target="#행의-삭제">행의 삭제</a></li>
   <li><a href="#열의-삭제" id="toc-열의-삭제" class="nav-link" data-scroll-target="#열의-삭제">열의 삭제</a></li>
@@ -360,7 +361,7 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 17, 2023</p>
+      <p class="date">March 22, 2024</p>
     </div>
   </div>
   
@@ -382,14 +383,14 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 <li><code>factor()</code> : 카테고리 변수의 변환</li>
 </ul>
 <p>앞서 다운받은 데이터: <a href="https://www.dropbox.com/s/fvuoi6jev84bnkc/altruism.csv?dl=1">altruism.csv 파일 링크</a></p>
-<div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="71">
+<div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># import data</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/altruism.csv"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 12
+<pre><code># A tibble: 120 x 12
      id pho_1 pho_2 pho_3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1     1    95    95    95     1  2004      80      NA      80      80      70
@@ -398,18 +399,19 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 4     4    77    77    64     1  2004      66      72      88      82      67
 5     5    NA    NA    NA    NA    NA      NA      NA      NA      NA      NA
 6     6   100    75   100     0  2004     100      60      70      55      70
-# … with 114 more rows, and 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
+# i 114 more rows
+# i 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <section id="변수명-수정" class="level3">
 <h3 class="anchored" data-anchor-id="변수명-수정">변수명 수정</h3>
 <p><code>rename()</code></p>
-<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="72">
+<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">ph1 =</span> pho_1, <span class="at">ph2 =</span> pho_2, <span class="at">ph3 =</span> pho_3) <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 12
+<pre><code># A tibble: 120 x 12
      id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1     1    95    95    95     1  2004      80      NA      80      80      70
@@ -418,18 +420,19 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 4     4    77    77    64     1  2004      66      72      88      82      67
 5     5    NA    NA    NA    NA    NA      NA      NA      NA      NA      NA
 6     6   100    75   100     0  2004     100      60      70      55      70
-# … with 114 more rows, and 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
+# i 114 more rows
+# i 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>변형 후에는 꼭 변수에 <strong>assign!</strong></p>
-<div id="cell-7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="73">
+<div id="cell-7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span>     <span class="co"># 원래 데이터에 overwrite</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    helping <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">ph1 =</span> pho_1, <span class="at">ph2 =</span> pho_2, <span class="at">ph3 =</span> pho_3)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 12
+<pre><code># A tibble: 120 x 12
      id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1     1    95    95    95     1  2004      80      NA      80      80      70
@@ -438,7 +441,8 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 4     4    77    77    64     1  2004      66      72      88      82      67
 5     5    NA    NA    NA    NA    NA      NA      NA      NA      NA      NA
 6     6   100    75   100     0  2004     100      60      70      55      70
-# … with 114 more rows, and 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
+# i 114 more rows
+# i 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -446,13 +450,13 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="문항을-더할-때">문항을 더할 때</h3>
 <p><code>rowSums(row, na.rm = TRUE)</code> 함수를 이용하는 것이 직접 덧셈보다 더 적절함</p>
 <p><code>ph1</code>, <code>ph2</code>, <code>ph3</code> 세 문항을 더하려면,</p>
-<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="74">
+<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 먼저 문항을 선택/확인</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ph1<span class="sc">:</span>ph3) <span class="sc">|&gt;</span> <span class="co"># position!</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 3
+<pre><code># A tibble: 120 x 3
     ph1   ph2   ph3
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1    95    95    95
@@ -461,10 +465,10 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 4    77    77    64
 5    NA    NA    NA
 6   100    75   100
-# … with 114 more rows</code></pre>
+# i 114 more rows</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="75">
+<div id="cell-11" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ph1<span class="sc">:</span>ph3) <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
@@ -479,7 +483,7 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 [109] 197 294 280 195 255   1 162 278 176 262 300 164</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="76">
+<div id="cell-12" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>helping[<span class="st">"phone"</span>] <span class="ot">&lt;-</span>    <span class="co"># "phone"이라는 새로운 변수에 assign!</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  helping <span class="sc">|&gt;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ph1<span class="sc">:</span>ph3) <span class="sc">|&gt;</span></span>
@@ -487,7 +491,7 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 13
+<pre><code># A tibble: 120 x 13
      id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1     1    95    95    95     1  2004      80      NA      80      80      70
@@ -504,7 +508,7 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 4      69   218
 5      NA     0
 6      90   275
-# … with 114 more rows</code></pre>
+# i 114 more rows</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -543,13 +547,13 @@ Note
 <section id="문항을-평균낼-때" class="level3">
 <h3 class="anchored" data-anchor-id="문항을-평균낼-때">문항을 평균낼 때</h3>
 <p><code>rowMeans(row, na.rm = TRUE)</code> 함수를 이용하는 것이 적절함</p>
-<div id="cell-15" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="68">
+<div id="cell-15" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 먼저, 평균을 낼 문항을 선택/확인</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(emp_q20, emp_q22<span class="sc">:</span>emp_q26) <span class="sc">|&gt;</span>  <span class="co"># ":" operator와 "," 섞어써도 무방</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 6
+<pre><code># A tibble: 120 x 6
   emp_q20 emp_q22 emp_q23 emp_q24 emp_q25 emp_q26
     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1      80      NA      80      80      70      70
@@ -558,17 +562,17 @@ Note
 4      66      72      88      82      67      69
 5      NA      NA      NA      NA      NA      NA
 6     100      60      70      55      70      90
-# … with 114 more rows</code></pre>
+# i 114 more rows</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="79">
+<div id="cell-16" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="80">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>helping[<span class="st">"persp"</span>] <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span>    <span class="co"># "persp"라는 새로운 변수에 assign!</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(emp_q20, emp_q22<span class="sc">:</span>emp_q26) <span class="sc">|&gt;</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowMeans</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 14
+<pre><code># A tibble: 120 x 14
      id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1     1    95    95    95     1  2004      80      NA      80      80      70
@@ -585,7 +589,7 @@ Note
 4      69   218  74  
 5      NA     0 NaN  
 6      90   275  74.2
-# … with 114 more rows</code></pre>
+# i 114 more rows</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -607,19 +611,70 @@ Note
 </div>
 </div>
 </section>
+<section id="표준화-및-중심화" class="level3">
+<h3 class="anchored" data-anchor-id="표준화-및-중심화">표준화 및 중심화</h3>
+<ul>
+<li>표준화(standardize): <code>scale(x)</code> 함수를 이용</li>
+<li>중심화(center): <code>scale(x, scale = FALSE)</code> 함수를 이용</li>
+</ul>
+<div id="cell-19" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">phone_z =</span> <span class="fu">scale</span>(phone) <span class="sc">%&gt;%</span> as.vector,  <span class="co"># scale()은 matrix로 반환; vector 변환 필요</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">persp_z =</span> <span class="fu">scale</span>(persp) <span class="sc">%&gt;%</span> as.vector</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 120 x 16
+     id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1     1    95    95    95     1  2004      80      NA      80      80      70
+2     2    58    62    NA     0  2003      62      58      59      57      56
+3     3   100    50    50    NA  2003      90      51      51      51      52
+  emp_q26 phone persp  phone_z persp_z
+    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1      70   285  76    1.05      0.104
+2      59   120  58.5 -1.00     -0.981
+3     100   200  65.8 -0.00643  -0.527
+# i 117 more rows</code></pre>
+</div>
+</div>
+<p><code>across()</code> 함수를 이용하면 여러 변수를 한 번에 변환할 수 있음</p>
+<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(phone, persp),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">.fns =</span> <span class="sc">~</span>(<span class="fu">scale</span>(.) <span class="sc">%&gt;%</span> as.vector),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">.names =</span> <span class="st">"{.col}_z"</span>)) <span class="sc">|&gt;</span>  <span class="co"># 변수명을 일괄 변경: 변수명 + "_z"</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 120 x 16
+     id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1     1    95    95    95     1  2004      80      NA      80      80      70
+2     2    58    62    NA     0  2003      62      58      59      57      56
+3     3   100    50    50    NA  2003      90      51      51      51      52
+  emp_q26 phone persp  phone_z persp_z
+    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1      70   285  76    1.05      0.104
+2      59   120  58.5 -1.00     -0.981
+3     100   200  65.8 -0.00643  -0.527
+# i 117 more rows</code></pre>
+</div>
+</div>
+</section>
 <section id="카테고리-변수-및-연산" class="level3">
 <h3 class="anchored" data-anchor-id="카테고리-변수-및-연산">카테고리 변수 및 연산</h3>
 <p>카테고리 변수는 R의 <strong>factor</strong> 타입으로 바꾸어 분석하는 것이 유리함.</p>
 <p>간단한 연산은 직접 계산.</p>
-<div id="cell-19" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)),  <span class="co"># factor 타입의 변수로 변환</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="dv">2023</span> <span class="sc">-</span> age  <span class="co"># 출생년도로부터 나이 계산</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)),  <span class="co"># factor 타입의 변수로 변환</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="dv">2023</span> <span class="sc">-</span> age  <span class="co"># 출생년도로부터 나이 계산</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">width =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 14
+<pre><code># A tibble: 120 x 14
      id   ph1   ph2   ph3 sex      age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1     1    95    95    95 female    19      80      NA      80      80      70
@@ -630,13 +685,13 @@ Note
 6     6   100    75   100 male      19     100      60      70      55      70
   emp_q26 phone persp
     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1      70   285  75  
-2      59   120  58.4
-3     100   200  68.8
-4      69   218  71.2
+1      70   285  76  
+2      59   120  58.5
+3     100   200  65.8
+4      69   218  74  
 5      NA     0 NaN  
-6      90   275  75  
-# … with 114 more rows</code></pre>
+6      90   275  74.2
+# i 114 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -644,14 +699,14 @@ Note
 <h3 class="anchored" data-anchor-id="행의-삭제">행의 삭제</h3>
 <p><code>filter()</code>를 활용</p>
 <p>예를 들어, 5번째 행을 지우려면</p>
-<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">|&gt;</span> <span class="co"># !는 not의 의미</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 다시 helping에 assign 해야 수정됨!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">|&gt;</span> <span class="co"># !는 not의 의미</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 다시 helping에 assign 해야 수정됨!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 119 × 14
+<pre><code># A tibble: 119 x 14
      id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1     1    95    95    95     1  2004      80      NA      80      80      70
@@ -660,18 +715,18 @@ Note
 4     4    77    77    64     1  2004      66      72      88      82      67
 5     6   100    75   100     0  2004     100      60      70      55      70
 6     7    77    94    86     1  2004      91      93      85      91      73
-# … with 113 more rows, and 3 more variables: emp_q26 &lt;dbl&gt;, phone &lt;dbl&gt;,
-#   persp &lt;dbl&gt;</code></pre>
+# i 113 more rows
+# i 3 more variables: emp_q26 &lt;dbl&gt;, phone &lt;dbl&gt;, persp &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p>여러 행을 지우려면?<br>
 <code>%in%</code> 응용</p>
-<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)) <span class="sc">|&gt;</span> <span class="co"># !는 not의 의미</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-27" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)) <span class="sc">|&gt;</span> <span class="co"># !는 not의 의미</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 117 × 14
+<pre><code># A tibble: 117 x 14
      id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1     2    58    62    NA     0  2003      62      58      59      57      56
@@ -680,8 +735,8 @@ Note
 4     7    77    94    86     1  2004      91      93      85      91      73
 5     8    90    68    20     0  2004      67      66      31      67      63
 6     9   100    79    77     0  2003      61      51      30      51      51
-# … with 111 more rows, and 3 more variables: emp_q26 &lt;dbl&gt;, phone &lt;dbl&gt;,
-#   persp &lt;dbl&gt;</code></pre>
+# i 111 more rows
+# i 3 more variables: emp_q26 &lt;dbl&gt;, phone &lt;dbl&gt;, persp &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -689,12 +744,12 @@ Note
 <h3 class="anchored" data-anchor-id="열의-삭제">열의 삭제</h3>
 <p><code>select()</code> 활용</p>
 <p><code>emp_q23</code>, <code>emp_q25</code> 두 열을 삭제</p>
-<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>emp_q23, <span class="sc">-</span>emp_q25) <span class="sc">|&gt;</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-29" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>emp_q23, <span class="sc">-</span>emp_q25) <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 12
+<pre><code># A tibble: 120 x 12
      id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 emp_q24 emp_q26 phone
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
 1     1    95    95    95     1  2004      80      NA      80      70   285
@@ -703,25 +758,26 @@ Note
 4     4    77    77    64     1  2004      66      72      82      69   218
 5     5    NA    NA    NA    NA    NA      NA      NA      NA      NA     0
 6     6   100    75   100     0  2004     100      60      55      90   275
-# … with 114 more rows, and 1 more variable: persp &lt;dbl&gt;</code></pre>
+# i 114 more rows
+# i 1 more variable: persp &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p><code>emp_q23</code>부터 <code>emp_q26</code> 열을 삭제 (위치의 의미로)</p>
-<div id="cell-27" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>(emp_q23<span class="sc">:</span>emp_q26)) <span class="sc">|&gt;</span>  <span class="co"># () 꼭 필요</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-31" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>(emp_q23<span class="sc">:</span>emp_q26)) <span class="sc">|&gt;</span>  <span class="co"># () 꼭 필요</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 10
+<pre><code># A tibble: 120 x 10
      id   ph1   ph2   ph3   sex   age emp_q20 emp_q22 phone persp
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1    95    95    95     1  2004      80      NA   285  75  
-2     2    58    62    NA     0  2003      62      58   120  58.4
-3     3   100    50    50    NA  2003      90      51   200  68.8
-4     4    77    77    64     1  2004      66      72   218  71.2
+1     1    95    95    95     1  2004      80      NA   285  76  
+2     2    58    62    NA     0  2003      62      58   120  58.5
+3     3   100    50    50    NA  2003      90      51   200  65.8
+4     4    77    77    64     1  2004      66      72   218  74  
 5     5    NA    NA    NA    NA    NA      NA      NA     0 NaN  
-6     6   100    75   100     0  2004     100      60   275  75  
-# … with 114 more rows</code></pre>
+6     6   100    75   100     0  2004     100      60   275  74.2
+# i 114 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -730,28 +786,28 @@ Note
 <h2 class="anchored" data-anchor-id="이상치-발견">이상치 발견</h2>
 <p>Outliers을 찾는 방법은 다양하고 복잡한 테크닉을 요하기도 하는데, 앞으로 점차 익히게 될 것임</p>
 <p>예를 들어, <code>age</code>에 잘못 기입한 경우가 있는데</p>
-<div id="cell-30" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/altruism.csv"</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-34" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/altruism.csv"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age)) <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="cleaning_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="cleaning_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><code>age</code>는 출생년도를 물어봤으나 다른 답을 한 경우들이 있음<br>
 값은 2002 ~ 2004 사이가 정상이므로 <code>filter()</code>를 써서 확인해 볼 수 있음</p>
-<div id="cell-32" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">2002</span> <span class="sc">|</span> age <span class="sc">&gt;</span> <span class="dv">2004</span>) <span class="sc">|&gt;</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">2002</span> <span class="sc">|</span> age <span class="sc">&gt;</span> <span class="dv">2004</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7 × 12
+<pre><code># A tibble: 7 x 12
      id pho_1 pho_2 pho_3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1    11    65    94    56     1   203      62      86      58      47      62
@@ -761,51 +817,51 @@ Note
 5    59    76    86    64     0   709     100      93      67      94      79
 6   108    75   100    85     1  2005     100     100     100     100      97
 7   118    92    76    94     0  1108      55      51      51      60      53
-# … with 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
+# i 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
 <section id="샘플-r-script" class="level2">
 <h2 class="anchored" data-anchor-id="샘플-r-script">샘플 R script</h2>
-<div id="cell-34" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># import data</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/altruism.csv"</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rename</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ph1 =</span> pho_1, <span class="at">ph2 =</span> pho_2, <span class="at">ph3 =</span> pho_3) </span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># delete reponses</span></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">==</span> <span class="dv">5</span>)</span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># scoring</span></span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>helping[<span class="st">"phone"</span>] <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ph1<span class="sc">:</span>ph3) <span class="sc">|&gt;</span></span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowMeans</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>helping[<span class="st">"persp"</span>] <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span> </span>
-<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(emp_q20, emp_q22, emp_q24<span class="sc">:</span>emp_q26) <span class="sc">|&gt;</span></span>
-<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowMeans</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="co"># factors and etc.</span></span>
-<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
-<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)),</span>
-<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="dv">2023</span> <span class="sc">-</span> age</span>
-<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="co"># select variables</span></span>
-<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
-<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, sex, age, phone, persp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-38" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># import data</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/altruism.csv"</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rename</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ph1 =</span> pho_1, <span class="at">ph2 =</span> pho_2, <span class="at">ph3 =</span> pho_3) </span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># delete reponses</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">==</span> <span class="dv">5</span>)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># scoring</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>helping[<span class="st">"phone"</span>] <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ph1<span class="sc">:</span>ph3) <span class="sc">|&gt;</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowMeans</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>helping[<span class="st">"persp"</span>] <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span> </span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(emp_q20, emp_q22, emp_q24<span class="sc">:</span>emp_q26) <span class="sc">|&gt;</span></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowMeans</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="co"># factors and etc.</span></span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)),</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="dv">2023</span> <span class="sc">-</span> age</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a><span class="co"># select variables</span></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> helping <span class="sc">|&gt;</span></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, sex, age, phone, persp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>정리된 파일로 분석 시작!</p>
-<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-40" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 119 × 5
+<pre><code># A tibble: 119 x 5
      id sex      age phone persp
   &lt;dbl&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1     1 female    19  95    75  
@@ -814,7 +870,7 @@ Note
 4     4 female    19  72.7  71.2
 5     6 male      19  91.7  75  
 6     7 female    19  85.7  82.6
-# … with 113 more rows</code></pre>
+# i 113 more rows</code></pre>
 </div>
 </div>
 

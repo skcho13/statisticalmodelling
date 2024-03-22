@@ -90,7 +90,7 @@ format:
     toc-depth: 4
     toc-location: right
     code-fold: false
-    code-overflow: scroll
+    code-overflow: wrap
     code-summary: "Show the code"
     theme: [sandstone, theme-light.scss]
     # monofont: 'FiraCode-Light'
