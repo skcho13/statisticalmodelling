@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-02-17">
+<meta name="dcterms.date" content="2024-03-23">
 
 <title> CHA Statistics in R - Case Study 3</title>
 <style>
@@ -264,7 +264,13 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/case4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Salary</span></a>
+ <span class="menu-text">Case Study 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/case5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Papers</span></a>
   </div>
 </li>
       </ul>
@@ -326,20 +332,20 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
   <li><a href="#national-education-longitudinal-study-of-1988-nels88" id="toc-national-education-longitudinal-study-of-1988-nels88" class="nav-link active" data-scroll-target="#national-education-longitudinal-study-of-1988-nels88">National Education Longitudinal Study of 1988 (NELS:88)</a>
   <ul>
   <li><a href="#연구주제-학생들의-과제는-성적에-영향을-주는가-준다면-그-영향력의-크기는-어떠한가" id="toc-연구주제-학생들의-과제는-성적에-영향을-주는가-준다면-그-영향력의-크기는-어떠한가" class="nav-link" data-scroll-target="#연구주제-학생들의-과제는-성적에-영향을-주는가-준다면-그-영향력의-크기는-어떠한가"><em>연구주제: 학생들의 과제는 성적에 영향을 주는가? 준다면 그 영향력의 크기는 어떠한가?</em></a></li>
-  <li><a href="#변수들-간의-관계-탐색" id="toc-변수들-간의-관계-탐색" class="nav-link" data-scroll-target="#변수들-간의-관계-탐색"><strong>변수들 간의 관계 탐색</strong></a></li>
-  <li><a href="#세-개의-독립변수로-예측" id="toc-세-개의-독립변수로-예측" class="nav-link" data-scroll-target="#세-개의-독립변수로-예측"><strong>세 개의 독립변수로 예측</strong></a>
+  <li><a href="#변수들-간의-관계-탐색" id="toc-변수들-간의-관계-탐색" class="nav-link" data-scroll-target="#변수들-간의-관계-탐색">변수들 간의 관계 탐색</a></li>
+  <li><a href="#세-개의-독립변수로-예측-path-analysis경로-분석" id="toc-세-개의-독립변수로-예측-path-analysis경로-분석" class="nav-link" data-scroll-target="#세-개의-독립변수로-예측-path-analysis경로-분석">세 개의 독립변수로 예측: Path Analysis(경로 분석)</a>
   <ul class="collapse">
   <li><a href="#b1.-인과모형-a-부분-회귀-계수들" id="toc-b1.-인과모형-a-부분-회귀-계수들" class="nav-link" data-scroll-target="#b1.-인과모형-a-부분-회귀-계수들"><em>B1. 인과모형 A: 부분 회귀 계수들</em></a></li>
   <li><a href="#d-표준화-계수-및-부분-상관-계수" id="toc-d-표준화-계수-및-부분-상관-계수" class="nav-link" data-scroll-target="#d-표준화-계수-및-부분-상관-계수"><em>D: 표준화 계수 및 부분 상관 계수</em></a></li>
   <li><a href="#e-간접효과의-크기와-검증" id="toc-e-간접효과의-크기와-검증" class="nav-link" data-scroll-target="#e-간접효과의-크기와-검증"><em>E: 간접효과의 크기와 검증</em></a></li>
   </ul></li>
-  <li><a href="#변수의-추가-4개의-독립변수로-예측" id="toc-변수의-추가-4개의-독립변수로-예측" class="nav-link" data-scroll-target="#변수의-추가-4개의-독립변수로-예측"><strong>변수의 추가: 4개의 독립변수로 예측</strong></a>
+  <li><a href="#변수의-추가-4개의-독립변수로-예측" id="toc-변수의-추가-4개의-독립변수로-예측" class="nav-link" data-scroll-target="#변수의-추가-4개의-독립변수로-예측">변수의 추가: 4개의 독립변수로 예측</a>
   <ul class="collapse">
   <li><a href="#b2.-인과모형-b-부분-회귀-계수들" id="toc-b2.-인과모형-b-부분-회귀-계수들" class="nav-link" data-scroll-target="#b2.-인과모형-b-부분-회귀-계수들"><em>B2. 인과모형 B: 부분 회귀 계수들</em></a></li>
   <li><a href="#f-모형의-비교" id="toc-f-모형의-비교" class="nav-link" data-scroll-target="#f-모형의-비교"><em>F: 모형의 비교</em></a></li>
   <li><a href="#g-표준화-계수-및-부분-상관-계수" id="toc-g-표준화-계수-및-부분-상관-계수" class="nav-link" data-scroll-target="#g-표준화-계수-및-부분-상관-계수"><em>G: 표준화 계수 및 부분 상관 계수</em></a></li>
   </ul></li>
-  <li><a href="#추가-분석" id="toc-추가-분석" class="nav-link" data-scroll-target="#추가-분석"><strong>추가 분석</strong></a>
+  <li><a href="#추가-분석" id="toc-추가-분석" class="nav-link" data-scroll-target="#추가-분석">추가 분석</a>
   <ul class="collapse">
   <li><a href="#h-howework에-영향을-주는-요소들-분석" id="toc-h-howework에-영향을-주는-요소들-분석" class="nav-link" data-scroll-target="#h-howework에-영향을-주는-요소들-분석"><em>H: Howework에 영향을 주는 요소들 분석</em></a></li>
   </ul></li>
@@ -370,7 +376,7 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 17, 2023</p>
+      <p class="date">March 23, 2024</p>
     </div>
   </div>
   
@@ -408,14 +414,14 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="변수들-간의-관계-탐색" class="level3">
-<h3 class="anchored" data-anchor-id="변수들-간의-관계-탐색"><strong>변수들 간의 관계 탐색</strong></h3>
+<h3 class="anchored" data-anchor-id="변수들-간의-관계-탐색">변수들 간의 관계 탐색</h3>
 <div>
 
 </div>
 <div class="cell quarto-layout-panel" data-layout="[50, 40, 10]">
 
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="code for ggpairs">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -444,10 +450,17 @@ code for ggpairs
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs2</span>(nels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="case3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="세-개의-독립변수로-예측" class="level3">
-<h3 class="anchored" data-anchor-id="세-개의-독립변수로-예측"><strong>세 개의 독립변수로 예측</strong></h3>
+<section id="세-개의-독립변수로-예측-path-analysis경로-분석" class="level3">
+<h3 class="anchored" data-anchor-id="세-개의-독립변수로-예측-path-analysis경로-분석">세 개의 독립변수로 예측: Path Analysis(경로 분석)</h3>
 <section id="b1.-인과모형-a-부분-회귀-계수들" class="level4">
 <h4 class="anchored" data-anchor-id="b1.-인과모형-a-부분-회귀-계수들"><em>B1. 인과모형 A: 부분 회귀 계수들</em></h4>
 <div>
@@ -473,7 +486,7 @@ code for ggpairs
 </section>
 </section>
 <section id="변수의-추가-4개의-독립변수로-예측" class="level3">
-<h3 class="anchored" data-anchor-id="변수의-추가-4개의-독립변수로-예측"><strong>변수의 추가: 4개의 독립변수로 예측</strong></h3>
+<h3 class="anchored" data-anchor-id="변수의-추가-4개의-독립변수로-예측">변수의 추가: 4개의 독립변수로 예측</h3>
 <section id="b2.-인과모형-b-부분-회귀-계수들" class="level4">
 <h4 class="anchored" data-anchor-id="b2.-인과모형-b-부분-회귀-계수들"><em>B2. 인과모형 B: 부분 회귀 계수들</em></h4>
 <p><img src="images/nels_path4.png" class="img-fluid" width="450"></p>
@@ -486,7 +499,7 @@ code for ggpairs
 </section>
 </section>
 <section id="추가-분석" class="level3">
-<h3 class="anchored" data-anchor-id="추가-분석"><strong>추가 분석</strong></h3>
+<h3 class="anchored" data-anchor-id="추가-분석">추가 분석</h3>
 <section id="h-howework에-영향을-주는-요소들-분석" class="level4">
 <h4 class="anchored" data-anchor-id="h-howework에-영향을-주는-요소들-분석"><em>H: Howework에 영향을 주는 요소들 분석</em></h4>
 <p><img src="images/nels_path5.png" class="img-fluid" width="450"></p>
@@ -909,8 +922,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../contents/case4.html" class="pagination-link" aria-label="Salary">
-        <span class="nav-page-text">Salary</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../contents/case4.html" class="pagination-link" aria-label="Case Study 4">
+        <span class="nav-page-text">Case Study 4</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

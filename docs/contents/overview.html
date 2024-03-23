@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-22">
+<meta name="dcterms.date" content="2024-03-23">
 
 <title> CHA Statistics in R - Overview</title>
 <style>
@@ -258,7 +258,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../contents/case4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Salary</span></a>
+ <span class="menu-text">Case Study 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/case5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Papers</span></a>
   </div>
 </li>
       </ul>
@@ -366,7 +372,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 22, 2024</p>
+      <p class="date">March 23, 2024</p>
     </div>
   </div>
   
@@ -614,6 +620,7 @@ Note
 </div>
 </div>
 </div>
+<p><img src="images/effect-size-married.png" class="img-fluid" width="750"></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -808,7 +815,7 @@ Control: 자신의 치통에 대한 질문에 답</p>
 <li>그저 두려움에 대한 반응인가? 아니면 정확히 “죽음에 대한 생각”이 효과를 만든 것인가?</li>
 <li>참여자들의 부정적 정서를 실험 마지막에 측정한 후 분석에 고려했음; covariate</li>
 </ul>
-<div id="cell-44" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
+<div id="cell-45" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -990,7 +997,7 @@ Note
 <p>관찰자가 관찰한 대상으로부터 얻은 결과를 관찰하지 않은 더 넓은 대상으로 일반화할 수 있는가?<br>
 가령, 다음과 같이 150명에 대해 조사한 “연령이 임금에 미치는 효과”를 일반화 할 수 있는가?<br>
 한 나라의 국민 전체?</p>
-<div id="cell-53" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
+<div id="cell-54" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1098,14 +1105,14 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <div>
 
 </div>
-<div id="cell-60" class="cell quarto-layout-panel" data-layout-ncol="2" data-execution_count="72" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div id="cell-61" class="cell quarto-layout-panel" data-execution_count="72" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="overview_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<div id="cell-61" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="73">
+<div id="cell-62" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="73">
 <div class="cell-output cell-output-stdout">
 <pre><code>Bootstrap bca confidence intervals
 
@@ -1138,7 +1145,7 @@ Pearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Caus
 <ol type="1">
 <li>선형 관계를 가정한 <strong>임금과 연령의 관계</strong>에 대한 회귀분석 (N=150)</li>
 </ol>
-<div id="cell-64" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
+<div id="cell-65" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1148,7 +1155,7 @@ Pearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Caus
 </div>
 </div>
 <p>Model: <code>lm(wage ~ age, data = cps)</code></p>
-<div id="cell-66" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
+<div id="cell-67" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -1173,7 +1180,7 @@ age                 0.092   0.031   0.154    2.959   0.004
 <ol start="2" type="1">
 <li>맨 처음 든 예, 즉 <strong>연령을 고려한/통제한</strong> “기혼여부에 따른 임금차이”를 회귀분석하면 (N=465)</li>
 </ol>
-<div id="cell-68" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="28">
+<div id="cell-69" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="28">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1185,7 +1192,7 @@ age                 0.092   0.031   0.154    2.959   0.004
 <p>우선, 결혼여부에 따른 평균 임금의 차이는 미혼일 때 -0.97 (dollars/hr) 낮음.<br>
 하지만, 모집단에서 그 차이는 (95% 확률로) -1.93에서 -0.02 사이에 있을 것이라고 추정할 수 있음</p>
 <p>Model: <code>lm(wage ~ married, data = cps)</code></p>
-<div id="cell-70" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
+<div id="cell-71" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -1221,7 +1228,7 @@ marriedSingle         -1.28   -2.16   -0.41    -2.89   0.00
 </div>
 </div>
 <p>Model: <code>lm(wage ~ married + sex + age + I(age^2), data = cps)</code></p>
-<div id="cell-73" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
+<div id="cell-74" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -1250,7 +1257,7 @@ I(age^2)              -0.01    -0.01   -0.00    -5.26   0.00
 이는 사실상 임금 차이가 있다고 볼 확신을 거의 갖기 어려움</p>
 <p>결혼여부와 성별이 <strong>상호작용</strong>하는 것을 고려하고, 임금의 분포를 고려해서 log 변환하면,</p>
 <p>Model2: <code>lm(log_wage ~ married * sex + age + I(age^2), data = cps)</code></p>
-<div id="cell-75" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="46">
+<div id="cell-76" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="46">
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
 <pre><span style="text-decoration:underline">MODEL INFO:</span>
@@ -1275,7 +1282,7 @@ marriedSingle:sexM         -0.21   -0.38   -0.05    -2.51   0.01
 </div>
 </div>
 </div>
-<div id="cell-76" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
+<div id="cell-77" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="36">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

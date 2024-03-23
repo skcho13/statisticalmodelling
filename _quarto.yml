@@ -9,6 +9,8 @@ project:
     #- "!exercise*.ipynb"
     - "!contents/case3_sol.qmd"
     - "!contents/repeated.ipynb"
+    - "!contents/report.qmd"
+    - "!contents/reports.qmd"
 
 website:
   google-analytics: "G-3JGE58SZ6T"
@@ -64,6 +66,7 @@ website:
               # - href: contents/case3_sol.qmd
                 # text: Case Study 3 Sol
               - href: contents/case4.qmd
+              - href: contents/case5.qmd
           - href: contents/categorical.qmd
             text: Categorical IVs
           - href: contents/interaction.qmd
