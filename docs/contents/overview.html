@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-23">
+<meta name="dcterms.date" content="2024-03-24">
 
 <title> CHA Statistics in R - Overview</title>
 <style>
@@ -346,7 +346,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#uncertainty" id="toc-uncertainty" class="nav-link" data-scroll-target="#uncertainty">Uncertainty</a></li>
   <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis">Regression analysis</a></li>
-  <li><a href="#그-외" id="toc-그-외" class="nav-link" data-scroll-target="#그-외">그 외</a></li>
+  <li><a href="#회귀모형의-확장" id="toc-회귀모형의-확장" class="nav-link" data-scroll-target="#회귀모형의-확장">회귀모형의 확장</a></li>
   </ul>
 </nav>
     </div>
@@ -372,7 +372,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 23, 2024</p>
+      <p class="date">March 24, 2024</p>
     </div>
   </div>
   
@@ -620,7 +620,9 @@ Note
 </div>
 </div>
 </div>
-<p><img src="images/effect-size-married.png" class="img-fluid" width="750"></p>
+<p>카테고리 변수에 대해서도 비슷하게 생각할 수 있음.<br>
+이 경우, 두 그룹 간의 차이에 대한 효과의 크기를 말할 수 있고, <span class="math inline">\(R^2\)</span> 이외에도 대표적으로 <strong><em>Cohen’s d</em></strong>로 표현할 수 있음.</p>
+<p><img src="images/effect-size-married.png" class="img-fluid" width="740"></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1105,7 +1107,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <div>
 
 </div>
-<div id="cell-61" class="cell quarto-layout-panel" data-execution_count="72" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-61" class="cell quarto-layout-panel" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="72">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="overview_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
@@ -1305,13 +1307,17 @@ Note
 </div>
 </div>
 </section>
-<section id="그-외" class="level1">
-<h1>그 외</h1>
-<p>종속변수가 연속변수라고 볼 수 없는 경우들</p>
+<section id="회귀모형의-확장" class="level1">
+<h1>회귀모형의 확장</h1>
+<p><strong>Generalized Linear Model (GLM)</strong>: 정규분포가 아닌 종속변수에 대한 회귀분석</p>
 <ul>
-<li>완치 여부: success vs.&nbsp;fail</li>
-<li>구매 여부: yes vs.&nbsp;no</li>
-<li>사건 또는 사람의 수 (count)</li>
+<li>완치 여부(success vs.&nbsp;fail), 구매 여부(yes vs.&nbsp;no); logistic regression</li>
+<li>사건 또는 사람의 수 (count): poisson regression</li>
+</ul>
+<p><strong>Mixed-effects model</strong>: 관측치들에 dependecy가 존재하는 경우</p>
+<ul>
+<li>Multi-level 분석</li>
+<li>종단데이터 분석</li>
 </ul>
 
 
