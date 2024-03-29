@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-24">
+<meta name="dcterms.date" content="2024-03-29">
 
 <title> CHA Statistics in R - Overview</title>
 <style>
@@ -328,11 +328,9 @@ window.Quarto = {
   <ul>
   <li><a href="#case-1" id="toc-case-1" class="nav-link" data-scroll-target="#case-1">Case 1</a></li>
   <li><a href="#case-2" id="toc-case-2" class="nav-link" data-scroll-target="#case-2">Case 2</a></li>
-  <li><a href="#case-3" id="toc-case-3" class="nav-link" data-scroll-target="#case-3">Case 3</a>
-  <ul class="collapse">
-  <li><a href="#prediction-vs.-intervention" id="toc-prediction-vs.-intervention" class="nav-link" data-scroll-target="#prediction-vs.-intervention"><strong>Prediction vs.&nbsp;intervention</strong></a></li>
-  <li><a href="#the-strength-of-relationships" id="toc-the-strength-of-relationships" class="nav-link" data-scroll-target="#the-strength-of-relationships"><strong>The strength of relationships</strong></a></li>
-  </ul></li>
+  <li><a href="#case-3" id="toc-case-3" class="nav-link" data-scroll-target="#case-3">Case 3</a></li>
+  <li><a href="#prediction-vs.-intervention" id="toc-prediction-vs.-intervention" class="nav-link" data-scroll-target="#prediction-vs.-intervention">Prediction vs.&nbsp;intervention</a></li>
+  <li><a href="#the-strength-of-relationships" id="toc-the-strength-of-relationships" class="nav-link" data-scroll-target="#the-strength-of-relationships">The strength of relationships</a></li>
   </ul></li>
   <li><a href="#causal-인과관계의-분석" id="toc-causal-인과관계의-분석" class="nav-link" data-scroll-target="#causal-인과관계의-분석">Causal: 인과관계의 분석</a>
   <ul>
@@ -372,7 +370,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 24, 2024</p>
+      <p class="date">March 29, 2024</p>
     </div>
   </div>
   
@@ -581,8 +579,9 @@ Note
 <li>본인의 자만은 여러 부정적 결과를 초래할 수 있음</li>
 <li>노력에 의해 얻은 것이 아니라는 점은 다른 부작용을 낳을 수 있음</li>
 </ul>
-<section id="prediction-vs.-intervention" class="level4">
-<h4 class="anchored" data-anchor-id="prediction-vs.-intervention"><strong>Prediction vs.&nbsp;intervention</strong></h4>
+</section>
+<section id="prediction-vs.-intervention" class="level3">
+<h3 class="anchored" data-anchor-id="prediction-vs.-intervention">Prediction vs.&nbsp;intervention</h3>
 <ul>
 <li>A의 임금이 <strong>올라가면</strong> 삶의 만족도가 따라서 올라갈 것이라고 (조심스럽게) <strong>예측</strong>할 수는 있으나: <strong>association</strong>
 <ul>
@@ -590,7 +589,7 @@ Note
 <li>“올라가면”이라는 표현은 시간 개념을 포함한 것이라 횡단(cross-sectional) 데이터에서는 부적절</li>
 </ul></li>
 <li>A의 임금을 <strong>올리면</strong> 삶의 만족도가 올라갈 것이라고 단정할 수 없음: <strong>causal</strong></li>
-<li><strong>Intervention이</strong> 효과가 있으려면, 적어도 진정한 관계를 파악해야만 하며, 더 나아가 인과관계가 만족해야 함.</li>
+<li><strong>Intervention이</strong> 효과가 있으려면, 적어도 진정한 관계를 파악해야만 하며, 더 나아가 메커니즘을 포함한 인과관계가 만족해야 함.</li>
 <li>진정한 관계의 문제와 인과의 문제는 서로 엮여 있으며 복잡한 문제임.
 <ul>
 <li>예를 들어, 오렌지를 섭취하면 괴혈병이 예방되나 사실은 비타민 C의 섭취가 괴혈병을 예방하는 것임<br>
@@ -600,12 +599,12 @@ Note
 <li>또는, 신앙심이 깊은 노인들의 수명이 더 길다는 현상이 관찰되었을 때, 신앙심 자체가 심리적으로나 신체적으로 긍정적인 효과를 가질 수 있으나, 그 외에도 신앙 활동의 일부로 활동이 늘고 다른 이와의 긍정적 교류가 건강에 영향을 미쳤을 수도 있음.<br>
 <img src="images/indirect.png" class="img-fluid" width="340"><br>
 이 때, 신앙심과 수명과는 진정한 관계가 있다고 볼 수 있으나 (not spurious) 그 인과 관계에 대해서도 좀 더 깊은 논의가 필요함.<br>
-다시 말하면, 어떤 노인에게 신앙을 권유했을 때, 수명이 연장되었을지라도 신앙심이 수명을 연장시킨 것인가는 별개의 논의임.</li>
+다시 말하면, 어떤 노인에게 신앙을 권유했을 때, 수명이 연장되었을지라도 신앙심 자체가 수명을 연장시킨 것인가는 별개의 논의임.</li>
 </ul></li>
 </ul>
 </section>
-<section id="the-strength-of-relationships" class="level4">
-<h4 class="anchored" data-anchor-id="the-strength-of-relationships"><strong>The strength of relationships</strong></h4>
+<section id="the-strength-of-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="the-strength-of-relationships">The strength of relationships</h3>
 <p>변수들간의 관계와 그 관계의 크기(stength)는 중요하게 구별될 필요가 있음<br>
 아래 두 그림은 변수 간의 관계는 동일하나 그 크기에 차이가 있음<br>
 오른쪽 그림에서 연봉으로 그 사람의 삶의 만족도 지수를 더 정확히 예측할 수 있으며, 이를 설명력 <span class="math inline">\((R^2)\)</span>이 높다고 표현<br>
@@ -663,7 +662,6 @@ Source: <em>Multiple Regression and Beyond</em> by Timothy Z. Keith</p></li>
 <img src="images/reward_system.png" class="img-fluid" width="960"><br>
 Source: <em>Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences</em> by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken</p></li>
 </ul>
-</section>
 </section>
 </section>
 <section id="causal-인과관계의-분석" class="level2">
@@ -775,12 +773,17 @@ Yes and No!</p>
 </div>
 </div>
 <p>관찰 데이터로부터 진정한 관계를 파악하기 위해서는 이와 같은 <strong>인과 추론</strong>이라는 좀 더 큰 프레임에서 분석해야 하며, 통계 안에서 해결하기 어려움.<br>
-예를 들어, <strong>colider</strong>인 경우 통제하면 spurious association이 생길 수 있음.</p>
+예를 들어, <strong>collider</strong>인 경우 통제하면 spurious association이 생길 수 있음.</p>
 <p>운동능력이 뛰어나면 지능이 떨어지는가? <br></p>
-<p><img src="images/colider.png" class="img-fluid" width="300"></p>
+<p><img src="images/collider.png" class="img-fluid" width="300"></p>
 <p><strong>학생들의 과제는 성적에 영향을 주는가?</strong><br>
 Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
 <p><img src="images/path4.png" class="img-fluid" width="450"></p>
+<p><strong>Directed acyclic graph (DAG): 인과 관계 다이어그램</strong></p>
+<p><img src="images/DAG.png" class="img-fluid" width="830"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: <em>Causality: Models, Reasoning, and Inference (2000) by Judea Pearl</em></p>
+</div>
 <hr>
 </section>
 <section id="experimental-study" class="level3">
@@ -1107,7 +1110,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <div>
 
 </div>
-<div id="cell-61" class="cell quarto-layout-panel" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2" data-execution_count="72">
+<div id="cell-61" class="cell quarto-layout-panel" data-execution_count="72" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="overview_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
