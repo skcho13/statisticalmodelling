@@ -529,6 +529,23 @@ Esteem              0.15   0.05     3.02   0.00        0.31     0.29
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_Efficacy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/efficacy-diagram.png" class="img-fluid" width="700"></p>
+<!-- ### Causal Mediation Analysis: `mediation` 패키지의 `mediate()`
+참고: help(mediate)
+
+- ACME: Average Causal Mediation Effects
+- ADE: Average Direct Effects
+- Total Effect: indirect + direct effects
+- Prop. Mediated: ACME / Total Effect
+
+
+fitM <- lm(Esteem ~ MatCare, data = maternal)
+fitY <- lm(Efficacy ~ Esteem + MatCare, data = maternal)
+
+# library(mediation)
+fitMed <- mediation::mediate(fitM, fitY, treat="MatCare", mediator="Esteem", boot=TRUE)
+summary(fitMed)
+plot(fitMed)
+ -->
 </section>
 <section id="process-macro-by-andrew-f.-hayes" class="level3">
 <h3 class="anchored" data-anchor-id="process-macro-by-andrew-f.-hayes">Process Macro by Andrew F. Hayes</h3>
@@ -573,6 +590,58 @@ Note
 </div>
 <p><img src="images/process-3.png" class="img-fluid" width="700"></p>
 <p><img src="images/process-4.png" class="img-fluid" width="700"></p>
+<p>psych 패키지의 <code>mediate()</code>를 사용하면,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>estress <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_sav</span>(<span class="st">"data/hayes2022data/estress/estress.sav"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>fit_estress <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">mediate</span>(withdraw <span class="sc">~</span> estress <span class="sc">+</span> (affect) <span class="sc">+</span> ese <span class="sc">+</span> sex, <span class="at">data =</span> estress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="case1_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_estress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call: psych::mediate(y = withdraw ~ estress + (affect) + ese + sex, 
+    data = estress)
+
+Direct effect estimates (traditional regression)    (c') X + M on Y 
+          withdraw   se     t  df     Prob
+Intercept     2.73 0.54  5.04 257 8.91e-07
+estress      -0.09 0.05 -1.80 257 7.25e-02
+ese          -0.21 0.08 -2.78 257 5.92e-03
+sex           0.13 0.14  0.89 257 3.76e-01
+affect        0.71 0.10  6.81 257 6.70e-11
+
+R = 0.45 R2 = 0.21   F = 16.66 on 4 and 257 DF   p-value:  3.76e-12 
+
+ Total effect estimates (c) (X on Y) 
+          withdraw   se     t  df     Prob
+Intercept     3.94 0.55  7.11 258 1.14e-11
+estress       0.02 0.05  0.30 258 7.62e-01
+ese          -0.32 0.08 -3.94 258 1.03e-04
+sex           0.14 0.16  0.89 258 3.73e-01
+
+ 'a'  effect estimates (X on M) 
+          affect   se     t  df     Prob
+Intercept   1.71 0.31  5.60 258 5.50e-08
+estress     0.16 0.03  5.25 258 3.22e-07
+ese        -0.15 0.04 -3.39 258 7.95e-04
+sex         0.02 0.09  0.19 258 8.50e-01
+
+ 'b'  effect estimates (M on Y controlling for X) 
+       withdraw  se    t  df    Prob
+affect     0.71 0.1 6.81 257 6.7e-11
+
+ 'ab'  effect estimates (through all  mediators)
+        withdraw  boot   sd lower upper
+estress     0.11  0.11 0.03  0.05  0.17
+ese        -0.11 -0.10 0.04  0.05  0.17
+sex         0.01  0.02 0.06  0.05  0.17</code></pre>
+</div>
+</div>
 
 
 </section>
