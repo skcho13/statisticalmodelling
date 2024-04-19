@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-24">
+<meta name="dcterms.date" content="2024-04-19">
 
 <title> CHA Statistics in R - Multiple Regression</title>
 <style>
@@ -78,6 +78,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -420,7 +423,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 24, 2024</p>
+      <p class="date">April 19, 2024</p>
     </div>
   </div>
   
@@ -441,7 +444,7 @@ window.Quarto = {
 </ul>
 <p>앞서 논의된 내용은 두 변수 사이의 관계를 다룸으로써 비교적 단순한 추론 및 두 변수 간에 모종의 관계의 유무(영가설) 정도를 살펴보았음.</p>
 <p>3개 이상의 변수 간의 관계에 대해서는 기하급수적으로 복잡한 관계가 나타남으로 인해, 연구자는 영향을 주고 받는 변수들 간의 <strong>인과 관계</strong>에 대해 충분한 이론적 근거를 갖고, 분석의 목적을 분명히 할 필요가 있음. (탐색적 분석이나 단순한 예측을 위한 것이 아니라면)</p>
-<p>인과분석은 유전학자였던 Sewell Wright(1921)가 유전적 효과와 비유전적 효과를 분리하려는 노력하에 개발했던 경로분석 다이어그램(path analytic diagram)에 그 뿌리를 두고 있으며, 후에 구조모형(structural model)으로 불리어 이어져 왔으며, causal analysis라는 분야에서 완성되어가고 있음.</p>
+<p>인과분석은 유전학자였던 Sewell Wright(1921)가 유전적 효과와 비유전적 효과를 분리하려는 노력하에 개발했던 경로분석 다이어그램(path analytic diagram)에 그 뿌리를 두고 있으며, 후에 구조모형(structural model)으로 불리어 이어져 왔으며, causal inference 분야에서 완성되어가고 있음.</p>
 <p>기본적인 인과관계의 프레임워크에서, X가 Y의 원인이기 위해서 다음 4가지 조건을 만족해야 함.</p>
 <ul>
 <li>X는 시간적으로 Y에 선행</li>
@@ -451,7 +454,7 @@ window.Quarto = {
 <li>X를 변화시키면 Y가 변한다는 것은 뜻은 아님.
 <ul>
 <li>성별처럼 변화시킬 수 없는 요인도 있음</li>
-<li>X를 어떻게 manupulate 하느냐에 따라 정상적 기제가 변형되어 다른 효과가 나타날 수 있음.
+<li>X를 어떻게 manipulate 하느냐에 따라 정상적 기제가 변형되어 다른 효과가 나타날 수 있음.
 <ul>
 <li>임금을 갑자기 2배 올리면?</li>
 <li>임금을 줄이면?</li>
@@ -474,7 +477,19 @@ window.Quarto = {
 <li>연차와 성과물 간에 인과관계는 상정하지 않았음.</li>
 <li>적어도 연봉이 성과물이나 연차에 영향을 주지는 않는다고 상정했음.</li>
 </ul>
-<p><img src="images/diagram2.png" class="img-fluid"></p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[50, 50]">
+<div class="quarto-layout-row">
+<div class="columns quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><br></p><p><img src="images/diagram2.png" class="img-fluid" width="460"></p>
+</div>
+<div class="columns quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="images/acad0-pairplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/acad0-pairplot.png" class="img-fluid" width="450"></a></p>
+</div>
+</div>
+</div>
 <p>교수의 연봉(<code>salary</code>)이 학위를 받은 후 지난 시간(<code>time</code> since Ph.D.)과 출판물의 수(<code>pubs</code>)에 의해 어떻게 영향을 받는가?</p>
 <ul>
 <li>같은 연차의 교수들 간에 논문 수에 따라 연봉은 얼마나 차이가 나는가?</li>
@@ -541,8 +556,8 @@ pubs                  121.80    149.70     0.81   0.43
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-4fae65db429f89b7fa3e" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-4fae65db429f89b7fa3e">{"x":{"visdat":{"ae3638cafb9c":["function () ","plotlyVisDat"]},"cur_data":"ae3638cafb9c","attrs":{"ae3638cafb9c":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-85db3affa0f3cc1515b5" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-85db3affa0f3cc1515b5">{"x":{"visdat":{"c6f9724f3459":["function () ","plotlyVisDat"]},"cur_data":"c6f9724f3459","attrs":{"c6f9724f3459":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -569,7 +584,10 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 </li>
 <li>연차가 일정할 때, 예를 들어 연차가 12년차인 경우만 봤을 때, 논문이 1편 늘 때마다 연봉은 $336 증가함; 평면의 선형모형을 가정했기에 이 관계는 연차에 상관없음.</li>
 </ul>
-<p>이는 다른 <strong>변수를 고려 (통제, controlling for) 했을 때 혹은 다른 변수의 효과를 제거 (partial out) 했을 때</strong>, 각 변수의 <strong>고유한 효과</strong>를 의미함; <strong><em>holding constant, controlling for, partialing out, adjusted for, residualizing</em></strong></p>
+<p>이는 다른 변수를 <strong><em>고려 (통제, controlling for)</em></strong>했을 때 혹은<br>
+다른 변수의 <strong><em>효과를 제거 (partial out)</em></strong> 했을 때의 효과<br>
+즉, 각 변수의 <strong><em>고유한 효과</em></strong>를 의미함;<br>
+<em>holding constant, controlling for, partialing out, adjusted for, residualizing</em></p>
 <p>뒤집어 말하면, 연차만 고려했을때 연차가 1년 늘면 $1,224 연봉이 증가하는 효과는 연차가 늘 때 함께 늘어나는 논문 수의 효과가 함께 섞여 나온 효과라고 말할 수 있음.</p>
 <p>이는 인과관계에 있는 변수들의 진정한 효과를 찾는 것이 얼마나 어려운지를 보여줌</p>
 <div class="quarto-figure quarto-figure-left">
@@ -1058,7 +1076,7 @@ pubs  121.8 149.7 0.81 12 0.432
 
  'ab'  effect estimates (through all  mediators)
      salary   boot     sd   lower  upper
-time 241.53 226.25 280.43 -302.32 759.57</code></pre>
+time 241.53 222.37 281.75 -320.47 783.75</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -1789,6 +1807,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

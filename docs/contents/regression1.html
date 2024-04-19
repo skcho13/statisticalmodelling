@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-13">
+<meta name="dcterms.date" content="2024-04-19">
 
 <title> CHA Statistics in R - Correlation/Simple Regression</title>
 <style>
@@ -411,7 +411,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 13, 2024</p>
+      <p class="date">April 19, 2024</p>
     </div>
   </div>
   
@@ -801,7 +801,7 @@ Y가 X에 의해 영향을 받거나 X에 의해 예측되는 변수라는 연�
 <li>물리적 세계의 불확실성: stochastic vs.&nbsp;deterministic world<br>
 </li>
 </ul></li>
-<li><strong>보통 Gaussian 분포를 이루거나 가정</strong>:</li>
+<li><strong>보통 Gaussian/Normal 분포를 이루거나 가정</strong>:</li>
 </ul></li>
 </ul>
 <p>예를 들어, 다음과 같이 x와 y의 관계가 나타난 경우,</p>
@@ -811,7 +811,7 @@ Y가 X에 의해 영향을 받거나 X에 의해 예측되는 변수라는 연�
 <div>
 
 </div>
-<div id="cell-29" class="cell quarto-layout-panel" data-execution_count="9" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout="[1, 1]">
+<div id="cell-29" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[1, 1]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression1_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
@@ -999,7 +999,7 @@ Note
 <div>
 
 </div>
-<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="13" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="13" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression1_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
@@ -1013,7 +1013,7 @@ Note
 <section id="case-1" class="level2">
 <h2 class="anchored" data-anchor-id="case-1">Case 1</h2>
 <p>교수의 연봉(<code>salary</code>)이 학위를 받은 후 지난 시간(<code>time</code> since Ph.D.)과 출판물의 수(<code>pubs</code>)에 의해 어떻게 영향을 받는가? <br></p>
-<p><img src="images/diagram0.png" class="img-fluid" width="400"></p>
+<p><img src="images/diagram2.png" class="img-fluid" width="420"></p>
 <div id="cell-46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 3
@@ -1074,7 +1074,7 @@ Note
 <div>
 
 </div>
-<div id="cell-54" class="cell quarto-layout-panel" data-execution_count="25" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-54" class="cell quarto-layout-panel" data-execution_count="25" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression1_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
@@ -1298,7 +1298,7 @@ Important
 <div>
 
 </div>
-<div id="cell-69" class="cell quarto-layout-panel" data-execution_count="34" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-69" class="cell quarto-layout-panel" data-execution_count="34" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression1_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
@@ -1514,7 +1514,7 @@ Tip: summ()
 <ul>
 <li>좀 더 일반적으로 linear transform에 의해서 변하지 않음; 온도 C/F</li>
 </ul></li>
-<li>반면, 주어진 샘플의 평균과 표준편차를 사용하므로 샘플마다 변동이 생길 수 있음을 인지해야 함.</li>
+<li>반면, 주어진 샘플의 평균과 표준편차를 사용함으로 샘플마다 변동이 생길 수 있음을 인지해야 함.</li>
 </ul>
 <div id="cell-83" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a> cognition <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
@@ -1545,7 +1545,7 @@ Tip: summ()
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span> </span>
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-85" class="cell quarto-layout-panel" data-execution_count="11" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-85" class="cell quarto-layout-panel" data-execution_count="11" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression1_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
@@ -1565,7 +1565,7 @@ Tip: summ()
 <span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
 <span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_overlay_normal_density</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-88" class="cell quarto-layout-panel" data-execution_count="108" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-88" class="cell quarto-layout-panel" data-execution_count="108" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="regression1_files/figure-html/cell-44-output-1.png" class="img-fluid"></p>
@@ -1774,54 +1774,13 @@ Residuals 548 4090.7    7.46
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<div id="cell-103" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="146">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_matrix</span>(cognition, <span class="at">formula =</span> grip <span class="sc">~</span> sex) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 550 x 2
-  `(Intercept)` sexfemale
-          &lt;dbl&gt;     &lt;dbl&gt;
-1             1         1
-2             1         0
-3             1         0
-4             1         1
-5             1         1
-6             1         0
-# i 544 more rows</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="dummmy coding">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>전통적으로 카테고리 변수에 대한 분석은 ANOVA 프레임워크에서 실시되었음.<br>
-특히, 위의 경우와 같이 두 집단 간의 차이, 즉 남성과 여성의 약력의 평균 차이를 분석할 때 t-test를 실시.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grip <span class="sc">~</span> sex, <span class="at">data =</span> cognition, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)  <span class="co"># varance가 동일하다는 가정</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Two Sample t-test</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data:  grip by sex</span></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="co"># t = 10.316, df = 548, p-value &lt; 2.2e-16</span></span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative hypothesis: true difference in means between group male and group female is not equal to 0</span></span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 95 percent confidence interval:</span></span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="co">#  1.976174 2.905811</span></span>
-<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sample estimates:</span></span>
-<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   mean in group male mean in group female </span></span>
-<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a><span class="co">#            10.546256             8.105263 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
+dummmy coding
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1829,18 +1788,18 @@ Note
 여러 방식이 있느나, 기본은 <strong>dummy coding</strong>으로, 각 카테고리를 0과 1로 표현하며, <strong>memership</strong>으로 이해하는 것이 적절함.<br>
 그 값을 새로운 변수인 dummy variable/indicator variable로 만드는데, 1에 해당하는 level을 변수명에 표시함.<br>
 예를 들어, 다음과 같이 female에 속하면(membership) 1, female에 속하지 않으면 0</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_matrix</span>(cognition, <span class="at">formula =</span> grip <span class="sc">~</span> sex) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 550 x 2</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   `(Intercept)` sexfemale</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1             1         1</span></span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2             1         0</span></span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3             1         0</span></span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 4             1         1</span></span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 5             1         1</span></span>
-<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 6             1         0</span></span>
-<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # i 544 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_matrix</span>(cognition, <span class="at">formula =</span> grip <span class="sc">~</span> sex) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # A tibble: 550 x 2</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   `(Intercept)` sexfemale</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1             1         1</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2             1         0</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3             1         0</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 4             1         1</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 5             1         1</span></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 6             1         0</span></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # i 544 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Coding을 어떠한 방식으로 하느냐에 따라 회귀 계수의 의미가 달라짐.<br>
 예를 들어, effect coding의 경우 (female: -1, male: 1)</p>
 <p><span class="math inline">\(\displaystyle b_0 = \frac{\overline{Y}_1 + \overline{Y}_2}{2},~~ b_1 = \overline{Y}_1 - \frac{\overline{Y}_1 + \overline{Y}_2}{2}\)</span></p>
@@ -1848,12 +1807,38 @@ Note
 10.1 Alternative Coding Systems in <em>Regression Analysis and Linear Models by Richard B. Darlington &amp; Andrew F. Hayes</em></p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="두 집단 간 차이: t-test">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+두 집단 간 차이: t-test
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>전통적으로 카테고리 변수에 대한 분석은 ANOVA 프레임워크에서 실시되었음.<br>
+특히, 위의 경우와 같이 두 집단 간의 차이, 즉 남성과 여성의 약력의 평균 차이를 분석할 때 t-test를 실시.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grip <span class="sc">~</span> sex, <span class="at">data =</span> cognition, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)  <span class="co"># varance가 동일하다는 가정</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Two Sample t-test</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data:  grip by sex</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co"># t = 10.316, df = 548, p-value &lt; 2.2e-16</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative hypothesis: true difference in means between group male and group female is not equal to 0</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 95 percent confidence interval:</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co">#  1.976174 2.905811</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sample estimates:</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   mean in group male mean in group female </span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="co">#            10.546256             8.105263 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 <p>Factor의 levels을 formula 안에서 간단히 변경하려면, <code>fct_relevel()</code></p>
-<div id="cell-107" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>mod_grip2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grip <span class="sc">~</span> <span class="fu">fct_relevel</span>(sex, <span class="st">"female"</span>), <span class="at">data =</span> cognition)</span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는 relevel(sex, ref = "female")</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">model_matrix</span>(cognition, mod_grip2) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-106" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="150">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mod_grip2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(grip <span class="sc">~</span> <span class="fu">fct_relevel</span>(sex, <span class="st">"female"</span>), <span class="at">data =</span> cognition)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는 relevel(sex, ref = "female")</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">model_matrix</span>(cognition, mod_grip2) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 550 x 2
   `(Intercept)` `relevel(sex, ref = "female")male`
@@ -1873,15 +1858,21 @@ Note
 <section id="연습문제" class="level1">
 <h1>연습문제</h1>
 <p>다음은 Multiple Regression and Beyond (3e) by Timothy Z. Keith의 p.69, p.87에서 제시된 경로모형입니다. 저자가 설정한 인과관계를 참고하여 데이터를 cleaning하고 변수들 간의 관계를 탐색해보세요.</p>
+<p><a href="https://www.dropbox.com/scl/fi/vz1mslewvdo5ihzl0gl50/nels88_sample_4_11.csv?rlkey=b21kj4snsuhga4gbux5dm0m8w&amp;dl=1">NELS88 sample 4-11.csv</a><br>
+<a href="https://www.dropbox.com/scl/fi/im1m3tvyloigcks1pcm6e/nels88_sample_5_9.csv?rlkey=d3njzpg540rusfot0lesyl4td&amp;dl=1">NELS88 sample 5-9.csv</a></p>
 <ul>
-<li>데이터 <a href="https://www.dropbox.com/s/x232sv7w4zhrikp/nels88_sample.csv?dl=1">NELS88 sample.csv</a></li>
 <li>Figure 4.10, 4.11에서는 숙제(homework)이 학업성취에 미치는 영향에 대해 설정한 관계를 보여줍니다.</li>
 <li>Figure 5.9에서는 자존감과 자기통제력이 학업성취도에 미치는 영향에 대해 설정한 관계를 보여줍니다.</li>
 <li>다음 링크 (<a href="https://docs.google.com/spreadsheets/d/1mrfGrgTXcoEcsCeODE_9yombgQrzo1jIwUJpzmbSRWQ/edit?usp=sharing">NELS88</a>)에서 변수들에 대한 자세한 설명을 확인하세요.
 <ul>
 <li>Self-esteem과 locus of control에 대해서 composite score 만들고</li>
 <li>Sex 변수는 factor로 변환하여 male, female로 표시합니다.</li>
-<li>SES의 여러 변수들을 적절히 factor로 변환하거나 prestige score값을 사용하거나, composite score인 <code>byses</code>를 사용합니다.</li>
+<li>사회경제적 지표에 대해서 어떤 방식으로 사용하는 것이 타당할지 논의해보세요.
+<ul>
+<li>SES의 여러 변수들을 적절히 factor로 변환하거나</li>
+<li>prestige score값을 사용하거나,</li>
+<li>composite score인 <code>byses</code>를 사용</li>
+</ul></li>
 </ul></li>
 </ul>
 <p><img src="images/fig410.png" class="img-fluid" width="700"></p>
