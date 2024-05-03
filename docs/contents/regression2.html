@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-04-19">
+<meta name="dcterms.date" content="2024-05-03">
 
 <title> CHA Statistics in R - Multiple Regression</title>
 <style>
@@ -423,7 +423,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 19, 2024</p>
+      <p class="date">May 3, 2024</p>
     </div>
   </div>
   
@@ -556,8 +556,8 @@ pubs                  121.80    149.70     0.81   0.43
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-85db3affa0f3cc1515b5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-85db3affa0f3cc1515b5">{"x":{"visdat":{"c6f9724f3459":["function () ","plotlyVisDat"]},"cur_data":"c6f9724f3459","attrs":{"c6f9724f3459":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-6c61ac78786ebd35d8ad" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-6c61ac78786ebd35d8ad">{"x":{"visdat":{"62965cd8b37f":["function () ","plotlyVisDat"]},"cur_data":"62965cd8b37f","attrs":{"62965cd8b37f":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -582,7 +582,7 @@ Model 3: <span class="math inline">\(\widehat{salary} = \$983\:time + \$122\:pub
 <ul>
 <li>만약 논문 수가 일정할 때, 예를 들어 10편의 논문을 쓴 경우만 봤을 때, 연차가 1년 늘 때마다 연봉은 $984 증가함; 평면의 선형모형을 가정했기에 이 관계는 논문 수에 상관없음.<br>
 </li>
-<li>연차가 일정할 때, 예를 들어 연차가 12년차인 경우만 봤을 때, 논문이 1편 늘 때마다 연봉은 $336 증가함; 평면의 선형모형을 가정했기에 이 관계는 연차에 상관없음.</li>
+<li>연차가 일정할 때, 예를 들어 연차가 12년차인 경우만 봤을 때, 논문이 1편 늘 때마다 연봉은 $122 증가함; 평면의 선형모형을 가정했기에 이 관계는 연차에 상관없음.</li>
 </ul>
 <p>이는 다른 변수를 <strong><em>고려 (통제, controlling for)</em></strong>했을 때 혹은<br>
 다른 변수의 <strong><em>효과를 제거 (partial out)</em></strong> 했을 때의 효과<br>
@@ -932,7 +932,7 @@ Continuous variables are mean-centered and scaled by 1 s.d.</code></pre>
 <li>연차로 연봉의 변량을 설명한 모형에 논문 수가 예측변수로 추가되었을 때, 추가로 연봉의 변량을 얼마나 설명하는가?</li>
 <li><span class="math inline">\(R^2\)</span>의 증가량을 통해 파악할 수 있음.</li>
 <li><span class="math inline">\(\Delta R^2\)</span> = 0.530 - 0.505 = 0.025</li>
-<li><span class="math inline">\(sr^2\)</span> 과 동일 (<em>semi-partial squared</em>)</li>
+<li>논문 수의 <span class="math inline">\(sr^2\)</span> 과 동일 (<em>semi-partial squared</em>)</li>
 </ul>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -984,7 +984,7 @@ Continuous variables are mean-centered and scaled by 1 s.d.</code></pre>
 <li>논문수로 연봉의 변량을 설명한 모형에 연차가 예측변수로 추가되었을 때, 추가로 연봉의 변량을 얼마나 설명하는가?</li>
 <li><span class="math inline">\(R^2\)</span>의 증가량을 통해 파악할 수 있음.</li>
 <li><span class="math inline">\(\Delta R^2\)</span> = 0.530 - 0.346 = 0.184</li>
-<li><span class="math inline">\(sr^2\)</span> 과 동일 (<em>semi-partial squared</em>)</li>
+<li>연차의 <span class="math inline">\(sr^2\)</span> 과 동일 (<em>semi-partial squared</em>)</li>
 </ul>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -1076,7 +1076,7 @@ pubs  121.8 149.7 0.81 12 0.432
 
  'ab'  effect estimates (through all  mediators)
      salary   boot     sd   lower  upper
-time 241.53 222.37 281.75 -320.47 783.75</code></pre>
+time 241.53 229.45 285.47 -329.16 799.99</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -1807,7 +1807,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
