@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-05-03">
+<meta name="dcterms.date" content="2024-05-10">
 
 <title> CHA Statistics in R - Multiple Regression</title>
 <style>
@@ -423,7 +423,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 3, 2024</p>
+      <p class="date">May 10, 2024</p>
     </div>
   </div>
   
@@ -556,8 +556,8 @@ pubs                  121.80    149.70     0.81   0.43
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-6c61ac78786ebd35d8ad" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-6c61ac78786ebd35d8ad">{"x":{"visdat":{"62965cd8b37f":["function () ","plotlyVisDat"]},"cur_data":"62965cd8b37f","attrs":{"62965cd8b37f":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-15c8d806dfd3455d35d3" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-15c8d806dfd3455d35d3">{"x":{"visdat":{"7f1157c50ce3":["function () ","plotlyVisDat"]},"cur_data":"7f1157c50ce3","attrs":{"7f1157c50ce3":{"x":{},"y":{},"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"pubs"},"yaxis":{"title":"time"},"zaxis":{"title":"salary"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[18,3,2,17,11,6,38,48,9,22,30,21,10,27,37],"y":[3,6,3,8,9,6,16,10,2,5,5,6,7,11,18],"z":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"type":"scatter3d","mode":"markers","marker":{"color":[51876,54511,53425,61863,52926,47034,66432,61100,41934,47454,49832,47047,39115,59677,61458],"colorscale":["#FFE1A1","#FF4304"],"size":6,"line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -737,9 +737,9 @@ Correlations tables
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout="[50, -2, 48]">
+<div class="quarto-layout-panel" data-layout="[55, -2, 43]">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
 <table class="table">
 <thead>
 <tr class="header">
@@ -768,7 +768,7 @@ Correlations tables
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 2.0%;justify-content: flex-start;">
 <p>&nbsp;</p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 48.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 43.0%;justify-content: center;">
 <table class="table">
 <thead>
 <tr class="header">
@@ -843,14 +843,17 @@ in <em>Regression Analysis and Linear Models by Richard B. Darlington &amp; Andr
 </div>
 <p>또는 formula에서 직접 처리</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(<span class="fu">lm</span>(<span class="fu">scale</span>(salary) <span class="sc">~</span> <span class="fu">scale</span>(time) <span class="sc">+</span> <span class="fu">scale</span>(pubs), <span class="at">data =</span> acad0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">scale</span>(salary) <span class="sc">~</span> <span class="fu">scale</span>(time) <span class="sc">+</span> <span class="fu">scale</span>(pubs), <span class="at">data =</span> acad0)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod3, <span class="at">model.info =</span> <span class="cn">FALSE</span>, <span class="at">model.fit =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  term        estimate std.error statistic p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 (Intercept) 2.37e-16     0.191  1.24e-15  1.00  
-2 scale(time) 5.70e- 1     0.262  2.17e+ 0  0.0504
-3 scale(pubs) 2.13e- 1     0.262  8.14e- 1  0.432 </code></pre>
+<pre><code>Standard errors: OLS
+------------------------------------------------------
+                        Est.      S.E.   t val.      p
+----------------- ---------- --------- -------- ------
+(Intercept)         43082.39   3099.49    13.90   0.00
+time                  982.87    452.06     2.17   0.05
+pubs                  121.80    149.70     0.81   0.43
+------------------------------------------------------</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -941,21 +944,13 @@ Continuous variables are mean-centered and scaled by 1 s.d.</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod1)  <span class="co"># library(broom)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     0.505         0.466 5763.      13.2 0.00300     1  -150.  306.  308.
-# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+<pre><code>[1] 0.5045984</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod3)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     0.530         0.452 5839.      6.78  0.0107     2  -150.  307.  310.
-# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+<pre><code>[1] 0.5304996</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\Delta R^2\)</span> 가 통계적으로 유의한지, 즉 유의하지 증가했는지를 확인</p>
@@ -993,21 +988,13 @@ Continuous variables are mean-centered and scaled by 1 s.d.</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod2)  <span class="co"># library(broom)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod2)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     0.346         0.295 6624.      6.86  0.0212     1  -152.  310.  312.
-# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+<pre><code>[1] 0.3455483</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod3)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     0.530         0.452 5839.      6.78  0.0107     2  -150.  307.  310.
-# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+<pre><code>[1] 0.5304996</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\Delta R^2\)</span> 가 통계적으로 유의한지, 즉 유의하지 증가했는지를 확인</p>
@@ -1076,7 +1063,7 @@ pubs  121.8 149.7 0.81 12 0.432
 
  'ab'  effect estimates (through all  mediators)
      salary   boot     sd   lower  upper
-time 241.53 229.45 285.47 -329.16 799.99</code></pre>
+time 241.53 225.55 284.29 -321.39 785.06</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -1807,7 +1794,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
