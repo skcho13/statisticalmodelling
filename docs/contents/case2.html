@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-24">
+<meta name="dcterms.date" content="2024-05-12">
 
 <title> CHA Statistics in R - Case Study 2</title>
 <style>
@@ -385,7 +385,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 24, 2024</p>
+      <p class="date">May 12, 2024</p>
     </div>
   </div>
   
@@ -506,9 +506,14 @@ Salary    -0.44  0.87  0.61  1.00</code></pre>
 Column names: names, Model 1, Model 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># beta: standardized coefficients</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lm.beta<span class="sc">::</span><span class="fu">lm.beta</span>(mod2)) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>lm.beta<span class="sc">::</span><span class="fu">lm.beta</span>(mod2) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)      Expend   LogPctSAT 
+<pre><code>
+Call:
+lm(formula = SAT ~ Expend + LogPctSAT, data = act)
+
+Standardized Coefficients::
+(Intercept)      Expend   LogPctSAT 
          NA    0.202704   -1.039937 </code></pre>
 </div>
 </div>

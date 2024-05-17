@@ -1233,12 +1233,12 @@ F-statistic: 6.722 on 5 and 144 DF,  p-value: 1.167e-05
 <pre><code># A tibble: 6 × 5
      ya    yb    yc lesion  drug   
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
-1  9.15  9.15 12.1  SURGERY PLACEBO
-2  6.34 14.3   8.34 SURGERY ACTIVE 
-3  5.58  5.58  3.58 SHAM    ACTIVE 
-4  7.36 15.4   9.36 SURGERY ACTIVE 
-5  9.09 13.1  10.1  SHAM    PLACEBO
-6  9.85  9.85 11.9  SURGERY PLACEBO</code></pre>
+1  6.61 14.6   8.61 SURGERY ACTIVE 
+2  3.12  3.12  1.12 SHAM    ACTIVE 
+3 10.4  10.4  12.4  SURGERY PLACEBO
+4  4.40  4.40  2.40 SHAM    ACTIVE 
+5 12.3  12.3  14.3  SURGERY PLACEBO
+6  5.39 13.4   7.39 SURGERY ACTIVE </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
