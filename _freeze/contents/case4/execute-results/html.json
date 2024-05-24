@@ -1,8 +1,8 @@
 {
-  "hash": "4c4eef328c249f06d841100c61f929d0",
+  "hash": "025d29bee01cb44b73a3bd2fc99ca831",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: Case Study 4\nsubtitle: 'Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken'\ndate: last-modified\nauthor: Sungkyun Cho\nexecute:\n  warning: false\n  freeze: auto\nformat: \n   html:\n    df-print: tibble\n    #monofont: 'FiraCode-Regular'\n---\n\n::: {.cell}\n\n:::\n\n\n연봉에 미치는 영향에 대한 full model (p.461)  \n![](images/salary_model_full.png){width=550}\n\n다음과 같이 회귀계수들과 여러 연관된 값들을 직접 구해보세요.\n\n::: {layout-ncol=2}\n![](images/salary_model_full_coef.png){width=550}\n\n![](images/salary_model_full_table.png){width=550}\n:::\n",
+    "markdown": "---\ntitle: Case Study 4\nsubtitle: 'Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken'\ndate: last-modified\nauthor: Sungkyun Cho\nexecute:\n  warning: false\n  freeze: auto\nformat: \n   html:\n    df-print: tibble\n    #monofont: 'FiraCode-Regular'\n---\n\n::: {.cell}\n\n:::\n\n\n데이터: [C0302DT.csv](https://www.dropbox.com/scl/fi/afwlxn9ycwr4y2jxuzjp2/C0302DT.csv?rlkey=rb69azgv2bgd9jpi7tq4g2q7a&dl=1)\n\n연봉에 미치는 영향에 대한 full model (p.461)  \n\n다음과 같은 인과관계를 가정하고, \n\n- 여러 상관계수를 구해 해석해보고,\n- 회귀계수들과 여러 연관된 값들을 직접 구해보세요.\n\n<!-- ![](images/salary_model_full.png){.lightbox width=500} -->\n\n\n::: {layout=\"[55, 45]\"}\n\n![](images/salary_model_full_coef.png){.lightbox width=550}\n\n![](images/salary_model_full_cor.png){.lightbox width=650}\n\n![](images/salary_model_full_table.png){.lightbox width=550}\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
