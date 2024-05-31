@@ -888,11 +888,7 @@ city_city    -0.61  0.28  0.17 -0.87  1.00 -1.00  1.00</code></pre>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> neuroticism, <span class="at">y =</span> altruism, <span class="at">color =</span> city)) <span class="sc">+</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">neurotic_cat =</span> <span class="fu">cut_interval</span>(neuroticism, <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">y =</span> altruism, <span class="at">fill =</span> neurotic_cat)) <span class="sc">+</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-layout-panel" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -900,15 +896,6 @@ city_city    -0.61  0.28  0.17 -0.87  1.00 -1.00  1.00</code></pre>
 <div>
 <figure class="figure">
 <p><img src="categorical_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -952,7 +939,7 @@ F-statistic: 48.44 on 2 and 147 DF,  p-value: &lt; 2.2e-16
 1158.63 1170.68 </code></pre>
 </div>
 </div>
-<p><span class="math inline">\(\widehat Y = -17.62 \cdot city - .22 \cdot neuroticism + 59.731\)</span></p>
+<p><span class="math inline">\(\widehat Y = -17.62 \cdot city - 0.22 \cdot neuroticism + 59.731\)</span></p>
 <p>neuroticism을 <strong>centering</strong>한 후, 선형회귀모형을 세우면,</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jtools) <span class="co"># for center()</span></span>
@@ -1008,7 +995,7 @@ $contrasts
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="categorical_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1019,7 +1006,7 @@ $contrasts
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="categorical_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1038,7 +1025,7 @@ $contrasts
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="categorical_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1049,16 +1036,30 @@ $contrasts
 <p><strong>Partial association</strong></p>
 <p><code>area</code>의 고유한 설명력을 파악하기 위해 partial association 대해 알아보는 방식은</p>
 <ul>
-<li>모형의 비교를 통해 <span class="math inline">\(R^2\)</span>의 변화를 살펴보는 방식: semi-partial (squared)</li>
-<li>Set correlation을 통해 partial out된 상관계수를 계산하는 방식: partial (squared)</li>
+<li>jtools 패키지의 <code>summ()</code> 함수를 통해 partial, semi-partial correlation 계산</li>
+<li>모형의 비교를 통해 <span class="math inline">\(R^2\)</span>의 변화를 살펴보는 방식: semi-partial (squared) <!-- - Set correlation을 통해 partial out된 상관계수를 계산하는 방식: partial (squared) --></li>
 <li>ANOVA 프레임워크에서 partial eta-squared를 계산하는 방식: semi-paritl, partial (squared)</li>
 </ul>
 <p><img src="images/altruism2.png" class="img-fluid" width="350"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mod_reduced <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> <span class="fu">center</span>(neuroticism), <span class="at">data =</span> altruism) <span class="co"># reduced model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod, <span class="at">part.corr =</span> T, <span class="at">model.fit =</span> F, <span class="at">model.info =</span> F) <span class="sc">|&gt;</span> <span class="fu">print</span>()  <span class="co"># jtools package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard errors: OLS
+------------------------------------------------------------------------------
+                              Est.   S.E.   t val.      p   partial.r   part.r
+------------------------- -------- ------ -------- ------ ----------- --------
+(Intercept)                  52.88   1.17    45.29   0.00                     
+citycity                    -17.63   1.95    -9.06   0.00       -0.60    -0.58
+center(neuroticism)          -0.22   0.10    -2.27   0.02       -0.18    -0.15
+------------------------------------------------------------------------------</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_reduced, mod, </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">error_format =</span> <span class="st">"({p.value})"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>neuroticism</code>만을 포함한 모형과 <code>area</code>를 추가한 모형을 비교</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>mod_reduced <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> <span class="fu">center</span>(neuroticism), <span class="at">data =</span> altruism) <span class="co"># reduced model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_reduced, mod, </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">error_format =</span> <span class="st">"({p.value})"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-layout-panel" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1097,7 +1098,7 @@ $contrasts
 <p>ANOVA의 프레임워크에서 <code>neuroticism</code>의 효과가 partial out된 <span class="math inline">\(\eta^2\)</span><br>
 참고: <a href="https://cran.r-project.org/web/packages/effectsize/vignettes/anovaES.html">Effect Sizes for ANOVAs</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_squared</span>(car<span class="sc">::</span><span class="fu">Anova</span>(mod), <span class="at">partial =</span> <span class="cn">TRUE</span>)  <span class="co"># partial correlation squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eta_squared</span>(car<span class="sc">::</span><span class="fu">Anova</span>(mod), <span class="at">partial =</span> <span class="cn">TRUE</span>)  <span class="co"># partial correlation squared</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Effect Size for ANOVA (Type II)
 
@@ -1109,30 +1110,44 @@ center(neuroticism) |           0.03 | [0.00, 1.00]
 - One-sided CIs: upper bound fixed at [1.00].</code></pre>
 </div>
 </div>
-<p><strong>Set correlation</strong>을 통해 partial out된 상관계수</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 우선 dummy variable을 생성</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>altruism_dummy <span class="ot">&lt;-</span> fastDummies<span class="sc">::</span><span class="fu">dummy_cols</span>(altruism, <span class="st">"city"</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>altruism_dummy <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 7
+<!-- 
+**Set correlation**을 통해 partial out된 상관계수
+
+::: {.cell}
+
+```{.r .cell-code}
+# 우선 dummy variable을 생성
+altruism_dummy <- fastDummies::dummy_cols(altruism, "city")
+altruism_dummy |> head(3)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+# A tibble: 3 × 7
   altruism   ses neuroticism area       city    city_noncity city_city
-     &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;      &lt;fct&gt;          &lt;int&gt;     &lt;int&gt;
+     <dbl> <dbl>       <dbl> <chr>      <fct>          <int>     <int>
 1     69.1  66.7        61.0 small_town noncity            1         0
 2     56.2  58.0        73.6 small_town noncity            1         0
-3     65.6  36.3        41.2 small_town noncity            1         0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># neuroticism partialled out!</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setCor</span>(altruism <span class="sc">~</span> city_city <span class="sc">-</span> neuroticism, <span class="at">data =</span> altruism_dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Call: setCor(y = altruism ~ city_city - neuroticism, data = altruism_dummy)
+3     65.6  36.3        41.2 small_town noncity            1         0
+```
+
+
+:::
+
+```{.r .cell-code}
+# neuroticism partialled out!
+setCor(altruism ~ city_city - neuroticism, data = altruism_dummy)
+```
+
+::: {.cell-output-display}
+![](categorical_files/figure-html/unnamed-chunk-35-1.png){width=672}
+:::
+
+::: {.cell-output .cell-output-stdout}
+
+```
+Call: setCor(y = altruism ~ city_city - neuroticism, data = altruism_dummy)
 
 Multiple Regression from raw data 
 The following variables were partialed out: neuroticism 
@@ -1147,22 +1162,26 @@ Residual Standard Error =  0.78  with  147  degrees of freedom
 
  Multiple Regression
            R   R2  Ruw R2uw Shrunken R2 SE of R2 overall F df1 df2        p
-altruism 0.6 0.36 0.61 0.38        0.35     0.06     82.02   1 147 7.63e-16</code></pre>
-</div>
-</div>
-<p>즉, partial correlation = 0.60, partial correlation squared = 0.36 (=<span class="math inline">\(\eta^2\)</span>)</p>
+altruism 0.6 0.36 0.61 0.38        0.35     0.06     82.02   1 147 7.63e-16
+```
+
+
+:::
+:::
+
+즉, partial correlation = 0.60, partial correlation squared = 0.36 (=$\eta^2$) -->
 </section>
 <section id="full-model" class="level2">
 <h2 class="anchored" data-anchor-id="full-model">Full model</h2>
 <p>이타적인 성향이 인구밀도에 영향을 받을 것이라는 가설하에, 세 지역 (도시, 교외, 시골)의 주민들을 조사하는데, neuroticism 뿐만 아니라 사회경제적 상태(SES)도 이타성과 관련이 있음을 고려하면,</p>
 <p><img src="images/altruism.png" class="img-fluid" width="750"></p>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> altruism)) <span class="sc">+</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ses, <span class="at">y =</span> altruism)) <span class="sc">+</span></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> altruism)) <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ses, <span class="at">y =</span> altruism)) <span class="sc">+</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-layout-panel" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1185,16 +1204,16 @@ altruism 0.6 0.36 0.61 0.38        0.35     0.06     82.02   1 147 7.63e-16</cod
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> neuroticism)) <span class="sc">+</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ses, <span class="at">y =</span> neuroticism)) <span class="sc">+</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> ses)) <span class="sc">+</span></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> neuroticism)) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ses, <span class="at">y =</span> neuroticism)) <span class="sc">+</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> ses)) <span class="sc">+</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-layout-panel" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1231,17 +1250,17 @@ altruism 0.6 0.36 0.61 0.38        0.35     0.06     82.02   1 147 7.63e-16</cod
 <p>위 플랏에서 확인해 볼 수 있으며, 아래 상관계수를 통해서도 상관관계가 있음을 확인할 수 있음.<br>
 일반적으로 dummy variable과의 상관계수는 해석이 어려우나, 다음과 같은 방식으로 살펴볼 수 있음.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factor로 변환; label도 함께 지정</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>altruism <span class="ot">&lt;-</span> altruism <span class="sc">|&gt;</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">factor</span>(area,</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"small_town"</span>, <span class="st">"rural"</span>, <span class="st">"city"</span>),</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"small"</span>, <span class="st">"rural"</span>, <span class="st">"city"</span>)</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>altruism_dummy <span class="ot">&lt;-</span> fastDummies<span class="sc">::</span><span class="fu">dummy_cols</span>(altruism, <span class="st">"area"</span>)</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lowerCor</span>(altruism_dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factor로 변환; label도 함께 지정</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>altruism <span class="ot">&lt;-</span> altruism <span class="sc">|&gt;</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">area =</span> <span class="fu">factor</span>(area,</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"small_town"</span>, <span class="st">"rural"</span>, <span class="st">"city"</span>),</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"small"</span>, <span class="st">"rural"</span>, <span class="st">"city"</span>)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>altruism_dummy <span class="ot">&lt;-</span> fastDummies<span class="sc">::</span><span class="fu">dummy_cols</span>(altruism, <span class="st">"area"</span>)</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lowerCor</span>(altruism_dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            altrs ses   nrtcs area* city* ar_sm ar_rr ar_ct
 altruism     1.00                                          
@@ -1254,22 +1273,14 @@ area_rural   0.12 -0.23 -0.01 -0.10 -0.59 -0.46  1.00
 area_city   -0.61  0.28  0.17  0.87  1.00 -0.45 -0.59  1.00</code></pre>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> neuroticism, <span class="at">y =</span> altruism, <span class="at">color =</span> area)) <span class="sc">+</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">neurotic_cat =</span> <span class="fu">cut_interval</span>(neuroticism, <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> altruism, <span class="at">fill =</span> neurotic_cat)) <span class="sc">+</span></span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ses, <span class="at">y =</span> altruism, <span class="at">color =</span> area)) <span class="sc">+</span></span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ses_cat =</span> <span class="fu">cut_interval</span>(ses, <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> area, <span class="at">y =</span> altruism, <span class="at">fill =</span> ses_cat)) <span class="sc">+</span></span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> neuroticism, <span class="at">y =</span> altruism, <span class="at">color =</span> area)) <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ses, <span class="at">y =</span> altruism, <span class="at">color =</span> area)) <span class="sc">+</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-layout-panel" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1291,28 +1302,8 @@ area_city   -0.61  0.28  0.17  0.87  1.00 -0.45 -0.59  1.00</code></pre>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
-</div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>이제 <code>neuroticism</code>과 <code>ses</code>을 <strong>통계적으로 통제</strong>(control for, hold it constant, partial the effect of) 한 선형회귀모형을 세우면, (ANCOVA라고도 함; analysis of covariance)</p>
+<p>이제 <code>neuroticism</code>과 <code>ses</code>을 <strong>통계적으로 통제</strong>한 선형회귀모형을 세우면, (ANCOVA)</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1328,8 +1319,8 @@ Important
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> area <span class="sc">+</span> neuroticism <span class="sc">+</span> ses, <span class="at">data =</span> altruism)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> area <span class="sc">+</span> neuroticism <span class="sc">+</span> ses, <span class="at">data =</span> altruism)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = altruism ~ area + neuroticism + ses, data = altruism)
 
@@ -1352,8 +1343,8 @@ F-statistic:  36.2 on 4 and 145 DF,  p-value: &lt; 2.2e-16
 </div>
 <p>Centering한 모형</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mod_full_c <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> area <span class="sc">+</span> <span class="fu">center</span>(neuroticism) <span class="sc">+</span> <span class="fu">center</span>(ses), <span class="at">data =</span> altruism)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_full_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>mod_full_c <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> area <span class="sc">+</span> <span class="fu">center</span>(neuroticism) <span class="sc">+</span> <span class="fu">center</span>(ses), <span class="at">data =</span> altruism)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_full_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = altruism ~ area + center(neuroticism) + center(ses), data =
          altruism)
@@ -1392,10 +1383,10 @@ Important
 </div>
 <p><code>neuroticism</code>과 <code>ses</code>가 통제되지 않은 모형과 비교하면,<br>
 또한 표준화된 모형과 비교하면,</p>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mod_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> area, <span class="at">data =</span> altruism)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_simple, mod_full_c, <span class="at">error_format =</span> <span class="st">"(p = {p.value})"</span>, <span class="at">model.names =</span> <span class="fu">c</span>(<span class="st">"Simple"</span>, <span class="st">"Full Centered"</span>))</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scale: 독립변수들을 표준화, transform.response: 종속변수를 표준화</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_simple, mod_full, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">transform.response =</span> <span class="cn">TRUE</span>, <span class="at">error_format =</span> <span class="st">"(p = {p.value})"</span>, <span class="at">model.names =</span> <span class="fu">c</span>(<span class="st">"Simple Std"</span>, <span class="st">"Full Std"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mod_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> area, <span class="at">data =</span> altruism)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_simple, mod_full_c, <span class="at">error_format =</span> <span class="st">"(p = {p.value})"</span>, <span class="at">model.names =</span> <span class="fu">c</span>(<span class="st">"Simple"</span>, <span class="st">"Full Centered"</span>))</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># scale: 독립변수들을 표준화, transform.response: 종속변수를 표준화</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_simple, mod_full, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">transform.response =</span> <span class="cn">TRUE</span>, <span class="at">error_format =</span> <span class="st">"(p = {p.value})"</span>, <span class="at">model.names =</span> <span class="fu">c</span>(<span class="st">"Simple Std"</span>, <span class="st">"Full Std"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1480,9 +1471,9 @@ Important
 </ul>
 <p>즉, <code>neuroticism</code>과 <code>ses</code>의 <strong>효과가 제거되었을 때 (partial out)</strong>, 혹은 그 효과만큼 <code>city</code>가 <strong>조정받은 후 (adjusted for)</strong>, 각 지역의 사람들의 이타성은 각각 59.39, 49.18, 34.42로 추정됨.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adjusted means &amp; contrast (adjusted mean difference)</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod_full, pairwise <span class="sc">~</span> area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adjusted means &amp; contrast (adjusted mean difference)</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(mod_full, pairwise <span class="sc">~</span> area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$emmeans
  area  emmean   SE  df lower.CL upper.CL
@@ -1503,12 +1494,12 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 </div>
 <p>Plot으로 표현하면: effect plot</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predictorEffects</span>(mod_full, <span class="sc">~</span> area))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predictorEffects</span>(mod_full, <span class="sc">~</span> area))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="categorical_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1532,21 +1523,21 @@ code
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>grid_city <span class="ot">&lt;-</span> altruism <span class="sc">|&gt;</span> <span class="fu">data_grid</span>(neuroticism, <span class="at">area =</span> <span class="st">"city"</span>, <span class="at">.model =</span> mod_full) <span class="sc">|&gt;</span> </span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(mod_full)</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>grid_rural <span class="ot">&lt;-</span> altruism <span class="sc">|&gt;</span> <span class="fu">data_grid</span>(neuroticism, <span class="at">area =</span> <span class="st">"rural"</span>, <span class="at">.model =</span> mod_full) <span class="sc">|&gt;</span> </span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(mod_full)</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>grid_small <span class="ot">&lt;-</span> altruism <span class="sc">|&gt;</span> <span class="fu">data_grid</span>(neuroticism, <span class="at">area =</span> <span class="st">"small"</span>, <span class="at">.model =</span> mod_full) <span class="sc">|&gt;</span> </span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(mod_full)</span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
-<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> neuroticism, <span class="at">y =</span> altruism, <span class="at">color =</span> area)) <span class="sc">+</span></span>
-<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> grid_city, <span class="fu">aes</span>(<span class="at">y =</span> pred), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> grid_rural, <span class="fu">aes</span>(<span class="at">y =</span> pred), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> grid_small, <span class="fu">aes</span>(<span class="at">y =</span> pred), <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>grid_city <span class="ot">&lt;-</span> altruism <span class="sc">|&gt;</span> <span class="fu">data_grid</span>(neuroticism, <span class="at">area =</span> <span class="st">"city"</span>, <span class="at">.model =</span> mod_full) <span class="sc">|&gt;</span> </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(mod_full)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>grid_rural <span class="ot">&lt;-</span> altruism <span class="sc">|&gt;</span> <span class="fu">data_grid</span>(neuroticism, <span class="at">area =</span> <span class="st">"rural"</span>, <span class="at">.model =</span> mod_full) <span class="sc">|&gt;</span> </span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(mod_full)</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>grid_small <span class="ot">&lt;-</span> altruism <span class="sc">|&gt;</span> <span class="fu">data_grid</span>(neuroticism, <span class="at">area =</span> <span class="st">"small"</span>, <span class="at">.model =</span> mod_full) <span class="sc">|&gt;</span> </span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_predictions</span>(mod_full)</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>altruism <span class="sc">|&gt;</span> </span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> neuroticism, <span class="at">y =</span> altruism, <span class="at">color =</span> area)) <span class="sc">+</span></span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> grid_city, <span class="fu">aes</span>(<span class="at">y =</span> pred), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> grid_rural, <span class="fu">aes</span>(<span class="at">y =</span> pred), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> grid_small, <span class="fu">aes</span>(<span class="at">y =</span> pred), <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1555,17 +1546,34 @@ code
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="categorical_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>Partial association</strong> <code>area</code>의 고유한 설명력을 파악하기 위해 partial association 대해 알아보는 방식은</p>
+<p><strong>Partial association</strong> <code>area</code>의 고유한 설명력을 파악하기 위해 partial association</p>
 <ul>
+<li>jtools 패키지의 <code>summ()</code> 함수를 통해 보기 어려움…</li>
 <li>모형의 비교를 통해 <span class="math inline">\(R^2\)</span>의 변화를 살펴보는 방식: semi-partial (squared)</li>
 <li>Set correlation을 통해 partial out된 상관계수를 계산하는 방식: partial (squared)</li>
 <li>ANOVA 프레임워크에서 partial eta-squared를 계산하는 방식: semi-paritl, partial (squared)</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod_full, <span class="at">part.corr =</span> T, <span class="at">model.fit =</span> F, <span class="at">model.info =</span> F) <span class="sc">|&gt;</span> <span class="fu">print</span>()  <span class="co"># jtools package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard errors: OLS
+----------------------------------------------------------------------
+                      Est.   S.E.   t val.      p   partial.r   part.r
+----------------- -------- ------ -------- ------ ----------- --------
+(Intercept)          60.83   6.13     9.93   0.00                     
+arearural           -10.21   2.19    -4.67   0.00       -0.36    -0.27
+areacity            -24.97   2.25   -11.10   0.00       -0.68    -0.65
+neuroticism          -0.19   0.09    -2.12   0.04       -0.17    -0.12
+ses                   0.20   0.08     2.36   0.02        0.19     0.14
+----------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p><code>area</code>가 빠진 모형과 <code>area</code>를 추가한 모형을 비교</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>mod_full_reduced <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> neuroticism <span class="sc">+</span> ses, <span class="at">data =</span> altruism) <span class="co"># reduced model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1648,7 +1656,7 @@ ses         |           0.04 | [0.00, 1.00]
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="categorical_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="categorical_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1681,6 +1689,54 @@ altruism 0.68 0.47 0.41 0.17        0.45     0.06     63.58   2 145 1.5e-20</cod
 <li>정치학자가 인종 (black, hispanic, white), 성별, 가족 소득 수준이 정치적 태도에 미치는 영향을 연구하고자 할 때,</li>
 <li>교육학자가 공립학교와 사립학교의 수학 성취도를 비교하고자 하는데, 가족 소득 수준을 고정(통제)시키고자 할 때,</li>
 </ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>관심사가 neuroticism이 이타성에 미치는 효과라면, 나머지 변수들(<code>area</code>, <code>ses</code>)는 통제변수로 보고 관심을 두지 않아도 됨.</p>
+<p><img src="images/altruism5.png" class="img-fluid" width="300"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(altruism <span class="sc">~</span> neuroticism <span class="sc">+</span> area <span class="sc">+</span> ses, <span class="at">data =</span> altruism)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod_full, <span class="at">part.corr =</span> T, <span class="at">model.fit =</span> F, <span class="at">model.info =</span> F) <span class="sc">|&gt;</span> <span class="fu">print</span>()  <span class="co"># jtools package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard errors: OLS
+----------------------------------------------------------------------
+                      Est.   S.E.   t val.      p   partial.r   part.r
+----------------- -------- ------ -------- ------ ----------- --------
+(Intercept)          60.83   6.13     9.93   0.00                     
+neuroticism          -0.19   0.09    -2.12   0.04       -0.17    -0.12
+arearural           -10.21   2.19    -4.67   0.00       -0.36    -0.27
+areacity            -24.97   2.25   -11.10   0.00       -0.68    -0.65
+ses                   0.20   0.08     2.36   0.02        0.19     0.14
+----------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>표준화 계수 포함 <code>lm.beta::lm.beta(mod_full)</code>는 사용하지 말것; <code>lm.beta</code> 패키지는 오래된 방식을 사용하며, <code>jtools</code> 패키지의 <code>std_beta()</code> 함수를 사용할 것.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod_full, <span class="at">scale =</span> T, <span class="at">transform.response =</span> T, <span class="at">part.corr =</span> T, <span class="at">model.fit =</span> F, <span class="at">model.info =</span> F) <span class="sc">|&gt;</span> <span class="fu">print</span>()  <span class="co"># jtools package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard errors: OLS
+---------------------------------------------------------------------
+                     Est.   S.E.   t val.      p   partial.r   part.r
+----------------- ------- ------ -------- ------ ----------- --------
+(Intercept)          0.90   0.12     7.71   0.00                     
+neuroticism         -0.13   0.06    -2.12   0.04       -0.17    -0.12
+arearural           -0.71   0.15    -4.67   0.00       -0.36    -0.27
+areacity            -1.72   0.16   -11.10   0.00       -0.68    -0.65
+ses                  0.15   0.06     2.36   0.02        0.19     0.14
+---------------------------------------------------------------------
+
+Continuous variables are mean-centered and scaled by 1 s.d.</code></pre>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="exercises" class="level1">
@@ -1693,11 +1749,11 @@ altruism 0.68 0.47 0.41 0.17        0.45     0.06     63.58   2 145 1.5e-20</cod
 </ol>
 <p>분석하면서 변수들의 효과에 대한 의미를 새기면서 분석을 해보세요.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>acad3 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/c0904dt.csv"</span>)</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>acad3 <span class="ot">&lt;-</span> acad3 <span class="sc">|&gt;</span> </span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">depart =</span> <span class="fu">factor</span>(depart, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"psych"</span>, <span class="st">"soc"</span>, <span class="st">"hist"</span>)),</span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)))</span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>acad3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>acad3 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/c0904dt.csv"</span>)</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>acad3 <span class="ot">&lt;-</span> acad3 <span class="sc">|&gt;</span> </span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">depart =</span> <span class="fu">factor</span>(depart, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"psych"</span>, <span class="st">"soc"</span>, <span class="st">"hist"</span>)),</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)))</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>acad3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 150 × 5
    depart   pub  time salary sex   
