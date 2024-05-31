@@ -1717,7 +1717,7 @@ ses                   0.20   0.08     2.36   0.02        0.19     0.14
 ----------------------------------------------------------------------</code></pre>
 </div>
 </div>
-<p>표준화 계수 포함 <code>lm.beta::lm.beta(mod_full)</code>는 사용하지 말것; <code>lm.beta</code> 패키지는 오래된 방식을 사용하며, <code>jtools</code> 패키지의 <code>std_beta()</code> 함수를 사용할 것.</p>
+<p>표준화 계수 포함 <code>lm.beta::lm.beta(mod_full)</code>는 사용하지 말것; <code>lm.beta</code> 패키지는 오래된 방식을 사용하며, <code>jtools</code> 패키지의 <code>summ()</code> 함수를 사용할 것</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summ</span>(mod_full, <span class="at">scale =</span> T, <span class="at">transform.response =</span> T, <span class="at">part.corr =</span> T, <span class="at">model.fit =</span> F, <span class="at">model.info =</span> F) <span class="sc">|&gt;</span> <span class="fu">print</span>()  <span class="co"># jtools package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
