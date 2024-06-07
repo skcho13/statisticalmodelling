@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-24">
+<meta name="dcterms.date" content="2024-06-02">
 
 <title> CHA Statistics in R - Statistical Inference</title>
 <style>
@@ -362,7 +362,7 @@ window.Quarto = {
   <li><a href="#the-sampling-distribution-of-the-mean" id="toc-the-sampling-distribution-of-the-mean" class="nav-link" data-scroll-target="#the-sampling-distribution-of-the-mean">The Sampling Distribution of the Mean</a></li>
   <li><a href="#regression-model-coefficients" id="toc-regression-model-coefficients" class="nav-link" data-scroll-target="#regression-model-coefficients">Regression Model Coefficients</a></li>
   </ul></li>
-  <li><a href="#an-resampling-approach-bootstrap" id="toc-an-resampling-approach-bootstrap" class="nav-link" data-scroll-target="#an-resampling-approach-bootstrap">An Resampling Approach: Bootstrap</a></li>
+  <li><a href="#resampling-methods-bootstrap" id="toc-resampling-methods-bootstrap" class="nav-link" data-scroll-target="#resampling-methods-bootstrap">Resampling Methods: Bootstrap</a></li>
   </ul>
 </nav>
     </div>
@@ -389,7 +389,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 24, 2024</p>
+      <p class="date">June 2, 2024</p>
     </div>
   </div>
   
@@ -540,8 +540,8 @@ F-statistic: 137.6 on 4 and 93 DF,  p-value: &lt; 2.2e-16
 </div>
 </section>
 </section>
-<section id="an-resampling-approach-bootstrap" class="level1">
-<h1>An Resampling Approach: Bootstrap</h1>
+<section id="resampling-methods-bootstrap" class="level1">
+<h1>Resampling Methods: Bootstrap</h1>
 <ul>
 <li>모집단에 대한 추론을 하는데, “특정 분포”로부터 표본들이 생성된 것이라고 가정하고, 이론에 기반한 통계적 추론을 하는 것이 아니라,<br>
 </li>
@@ -549,6 +549,7 @@ F-statistic: 137.6 on 4 and 93 DF,  p-value: &lt; 2.2e-16
 <li>이 표본을 모집단인듯이 취급하여,</li>
 <li>이 표본으로부터 표본을 (복원) 추출하여 많은 표본들을 얻은 후</li>
 <li>각 표본들로부터 통계치를 계산하여 “표본분포”을 얻는 방식 (<strong>resampling</strong>)</li>
+<li>Bootstrap외에도 다양한 resampling 방법이 있음.</li>
 </ul>
 <div id="cell-13" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2023-02-17">
+<meta name="dcterms.date" content="2024-06-02">
 
 <title> CHA Statistics in R - Diagnostics</title>
 <style>
@@ -358,13 +358,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ordinary-least-squares-ols" id="toc-ordinary-least-squares-ols" class="nav-link active" data-scroll-target="#ordinary-least-squares-ols">Ordinary least squares (OLS)</a>
+  <li><a href="#generalized-linear-models" id="toc-generalized-linear-models" class="nav-link active" data-scroll-target="#generalized-linear-models">Generalized Linear Models</a></li>
+  <li><a href="#linear-least-squares-regression의-가정들" id="toc-linear-least-squares-regression의-가정들" class="nav-link" data-scroll-target="#linear-least-squares-regression의-가정들">Linear Least Squares Regression의 가정들</a>
   <ul>
-  <li><a href="#linear-least-squared-regression의-가정들" id="toc-linear-least-squared-regression의-가정들" class="nav-link" data-scroll-target="#linear-least-squared-regression의-가정들">Linear Least Squared Regression의 가정들</a>
-  <ul class="collapse">
   <li><a href="#가정에-위배되는-연구자료들" id="toc-가정에-위배되는-연구자료들" class="nav-link" data-scroll-target="#가정에-위배되는-연구자료들">가정에 위배되는 연구/자료들</a></li>
   <li><a href="#대처방안대안들" id="toc-대처방안대안들" class="nav-link" data-scroll-target="#대처방안대안들">대처방안/대안들</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#ols에서-모집단에-대한-가정들에-대한-진단" id="toc-ols에서-모집단에-대한-가정들에-대한-진단" class="nav-link" data-scroll-target="#ols에서-모집단에-대한-가정들에-대한-진단">OLS에서 모집단에 대한 가정들에 대한 진단</a>
   <ul>
@@ -406,7 +404,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 17, 2023</p>
+      <p class="date">June 2, 2024</p>
     </div>
   </div>
   
@@ -418,35 +416,59 @@ window.Quarto = {
 </header>
 
 
-<section id="ordinary-least-squares-ols" class="level1">
-<h1>Ordinary least squares (OLS)</h1>
+<section id="generalized-linear-models" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-linear-models">Generalized Linear Models</h2>
+<p><strong>Ordinary least squares (OLS)</strong></p>
 <ul>
 <li>Mean function: <span class="math inline">\(E(Y | X = x_i) = \beta_0 + \beta_1 x_i\)</span></li>
-<li>Variance function: <span class="math inline">\(Var(Y | X = x_i) = \sigma^2\)</span></li>
 <li>Distribution: <span class="math inline">\((Y | X = x_i) \sim N(\beta_0 + \beta_1 x_i, \sigma^2)\)</span></li>
 </ul>
-<p><img src="images/ols.png" class="img-fluid" width="650"><br>
-Source: p.107, <em>Applied Regression Analysis and Generalized Linear Models (3e), by John Fox</em></p>
-<p><img src="images/glm.png" class="img-fluid" width="800"><br>
-Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3e), by Cohen, J., Cohen, P., West, S. G., &amp; Aiken, L. S.</em></p>
-<p>Source: Beyond Multiple Linear Regression, by Paul Roback, Julie Legler.</p>
-<section id="linear-least-squared-regression의-가정들" class="level2">
-<h2 class="anchored" data-anchor-id="linear-least-squared-regression의-가정들">Linear Least Squared Regression의 가정들</h2>
+<p><img src="images/ols.png" class="img-fluid" width="500"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.107, <em>Applied Regression Analysis and Generalized Linear Models (3e), by John Fox</em></p>
+</div>
+<p><strong>Generalized linear models (GLM)</strong></p>
+<p>OLS의 가정에 맞지 않는 경우, 가정을 완화한 모델</p>
 <ul>
-<li>L (linearity, 선형성): X의 각 값에 해당하는 Y값들의 평균들은 X와 선형적인 관계를 가짐.
+<li>Mean function: <span class="math inline">\(E(Y | X = x_i) = f(\beta_0 + \beta_1 x_i)\)</span></li>
+<li>Distribution: <span class="math inline">\((Y | X = x_i) \sim \text{Exponential family}\)</span></li>
+</ul>
+<p><em>Binary outcome: Logistic regression</em></p>
+<ul>
+<li>Mean function: <span class="math inline">\(\displaystyle E(Y | X = x_i) = f(\beta_0 + \beta_1 x_i)\)</span>, &nbsp; <span class="math inline">\(\displaystyle f = \frac{1}{1 + e^{-x}}\)</span> : <em>sigmoid function</em></li>
+<li>Distribution: <span class="math inline">\((Y | X = x_i) \sim \text{Bernoulli}(p)\)</span>: <em>n=1</em>인 이항분포</li>
+</ul>
+<p><em>Count outcome: Poisson regression</em></p>
+<ul>
+<li>Mean function: <span class="math inline">\(\displaystyle E(Y | X = x_i) = f(\beta_0 + \beta_1 x_i)\)</span>, &nbsp; <span class="math inline">\(\displaystyle f = e^x\)</span></li>
+<li>Distribution: <span class="math inline">\((Y | X = x_i) \sim \text{Poisson}(\lambda_i)\)</span></li>
+</ul>
+<p>전형적으로 나타나는 <span class="math inline">\(X\)</span>와 <span class="math inline">\(Y\)</span>의 관계</p>
+<p><img src="images/glm-plot.png" class="img-fluid" width="700"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3e), by Cohen, J., Cohen, P., West, S. G., &amp; Aiken, L. S.</em></p>
+</div>
+</section>
+<section id="linear-least-squares-regression의-가정들" class="level2">
+<h2 class="anchored" data-anchor-id="linear-least-squares-regression의-가정들">Linear Least Squares Regression의 가정들</h2>
+<ul>
+<li><em>L (linearity, 선형성)</em>: X의 각 값에 해당하는 Y값들의 평균들은 X와 선형적인 관계를 가짐.
 <ul>
 <li>Mean function: <span class="math inline">\(E(Y | X = x_i) = \beta_0 + \beta_1 x_i\)</span></li>
 </ul></li>
-<li>I (independence, 독립성): 잔차들(errors)은 서로 독립.</li>
-<li>N (normally distributed, 정규성): X의 각 값에 해당하는 Y값들은 정규분포를 이룸.
+<li><em>I (independence, 독립성)</em>: 잔차들(errors)은 서로 독립.</li>
+<li><em>N (normally distributed, 정규성)</em>: X의 각 값에 해당하는 Y값들은 정규분포를 이룸.
 <ul>
 <li><span class="math inline">\((Y | X = x_i) \sim N(\beta_0 + \beta_1 x_i, \sigma^2)\)</span></li>
 </ul></li>
-<li>E (equal variance, 등분산성): X의 각 값에 해당하는 Y값들의 표준편차들은 모두 동일함.
+<li><em>E (equal variance, 등분산성)</em>: X의 각 값에 해당하는 Y값들의 표준편차들은 모두 동일함.
 <ul>
-<li><span class="math inline">\(Var(Y | X = x_i) = \sigma^2\)</span></li>
+<li>Variance fucntion: <span class="math inline">\(Var(Y | X = x_i) = \sigma^2\)</span></li>
 </ul></li>
 </ul>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: Beyond Multiple Linear Regression, by Paul Roback, Julie Legler.</p>
+</div>
 <section id="가정에-위배되는-연구자료들" class="level3">
 <h3 class="anchored" data-anchor-id="가정에-위배되는-연구자료들">가정에 위배되는 연구/자료들</h3>
 <ul>
@@ -464,7 +486,7 @@ Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Beha
 <li>대학 안에서 임의로 선정한 남녀 학생들의 운동시간과 몸무게의 관계
 <ul>
 <li>운동을 전혀 하지 않는 학생들의 몸무게의 변량이 규칙적으로 한 학생들에 비해 더 넓게 분포할 가능성이 큼: 이는 equal variance 가정을 위배함.</li>
-<li>만약, 대학 내에서 특정 장소에서 학생들을 섭외했다면, 예를 들어, 피트니스 센터에서 섭외된 학생들의 데이터는 서로 연관성이 높을 수 있음: 이는 independent 가정에 위배됨.</li>
+<li>만약, 대학 내에서 특정 장소에서 학생들을 섭외했다면, 예를 들어, 피트니스 센터에서 섭외된 학생들의 데이터는 서로 연관성이 높을 수 있음: 이는 independence 가정에 위배됨.</li>
 </ul></li>
 <li>특정 질병을 가진 환자들에 대한 특정 수술에 대한 효과를 연구한다면,
 <ul>
@@ -481,7 +503,6 @@ Source: p.482, <em>Applied Multiple Regression/Correlation Analysis for the Beha
 <li><strong>Equal variance</strong>의 가정에 위배되는 경우: 변수들을 변환(transform)하거나 weighted least squares regression을 사용</li>
 <li><strong>Independence</strong>의 가정에 위배되는 경우: multi-level (mixed-effects) 모형을 사용</li>
 </ul>
-</section>
 </section>
 </section>
 <section id="ols에서-모집단에-대한-가정들에-대한-진단" class="level1">
@@ -631,11 +652,11 @@ Note
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parameters)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(mod_transact) <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">digits=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Parameter   | Coefficient |      SE |            95% CI | t(258) |      p
--------------------------------------------------------------------------
-(Intercept) |     144.369 | 170.544 | [-191.47, 480.21] |  0.847 | 0.398 
-t1          |       5.462 |   0.433 | [   4.61,   6.32] | 12.607 | &lt; .001
-t2          |       2.035 |   0.094 | [   1.85,   2.22] | 21.567 | &lt; .001</code></pre>
+<pre><code>Parameter   | Coefficient |      SE |              95% CI | t(258) |      p
+---------------------------------------------------------------------------
+(Intercept) |     144.369 | 170.544 | [-191.466, 480.205] |  0.847 | 0.398 
+t1          |       5.462 |   0.433 | [   4.609,   6.315] | 12.607 | &lt; .001
+t2          |       2.035 |   0.094 | [   1.849,   2.220] | 21.567 | &lt; .001</code></pre>
 </div>
 </div>
 <ol type="1">
@@ -662,9 +683,9 @@ t2          |       2.035 |   0.094 | [   1.85,   2.22] | 21.567 | &lt; .001</co
 <pre><code># A tibble: 3 × 5
   Parameter   Coefficient  CI_low CI_high     p
   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 (Intercept)      157.   -245.    518.   0.458
-2 t1                 5.49    4.16    6.79 0    
-3 t2                 2.02    1.75    2.35 0    </code></pre>
+1 (Intercept)      163.   -222.    545.   0.446
+2 t1                 5.53    4.09    6.77 0    
+3 t2                 2.02    1.73    2.34 0    </code></pre>
 </div>
 </div>
 </div>
