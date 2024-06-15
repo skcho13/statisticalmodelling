@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-02">
+<meta name="dcterms.date" content="2024-06-15">
 
 <title> CHA Statistics in R - Statistical Inference</title>
 <style>
@@ -362,7 +362,16 @@ window.Quarto = {
   <li><a href="#the-sampling-distribution-of-the-mean" id="toc-the-sampling-distribution-of-the-mean" class="nav-link" data-scroll-target="#the-sampling-distribution-of-the-mean">The Sampling Distribution of the Mean</a></li>
   <li><a href="#regression-model-coefficients" id="toc-regression-model-coefficients" class="nav-link" data-scroll-target="#regression-model-coefficients">Regression Model Coefficients</a></li>
   </ul></li>
-  <li><a href="#resampling-methods-bootstrap" id="toc-resampling-methods-bootstrap" class="nav-link" data-scroll-target="#resampling-methods-bootstrap">Resampling Methods: Bootstrap</a></li>
+  <li><a href="#resampling-methods-bootstrap" id="toc-resampling-methods-bootstrap" class="nav-link" data-scroll-target="#resampling-methods-bootstrap">Resampling Methods: Bootstrap</a>
+  <ul>
+  <li><a href="#multiple-regression에-적용" id="toc-multiple-regression에-적용" class="nav-link" data-scroll-target="#multiple-regression에-적용">Multiple Regression에 적용</a></li>
+  <li><a href="#mediation-analysis에-적용" id="toc-mediation-analysis에-적용" class="nav-link" data-scroll-target="#mediation-analysis에-적용">Mediation Analysis에 적용</a>
+  <ul class="collapse">
+  <li><a href="#boot-패키지의-boot-활용" id="toc-boot-패키지의-boot-활용" class="nav-link" data-scroll-target="#boot-패키지의-boot-활용">boot 패키지의 <code>boot()</code> 활용</a></li>
+  <li><a href="#lavaan-패키지의-활용-sem-분석툴" id="toc-lavaan-패키지의-활용-sem-분석툴" class="nav-link" data-scroll-target="#lavaan-패키지의-활용-sem-분석툴">lavaan 패키지의 활용: SEM 분석툴</a></li>
+  </ul></li>
+  <li><a href="#moderated-mediation에-응용" id="toc-moderated-mediation에-응용" class="nav-link" data-scroll-target="#moderated-mediation에-응용">Moderated Mediation에 응용</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -389,7 +398,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 2, 2024</p>
+      <p class="date">June 15, 2024</p>
     </div>
   </div>
   
@@ -425,21 +434,55 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <div>
 
 </div>
-<div id="cell-5" class="cell quarto-layout-panel" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="191">
+<div class="quarto-layout-panel" data-layout="[1, 1]">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="inference_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="inference_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1, 1]">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="inference_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="inference_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+</div>
 </div>
 </div>
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="inference_files/figure-html/cell-4-output-3.png" class="img-fluid"></p>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="inference_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="400"></p>
+</figure>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="inference_files/figure-html/cell-4-output-4.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="inference_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -447,13 +490,12 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 특히, 값들을 정규화하여 표준정규분포 (평균 0, 표준편차 1)의 값을 이용함.</p>
 <p><span class="math inline">\(\displaystyle \frac{174 - 173}{0.5} = 2, ~~ \bar{Z}=\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}\)</span></p>
 <p>음영된 부분은 대략 2.3%이고, 따라서 100명을 관찰한 표본의 평균 키가 174cm이상이 될 가능성은 2.3%에 밖에 되지 않음. 예를 들어, 1000번 같은 연구를 반복하면 23번 정도는 174cm 이상의 평균 키를 관찰할 수 있을 것임.</p>
+<div class="cell">
+<div class="cell-output-display">
 <div>
-
-</div>
-<div id="cell-7" class="cell quarto-layout-panel" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="189">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="inference_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<figure class="figure">
+<p><img src="inference_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="400"></p>
+</figure>
 </div>
 </div>
 </div>
@@ -499,117 +541,401 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <p>Confidence interval: <span class="math inline">\(b\pm t_{\alpha/2}SE, ~(df = N-2)\)</span></p>
 <p>다중 회귀 모형의 경우:<br>
 예측변수 <span class="math inline">\(X_j\)</span> 에 대해서 모집단의 회귀계수 <span class="math inline">\(b_j\)</span> 에 대한 표본 분포는 평균이 <span class="math inline">\(b_j\)</span> 인 정규분포를 따르고, 표준편차, 즉 standard error는 근사적으로 다음과 같음.</p>
-<p><span class="math inline">\(\displaystyle SE^2(b_j) = \frac{{MS}_{residual}}{N \cdot Var(X_j) \cdot (1 - R^2_j)}, ~(df = N-k-1)\)</span></p>
+<p><span class="math inline">\(\displaystyle SE^2(b_j) = \frac{{MS}_{residual}}{N \cdot Var(X_j) \cdot (1 - R^2_j)} = \frac{{MS}_{residual}}{N \cdot Var(X_j)}\cdot VIF, ~(df = N-k-1)\)</span></p>
 <ul>
 <li>표본 사이즈가 클수록</li>
 <li>평균 잔차가 작을수록</li>
-<li>jth 예측변수의 값이 퍼져 있을수록</li>
-<li>다른 예측변수들로부터 jth 예측변수가 예측되지 못할수록; 즉 다른 변수들과 correlate되지 않을수록
+<li>j번째 예측변수의 값이 퍼져 있을수록</li>
+<li>다른 예측변수들로부터 j번째 예측변수가 예측되지 못할수록; 즉 다른 변수들과 correlate되지 않을수록
 <ul>
-<li><span class="math inline">\(1 - R^2_j\)</span> 을 tolerance, 그 역수를 variance inflation factor (VIF)라고 부름</li>
-<li>Tolerance가 극히 작은 것은 intolerable! 봐줄 수 없음!
-<ul>
-<li>예를 들어, 어느 문화에서 남자아이에게는 자기 주장이 강하도록 훈육하고, 여자아이에게는 반대로 훈육한다고 합니다. 만약, 자기주장이 강하도록 부모가 교육하는 것이 자녀가 자기주장이 강하게 되는데 영향을 미친다는 것을 살펴보는데, 성별을 통계적으로 통제한다면, 훈육의 효과는 통계적으로 계산되기 어렵습니다. 왜냐하면, 성별과 훈육방식이 크게 상관관계를 가지기 때문에, 성별과 독립적인 훈육의 변량이 작아지기 때문에, 회귀계수의 precision이 크게 낮아집니다.</li>
-</ul></li>
+<li><span class="math inline">\(1 - R^2_j\)</span>: tolerance, 그 역수: variance inflation factor (VIF)</li>
+<li>Tolerance가 극히 작은 것은 intolerable! 봐줄 수 없음!</li>
+<li>예를 들어, 어느 문화에서 남자아이에게는 자기 주장이 강하도록 훈육하고, 여자아이에게는 반대로 훈육한다고 할 때,<br>
+만약, 자기주장이 강하도록 부모가 교육하는 것이 자녀가 자기주장이 강하게 되는데 영향을 미친다는 것을 살펴보는데, 성별을 통계적으로 통제한다면, 훈육의 효과는 통계적으로 계산되기 어려워짐.<br>
+이는 성별과 훈육방식이 큰 상관관계를 갖기 때문에, 성별과 독립적인 훈육의 변량이 작아져 회귀계수의 precision이 크게 낮아지기 때문임.</li>
 </ul></li>
 </ul>
-<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mod_prestige <span class="ot">&lt;-</span> <span class="fu">lm</span>(prestige <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">log2</span>(income) <span class="sc">+</span> type, <span class="at">data =</span> Prestige)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_prestige)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>Call: lm(formula = prestige ~ education + log2(income) + type, data = Prestige)
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  -81.2019    13.7431  -5.909 5.63e-08 ***
-education      3.2845     0.6081   5.401 5.06e-07 ***
-log2(income)   7.2694     1.1900   6.109 2.31e-08 ***
-typeprof       6.7509     3.6185   1.866   0.0652 .  
-typewc        -1.4394     2.3780  -0.605   0.5465    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard deviation: 6.637 on 93 degrees of freedom
-  (4 observations deleted due to missingness)
-Multiple R-squared: 0.8555
-F-statistic: 137.6 on 4 and 93 DF,  p-value: &lt; 2.2e-16 
-   AIC    BIC 
-655.93 671.44 </code></pre>
-</div>
-</div>
 </section>
 </section>
 <section id="resampling-methods-bootstrap" class="level1">
 <h1>Resampling Methods: Bootstrap</h1>
 <ul>
-<li>모집단에 대한 추론을 하는데, “특정 분포”로부터 표본들이 생성된 것이라고 가정하고, 이론에 기반한 통계적 추론을 하는 것이 아니라,<br>
-</li>
-<li>관찰된 표본이 모집단의 특성을 잘 반영하고 있다는 전제하에,</li>
-<li>이 표본을 모집단인듯이 취급하여,</li>
-<li>이 표본으로부터 표본을 (복원) 추출하여 많은 표본들을 얻은 후</li>
-<li>각 표본들로부터 통계치를 계산하여 “표본분포”을 얻는 방식 (<strong>resampling</strong>)</li>
+<li>모집단에 대한 추론을 하는데 “특정 분포”로부터 표본들이 생성된 것이라고 가정하고 이론에 기반한 추론 하는 방식과 달리</li>
+<li>관찰된 표본이 모집단의 특성을 잘 반영하고 있다는 전제하에</li>
+<li>이 표본을 모집단인듯이 취급하여 이 표본으로부터 표본을 (복원) 추출하여 많은 표본들을 얻은 후 (<strong>resampling</strong>)</li>
+<li>각 표본들로부터 통계치를 계산하여 “표본 분포”을 얻는 방식 (sampling distribution)</li>
 <li>Bootstrap외에도 다양한 resampling 방법이 있음.</li>
 </ul>
-<div id="cell-13" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Prestige2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(Prestige)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mod_prestige <span class="ot">&lt;-</span> <span class="fu">lm</span>(prestige <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">log2</span>(income) <span class="sc">+</span> type, <span class="at">data =</span> Prestige2)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>prestige_boot <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Boot</span>(mod_prestige, <span class="at">R=</span><span class="dv">999</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Confint</span>(prestige_boot) <span class="sc">%&gt;%</span> <span class="fu">round</span>(., <span class="dv">3</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="multiple-regression에-적용" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-regression에-적용">Multiple Regression에 적용</h2>
+<p><strong>car 패키지의 <code>Boot()</code> 이용</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Prestige2 <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(Prestige)  <span class="co"># Boot() 함수는 결측치(NA)를 처리하지 못함</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mod_prestige <span class="ot">&lt;-</span> <span class="fu">lm</span>(prestige <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">log2</span>(income) <span class="sc">+</span> type, <span class="at">data =</span> Prestige2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>prestige_boot <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">Boot</span>(mod_prestige, <span class="at">R=</span><span class="dv">1000</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Confint</span>(prestige_boot) <span class="sc">%&gt;%</span> <span class="fu">round</span>(., <span class="dv">3</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bootstrap bca confidence intervals
 
              Estimate    2.5 %  97.5 %
-(Intercept)   -81.202 -104.740 -52.306
-education       3.284    2.187   4.354
-log2(income)    7.269    4.917   9.417
-typeprof        6.751    0.338  13.137
-typewc         -1.439   -5.210   3.415</code></pre>
+(Intercept)   -81.202 -105.620 -53.944
+education       3.284    2.100   4.449
+log2(income)    7.269    4.991   9.411
+typeprof        6.751    0.458  12.978
+typewc         -1.439   -5.314   2.986</code></pre>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(prestige_boot, <span class="at">parm =</span> <span class="st">"education"</span>, <span class="at">den.col =</span> <span class="st">"orangered"</span>, <span class="at">nor.col =</span> <span class="st">"deepskyblue2"</span>, <span class="at">col =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-14" class="cell quarto-layout-panel" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="44">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="inference_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<p><code>education</code> 파라미터 추정치 1000개의 분포</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>prestige_boot<span class="sc">$</span>t <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> education)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">4.4</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="inference_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="600"></p>
+</figure>
 </div>
 </div>
 </div>
-<div id="cell-15" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parameters)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(mod_prestige, <span class="at">boot=</span><span class="cn">TRUE</span>, <span class="at">ci_method=</span><span class="st">"bci"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- ```{r}
+hist(prestige_boot, parm = "education", den.col = "orangered", nor.col = "deepskyblue2", col = "white")
+``` -->
+<p><strong>parameters 패키지의 <code>model_parameters()</code> 이용</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parameters)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(mod_prestige, <span class="at">boot=</span><span class="cn">TRUE</span>, <span class="at">ci_method=</span><span class="st">"bci"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter     | Coefficient |            95% CI |      p
 --------------------------------------------------------
-(Intercept)   |      -81.69 | [-106.51, -55.08] | &lt; .001
-education     |        3.25 | [   2.21,   4.43] | &lt; .001
-income [log2] |        7.37 | [   4.87,   9.44] | &lt; .001
-type [prof]   |        6.92 | [   0.19,  12.76] | 0.036 
-type [wc]     |       -1.37 | [  -5.53,   2.91] | 0.462 </code></pre>
+(Intercept)   |      -81.63 | [-106.07, -56.29] | &lt; .001
+education     |        3.25 | [   2.13,   4.37] | &lt; .001
+income [log2] |        7.37 | [   5.00,   9.39] | &lt; .001
+type [prof]   |        6.88 | [   0.91,  12.90] | 0.026 
+type [wc]     |       -1.36 | [  -5.25,   3.10] | 0.518 </code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+</section>
+<section id="mediation-analysis에-적용" class="level2">
+<h2 class="anchored" data-anchor-id="mediation-analysis에-적용">Mediation Analysis에 적용</h2>
+<p><img src="images/mediation_maternal.png" class="img-fluid" width="450"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>maternal <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">"howell/maternal_care.sav"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>maternal <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(maternal)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>maternal <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  FAMID Esteem MatCare Efficacy
+  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+1     1   3.83    2.58      3.7
+2     2   3.5     2.83      3.4
+3     4   4       3.17      3.8
+4     8   4       3.75      3.9
+5     9   4       3.58      3.9</code></pre>
 </div>
-<div class="callout-title-container flex-fill">
-Distribution generator
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+<section id="boot-패키지의-boot-활용" class="level3">
+<h3 class="anchored" data-anchor-id="boot-패키지의-boot-활용">boot 패키지의 <code>boot()</code> 활용</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 함수 정의</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>indirect_effect <span class="ot">&lt;-</span> <span class="cf">function</span>(data, indices) {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  sample <span class="ot">&lt;-</span> data[indices, ]  <span class="co"># 부트스트랩 샘플링</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  model_M <span class="ot">&lt;-</span> <span class="fu">lm</span>(Esteem <span class="sc">~</span> MatCare, <span class="at">data =</span> sample)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  model_Y <span class="ot">&lt;-</span> <span class="fu">lm</span>(Efficacy <span class="sc">~</span> MatCare <span class="sc">+</span> Esteem, <span class="at">data =</span> sample)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (model_M<span class="sc">$</span>coef[<span class="dv">2</span>] <span class="sc">*</span> model_Y<span class="sc">$</span>coef[<span class="dv">3</span>])</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">boot</span>(maternal, indirect_effect, <span class="at">R =</span> <span class="dv">1000</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     R original    bootBias   bootSE  bootMed
+1 1000 0.053093 -0.00084182 0.020735 0.050879</code></pre>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<iframe src="http://www.statdistributions.com/f?p=0.05&amp;df1=2&amp;df2=100" width="900" height="800">
-</iframe>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% 신뢰구간 계산</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boot_results, <span class="at">type =</span> <span class="st">"bca"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+Based on 1000 bootstrap replicates
+
+CALL : 
+boot.ci(boot.out = boot_results, type = "bca")
+
+Intervals : 
+Level       BCa          
+95%   ( 0.0183,  0.1040 )  
+Calculations and Intervals on Original Scale</code></pre>
 </div>
+</div>
+</section>
+<section id="lavaan-패키지의-활용-sem-분석툴" class="level3">
+<h3 class="anchored" data-anchor-id="lavaan-패키지의-활용-sem-분석툴">lavaan 패키지의 활용: SEM 분석툴</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">    # models</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">    Esteem ~ a*MatCare</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">    Efficacy ~ b*Esteem + c*MatCare</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">    # indirect effect (a*b)</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">    indirect := a*b</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">    # total effect</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">    total := c + (a*b)</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="at">model =</span> mod1, <span class="at">data =</span> maternal, <span class="at">se=</span><span class="st">"bootstrap"</span>, <span class="at">bootstrap =</span> <span class="dv">1000</span>) <span class="co"># fit.x = FALSE</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1, <span class="at">ci=</span>T, <span class="at">fit.measures=</span>F) <span class="co"># ci=T(confidence interval), standardize=T, fit.measures=F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>lavaan 0.6.17 ended normally after 1 iteration
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                         5
+
+  Number of observations                            92
+
+Model Test User Model:
+                                                      
+  Test statistic                                 0.000
+  Degrees of freedom                                 0
+
+Parameter Estimates:
+
+  Standard errors                            Bootstrap
+  Number of requested bootstrap draws             1000
+  Number of successful bootstrap draws            1000
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+  Esteem ~                                                              
+    MatCare    (a)    0.364    0.103    3.527    0.000    0.169    0.577
+  Efficacy ~                                                            
+    Esteem     (b)    0.146    0.055    2.672    0.008    0.048    0.259
+    MatCare    (c)    0.057    0.037    1.529    0.126   -0.017    0.128
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+   .Esteem            0.246    0.045    5.463    0.000    0.159    0.336
+   .Efficacy          0.051    0.007    7.180    0.000    0.035    0.063
+
+Defined Parameters:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+    indirect          0.053    0.022    2.442    0.015    0.015    0.099
+    total             0.110    0.034    3.264    0.001    0.047    0.177</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 신뢰구간 계산</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit1, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">"bca.simple"</span>) <span class="co"># bca: bias-corrected and accelerated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       lhs op      rhs    label   est    se     z pvalue ci.lower ci.upper
+1   Esteem  ~  MatCare        a 0.364 0.103 3.527  0.000    0.169    0.578
+2 Efficacy  ~   Esteem        b 0.146 0.055 2.672  0.008    0.042    0.251
+3 Efficacy  ~  MatCare        c 0.057 0.037 1.529  0.126   -0.018    0.127
+4   Esteem ~~   Esteem          0.246 0.045 5.463  0.000    0.170    0.355
+5 Efficacy ~~ Efficacy          0.051 0.007 7.180  0.000    0.039    0.067
+6  MatCare ~~  MatCare          0.361 0.000    NA     NA    0.361    0.361
+7 indirect :=      a*b indirect 0.053 0.022 2.442  0.015    0.017    0.105
+8    total :=  c+(a*b)    total 0.110 0.034 3.264  0.001    0.048    0.182</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">    # direct effect</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">    Efficacy ~ c*MatCare</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="st">    # mediator</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="st">    Esteem ~ a*MatCare</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="st">    Efficacy ~ b*Esteem</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="st">    # indirect effect (a*b)</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="st">    indirect := a*b</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="st">    # total effect</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="st">    total := c + (a*b)</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="at">model =</span> mod2, <span class="at">data =</span> maternal, <span class="at">se=</span><span class="st">"bootstrap"</span>, <span class="at">bootstrap =</span> <span class="dv">1000</span>) <span class="co"># fit.x = FALSE</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2, <span class="at">ci=</span>T, <span class="at">fit.measures=</span>F) <span class="co"># ci=T(confidence interval), standardize=T, fit.measures=F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>lavaan 0.6.17 ended normally after 1 iteration
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                         5
+
+  Number of observations                            92
+
+Model Test User Model:
+                                                      
+  Test statistic                                 0.000
+  Degrees of freedom                                 0
+
+Parameter Estimates:
+
+  Standard errors                            Bootstrap
+  Number of requested bootstrap draws             1000
+  Number of successful bootstrap draws             997
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+  Efficacy ~                                                            
+    MatCare    (c)    0.057    0.037    1.508    0.131   -0.021    0.133
+  Esteem ~                                                              
+    MatCare    (a)    0.364    0.100    3.634    0.000    0.179    0.564
+  Efficacy ~                                                            
+    Esteem     (b)    0.146    0.055    2.659    0.008    0.046    0.259
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+   .Efficacy          0.051    0.007    6.942    0.000    0.035    0.065
+   .Esteem            0.246    0.043    5.795    0.000    0.160    0.330
+
+Defined Parameters:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+    indirect          0.053    0.022    2.397    0.017    0.016    0.103
+    total             0.110    0.035    3.142    0.002    0.045    0.181</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 신뢰구간 계산</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit2, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">"bca.simple"</span>) <span class="co"># bca: bias-corrected and accelerated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       lhs op      rhs    label   est    se     z pvalue ci.lower ci.upper
+1 Efficacy  ~  MatCare        c 0.057 0.037 1.508  0.131   -0.022    0.132
+2   Esteem  ~  MatCare        a 0.364 0.100 3.634  0.000    0.176    0.561
+3 Efficacy  ~   Esteem        b 0.146 0.055 2.659  0.008    0.042    0.254
+4 Efficacy ~~ Efficacy          0.051 0.007 6.942  0.000    0.039    0.070
+5   Esteem ~~   Esteem          0.246 0.043 5.795  0.000    0.179    0.350
+6  MatCare ~~  MatCare          0.361 0.000    NA     NA    0.361    0.361
+7 indirect :=      a*b indirect 0.053 0.022 2.397  0.017    0.018    0.109
+8    total :=  c+(a*b)    total 0.110 0.035 3.142  0.002    0.044    0.181</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="moderated-mediation에-응용" class="level2">
+<h2 class="anchored" data-anchor-id="moderated-mediation에-응용">Moderated Mediation에 응용</h2>
+<p><img src="images/moderated-mediation.png" class="img-fluid" width="500"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>p.&nbsp;424, <em>Introduction to Mediation, Moderation, and Conditional Process Analysis (3e)</em> by Andrew F. Hayes</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hayes2022data/teams/teams.csv"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> teams <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_c =</span> <span class="fu">center</span>(negtone),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">negexp_c =</span> <span class="fu">center</span>(negexp),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_negexp_c =</span> negtone_c<span class="sc">*</span>negexp_c,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st">  # models</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="st">  perform ~ c*dysfunc + b*negtone_c + w1*negexp_c + w2*negtone_negexp_c</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="st">  negtone_c ~ a*dysfunc</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="st">  # conditional effects</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="st">  probe_sd1 := a * (b - w2*0.5437)  # sd = 0.5437</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="st">  probe_m := a * (b + w2*0)</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="st">  probe_sd2 := a * (b + w2*0.5437)</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="st">  # Index of moderated mediation</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="st">  index := a*w2</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(<span class="at">model =</span> model, <span class="at">data =</span> teams, <span class="at">se=</span><span class="st">"bootstrap"</span>)</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit, <span class="at">ci=</span>T, <span class="at">fit.measures=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>lavaan 0.6.17 ended normally after 2 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                         7
+
+  Number of observations                            60
+
+Model Test User Model:
+                                                      
+  Test statistic                                 6.999
+  Degrees of freedom                                 2
+  P-value (Chi-square)                           0.030
+
+Parameter Estimates:
+
+  Standard errors                            Bootstrap
+  Number of requested bootstrap draws             1000
+  Number of successful bootstrap draws            1000
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+  perform ~                                                             
+    dysfunc    (c)    0.366    0.184    1.990    0.047   -0.042    0.661
+    negtone_c  (b)   -0.431    0.129   -3.345    0.001   -0.645   -0.123
+    negexp_c  (w1)   -0.044    0.105   -0.416    0.678   -0.270    0.163
+    ngtn_ngx_ (w2)   -0.517    0.243   -2.130    0.033   -1.075   -0.123
+  negtone_c ~                                                           
+    dysfunc    (a)    0.620    0.227    2.729    0.006    0.211    1.102
+
+Variances:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+   .perform           0.185    0.033    5.616    0.000    0.110    0.244
+   .negtone_c         0.219    0.051    4.263    0.000    0.122    0.321
+
+Defined Parameters:
+                   Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
+    probe_sd1        -0.093    0.153   -0.609    0.543   -0.371    0.289
+    probe_m          -0.267    0.118   -2.262    0.024   -0.522   -0.061
+    probe_sd2        -0.442    0.164   -2.695    0.007   -0.761   -0.142
+    index            -0.320    0.194   -1.648    0.099   -0.820   -0.049</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 신뢰구간 계산</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">"bca.simple"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                lhs op              rhs     label    est    se      z pvalue
+1           perform  ~          dysfunc         c  0.366 0.184  1.990  0.047
+2           perform  ~        negtone_c         b -0.431 0.129 -3.345  0.001
+3           perform  ~         negexp_c        w1 -0.044 0.105 -0.416  0.678
+4           perform  ~ negtone_negexp_c        w2 -0.517 0.243 -2.130  0.033
+5         negtone_c  ~          dysfunc         a  0.620 0.227  2.729  0.006
+6           perform ~~          perform            0.185 0.033  5.616  0.000
+7         negtone_c ~~        negtone_c            0.219 0.051  4.263  0.000
+8           dysfunc ~~          dysfunc            0.136 0.000     NA     NA
+9           dysfunc ~~         negexp_c           -0.001 0.000     NA     NA
+10          dysfunc ~~ negtone_negexp_c           -0.003 0.000     NA     NA
+11         negexp_c ~~         negexp_c            0.291 0.000     NA     NA
+12         negexp_c ~~ negtone_negexp_c            0.046 0.000     NA     NA
+13 negtone_negexp_c ~~ negtone_negexp_c            0.072 0.000     NA     NA
+14        probe_sd1 :=  a*(b-w2*0.5437) probe_sd1 -0.093 0.153 -0.609  0.543
+15          probe_m :=       a*(b+w2*0)   probe_m -0.267 0.118 -2.262  0.024
+16        probe_sd2 :=  a*(b+w2*0.5437) probe_sd2 -0.442 0.164 -2.695  0.007
+17            index :=             a*w2     index -0.320 0.194 -1.648  0.099
+   ci.lower ci.upper
+1    -0.002    0.707
+2    -0.653   -0.160
+3    -0.252    0.180
+4    -1.087   -0.132
+5     0.208    1.093
+6     0.136    0.279
+7     0.141    0.355
+8     0.136    0.136
+9    -0.001   -0.001
+10   -0.003   -0.003
+11    0.291    0.291
+12    0.046    0.046
+13    0.072    0.072
+14   -0.415    0.209
+15   -0.566   -0.088
+16   -0.775   -0.145
+17   -0.880   -0.067</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

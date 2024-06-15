@@ -73,7 +73,7 @@ website:
             text: Interactions
           - href: contents/diagnostics.qmd
             text: Diagnostics
-          - href: contents/inference.ipynb
+          - href: contents/inference.qmd
             text: Inference
           # - href: contents/repeated.ipynb
           #- href: contents/report.qmd
