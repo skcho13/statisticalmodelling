@@ -1,0 +1,169 @@
+---
+title: Case Study 3
+subtitle: 'Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken'
+date: last-modified
+author: Sungkyun Cho
+execute:
+  warning: false
+  freeze: auto
+format: 
+   html:
+    df-print: tibble
+   # monofont: 'FiraCode-Regular'
+---
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(car)
+library(jtools)
+library(psych)
+library(broom)
+
+library(ggthemr)
+ggthemr("light") #, layout = "minimal")
+theme_set(theme_get())
+theme_update(panel.background = element_rect(fill = "white"))
+```
+
+## National Education Longitudinal Study of 1988 (NELS:88)
+Source: p.69 in Multiple Regression and Beyond (3e) by Timothy Z. Keith
+
+![](images/nels_path1.png){width=550}
+
+### *연구주제: 학생들의 과제는 성적에 영향을 주는가? 준다면 그 영향력의 크기는 어떠한가?*
+
+데이터 [NELS88 sample.csv](https://www.dropbox.com/s/x232sv7w4zhrikp/nels88_sample.csv?dl=1)
+
+`grades`: 10학년의 성적 평균 in English, Math, Science, Social Studies.  
+`pared`: 부모의 교육 수준 (높은 쪽)  
+`hw_in`, `hw_out`: 10학년 때 학생들이 보고한 숙제하는데 보낸 주당 평균 시간 (in school or out of school)
+
+![](images/nels_table.png){width=500}
+```{r}
+#| echo: true
+nels <- read_csv("data/nels88_sample_4_11.csv")
+nels <- nels |> 
+    select(grades = ffugrad, pared = bypared, hw_in = f1s36a1, hw_out = f1s36a2, prev = bytests)
+nels
+
+# summarize data
+summary(nels)
+
+# count values
+nels |> count(pared)
+nels |> count(hw_out)
+```
+### **변수들 간의 관계 탐색**
+```{r}
+#| layout: "[50, 40, 10]"
+lowerCor(nels)
+
+library(corrgram)
+nels |> 
+  corrgram(upper.panel = panel.cor, lower.panel = panel.pie)
+```
+::: {.callout-note collapse="true"}
+#### code for ggpairs
+```{r}
+#| echo: true
+trendlines <- function(data, mapping, ...){
+    ggplot(data = data, mapping = mapping) + 
+        geom_point(alpha = .2) + 
+        geom_smooth(method = loess, se = FALSE, color = "orange", ...) +
+        geom_smooth(method = lm, se = FALSE, color = "deepskyblue", ...)
+}
+
+ggpairs2 <- function(data, ...) {
+    GGally::ggpairs(data, lower = list(continuous = trendlines))
+}
+```
+:::
+
+```{r}
+#| echo: true
+ggpairs2(nels)
+```
+### **세 개의 독립변수로 예측**
+#### *B1. 인과모형 A: 부분 회귀 계수들*
+
+::: {layout-ncol=2} 
+![](images/nels_path2-1.png){width=350}
+
+![](images/nels_path3-1.png){width=460}
+:::
+
+```{r}
+mod1 <- lm(grades ~ pared + hw_in + hw_out, data = nels)
+summary(mod1)
+```
+
+```{r}
+mod2 <- lm(hw_out ~ pared, data = nels)
+summary(mod2)
+```
+#### *D: 표준화 계수 및 부분 상관 계수*
+```{r}
+# beta: standardized coefficients
+lm.beta::lm.beta(mod1) |> print()
+```
+```{r}
+summ(mod1, part.corr=TRUE, model.info=FALSE, model.fit=FALSE)
+```
+
+#### *E: 간접효과의 크기와 검증*
+
+![](images/nels_mediate.png){width=450}
+```{r}
+summary(mediate(grades ~ pared + (hw_out), data = nels))
+```
+
+### **변수의 추가: 4개의 독립변수로 예측**
+#### *B2. 인과모형 B: 부분 회귀 계수들*
+
+![](images/nels_path4.png){width=450}
+
+```{r}
+mod3 <- lm(grades ~ pared + hw_out, data = nels)
+mod4 <- lm(grades ~ pared + hw_out + prev, data = nels)
+```
+
+#### *F: 모형의 비교*
+```{r}
+export_summs(mod3, mod4, error_format = "({p.value})") |> print()
+```
+
+#### *G: 표준화 계수 및 부분 상관 계수*
+```{r}
+# beta: standardized coefficients
+lm.beta::lm.beta(mod4) |> print()
+```
+```{r}
+summ(mod4, part.corr=TRUE, model.info=FALSE, model.fit=FALSE) |> print()
+```
+
+### **추가 분석**
+#### *H: Howework에 영향을 주는 요소들 분석*
+
+![](images/nels_path5.png){width=450}
+```{r}
+mod5 <- lm(hw_out ~ scale(pared), data = nels)
+mod6 <- lm(hw_out ~ scale(pared) + scale(prev), data = nels)
+
+export_summs(mod5, mod6, error_format = "({p.value})") |> print()
+```
+
+```{r}
+mod5 <- lm(hw_out ~ pared, data = nels)
+mod6 <- lm(hw_out ~ pared + scale(prev), data = nels)
+
+export_summs(mod5, mod6, error_format = "({p.value})") |> print()
+```
+
+### SEM (Structural Equation Modeling)의 예시
+
+Source: *p. 339, p. 421 in Multiple Regression and Beyond (3e) by Timothy Z. Keith*
+
+![](images/SEM-NELS-1.png){width=700}
+
+![](images/SEM-NELS-2.png){width=700}

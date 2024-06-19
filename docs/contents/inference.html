@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-16">
+<meta name="dcterms.date" content="2024-06-17">
 
 <title> CHA Statistics in R - Statistical Inference</title>
 <style>
@@ -291,6 +291,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../contents/case3_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Case Study 3 Sol</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../contents/case4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Case Study 4</span></a>
   </div>
@@ -398,7 +404,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 16, 2024</p>
+      <p class="date">June 17, 2024</p>
     </div>
   </div>
   
@@ -529,6 +535,15 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <li>확신이 커지는 대신 범위가 넓어지므로 모집단의 예측에 대한 유용성이 떨어짐.</li>
 </ul></li>
 </ul></li>
+</ul>
+<p><strong>가설 검정(hypothesis testing)</strong><br>
+회귀분석 결과표의 p-values들은 영가설(null hypothesis)을 테스트하는 것이며, 위에서 평균이 0이라고 가정하는 경우에 해당</p>
+<ul>
+<li>가설/가정: “모집단의 평균 키가 0cm이라면”, 표본에서 관찰된 175cm는 충분히 나올 수 있는 값인가?
+<ul>
+<li>절편(intercept)만 있는 null 모형(<span class="math inline">\(\hat y = b_0\)</span>)에 대한 절편에 대한 가설 검증.</li>
+</ul></li>
+<li>회귀계수 b에 대한 테스트도 마찬가지로, 표본분포가 근사적으로 정규분포를 따르므로, 적절한 표준편차를 얻어 위와 같은 방식으로 테스트를 할 수 있음.</li>
 </ul>
 </section>
 <section id="regression-model-coefficients" class="level2">
@@ -841,12 +856,12 @@ Defined Parameters:
 <span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="st">    b_mean := b1 + b3*0</span></span>
 <span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="st">    b_high := b1 + b3*0.5437</span></span>
 <span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="st">  # conditional effects</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="st">  # conditional indirect effects</span></span>
 <span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_low := a * b_low</span></span>
 <span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_mean := a * b_mean</span></span>
 <span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_high := a * b_high</span></span>
 <span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="st">  # Index of moderated mediation</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="st">  # index of moderated mediation</span></span>
 <span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="st">    index_Mod_Med := a*b3</span></span>
 <span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
 <span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>

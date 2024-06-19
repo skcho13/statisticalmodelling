@@ -7,7 +7,7 @@ project:
     - "*.ipynb"
     - "!contents/ignore/"
     #- "!exercise*.ipynb"
-    - "!contents/case3_sol.qmd"
+    # - "!contents/case3_sol.qmd"
     - "!contents/repeated.ipynb"
     - "!contents/report.qmd"
     - "!contents/reports.qmd"
@@ -63,8 +63,8 @@ website:
               - href: contents/case1.qmd
               - href: contents/case2.qmd
               - href: contents/case3.qmd
-              # - href: contents/case3_sol.qmd
-                # text: Case Study 3 Sol
+              - href: contents/case3_sol.qmd
+                text: Case Study 3 Sol
               - href: contents/case4.qmd
               - href: contents/case5.qmd
           - href: contents/categorical.qmd
