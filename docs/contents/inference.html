@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-17">
+<meta name="dcterms.date" content="2024-06-20">
 
 <title> CHA Statistics in R - Statistical Inference</title>
 <style>
@@ -404,7 +404,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 17, 2024</p>
+      <p class="date">June 20, 2024</p>
     </div>
   </div>
   
@@ -421,7 +421,7 @@ window.Quarto = {
 <p>평균이 <span class="math inline">\(\mu\)</span> 이고 분산이 <span class="math inline">\(\sigma^2\)</span> 인 모집단으로부터 추출된 표본 사이즈가 <span class="math inline">\(n\)</span> (size=<span class="math inline">\(n\)</span>)인 표본들에 대해서<br>
 <img src="images/sampling2.png" class="img-fluid" width="400"><br>
 Source: <em>The Truthful Art</em> by Albert Cairo.</p>
-<p>표본 <strong>평균</strong>들 <span class="math inline">\(\bar{X}\)</span> 의 분포를 <strong>평균의 표본 분포, the sampling distribution of the mean </strong>이라고 하고, 이 분포는 the central limit theorem에 의해</p>
+<p>각 표본의 <strong>평균</strong> <span class="math inline">\(\bar{X}\)</span> 들의 분포를 <strong>평균의 표본 분포, the sampling distribution of the mean </strong>이라고 하고, 이 분포는 the central limit theorem에 의해</p>
 <ul>
 <li><p>평균:&nbsp; <span class="math inline">\(\displaystyle E(\bar{X})=\frac{m_1+m_2+m_3+\cdots+m_w}{w}\Bigg|_{w\rightarrow\infty}\rightarrow ~~~\mu\)</span> ; unbiased estimator (mean or regression coefficient vs.&nbsp;R)</p></li>
 <li><p>분산:&nbsp; <span class="math inline">\(\displaystyle V(\bar{X})\Bigg|_{w\rightarrow\infty}\rightarrow ~~~\frac{\sigma^2}{n},\)</span>   표준 편차 <span class="math inline">\(\displaystyle\frac{\sigma}{\sqrt{n}}\)</span> 를 <strong>standard error of estimate</strong> (SE)라고 함.</p>
@@ -461,7 +461,15 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+</div>
+</div>
+<p>표본 사이즈 <em>n=25, 100, 400</em> 비교</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1, 1, 1]">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -470,9 +478,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -481,7 +487,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -492,8 +498,13 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 </div>
 </div>
 </div>
-<p>(b)의 경우 즉, 표본 사이즈가 n = 100인 경우처럼 평균의 표본 분포는 빠르게 <strong>정규 분포</strong>에 다가가므로 근사적으로 정규 분포의 값을 이용해 그 확률 값을 쉽게 구할 수 있음.<br>
-특히, 값들을 정규화하여 표준정규분포 (평균 0, 표준편차 1)의 값을 이용함.</p>
+<ul>
+<li>표본 사이즈가 커짐에 따라 평균들의 분포의 표준편차가 줄어들며,</li>
+<li>평균들의 표본 분포는 빠르게 <strong>정규 분포</strong>에 다가가므로,</li>
+<li>근사적으로 정규 분포의 값을 이용해 그 확률 값을 쉽게 구할 수 있음.</li>
+</ul>
+<p>특히, 값들을 정규화하여 표준정규분포 (평균 0, 표준편차 1)의 값을 이용함.<br>
+예를 들어, 표본 사이즈가 100인 (b)의 경우, 평균 키 174cm는 표준화 값으로 2:</p>
 <p><span class="math inline">\(\displaystyle \frac{174 - 173}{0.5} = 2, ~~ \bar{Z}=\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}\)</span></p>
 <p>음영된 부분은 대략 2.3%이고, 따라서 100명을 관찰한 표본의 평균 키가 174cm이상이 될 가능성은 2.3%에 밖에 되지 않음. 예를 들어, 1000번 같은 연구를 반복하면 23번 정도는 174cm 이상의 평균 키를 관찰할 수 있을 것임.</p>
 <div class="cell">
@@ -505,7 +516,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 </div>
 </div>
 </div>
-<p>실제 성취하고자 하는 유용한 분석은 위 과정의 반대인, 관찰한 특정 표본으로부터 모집단에 대해 추론하는 것임.<br>
+<p>실제 성취하고자 하는 것은 위 과정의 반대인 관찰한 특정 표본으로부터 모집단에 대해 추론하는 것임.<br>
 이를 <strong>통계적 추론, statistical inference</strong>라고 함.</p>
 <p>가령, 어느 섬에 사는 민족으로부터 관찰된 100명의 키의 평균이 175cm이고 표준편차가 10cm인 경우, 이 민족의 키의 평균은 얼마 정도라고 파악할 수 있는가?</p>
 <ul>
@@ -513,7 +524,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <ul>
 <li><span class="math inline">\(\displaystyle \frac{175 - 173}{\frac{\sigma}{10}} = ~?, ~~ \bar{Z}=\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}\)</span></li>
 <li>만약, 모집단의 표준편차 <span class="math inline">\(\sigma\)</span> 가 예전처럼 5라면, <span class="math inline">\(\bar{Z} = 4\)</span> 가 되어 매우 희박한 경우가 될 것임. (실제로 0.0032%)</li>
-<li>모집단의 표준편차를 알 수 없기 때문에 차선책으로, 관찰한 <strong>표본의 표준편차</strong>를 대체해서 전개함</li>
+<li>모집단의 표준편차를 알 수 없기 때문에 차선책으로, 관찰한 <strong>표본의 표준편차</strong>로 대체해서 전개함</li>
 <li>이 경우, 표본의 표준편차가 10이기 때문에, <span class="math inline">\(\bar{Z} = 2\)</span> 가 되어 2.3% 정도의 가능성이 있다고 볼 수 있으나,</li>
 <li>표준편차의 대체로 인해 생기는 문제를 보완할 수 있는데, 사실 표본분포가 정규분포가 아닌 Student’s t-분포를 따르고, 이를 이용해서 확률값을 구함.</li>
 <li>이 경우는 <span class="math inline">\(\displaystyle t = \frac{\bar{X}-\mu}{\frac{s}{\sqrt{n}}} = 2, ~ (s: the ~sample ~sd)\)</span> 로 t-분포에 의하면 2.4% 정도의 가능성이 있다고 봄
@@ -549,12 +560,13 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <section id="regression-model-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="regression-model-coefficients">Regression Model Coefficients</h2>
 <p>위의 논리와 비슷하게 회귀 계수가 표본 마다 얼마나 변하는 지를 구할 수 있고,<br>
-회귀 계수에 대한 confidence interval을 구할 수 있음.<br>
-변수가 한 개인 경우:<br>
+회귀 계수에 대한 confidence interval을 구할 수 있음.</p>
+<p><em>변수가 한 개인 경우:</em><br>
 회귀계수 <span class="math inline">\(b\)</span> 에 대한 표본 분포는 평균이 <span class="math inline">\(b\)</span> 인 정규분포를 따르고, 표준편차 즉, standard error of estimate는 근사적으로 다음과 같음</p>
 <p><span class="math inline">\(\displaystyle SE^2(b) = \frac{{MS}_{residual}}{N \cdot Var(X)}\)</span></p>
 <p>Confidence interval: <span class="math inline">\(b\pm t_{\alpha/2}SE, ~(df = N-2)\)</span></p>
-<p>다중 회귀 모형의 경우:<br>
+<p><img src="images/se.png" class="img-fluid" width="600"></p>
+<p><em>다중 회귀 모형의 경우:</em><br>
 예측변수 <span class="math inline">\(X_j\)</span> 에 대해서 모집단의 회귀계수 <span class="math inline">\(b_j\)</span> 에 대한 표본 분포는 평균이 <span class="math inline">\(b_j\)</span> 인 정규분포를 따르고, 표준편차, 즉 standard error는 근사적으로 다음과 같음.</p>
 <p><span class="math inline">\(\displaystyle SE^2(b_j) = \frac{{MS}_{residual}}{N \cdot Var(X_j) \cdot (1 - R^2_j)} = \frac{{MS}_{residual}}{N \cdot Var(X_j)}\cdot VIF, ~(df = N-k-1)\)</span></p>
 <ul>
@@ -575,7 +587,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <section id="resampling-methods-bootstrap" class="level1">
 <h1>Resampling Methods: Bootstrap</h1>
 <ul>
-<li>모집단에 대한 추론을 하는데 “특정 분포”로부터 표본들이 생성된 것이라고 가정하고 이론에 기반한 추론 하는 방식과 달리</li>
+<li>모집단에 대한 추론을 하는데 “특정 분포”로부터 표본들이 생성된 것이라고 가정하고 이론에 기반해 추론하는 방식과 달리</li>
 <li>관찰된 표본이 모집단의 특성을 잘 반영하고 있다는 전제하에</li>
 <li>이 표본을 모집단인듯이 취급하여 이 표본으로부터 표본을 (복원) 추출하여 많은 표본들을 얻은 후 (<strong>resampling</strong>)</li>
 <li>각 표본들로부터 통계치를 계산하여 “표본 분포”을 얻는 방식 (sampling distribution)</li>
@@ -670,44 +682,29 @@ type [wc]     |       -1.36 | [  -5.25,   3.10] | 0.518 </code></pre>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">boot</span>(maternal, indirect_effect, <span class="at">R =</span> <span class="dv">1000</span>)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     R original    bootBias   bootSE  bootMed
-1 1000 0.053093 -0.00084182 0.020735 0.050879</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% 신뢰구간 계산</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boot_results, <span class="at">type =</span> <span class="st">"bca"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
-Based on 1000 bootstrap replicates
-
-CALL : 
-boot.ci(boot.out = boot_results, type = "bca")
-
-Intervals : 
-Level       BCa          
-95%   ( 0.0183,  0.1040 )  
-Calculations and Intervals on Original Scale</code></pre>
-</div>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(boot_results)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% 신뢰구간 계산</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boot_results, <span class="at">type =</span> <span class="st">"bca"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lavaan-패키지의-활용-sem-분석툴" class="level3">
 <h3 class="anchored" data-anchor-id="lavaan-패키지의-활용-sem-분석툴">lavaan 패키지의 활용: SEM 분석툴</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="st">" </span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">    # models</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">      Esteem ~ a*MatCare</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">      Efficacy ~ b*Esteem + c*MatCare</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">    # indirect, total effect</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">      indirect := a*b</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">      total := c + a*b</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="at">model =</span> mod1, <span class="at">data =</span> maternal, <span class="at">se=</span><span class="st">"bootstrap"</span>, <span class="at">bootstrap =</span> <span class="dv">1000</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1, <span class="at">ci=</span>T, <span class="at">fit.measures=</span>F) <span class="co"># ci:confidence interval, fit.measures: fit indices, standardized = F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">    # models</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">      Esteem ~ a*MatCare</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="st">      Efficacy ~ b*Esteem + c*MatCare</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">    # indirect, total effect</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="st">      indirect := a*b</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">      total := c + a*b</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="at">model =</span> mod1, <span class="at">data =</span> maternal, <span class="at">se=</span><span class="st">"bootstrap"</span>, <span class="at">bootstrap =</span> <span class="dv">1000</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1, <span class="at">ci=</span>T, <span class="at">fit.measures=</span>F) <span class="co"># ci:confidence interval, fit.measures: fit indices, standardized = F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6.17 ended normally after 1 iteration
 
@@ -731,51 +728,51 @@ Parameter Estimates:
 Regressions:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
   Esteem ~                                                              
-    MatCare    (a)    0.364    0.103    3.527    0.000    0.169    0.577
+    MatCare    (a)    0.364    0.106    3.430    0.001    0.163    0.580
   Efficacy ~                                                            
-    Esteem     (b)    0.146    0.055    2.672    0.008    0.048    0.259
-    MatCare    (c)    0.057    0.037    1.529    0.126   -0.017    0.128
+    Esteem     (b)    0.146    0.054    2.717    0.007    0.049    0.261
+    MatCare    (c)    0.057    0.037    1.525    0.127   -0.023    0.129
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
-   .Esteem            0.246    0.045    5.463    0.000    0.159    0.336
-   .Efficacy          0.051    0.007    7.180    0.000    0.035    0.063
+   .Esteem            0.246    0.044    5.571    0.000    0.162    0.339
+   .Efficacy          0.051    0.007    6.889    0.000    0.036    0.065
 
 Defined Parameters:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
-    indirect          0.053    0.022    2.442    0.015    0.015    0.099
-    total             0.110    0.034    3.264    0.001    0.047    0.177</code></pre>
+    indirect          0.053    0.021    2.470    0.014    0.017    0.107
+    total             0.110    0.034    3.228    0.001    0.046    0.176</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 결과</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit1, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">"bca.simple"</span>) <span class="co"># bca.simple: bias-corrected, standardized = F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 결과</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit1, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">"bca.simple"</span>) <span class="co"># bca.simple: bias-corrected, standardized = F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       lhs op      rhs    label   est    se     z pvalue ci.lower ci.upper
-1   Esteem  ~  MatCare        a 0.364 0.103 3.527  0.000    0.169    0.578
-2 Efficacy  ~   Esteem        b 0.146 0.055 2.672  0.008    0.042    0.251
-3 Efficacy  ~  MatCare        c 0.057 0.037 1.529  0.126   -0.018    0.127
-4   Esteem ~~   Esteem          0.246 0.045 5.463  0.000    0.170    0.355
-5 Efficacy ~~ Efficacy          0.051 0.007 7.180  0.000    0.039    0.067
+1   Esteem  ~  MatCare        a 0.364 0.106 3.430  0.001    0.177    0.585
+2 Efficacy  ~   Esteem        b 0.146 0.054 2.717  0.007    0.034    0.251
+3 Efficacy  ~  MatCare        c 0.057 0.037 1.525  0.127   -0.028    0.123
+4   Esteem ~~   Esteem          0.246 0.044 5.571  0.000    0.169    0.352
+5 Efficacy ~~ Efficacy          0.051 0.007 6.889  0.000    0.039    0.072
 6  MatCare ~~  MatCare          0.361 0.000    NA     NA    0.361    0.361
-7 indirect :=      a*b indirect 0.053 0.022 2.442  0.015    0.017    0.105
-8    total :=    c+a*b    total 0.110 0.034 3.264  0.001    0.048    0.182</code></pre>
+7 indirect :=      a*b indirect 0.053 0.021 2.470  0.014    0.018    0.109
+8    total :=    c+a*b    total 0.110 0.034 3.228  0.001    0.038    0.172</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">    # direct effect</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">      Efficacy ~ c*MatCare</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="st">    # mediator</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="st">      Esteem ~ a*MatCare</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="st">      Efficacy ~ b*Esteem</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="st">    # indirect, total effect</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="st">      indirect := a*b</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="st">      total := c + a*b</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="at">model =</span> mod2, <span class="at">data =</span> maternal, <span class="at">se=</span><span class="st">"bootstrap"</span>, <span class="at">bootstrap =</span> <span class="dv">1000</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2, <span class="at">ci =</span> T, <span class="at">fit.measures =</span> F) <span class="co"># ci:confidence interval, fit.measures: fit indices, standardized = F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">    # direct effect</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="st">      Efficacy ~ c*MatCare</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="st">    # mediator</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="st">      Esteem ~ a*MatCare</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="st">      Efficacy ~ b*Esteem</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="st">    # indirect, total effect</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="st">      indirect := a*b</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="st">      total := c + a*b</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="at">model =</span> mod2, <span class="at">data =</span> maternal, <span class="at">se=</span><span class="st">"bootstrap"</span>, <span class="at">bootstrap =</span> <span class="dv">1000</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2, <span class="at">ci =</span> T, <span class="at">fit.measures =</span> F) <span class="co"># ci:confidence interval, fit.measures: fit indices, standardized = F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6.17 ended normally after 1 iteration
 
@@ -794,39 +791,39 @@ Parameter Estimates:
 
   Standard errors                            Bootstrap
   Number of requested bootstrap draws             1000
-  Number of successful bootstrap draws             997
+  Number of successful bootstrap draws             999
 
 Regressions:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
   Efficacy ~                                                            
-    MatCare    (c)    0.057    0.037    1.508    0.131   -0.021    0.133
+    MatCare    (c)    0.057    0.036    1.558    0.119   -0.015    0.128
   Esteem ~                                                              
-    MatCare    (a)    0.364    0.100    3.634    0.000    0.179    0.564
+    MatCare    (a)    0.364    0.097    3.748    0.000    0.161    0.550
   Efficacy ~                                                            
-    Esteem     (b)    0.146    0.055    2.659    0.008    0.046    0.259
+    Esteem     (b)    0.146    0.056    2.613    0.009    0.043    0.259
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
-   .Efficacy          0.051    0.007    6.942    0.000    0.035    0.065
-   .Esteem            0.246    0.043    5.795    0.000    0.160    0.330
+   .Efficacy          0.051    0.008    6.742    0.000    0.035    0.064
+   .Esteem            0.246    0.043    5.733    0.000    0.161    0.333
 
 Defined Parameters:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
-    indirect          0.053    0.022    2.397    0.017    0.016    0.103
-    total             0.110    0.035    3.142    0.002    0.045    0.181</code></pre>
+    indirect          0.053    0.021    2.507    0.012    0.016    0.098
+    total             0.110    0.034    3.266    0.001    0.045    0.180</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 결과</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit2, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type =</span> <span class="st">"bca.simple"</span>) <span class="co"># bca.simple: bias-corrected, standardized = F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 결과</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit2, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type =</span> <span class="st">"bca.simple"</span>) <span class="co"># bca.simple: bias-corrected, standardized = F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       lhs op      rhs    label   est    se     z pvalue ci.lower ci.upper
-1 Efficacy  ~  MatCare        c 0.057 0.037 1.508  0.131   -0.022    0.132
-2   Esteem  ~  MatCare        a 0.364 0.100 3.634  0.000    0.176    0.561
-3 Efficacy  ~   Esteem        b 0.146 0.055 2.659  0.008    0.042    0.254
-4 Efficacy ~~ Efficacy          0.051 0.007 6.942  0.000    0.039    0.070
-5   Esteem ~~   Esteem          0.246 0.043 5.795  0.000    0.179    0.350
+1 Efficacy  ~  MatCare        c 0.057 0.036 1.558  0.119   -0.021    0.121
+2   Esteem  ~  MatCare        a 0.364 0.097 3.748  0.000    0.165    0.551
+3 Efficacy  ~   Esteem        b 0.146 0.056 2.613  0.009    0.042    0.258
+4 Efficacy ~~ Efficacy          0.051 0.008 6.742  0.000    0.039    0.069
+5   Esteem ~~   Esteem          0.246 0.043 5.733  0.000    0.174    0.341
 6  MatCare ~~  MatCare          0.361 0.000    NA     NA    0.361    0.361
-7 indirect :=      a*b indirect 0.053 0.022 2.397  0.017    0.018    0.109
-8    total :=    c+a*b    total 0.110 0.035 3.142  0.002    0.044    0.181</code></pre>
+7 indirect :=      a*b indirect 0.053 0.021 2.507  0.012    0.019    0.108
+8    total :=    c+a*b    total 0.110 0.034 3.266  0.001    0.042    0.174</code></pre>
 </div>
 </div>
 </section>
@@ -838,35 +835,35 @@ Defined Parameters:
 <p>p.&nbsp;424, <em>Introduction to Mediation, Moderation, and Conditional Process Analysis (3e)</em> by Andrew F. Hayes</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hayes2022data/teams/teams.csv"</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> teams <span class="sc">|&gt;</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_c =</span> <span class="fu">center</span>(negtone),</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">negexp_c =</span> <span class="fu">center</span>(negexp),</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_negexp_c =</span> negtone_c<span class="sc">*</span>negexp_c,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st">  # models</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="st">    perform ~ c*dysfunc + b1*negtone_c + b2*negexp_c + b3*negtone_negexp_c</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="st">    negtone_c ~ a*dysfunc</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="st">  # conditional effects</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="st">    b_low := b1 + b3*(-0.5437)  # sd = 0.5437</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="st">    b_mean := b1 + b3*0</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="st">    b_high := b1 + b3*0.5437</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="st">  # conditional indirect effects</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_low := a * b_low</span></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_mean := a * b_mean</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_high := a * b_high</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="st">  # index of moderated mediation</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="st">    index_Mod_Med := a*b3</span></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(<span class="at">model =</span> mod, <span class="at">data =</span> teams, <span class="at">se=</span><span class="st">"bootstrap"</span>)</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit, <span class="at">ci =</span> T, <span class="at">fit.measures =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hayes2022data/teams/teams.csv"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> teams <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_c =</span> <span class="fu">center</span>(negtone),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">negexp_c =</span> <span class="fu">center</span>(negexp),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_negexp_c =</span> negtone_c<span class="sc">*</span>negexp_c,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="st">  # models</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="st">    perform ~ c*dysfunc + b1*negtone_c + b2*negexp_c + b3*negtone_negexp_c</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="st">    negtone_c ~ a*dysfunc</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="st">  # conditional effects: m-sd, m, m+sd</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="st">    b_low := b1 + b3*(-0.5437)  # mean - sd; sd = 0.5437</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="st">    b_mean := b1 + b3*0  # mean</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="st">    b_high := b1 + b3*0.5437  # mean + sd</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="st">  # conditional indirect effects</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_low := a * b_low</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_mean := a * b_mean</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="st">    ab_high := a * b_high</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="st">  # index of moderated mediation</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="st">    index_Mod_Med := a*b3</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> lavaan<span class="sc">::</span><span class="fu">sem</span>(<span class="at">model =</span> mod, <span class="at">data =</span> teams, <span class="at">se=</span><span class="st">"bootstrap"</span>)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit, <span class="at">ci =</span> T, <span class="at">fit.measures =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>lavaan 0.6.17 ended normally after 2 iterations
 
@@ -891,73 +888,73 @@ Parameter Estimates:
 Regressions:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
   perform ~                                                             
-    dysfunc    (c)    0.366    0.184    1.990    0.047   -0.042    0.661
-    negtone_c (b1)   -0.431    0.129   -3.345    0.001   -0.645   -0.123
-    negexp_c  (b2)   -0.044    0.105   -0.416    0.678   -0.270    0.163
-    ngtn_ngx_ (b3)   -0.517    0.243   -2.130    0.033   -1.075   -0.123
+    dysfunc    (c)    0.366    0.200    1.830    0.067   -0.116    0.672
+    negtone_c (b1)   -0.431    0.135   -3.207    0.001   -0.658   -0.130
+    negexp_c  (b2)   -0.044    0.102   -0.429    0.668   -0.249    0.145
+    ngtn_ngx_ (b3)   -0.517    0.255   -2.028    0.043   -1.123   -0.113
   negtone_c ~                                                           
-    dysfunc    (a)    0.620    0.227    2.729    0.006    0.211    1.102
+    dysfunc    (a)    0.620    0.228    2.717    0.007    0.196    1.096
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
-   .perform           0.185    0.033    5.616    0.000    0.110    0.244
-   .negtone_c         0.219    0.051    4.263    0.000    0.122    0.321
+   .perform           0.185    0.032    5.758    0.000    0.107    0.237
+   .negtone_c         0.219    0.050    4.396    0.000    0.117    0.310
 
 Defined Parameters:
                    Estimate  Std.Err  z-value  P(&gt;|z|) ci.lower ci.upper
-    b_low            -0.150    0.221   -0.681    0.496   -0.478    0.412
-    b_mean           -0.431    0.129   -3.343    0.001   -0.645   -0.123
-    b_high           -0.713    0.140   -5.107    0.000   -1.014   -0.452
-    ab_low           -0.093    0.153   -0.609    0.543   -0.371    0.289
-    ab_mean          -0.267    0.118   -2.262    0.024   -0.522   -0.061
-    ab_high          -0.442    0.164   -2.695    0.007   -0.761   -0.142
-    index_Mod_Med    -0.320    0.194   -1.648    0.099   -0.820   -0.049</code></pre>
+    b_low            -0.150    0.235   -0.640    0.522   -0.494    0.410
+    b_mean           -0.431    0.135   -3.206    0.001   -0.658   -0.130
+    b_high           -0.713    0.140   -5.101    0.000   -1.018   -0.466
+    ab_low           -0.093    0.163   -0.573    0.567   -0.364    0.299
+    ab_mean          -0.267    0.119   -2.239    0.025   -0.514   -0.049
+    ab_high          -0.442    0.162   -2.723    0.006   -0.760   -0.126
+    index_Mod_Med    -0.320    0.202   -1.583    0.113   -0.823   -0.041</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 결과</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type =</span> <span class="st">"bca.simple"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 결과</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type =</span> <span class="st">"bca.simple"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                lhs op              rhs         label    est    se      z
-1           perform  ~          dysfunc             c  0.366 0.184  1.990
-2           perform  ~        negtone_c            b1 -0.431 0.129 -3.345
-3           perform  ~         negexp_c            b2 -0.044 0.105 -0.416
-4           perform  ~ negtone_negexp_c            b3 -0.517 0.243 -2.130
-5         negtone_c  ~          dysfunc             a  0.620 0.227  2.729
-6           perform ~~          perform                0.185 0.033  5.616
-7         negtone_c ~~        negtone_c                0.219 0.051  4.263
+1           perform  ~          dysfunc             c  0.366 0.200  1.830
+2           perform  ~        negtone_c            b1 -0.431 0.135 -3.207
+3           perform  ~         negexp_c            b2 -0.044 0.102 -0.429
+4           perform  ~ negtone_negexp_c            b3 -0.517 0.255 -2.028
+5         negtone_c  ~          dysfunc             a  0.620 0.228  2.717
+6           perform ~~          perform                0.185 0.032  5.758
+7         negtone_c ~~        negtone_c                0.219 0.050  4.396
 8           dysfunc ~~          dysfunc                0.136 0.000     NA
 9           dysfunc ~~         negexp_c               -0.001 0.000     NA
 10          dysfunc ~~ negtone_negexp_c               -0.003 0.000     NA
 11         negexp_c ~~         negexp_c                0.291 0.000     NA
 12         negexp_c ~~ negtone_negexp_c                0.046 0.000     NA
 13 negtone_negexp_c ~~ negtone_negexp_c                0.072 0.000     NA
-14            b_low :=  b1+b3*(-0.5437)         b_low -0.150 0.221 -0.681
-15           b_mean :=          b1+b3*0        b_mean -0.431 0.129 -3.343
-16           b_high :=     b1+b3*0.5437        b_high -0.713 0.140 -5.107
-17           ab_low :=          a*b_low        ab_low -0.093 0.153 -0.609
-18          ab_mean :=         a*b_mean       ab_mean -0.267 0.118 -2.262
-19          ab_high :=         a*b_high       ab_high -0.442 0.164 -2.695
-20    index_Mod_Med :=             a*b3 index_Mod_Med -0.320 0.194 -1.648
+14            b_low :=  b1+b3*(-0.5437)         b_low -0.150 0.235 -0.640
+15           b_mean :=          b1+b3*0        b_mean -0.431 0.135 -3.206
+16           b_high :=     b1+b3*0.5437        b_high -0.713 0.140 -5.101
+17           ab_low :=          a*b_low        ab_low -0.093 0.163 -0.573
+18          ab_mean :=         a*b_mean       ab_mean -0.267 0.119 -2.239
+19          ab_high :=         a*b_high       ab_high -0.442 0.162 -2.723
+20    index_Mod_Med :=             a*b3 index_Mod_Med -0.320 0.202 -1.583
    pvalue ci.lower ci.upper
-1   0.047   -0.002    0.707
-2   0.001   -0.653   -0.160
-3   0.678   -0.252    0.180
-4   0.033   -1.087   -0.132
-5   0.006    0.208    1.093
-6   0.000    0.136    0.279
-7   0.000    0.141    0.355
+1   0.067   -0.027    0.732
+2   0.001   -0.666   -0.152
+3   0.668   -0.230    0.163
+4   0.043   -1.133   -0.118
+5   0.007    0.189    1.082
+6   0.000    0.139    0.256
+7   0.000    0.139    0.339
 8      NA    0.136    0.136
 9      NA   -0.001   -0.001
 10     NA   -0.003   -0.003
 11     NA    0.291    0.291
 12     NA    0.046    0.046
 13     NA    0.072    0.072
-14  0.496   -0.474    0.428
-15  0.001   -0.653   -0.160
-16  0.000   -1.089   -0.500
-17  0.543   -0.415    0.209
-18  0.024   -0.566   -0.088
-19  0.007   -0.775   -0.145
-20  0.099   -0.880   -0.067</code></pre>
+14  0.522   -0.488    0.433
+15  0.001   -0.666   -0.152
+16  0.000   -1.120   -0.509
+17  0.567   -0.410    0.228
+18  0.025   -0.574   -0.087
+19  0.006   -0.787   -0.159
+20  0.113   -0.877   -0.063</code></pre>
 </div>
 </div>
 

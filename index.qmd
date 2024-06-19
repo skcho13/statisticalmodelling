@@ -5,9 +5,10 @@ date: last-modified
 author: Sungkyun Cho
 ---
 ## 강의 정보
-강사: 조성균, sk.cho@snu.ac.kr  
-면담 시간: 수업 후  
+강사: 조성균  
+email: sk.cho@snu.ac.kr  
 수업시간: 금 7:00 ~ 9:50PM  
+면담 시간: 수업 후  
 Website: [r.modellings.art](https://r.modellings.art)
 
 과제: Notice  
