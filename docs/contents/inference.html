@@ -418,15 +418,17 @@ window.Quarto = {
 
 <section id="confidence-interval" class="level1">
 <h1>Confidence Interval</h1>
-<p>평균이 <span class="math inline">\(\mu\)</span> 이고 분산이 <span class="math inline">\(\sigma^2\)</span> 인 모집단으로부터 추출된 표본 사이즈가 <span class="math inline">\(n\)</span> (size=<span class="math inline">\(n\)</span>)인 표본들에 대해서<br>
-<img src="images/sampling2.png" class="img-fluid" width="400"><br>
-Source: <em>The Truthful Art</em> by Albert Cairo.</p>
+<p>평균이 <span class="math inline">\(\mu\)</span> 이고 분산이 <span class="math inline">\(\sigma^2\)</span> 인 모집단으로부터 추출된 표본 사이즈가 n인 표본들에 대해서<br>
+<img src="images/sampling2.png" class="img-fluid" width="400"></p>
+<div style="line-height: 1.5em; font-size: .9em">
+<p>Source: <em>The Truthful Art</em> by Albert Cairo</p>
+</div>
 <p>각 표본의 <strong>평균</strong> <span class="math inline">\(\bar{X}\)</span> 들의 분포를 <strong>평균의 표본 분포, the sampling distribution of the mean </strong>이라고 하고, 이 분포는 the central limit theorem에 의해</p>
 <ul>
-<li><p>평균:&nbsp; <span class="math inline">\(\displaystyle E(\bar{X})=\frac{m_1+m_2+m_3+\cdots+m_w}{w}\Bigg|_{w\rightarrow\infty}\rightarrow ~~~\mu\)</span> ; unbiased estimator (mean or regression coefficient vs.&nbsp;R)</p></li>
-<li><p>분산:&nbsp; <span class="math inline">\(\displaystyle V(\bar{X})\Bigg|_{w\rightarrow\infty}\rightarrow ~~~\frac{\sigma^2}{n},\)</span>   표준 편차 <span class="math inline">\(\displaystyle\frac{\sigma}{\sqrt{n}}\)</span> 를 <strong>standard error of estimate</strong> (SE)라고 함.</p>
+<li><p>평균:&nbsp; <span class="math inline">\(\displaystyle E(\bar{X})=\frac{m_1+m_2+m_3+\cdots+m_w}{w}\Bigg|_{w\rightarrow\infty}\rightarrow ~~~\mu\)</span> ; unbiased estimator</p></li>
+<li><p>분산:&nbsp; <span class="math inline">\(\displaystyle V(\bar{X})\Bigg|_{w\rightarrow\infty}\rightarrow ~~~\frac{\sigma^2}{n},\)</span>   이 표준 편차 <span class="math inline">\(\displaystyle\frac{\sigma}{\sqrt{n}}\)</span> 를 <strong>standard error of estimate(표준 오차, SE)</strong>라고 함.</p>
 <ul>
-<li>이 standard error of estimate는 다시 말하면, 어떤 통계치(여기서는 평균)가 표본들 간에 얼마나 차이가 나는지를 알 수 있는 중요한 지표가 됨.</li>
+<li>이 표준 오차는 다시 말하면, 어떤 통계치(여기서는 평균)가 표본들 간에 얼마나 차이가 나는지를 알 수 있는 중요한 지표가 됨.</li>
 </ul></li>
 <li><p>분포: 모집단의 분포가 normal에 가까울 수록, 또는 표본 크기가 클수록 ( <span class="math inline">\(n\rightarrow\infty, n &gt; 30\)</span> ) <span class="math inline">\(\displaystyle\{m_1, m_2, m_3, \cdots, m_w, \cdots\} \sim N(\mu, \frac{\sigma}{\sqrt{n}}) : normal ~ distribution\)</span> (정규 분포)</p></li>
 <li><p>값을 정규화하면; <span class="math inline">\(\displaystyle Z=\frac{X-\mu}{\frac{\sigma}{\sqrt{n}}}\)</span></p>
