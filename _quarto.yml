@@ -20,6 +20,8 @@ website:
   description: "Lecture notes for statistical modelling in R"
   site-url: "https://r.modellings.art"
   site-path: "/"
+  open-graph: 
+    site-name: CHA Statistics in R
   # repo-url:
   # repo-actions: [edit, issue]
 
