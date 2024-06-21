@@ -43,6 +43,8 @@ website:
     contents:
       - href: index.qmd
       - href: contents/notice.qmd
+      - href: contents/pollr.qmd
+        text: "설문"
       - text: ---
       - section: R tutorial
         contents:
