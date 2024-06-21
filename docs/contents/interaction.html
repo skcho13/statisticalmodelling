@@ -148,6 +148,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content=" CHA Statistics in R - Interaction Effects">
+<meta property="og:description" content="Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences by Jacob Cohen, Patricia Cohen, Stephen G. West, Leona S. Aiken">
+<meta property="og:site_name" content="CHA Statistics in R">
 </head>
 
 <body class="nav-sidebar floating">
@@ -194,6 +197,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../contents/notice.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/pollr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">설문</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -291,6 +300,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../contents/case3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Case Study 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contents/case3_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Case Study 3 Sol</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -1670,12 +1685,12 @@ F-statistic: 10.28 on 6 and 143 DF,  p-value: 1.874e-09
 <pre><code># A tibble: 6 × 5
      ya    yb    yc lesion  drug   
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
-1  4.06  4.06  2.06 SHAM    ACTIVE 
-2  5.60 13.6   7.60 SURGERY ACTIVE 
-3  3.56  3.56  1.56 SHAM    ACTIVE 
-4  3.81  3.81  1.81 SHAM    ACTIVE 
-5  5.43 13.4   7.43 SURGERY ACTIVE 
-6  7.31 11.3  10.3  SHAM    PLACEBO</code></pre>
+1  7.80  11.8  9.80 SHAM    PLACEBO
+2  8.06  12.1 10.1  SHAM    PLACEBO
+3 10.4   10.4 12.4  SURGERY PLACEBO
+4  7.88  11.9  8.88 SHAM    PLACEBO
+5  8.25  12.2 10.2  SHAM    PLACEBO
+6  3.92  11.9  5.92 SURGERY ACTIVE </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2575,7 +2590,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
