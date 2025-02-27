@@ -1,13 +1,13 @@
 ---
 title: Welcome
-subtitle: 차의과학대학교 임상상담심리대학원 심리통계, 2024 1학기
+subtitle: 차의과학대학교 임상상담심리대학원 심리통계, 2025 1학기
 date: last-modified
 author: Sungkyun Cho
 ---
 ## 강의 정보
 강사: 조성균  
 email: sk.cho@snu.ac.kr  
-수업시간: 금 7:00 ~ 9:50PM  
+수업시간: 목 7:00 ~ 9:50PM  
 면담 시간: 수업 후  
 Website: [r.modellings.art](https://r.modellings.art)
 
@@ -31,7 +31,7 @@ Website: [r.modellings.art](https://r.modellings.art)
 ### 교재
 - 주로 강의 노트를 위주로!
 - *R인 액션 - 빅데이터 분석도구*, 홍릉 / *R in Action* (2e) by Rob Kabacoff
-- [*Statistical Modeling (2e)*](https://dtkaplan.github.io/SM2-bookdown/) by Daniel T. Kaplan
+<!-- - [*Statistical Modeling (2e)*](https://dtkaplan.github.io/SM2-bookdown/) by Daniel T. Kaplan -->
 
 ### R 참고도서
 
