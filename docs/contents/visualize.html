@@ -120,8 +120,8 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 <meta property="og:description" content="R for Data Science by Wickham &amp; Grolemund">
 <meta property="og:image" content="https://r.modellings.art/contents/visualize_files/figure-html/cell-7-output-1.png">
 <meta property="og:site_name" content="CHA Statistics in R">
-<meta property="og:image:height" content="380">
-<meta property="og:image:width" content="380">
+<meta property="og:image:height" content="720">
+<meta property="og:image:width" content="720">
 </head>
 
 <body class="nav-sidebar floating">
@@ -447,40 +447,40 @@ Cross-validation 방식에는 여러 변형들이 있음; e.g.&nbsp;데이터를
 </section>
 <section id="basics" class="level2">
 <h2 class="anchored" data-anchor-id="basics">Basics</h2>
-<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="183">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="184">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>() <span class="co"># 무시</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 8
-  species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
-  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
-1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
-2 Adelie  Torgersen           39.5          17.4         186    3800 fema…  2007
-3 Adelie  Torgersen           40.3          18           195    3250 fema…  2007
-4 Adelie  Torgersen           NA            NA            NA      NA NA     2007
-5 Adelie  Torgersen           36.7          19.3         193    3450 fema…  2007
-6 Adelie  Torgersen           39.3          20.6         190    3650 male   2007
-# … with 338 more rows, and abbreviated variable names ¹​flipper_length_mm,
-#   ²​body_mass_g</code></pre>
+<pre><code># A tibble: 344 x 8
+  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+1 Adelie  Torgersen           39.1          18.7               181        3750
+2 Adelie  Torgersen           39.5          17.4               186        3800
+3 Adelie  Torgersen           40.3          18                 195        3250
+4 Adelie  Torgersen           NA            NA                  NA          NA
+5 Adelie  Torgersen           36.7          19.3               193        3450
+6 Adelie  Torgersen           39.3          20.6               190        3650
+# i 338 more rows
+# i 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="185">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 344
 Columns: 8
-$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
-$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
-$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
-$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
-$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
-$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
-$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…
-$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel~
+$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse~
+$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, ~
+$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, ~
+$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186~
+$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, ~
+$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male~
+$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007~</code></pre>
 </div>
 </div>
 <p>Variabels:</p>
@@ -500,7 +500,7 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </li>
 <li><code>geom</code>: 어떤 시각화 개체(graphical objects)로 데이터를 표현할 것인지 specify</li>
 </ul>
-<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="44">
+<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="187">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x, y축에 변수를 mapping</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
@@ -509,12 +509,12 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-7-output-1.png" width="190" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-7-output-1.png" width="360" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-11" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="45">
+<div id="cell-11" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="188">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># point로 데이터를 표시: scatterplot</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
@@ -524,12 +524,13 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 rows containing missing values (`geom_point()`).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-8-output-2.png" width="190" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-8-output-2.png" width="360" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -557,7 +558,7 @@ Note
 </div>
 <section id="adding-aesthetics-and-layers" class="level3">
 <h3 class="anchored" data-anchor-id="adding-aesthetics-and-layers">Adding aesthetics and layers</h3>
-<div id="cell-15" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="47">
+<div id="cell-15" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="190">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># spcies에 color (aesthetics)를 mapping</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
@@ -566,12 +567,13 @@ Note
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-10-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-10-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -579,7 +581,7 @@ Note
 <p>위에서 species마다 다른 색을 입혀서 다른 패턴이 나타나는지 확인해 볼 수 있음</p>
 <p>ggplot2는 <code>+</code> 기호로 연결하여 계속 layer를 추가할 수 있음.<br>
 다음은 trendline 혹은 fitted line이라고 부르는 경향성을 확인해 볼 수 있는 라인의 layer를 추가함</p>
-<div id="cell-18" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="48">
+<div id="cell-18" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="191">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> species)</span>
@@ -589,14 +591,15 @@ Note
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
 Warning message:
-“Removed 2 rows containing non-finite values (`stat_smooth()`).”
+"Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`)."
 Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-11-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-11-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -627,20 +630,21 @@ Note
 </div>
 <p>ggplot2는 플랏의 대상에 다음과 같은 속성을 부여할 수 있음<br>
 <code>color</code>, <code>size</code>, <code>shape</code>, <code>fill</code>, <code>alpha</code></p>
-<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="49">
+<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="192">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> species, <span class="at">shape =</span> island)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-12-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-12-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -662,39 +666,41 @@ Tip
 <section id="categorical-vs.-continuous" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-vs.-continuous">Categorical vs.&nbsp;continuous</h3>
 <p><code>color</code>와 같은 속성은 카테고리 변수가 좀 더 적절하나, 연속변수에서도 적용될 수 있음</p>
-<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="50">
+<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="193">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> bill_length_mm)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-13-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-13-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>반대로, <code>x</code>, <code>y</code>에 카테고리 변수를 mapping하여 scatterplot을 그리면 다음과 같은 overploting의 문제가 생김</p>
-<div id="cell-27" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="51">
+<div id="cell-27" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="194">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 11 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 11 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-14-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-14-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -708,7 +714,7 @@ Tip
 </li>
 <li>애초에 겹치지 않게 그리는 방법도 있음: e.g.&nbsp;beeswarm plot</li>
 </ul>
-<div id="cell-29" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="52">
+<div id="cell-29" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="195">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)</span>
@@ -716,17 +722,18 @@ Tip
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">2</span>) <span class="co"># jitter의 정도: width, height</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 11 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 11 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-15-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-15-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-30" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="53">
+<div id="cell-30" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="196">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g, <span class="at">color =</span> sex)</span>
@@ -734,12 +741,13 @@ Tip
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="co"># alpha: 투명도 0 ~ 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 11 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 11 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-16-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-16-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -756,7 +764,7 @@ Tip
 <li><code>geom_histogram()</code>, <code>geom_freqploy()</code>, <code>geom_density()</code></li>
 </ul>
 <p><strong>Global vs.&nbsp;local mapping</strong></p>
-<div id="cell-33" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="54">
+<div id="cell-33" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="197">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)</span>
@@ -766,19 +774,20 @@ Tip
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
 Warning message:
-“Removed 2 rows containing non-finite values (`stat_smooth()`).”
+"Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`)."
 Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-17-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-17-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-34" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="55">
+<div id="cell-34" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="198">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)</span>
@@ -787,43 +796,43 @@ Warning message:
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
 Warning message:
-“Removed 2 rows containing non-finite values (`stat_smooth()`).”</code></pre>
+"Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-18-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-18-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-35" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="56">
+<div id="cell-35" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="199">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> penguins,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bill_depth_mm, <span class="at">y =</span> body_mass_g)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bill_depth_mm, <span class="at">y =</span> body_mass_g)</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span>  <span class="co"># color mapping은 geom_point에만 </span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)  <span class="co"># 맨 위의 mapping에 있는 global mapping을 inherit, method: fitted line의 종류</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> <span class="co"># color mapping은 geom_point에만</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="co"># 맨 위의 mapping에 있는 global mapping을 inherit, method: fitted line의 종류</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-19-output-1.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-19-output-1.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
+<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="200">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> penguins,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bill_depth_mm, <span class="at">y =</span> body_mass_g)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bill_depth_mm, <span class="at">y =</span> body_mass_g)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="sc">+</span>  <span class="co"># 맨 위의 mapping에 있는 global mapping을 inherit</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="sc">+</span> <span class="co"># 맨 위의 mapping에 있는 global mapping을 inherit</span></span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> species), <span class="at">method =</span> lm) <span class="co"># color mapping 추가</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-20-output-1.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-20-output-1.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -835,13 +844,13 @@ Warning message:
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"skyblue"</span>) <span class="sc">+</span> <span class="co"># geom의 color 속성에 색을 지정</span></span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">"orangered"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-38" class="cell quarto-layout-panel" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58" data-layout-ncol="2">
+<div id="cell-38" class="cell quarto-layout-panel" data-execution_count="201" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="visualize_files/figure-html/cell-21-output-1.png" class="img-fluid" width="285"></p>
+<p><img src="visualize_files/figure-html/cell-21-output-1.png" class="img-fluid" width="540"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="visualize_files/figure-html/cell-21-output-2.png" class="img-fluid" width="285"></p>
+<p><img src="visualize_files/figure-html/cell-21-output-2.png" class="img-fluid" width="540"></p>
 </div>
 </div>
 </div>
@@ -853,7 +862,7 @@ Warning message:
 <section id="distribution" class="level3">
 <h3 class="anchored" data-anchor-id="distribution">Distribution</h3>
 <p><code>geom_histogram()</code>, <code>geom_freqploy()</code>, <code>geom_density()</code></p>
-<div id="cell-42" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
+<div id="cell-42" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="203">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y축에 표시되는 통계치들이 계산됨</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">100</span>) <span class="co"># binwidth vs. bins</span></span>
@@ -864,11 +873,11 @@ Warning message:
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">bw =</span> <span class="dv">100</span>) <span class="co"># bw: band width</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-43" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="22">
+<div id="cell-43" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="204">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-24-output-1.png" width="600" height="200" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-24-output-1.png" width="1080" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -880,64 +889,68 @@ Warning message:
 <code>boxplot()</code></p>
 <p><img src="images/boxplot.png" class="img-fluid" width="800"></p>
 <p><img src="images/plot_cps4.png" class="img-fluid" width="900"></p>
-<div id="cell-46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
+<div id="cell-46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="206">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing non-finite values (`stat_boxplot()`).”</code></pre>
+"Removed 2 rows containing non-finite outside the scale range
+(`stat_boxplot()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-26-output-2.png" width="190" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-26-output-2.png" width="360" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-47" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="12">
+<div id="cell-47" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="207">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing non-finite values (`stat_boxplot()`).”
+"Removed 2 rows containing non-finite outside the scale range
+(`stat_boxplot()`)."
 Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-27-output-2.png" width="190" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-27-output-2.png" width="360" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-49" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
+<div id="cell-49" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="209">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mosaicData<span class="sc">::</span>CPS85)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(educ), <span class="at">y =</span> wage)) <span class="sc">+</span>  <span class="co"># as.factor(): numeric을 factor로 변환</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(educ), <span class="at">y =</span> wage)) <span class="sc">+</span> <span class="co"># as.factor(): numeric을 factor로 변환</span></span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-29-output-1.png" width="237" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-29-output-1.png" width="450" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-52" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="63">
+<div id="cell-51" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="211">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g, <span class="at">fill =</span> sex)) <span class="sc">+</span> <span class="co"># color는 box의 테두리 색, fill은 내부색</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing non-finite values (`stat_boxplot()`).”</code></pre>
+"Removed 2 rows containing non-finite outside the scale range
+(`stat_boxplot()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-32-output-2.png" width="285" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-31-output-2.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -947,13 +960,13 @@ Warning message:
 <h3 class="anchored" data-anchor-id="barplot">Barplot</h3>
 <p>Barplot은 여러방식으로 쓸 수 있는데, 문법이 조금 복잡하고, 수업에서 거의 사용하지 않을 예정이므로 웹사이트를 참조<br>
 <a href="https://r4ds.hadley.nz/layers.html#statistical-transformations">R for Data Science/Layers/Statistical transformations</a></p>
-<div id="cell-55" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins) <span class="sc">+</span> </span>
+<div id="cell-54" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="213">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins) <span class="sc">+</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> species)) <span class="co"># 개수</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-34-output-1.png" width="237" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-33-output-1.png" width="450" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -968,12 +981,12 @@ Warning message:
 <li><code>cut_number()</code>: 동일한 갯수의 관측값을 갖는 n개의 그룹</li>
 <li><code>cut_interval()</code>: 동일한 길이의 n개의 그룹</li>
 </ul>
-<div id="cell-58" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="67">
+<div id="cell-57" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="215">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="fu">cut_interval</span>(body_mass_g, <span class="dv">3</span>) <span class="co"># body_mass_g의 값을 3개의 동일한 길이의 구간으로 나눔</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">cut_interval</span>(body_mass_g, <span class="dv">3</span>) <span class="co"># body_mass_g의 값을 3개의 동일한 길이의 구간으로 나눔</span></span>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -981,14 +994,15 @@ Warning message:
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
 Warning message:
-“Removed 2 rows containing non-finite values (`stat_smooth()`).”
+"Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`)."
 Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-36-output-2.png" width="380" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-35-output-2.png" width="720" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -999,54 +1013,57 @@ Warning message:
 <h2 class="anchored" data-anchor-id="facets">Facets</h2>
 <p>카테고리 변수들이 지니는 카테고리들(레벨)로 나누어 그리기<br>
 <code>facet_wrap()</code>, <code>facet_grid()</code></p>
-<div id="cell-61" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="69">
+<div id="cell-60" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="217">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species) <span class="co"># species의 레벨로 나뉘어짐</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-38-output-2.png" width="380" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-37-output-2.png" width="720" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><code>facet_wrap()</code>은 레벨이 많아지면 다음의 <code>facet_grid()</code>와는 다르게 화면크기에 맞춰 다음 줄로 넘어감</p>
-<div id="cell-64" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="71">
+<div id="cell-63" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="219">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm)) <span class="sc">+</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(sex <span class="sc">~</span> species)  <span class="co"># 행과 열에 각각 sex, species</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(sex <span class="sc">~</span> species) <span class="co"># 행과 열에 각각 sex, species</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-40-output-2.png" width="380" height="237" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-39-output-2.png" width="720" height="450" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-66" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="73">
+<div id="cell-65" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="221">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins, </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm, <span class="at">color =</span> sex) <span class="co"># color 추가</span></span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(island <span class="sc">~</span> species)  <span class="co"># 행과 열에 각각 sex, species</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(island <span class="sc">~</span> species) <span class="co"># 행과 열에 각각 sex, species</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 11 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 11 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-42-output-2.png" width="380" height="237" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-41-output-2.png" width="720" height="450" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1072,17 +1089,19 @@ Important
 <span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."
 Warning message:
-“Removed 2 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
-<div id="cell-69" class="cell quarto-layout-panel" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="75" data-layout-ncol="2">
+<div id="cell-68" class="cell quarto-layout-panel" data-execution_count="223" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="visualize_files/figure-html/cell-44-output-2.png" class="img-fluid" width="285"></p>
+<p><img src="visualize_files/figure-html/cell-43-output-2.png" class="img-fluid" width="540"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="visualize_files/figure-html/cell-44-output-3.png" class="img-fluid" width="285"></p>
+<p><img src="visualize_files/figure-html/cell-43-output-3.png" class="img-fluid" width="540"></p>
 </div>
 </div>
 </div>
@@ -1090,7 +1109,7 @@ Warning message:
 <section id="labels" class="level2">
 <h2 class="anchored" data-anchor-id="labels">Labels</h2>
 <p><code>labs()</code> 안에 각 요소별로 지정</p>
-<div id="cell-73" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="78">
+<div id="cell-72" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="226">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguins,</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)</span>
@@ -1106,7 +1125,7 @@ Warning message:
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-47-output-1.png" width="285" height="237" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-46-output-1.png" width="540" height="450" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1134,9 +1153,9 @@ Note
 </div>
 </div>
 <p>Pipe operator로 다음과 연결될 수 있음</p>
-<div id="cell-77" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="80">
+<div id="cell-76" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="228">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> island <span class="sc">!=</span> <span class="st">"Torgersen"</span>) <span class="sc">|&gt;</span>  <span class="co"># 성별이 missing이 아니고, Torgersen섬은 제외</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> island <span class="sc">!=</span> <span class="st">"Torgersen"</span>) <span class="sc">|&gt;</span> <span class="co"># 성별이 missing이 아니고, Torgersen섬은 제외</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
@@ -1147,7 +1166,7 @@ Note
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-49-output-2.png" width="380" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-48-output-2.png" width="720" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1156,12 +1175,12 @@ Note
 <section id="examples" class="level2">
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <p>이전에 다뤘던 CPS85 데이터로 보면,</p>
-<div id="cell-80" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="82">
+<div id="cell-79" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="230">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mosaicData<span class="sc">::</span>CPS85) <span class="co"># mosaicData package의 CPS85 데이터셋</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>() <span class="co"># 생략!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 534 × 11
+<pre><code># A tibble: 534 x 11
    wage  educ race  sex   hispanic south married exper union   age sector  
   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt;   
 1   9      10 W     M     NH       NS    Married    27 Not      43 const   
@@ -1170,22 +1189,22 @@ Note
 4  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical
 5  15      12 W     M     NH       NS    Married    40 Union    58 const   
 6   9      16 W     F     NH       NS    Married    27 Not      49 clerical
-# … with 528 more rows</code></pre>
+# i 528 more rows</code></pre>
 </div>
 </div>
-<div id="cell-82" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="85">
+<div id="cell-81" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="232">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wage, <span class="at">color =</span> married)) <span class="sc">+</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-53-output-1.png" width="237" height="142" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-52-output-1.png" width="450" height="270" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-84" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="87">
+<div id="cell-83" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="234">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wage, <span class="at">color =</span> married)) <span class="sc">+</span></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
@@ -1193,66 +1212,65 @@ Note
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-55-output-1.png" width="380" height="142" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-54-output-1.png" width="720" height="270" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-86" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="89">
+<div id="cell-85" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="236">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> married, <span class="at">y =</span> wage)) <span class="sc">+</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">label_dollar</span>())  <span class="co"># y축 scale의 변경</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">label_dollar</span>()) <span class="co"># y축 scale의 변경</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-57-output-1.png" width="190" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-56-output-1.png" width="360" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-87" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="90">
+<div id="cell-86" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="237">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> married, <span class="at">y =</span> wage, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-58-output-1.png" width="190" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-57-output-1.png" width="360" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-89" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="92">
+<div id="cell-88" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="239">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sector, <span class="at">y =</span> wage, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-60-output-1.png" width="380" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-59-output-1.png" width="720" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-91" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="94">
+<div id="cell-90" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="241">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sector, <span class="at">y =</span> wage, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(married <span class="sc">~</span> .) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(married <span class="sc">~</span> .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-62-output-1.png" width="380" height="285" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-61-output-1.png" width="720" height="540" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-93" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="96">
+<div id="cell-92" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="243">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> cps <span class="sc">|&gt;</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">|&gt;</span></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> wage)) <span class="sc">+</span></span>
@@ -1265,7 +1283,7 @@ Note
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-64-output-2.png" width="237" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-63-output-2.png" width="450" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1284,7 +1302,7 @@ Important
 <code>coord_cartesian()</code>&nbsp;vs.&nbsp;<code>xlim()</code>&nbsp;or&nbsp;<code>ylim()</code></p>
 </div>
 </div>
-<div id="cell-95" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="97">
+<div id="cell-94" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="244">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>plot <span class="sc">+</span> <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">40</span>)) <span class="co"># zoom in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
@@ -1292,29 +1310,31 @@ Important
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-65-output-2.png" width="237" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-64-output-2.png" width="450" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-96" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="98">
+<div id="cell-95" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="245">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>plot <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">18</span>, <span class="dv">40</span>) <span class="co"># data crop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'
 Warning message:
-“Removed 181 rows containing non-finite values (`stat_smooth()`).”
+"Removed 181 rows containing non-finite outside the scale range
+(`stat_smooth()`)."
 Warning message:
-“Removed 181 rows containing missing values (`geom_point()`).”</code></pre>
+"Removed 181 rows containing missing values or values outside the scale range
+(`geom_point()`)."</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-66-output-2.png" width="237" height="190" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-65-output-2.png" width="450" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-98" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="100">
+<div id="cell-97" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="247">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&lt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> sector <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"manag"</span>, <span class="st">"manuf"</span>, <span class="st">"prof"</span>, <span class="st">"sales"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> wage, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
@@ -1327,7 +1347,7 @@ Warning message:
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="visualize_files/figure-html/cell-68-output-2.png" width="332" height="237" class="figure-img"></p>
+<p><img src="visualize_files/figure-html/cell-67-output-2.png" width="630" height="450" class="figure-img"></p>
 </figure>
 </div>
 </div>
