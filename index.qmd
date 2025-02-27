@@ -1,6 +1,6 @@
 ---
 title: Welcome
-subtitle: 차의과학대학교 임상상담심리대학원 심리통계, 2025 1학기
+subtitle: 차의과학대학교 임상상담심리대학원 심리통계, 2025 2학기
 date: last-modified
 author: Sungkyun Cho
 ---
