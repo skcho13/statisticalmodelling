@@ -82,10 +82,10 @@ website:
           # - href: contents/repeated.ipynb
           #- href: contents/report.qmd
       # - text: ---
-      # - section: Communicate
-      #   contents:
-      #     - href: https://docs.google.com/document/d/1OQ1D7d4MxEfMZmo_FLj29rGWqvWADKmGc_QD9g5h_ho/edit?usp=sharing
-      #       text: Ask
+      - section: Communicate
+        contents:
+          - href: https://docs.google.com/document/d/1OQ1D7d4MxEfMZmo_FLj29rGWqvWADKmGc_QD9g5h_ho/edit?usp=sharing
+            text: Ask
           # - href: https://docs.google.com/document/d/1NjaZzQdVq22csZLMuCI9GDZmTY-hFHypkFlEBb4Yx9s/edit?usp=sharing
           #   text: Consult
           # - href: https://docs.google.com/document/d/1rznMbrQOfHBnYIJvWE-T6YW5jN0yBXQGiohDVLS5Qp4/edit?usp=sharing

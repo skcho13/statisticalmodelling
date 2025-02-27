@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://r.modellings.art/contents/visualize.html</loc>
+    <lastmod>2023-03-22T19:50:25.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/tidyverse.html</loc>
+    <lastmod>2024-03-15T16:40:48.938Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/regression1.html</loc>
+    <lastmod>2024-06-01T08:30:37.501Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/inspection.html</loc>
+    <lastmod>2023-02-27T05:13:27.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/copilot.html</loc>
+    <lastmod>2023-03-30T07:54:13.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/categories.html</loc>
+    <lastmod>2023-05-06T10:27:29.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/analysis1.html</loc>
+    <lastmod>2023-03-18T20:17:51.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/test.html</loc>
+    <lastmod>2023-05-31T19:36:49.533Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/pollr.html</loc>
+    <lastmod>2024-06-21T09:32:08.106Z</lastmod>
+  </url>
+  <url>
     <loc>https://r.modellings.art/contents/interaction.html</loc>
     <lastmod>2024-06-07T09:11:52.603Z</lastmod>
   </url>
@@ -9,115 +45,79 @@
     <lastmod>2024-06-14T09:29:52.163Z</lastmod>
   </url>
   <url>
-    <loc>https://r.modellings.art/contents/inference.html</loc>
-    <lastmod>2024-12-28T15:09:40.725Z</lastmod>
+    <loc>https://r.modellings.art/contents/case5.html</loc>
+    <lastmod>2024-05-24T06:10:30.335Z</lastmod>
   </url>
   <url>
     <loc>https://r.modellings.art/contents/case3_sol.html</loc>
     <lastmod>2024-06-20T16:21:53.010Z</lastmod>
   </url>
   <url>
-    <loc>https://r.modellings.art/contents/test.html</loc>
-    <lastmod>2023-05-31T19:36:49.533Z</lastmod>
+    <loc>https://r.modellings.art/contents/case2.html</loc>
+    <lastmod>2024-05-12T13:24:28.040Z</lastmod>
   </url>
   <url>
     <loc>https://r.modellings.art/contents/baser.html</loc>
     <lastmod>2024-03-08T07:28:51.897Z</lastmod>
   </url>
   <url>
-    <loc>https://r.modellings.art/index.html</loc>
-    <lastmod>2024-06-19T14:44:55.934Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/notice.html</loc>
-    <lastmod>2024-03-07T20:03:44.784Z</lastmod>
-  </url>
-  <url>
     <loc>https://r.modellings.art/about.html</loc>
     <lastmod>2023-02-12T04:02:01.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/transform.html</loc>
-    <lastmod>2023-03-01T12:27:07.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/setup.html</loc>
-    <lastmod>2024-03-08T07:27:40.781Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/overview.html</loc>
-    <lastmod>2024-03-29T09:34:17.457Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/import.html</loc>
-    <lastmod>2024-03-15T17:17:13.848Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/cleaning.html</loc>
-    <lastmod>2024-03-22T07:43:52.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/anova.html</loc>
-    <lastmod>2023-04-09T10:05:09.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/analysis1.html</loc>
-    <lastmod>2023-03-18T20:17:51.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/categories.html</loc>
-    <lastmod>2023-05-19T16:09:50.824Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/copilot.html</loc>
-    <lastmod>2023-03-30T07:54:13.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/inspection.html</loc>
-    <lastmod>2023-02-27T05:13:27.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/regression1.html</loc>
-    <lastmod>2024-06-01T08:30:37.501Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/tidyverse.html</loc>
-    <lastmod>2024-03-15T16:40:48.938Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/visualize.html</loc>
-    <lastmod>2023-03-22T19:50:25.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/case5.html</loc>
-    <lastmod>2024-05-24T06:10:30.335Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/pollr.html</loc>
-    <lastmod>2024-06-21T09:32:08.106Z</lastmod>
-  </url>
-  <url>
-    <loc>https://r.modellings.art/contents/case4.html</loc>
-    <lastmod>2024-05-23T21:39:15.657Z</lastmod>
   </url>
   <url>
     <loc>https://r.modellings.art/contents/case1.html</loc>
     <lastmod>2024-05-17T09:22:05.720Z</lastmod>
   </url>
   <url>
-    <loc>https://r.modellings.art/contents/case2.html</loc>
-    <lastmod>2024-05-12T13:24:28.040Z</lastmod>
-  </url>
-  <url>
     <loc>https://r.modellings.art/contents/case3.html</loc>
     <lastmod>2024-06-19T14:54:55.689Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/case4.html</loc>
+    <lastmod>2024-05-23T21:39:15.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/categorical.html</loc>
+    <lastmod>2024-06-01T07:44:05.149Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/inference.html</loc>
+    <lastmod>2024-12-28T15:09:40.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/notice.html</loc>
+    <lastmod>2024-03-07T20:03:44.784Z</lastmod>
   </url>
   <url>
     <loc>https://r.modellings.art/contents/regression2.html</loc>
     <lastmod>2024-05-10T07:02:50.538Z</lastmod>
   </url>
   <url>
-    <loc>https://r.modellings.art/contents/categorical.html</loc>
-    <lastmod>2024-06-01T07:44:05.149Z</lastmod>
+    <loc>https://r.modellings.art/index.html</loc>
+    <lastmod>2025-02-27T15:19:47.212Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/anova.html</loc>
+    <lastmod>2023-04-09T10:05:09.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/cleaning.html</loc>
+    <lastmod>2024-03-22T07:43:52.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/import.html</loc>
+    <lastmod>2024-03-15T17:17:13.848Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/overview.html</loc>
+    <lastmod>2024-03-29T09:17:21.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/setup.html</loc>
+    <lastmod>2024-03-08T07:27:40.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/transform.html</loc>
+    <lastmod>2023-03-01T12:27:07.000Z</lastmod>
   </url>
 </urlset>
