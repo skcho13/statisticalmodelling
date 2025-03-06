@@ -11,7 +11,7 @@ project:
     - "!contents/repeated.ipynb"
     - "!contents/report.qmd"
     - "!contents/reports.qmd"
-
+  
 website:
   google-analytics: "G-3JGE58SZ6T"
   page-navigation: true
@@ -43,8 +43,8 @@ website:
     contents:
       - href: index.qmd
       - href: contents/notice.qmd
-      - href: contents/pollr.qmd
-        text: "설문"
+      # - href: contents/pollr.qmd
+      #   text: "설문"
       - text: ---
       - section: R tutorial
         contents:
@@ -109,3 +109,6 @@ format:
     grid:
       body-width: 900px
       margin-width: 200px
+
+execute:
+  freeze: auto
