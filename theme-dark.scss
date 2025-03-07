@@ -1,0 +1,50 @@
+/*-- scss:defaults --*/
+// Base document colors
+
+$link-color: #63a500;// #20B2AA; // #63a500; // 9480e4, 1988b0
+$body-color: #fefffa;  //  #fffef1; // font color
+$body-bg: rgb(61, 61, 61);
+
+$sidebar-bg: rgb(61, 61, 61); // ffffff, F6F6FF
+$sidebar-fg: #e16868; // 6B51D8, 51a9d8
+//$sidebar-hl: #d5b501;
+
+$navbar-fg: #ded8f9;
+$navbar-hl: #ded8f9;
+
+// Font sizes
+$h1-font-size: 1.4rem;
+$h2-font-size: 1.3rem;
+$h3-font-size: 1.2rem;
+$h4-font-size: 1.1rem;
+// $font-size-base: 1.2rem;
+
+$sidebar-font-size: 1rem !default;
+$sidebar-font-size-section: 0.95rem !default;
+
+// Fonts
+$font-family-sans-serif: 'Mulish', sans-serif; // 'Oxygen', sans-serif;
+$font-family-monospace: 'Red Hat Mono', monospace; //'JetBrains Mono', monospace; 
+
+// Code blocks
+$code-block-font-size: .9rem;
+
+$code-block-bg-alpha: -.7;  // This is not used if an explicit background color is set. 
+// $code-block-bg: #f9f9fd; // #F6F6FF
+$code-block-border-left: #87bc45; // #FFDE7C; //#ff7c7c;
+$code-block-border-left-size: 2px;
+$code-color: #FF6347; //FE5370
+
+/*-- scss:rules --*/
+
+// Variables
+
+$web-font-path: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,600;1,300;1,600&family=Oxygen:wght@300;400;700&family=Mulish:ital,wght@0,400;0,700;1,400;1,700&family=Red+Hat+Mono:ital,wght@0,400;0,600;1,400&family=Sometype+Mono:ital,wght@0,400;0,500;1,400&display=swap';
+
+// "https://fonts.googleapis.com/css2?family=Fira+Code&family=JetBrains+Mono:wght@300&family=Mulish:ital,wght@0,400;0,500;0,700;1,400&family=Oxygen+Mono&family=Red+Hat+Mono:ital,wght@0,400;0,600;1,400&family=Sometype+Mono:ital,wght@0,400;0,500;1,400&display=swap"
+
+@if $web-font-path {
+  @import url($web-font-path);
+}
+
+// https://github.com/quarto-dev/quarto-cli/tree/main/src/resources/formats/html/bootstrap

@@ -99,12 +99,14 @@ format:
     code-fold: false
     code-overflow: wrap
     code-summary: "Show the code"
-    theme: [sandstone, theme-light.scss]
+    theme: 
+      light: [sandstone, theme-light.scss]
+      dark: [darkly, theme-dark.scss]
     # monofont: 'FiraCode-Light'
     fontsize: 1.1em
     linestretch: 2
     code-copy: true
-    highlight-style: Ayu-light
+    highlight-style: gruvbox
     link-external-newwindow: true
     grid:
       body-width: 900px
