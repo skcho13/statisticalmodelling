@@ -6,8 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-03-16">
+<meta name="dcterms.date" content="2025-03-13">
 
 <title>Tidyverse –  CHA Statistics in R</title>
 <style>
@@ -374,17 +373,11 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Sungkyun Cho </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 16, 2024</p>
+      <p class="date">March 13, 2025</p>
     </div>
   </div>
   
@@ -400,7 +393,7 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="inspecting-data">Inspecting data</h2>
 <p>함수들: <code>print()</code>, <code>glimpse()</code>, <code>summary()</code>, <code>count()</code><br>
 <code>()</code> 안에 들어가는 것을 argument라고 부름</p>
-<div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mosaicData<span class="sc">::</span>CPS85) <span class="co"># mosaicData package의 CPS85 데이터셋</span></span>
@@ -432,16 +425,16 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 </div>
 </div>
 <p>보통 <code>print()</code>없이 데이터 프레임을 살펴보지만, <code>print()</code>을 이용하면, 표시되는 방식을 조정해서 볼 수 있음.</p>
-<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cps, <span class="at">n =</span> <span class="dv">3</span>) <span class="co"># 처음 3개 행</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 534 × 11
+<pre><code># A tibble: 534 x 11
    wage  educ race  sex   hispanic south married exper union   age sector
   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt; 
 1   9      10 W     M     NH       NS    Married    27 Not      43 const 
 2   5.5    12 W     M     NH       NS    Married    20 Not      38 sales 
 3   3.8    12 W     F     NH       NS    Single      4 Not      22 sales 
-# … with 531 more rows</code></pre>
+# i 531 more rows</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -497,22 +490,22 @@ tip: <code>print()</code> 옵션
 </div>
 </div>
 <p>많은 변수들을 간략히 보는 방법으로는 <code>glimpse()</code></p>
-<div id="cell-9" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div id="cell-9" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 534
 Columns: 11
-$ wage     &lt;dbl&gt; 9.00, 5.50, 3.80, 10.50, 15.00, 9.00, 9.57, 15.00, 11.00, 5.0…
-$ educ     &lt;int&gt; 10, 12, 12, 12, 12, 16, 12, 14, 8, 12, 17, 17, 14, 14, 12, 14…
-$ race     &lt;fct&gt; W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, NW, NW, W,…
-$ sex      &lt;fct&gt; M, M, F, F, M, F, F, M, M, F, M, M, M, M, M, M, M, M, M, M, F…
-$ hispanic &lt;fct&gt; NH, NH, NH, NH, NH, NH, NH, NH, NH, NH, Hisp, NH, Hisp, NH, N…
-$ south    &lt;fct&gt; NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, N…
-$ married  &lt;fct&gt; Married, Married, Single, Married, Married, Married, Married,…
-$ exper    &lt;int&gt; 27, 20, 4, 29, 40, 27, 5, 22, 42, 14, 18, 3, 4, 14, 35, 0, 7,…
-$ union    &lt;fct&gt; Not, Not, Not, Not, Union, Not, Union, Not, Not, Not, Not, No…
-$ age      &lt;int&gt; 43, 38, 22, 47, 58, 49, 23, 42, 56, 32, 41, 26, 24, 34, 53, 2…
-$ sector   &lt;fct&gt; const, sales, sales, clerical, const, clerical, service, sale…</code></pre>
+$ wage     &lt;dbl&gt; 9.00, 5.50, 3.80, 10.50, 15.00, 9.00, 9.57, 15.00, 11.00, 5.0~
+$ educ     &lt;int&gt; 10, 12, 12, 12, 12, 16, 12, 14, 8, 12, 17, 17, 14, 14, 12, 14~
+$ race     &lt;fct&gt; W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, NW, NW, W,~
+$ sex      &lt;fct&gt; M, M, F, F, M, F, F, M, M, F, M, M, M, M, M, M, M, M, M, M, F~
+$ hispanic &lt;fct&gt; NH, NH, NH, NH, NH, NH, NH, NH, NH, NH, Hisp, NH, Hisp, NH, N~
+$ south    &lt;fct&gt; NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, NS, N~
+$ married  &lt;fct&gt; Married, Married, Single, Married, Married, Married, Married,~
+$ exper    &lt;int&gt; 27, 20, 4, 29, 40, 27, 5, 22, 42, 14, 18, 3, 4, 14, 35, 0, 7,~
+$ union    &lt;fct&gt; Not, Not, Not, Not, Union, Not, Union, Not, Not, Not, Not, No~
+$ age      &lt;int&gt; 43, 38, 22, 47, 58, 49, 23, 42, 56, 32, 41, 26, 24, 34, 53, 2~
+$ sector   &lt;fct&gt; const, sales, sales, clerical, const, clerical, service, sale~</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -531,7 +524,7 @@ Environment 패널에 보이는 cps 데이터셋 맨 끝에 네모난 마크를 
 </div>
 </div>
 <p>변수들에 대한 통계치 요약 <code>summary()</code></p>
-<div id="cell-12" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div id="cell-12" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>      wage             educ       race     sex     hispanic   south   
@@ -554,12 +547,12 @@ Environment 패널에 보이는 cps 데이터셋 맨 끝에 네모난 마크를 
 </div>
 <p>카테고리별 개수를 세주는 <code>count()</code><br>
 Number(수)에 대해서도 적용 가능: ex. educ 수준 2, 3, … 18 각각에 대해서</p>
-<div id="cell-14" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span>  <span class="co"># pipe operator: alt + . (option + .)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(sector) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>() <span class="co"># 생략해도 됨</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="co"># pipe operator: alt + . (option + .)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sector) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>() <span class="co"># 생략해도 됨</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 2
+<pre><code># A tibble: 8 x 2
   sector       n
   &lt;fct&gt;    &lt;int&gt;
 1 clerical    97
@@ -572,12 +565,12 @@ Number(수)에 대해서도 적용 가능: ex. educ 수준 2, 3, … 18 각각�
 8 service     83</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div id="cell-15" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(sex, married) <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sex, married) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
+<pre><code># A tibble: 4 x 3
   sex   married     n
   &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;
 1 F     Married   162
@@ -623,13 +616,13 @@ Number(수)에 대해서도 적용 가능: ex. educ 수준 2, 3, … 18 각각�
 <code>!</code> (not)<br>
 <code>%in%</code> (includes)</p>
 </blockquote>
-<div id="cell-19" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div id="cell-19" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 임금(wage)가 10이상인 사람들</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wage <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 184 × 11
+<pre><code># A tibble: 184 x 11
    wage  educ race  sex   hispanic south married exper union   age sector  
   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt;   
 1  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical
@@ -638,16 +631,16 @@ Number(수)에 대해서도 적용 가능: ex. educ 수준 2, 3, … 18 각각�
 4  11       8 W     M     NH       NS    Married    42 Not      56 manuf   
 5  25.0    17 W     M     Hisp     NS    Married    18 Not      41 prof    
 6  20.4    17 W     M     NH       NS    Single      3 Not      26 prof    
-# … with 178 more rows</code></pre>
+# i 178 more rows</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div id="cell-20" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 임금(wage)가 10이상이고 여성(F)들</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wage <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> sex <span class="sc">==</span> <span class="st">"F"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wage <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="sc">&amp;</span> sex <span class="sc">==</span> <span class="st">"F"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 62 × 11
+<pre><code># A tibble: 62 x 11
    wage  educ race  sex   hispanic south married exper union   age sector  
   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt;   
 1  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical
@@ -656,16 +649,16 @@ Number(수)에 대해서도 적용 가능: ex. educ 수준 2, 3, … 18 각각�
 4  12.6    17 W     F     NH       NS    Married    13 Not      36 manag   
 5  11.7    16 W     F     NH       NS    Single     42 Not      64 clerical
 6  12.5    15 W     F     NH       NS    Married     6 Not      27 clerical
-# … with 56 more rows</code></pre>
+# i 56 more rows</code></pre>
 </div>
 </div>
-<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 간부급(management)과 전문직(professional)에 종사하는 사람들</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(sector <span class="sc">==</span> <span class="st">"manag"</span> <span class="sc">|</span> sector <span class="sc">==</span> <span class="st">"prof"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sector <span class="sc">==</span> <span class="st">"manag"</span> <span class="sc">|</span> sector <span class="sc">==</span> <span class="st">"prof"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 160 × 11
+<pre><code># A tibble: 160 x 11
    wage  educ race  sex   hispanic south married exper union   age sector
   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt; 
 1  25.0    17 W     M     Hisp     NS    Married    18 Not      41 prof  
@@ -674,18 +667,18 @@ Number(수)에 대해서도 적용 가능: ex. educ 수준 2, 3, … 18 각각�
 4  15      16 NW    M     NH       NS    Married    26 Union    48 manag 
 5  25.0    17 W     F     NH       NS    Single      5 Not      28 prof  
 6  10      14 W     M     NH       NS    Married    22 Not      42 prof  
-# … with 154 more rows</code></pre>
+# i 154 more rows</code></pre>
 </div>
 </div>
 <p>다음과 같이 편리하게 <code>%in%</code>을 이용하여 여러 항목을 포함하는, 즉 <code>|</code>와 <code>==</code>를 합친 조건문을 생성<br>
 즉, include인지 판별</p>
-<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A shorter way to select sectors for management or professional</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(sector <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"manag"</span>, <span class="st">"prof"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sector <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"manag"</span>, <span class="st">"prof"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 160 × 11
+<pre><code># A tibble: 160 x 11
    wage  educ race  sex   hispanic south married exper union   age sector
   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt; 
 1  25.0    17 W     M     Hisp     NS    Married    18 Not      41 prof  
@@ -694,7 +687,7 @@ Number(수)에 대해서도 적용 가능: ex. educ 수준 2, 3, … 18 각각�
 4  15      16 NW    M     NH       NS    Married    26 Union    48 manag 
 5  25.0    17 W     F     NH       NS    Single      5 Not      28 prof  
 6  10      14 W     M     NH       NS    Married    22 Not      42 prof  
-# … with 154 more rows</code></pre>
+# i 154 more rows</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -742,13 +735,13 @@ Tip
 <section id="arrange" class="level3">
 <h3 class="anchored" data-anchor-id="arrange"><code>arrange()</code></h3>
 <p>Column의 값을 기준으로 row를 정렬</p>
-<div id="cell-27" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="12">
+<div id="cell-27" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 교육정도(educ)와 임금(wage)에 따라 오름차순으로 정렬</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(educ, wage) <span class="sc">|&gt;</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(educ, wage) <span class="sc">|&gt;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 534 × 11
+<pre><code># A tibble: 534 x 11
     wage  educ race  sex   hispanic south married exper union   age sector 
    &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt;  
  1  3.75     2 W     M     Hisp     NS    Single     16 Not      24 service
@@ -761,17 +754,17 @@ Tip
  8  3.35     7 W     M     NH       S     Married    43 Not      56 manuf  
  9  4.5      7 W     M     Hisp     S     Married    14 Not      27 service
 10  6        7 W     F     NH       S     Married    15 Not      28 manuf  
-# … with 524 more rows</code></pre>
+# i 524 more rows</code></pre>
 </div>
 </div>
 <p><code>desc()</code>을 이용하면 내림차순으로 정렬</p>
-<div id="cell-29" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
+<div id="cell-29" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># educ을 내림차순으로 정렬</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(educ)) <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(educ)) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 534 × 11
+<pre><code># A tibble: 534 x 11
     wage  educ race  sex   hispanic south married exper union   age sector
    &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt; 
  1 15       18 W     M     NH       NS    Married    12 Not      36 prof  
@@ -784,18 +777,18 @@ Tip
  8 18       18 W     M     NH       NS    Married    15 Not      39 prof  
  9 19       18 W     M     NH       NS    Single     13 Not      37 manag 
 10 22.8     18 W     F     NH       NS    Single     37 Not      61 prof  
-# … with 524 more rows</code></pre>
+# i 524 more rows</code></pre>
 </div>
 </div>
 <p><code>arrange()</code>와 <code>filter()</code>를 함께 사용하여 좀 더 복잡한 문제를 해결할 수 있음</p>
-<div id="cell-31" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
+<div id="cell-31" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 높은 지위의 섹터에서 일하는 사람들 중 임금이 상위에 있는 사람들</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(sector <span class="sc">==</span> <span class="st">"manage"</span> <span class="sc">|</span> sector <span class="sc">==</span> <span class="st">"prof"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(wage)) <span class="sc">|&gt;</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sector <span class="sc">==</span> <span class="st">"manage"</span> <span class="sc">|</span> sector <span class="sc">==</span> <span class="st">"prof"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(wage)) <span class="sc">|&gt;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 105 × 11
+<pre><code># A tibble: 105 x 11
    wage  educ race  sex   hispanic south married exper union   age sector
   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt; 
 1  25.0    17 W     M     Hisp     NS    Married    18 Not      41 prof  
@@ -804,7 +797,7 @@ Tip
 4  25.0    16 W     F     NH       S     Single      5 Not      27 prof  
 5  23.2    17 NW    F     NH       NS    Married    25 Union    48 prof  
 6  22.8    18 W     F     NH       NS    Single     37 Not      61 prof  
-# … with 99 more rows</code></pre>
+# i 99 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -813,10 +806,10 @@ Tip
 <p>유티크한 조합들을 리스트</p>
 <div id="cell-33" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(sector, sex) <span class="sc">|&gt;</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(sector, sex) <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 15 × 2
+<pre><code># A tibble: 15 x 2
    sector   sex  
    &lt;fct&gt;    &lt;fct&gt;
  1 const    M    
@@ -845,7 +838,7 @@ Tip
 <section id="mutate" class="level3">
 <h3 class="anchored" data-anchor-id="mutate"><code>mutate()</code></h3>
 <p>Columns/변수들로부터 값을 계산하여 새로운 변수를 만듦</p>
-<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>tips <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(reshape<span class="sc">::</span>tips) <span class="co"># reshpae 패키지 안에 tips 데이터셋</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -861,15 +854,15 @@ Tip
 # i 238 more rows</code></pre>
 </div>
 </div>
-<div id="cell-37" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="17">
+<div id="cell-37" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">tip_pct =</span> tip <span class="sc">/</span> total_bill <span class="sc">*</span> <span class="dv">100</span>,</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">tip_pct_per =</span> tip_pct <span class="sc">/</span> size</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">tip_pct =</span> tip <span class="sc">/</span> total_bill <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">tip_pct_per =</span> tip_pct <span class="sc">/</span> size</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 244 × 9
+<pre><code># A tibble: 244 x 9
   total_bill   tip sex    smoker day   time    size tip_pct tip_pct_per
        &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;  &lt;int&gt;   &lt;dbl&gt;       &lt;dbl&gt;
 1       17.0  1.01 Female No     Sun   Dinner     2    5.94        2.97
@@ -878,19 +871,19 @@ Tip
 4       23.7  3.31 Male   No     Sun   Dinner     2   14.0         6.99
 5       24.6  3.61 Female No     Sun   Dinner     4   14.7         3.67
 6       25.3  4.71 Male   No     Sun   Dinner     4   18.6         4.66
-# … with 238 more rows</code></pre>
+# i 238 more rows</code></pre>
 </div>
 </div>
 </section>
 <section id="select" class="level3">
 <h3 class="anchored" data-anchor-id="select"><code>select()</code></h3>
 <p>Columns/변수를 선택</p>
-<div id="cell-39" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="18">
+<div id="cell-39" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(total_bill, tip, day, time) <span class="sc">|&gt;</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(total_bill, tip, day, time) <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 244 × 4
+<pre><code># A tibble: 244 x 4
   total_bill   tip day   time  
        &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt; 
 1       17.0  1.01 Sun   Dinner
@@ -899,16 +892,16 @@ Tip
 4       23.7  3.31 Sun   Dinner
 5       24.6  3.61 Sun   Dinner
 6       25.3  4.71 Sun   Dinner
-# … with 238 more rows</code></pre>
+# i 238 more rows</code></pre>
 </div>
 </div>
-<div id="cell-40" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
+<div id="cell-40" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tip에서 smoker까지, 그리고 size columns 선택</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(tip<span class="sc">:</span>smoker, size) <span class="sc">|&gt;</span>  <span class="co"># select(2:4, 7)처럼 number로 선택가능</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tip<span class="sc">:</span>smoker, size) <span class="sc">|&gt;</span> <span class="co"># select(2:4, 7)처럼 number로 선택가능</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 244 × 4
+<pre><code># A tibble: 244 x 4
     tip sex    smoker  size
   &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;  &lt;int&gt;
 1  1.01 Female No         2
@@ -917,16 +910,16 @@ Tip
 4  3.31 Male   No         2
 5  3.61 Female No         4
 6  4.71 Male   No         4
-# … with 238 more rows</code></pre>
+# i 238 more rows</code></pre>
 </div>
 </div>
-<div id="cell-41" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
+<div id="cell-41" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sex에서 day까지 columns은 제외하고</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">!</span>sex<span class="sc">:</span>day) <span class="sc">|&gt;</span> <span class="co"># !: not</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>sex<span class="sc">:</span>day) <span class="sc">|&gt;</span> <span class="co"># !: not</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 244 × 4
+<pre><code># A tibble: 244 x 4
   total_bill   tip time    size
        &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;int&gt;
 1       17.0  1.01 Dinner     2
@@ -935,16 +928,16 @@ Tip
 4       23.7  3.31 Dinner     2
 5       24.6  3.61 Dinner     4
 6       25.3  4.71 Dinner     4
-# … with 238 more rows</code></pre>
+# i 238 more rows</code></pre>
 </div>
 </div>
-<div id="cell-42" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
+<div id="cell-42" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factor 타입의 변수들만 선택: 함수를 이용</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">where</span>(is.factor)) <span class="sc">|&gt;</span>  <span class="co"># 다른 함수들: is.numeric, is.character</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.factor)) <span class="sc">|&gt;</span> <span class="co"># 다른 함수들: is.numeric, is.character</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 244 × 4
+<pre><code># A tibble: 244 x 4
   sex    smoker day   time  
   &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; 
 1 Female No     Sun   Dinner
@@ -953,7 +946,7 @@ Tip
 4 Male   No     Sun   Dinner
 5 Female No     Sun   Dinner
 6 Male   No     Sun   Dinner
-# … with 238 more rows</code></pre>
+# i 238 more rows</code></pre>
 </div>
 </div>
 <p>다양한 <code>select()</code>의 선택방법은 ?select로 help참고<br>
@@ -987,7 +980,7 @@ Note
 <section id="relocate" class="level3">
 <h3 class="anchored" data-anchor-id="relocate"><code>relocate()</code></h3>
 <p>Columns의 순서를 변경</p>
-<div id="cell-46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
+<div id="cell-46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span> <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 244 x 7
@@ -998,10 +991,10 @@ Note
 # i 242 more rows</code></pre>
 </div>
 </div>
-<div id="cell-47" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span> </span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(day, time) <span class="sc">|&gt;</span>  <span class="co"># day, time을 맨 앞으로 이동</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-47" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(day, time) <span class="sc">|&gt;</span> <span class="co"># day, time을 맨 앞으로 이동</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 244 x 7
   day   time   total_bill   tip sex    smoker  size
@@ -1011,10 +1004,10 @@ Note
 # i 242 more rows</code></pre>
 </div>
 </div>
-<div id="cell-48" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span> </span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(sex<span class="sc">:</span>time, tip) <span class="sc">|&gt;</span>  <span class="co"># sex부터 time까지와 tip을 맨 앞으로 이동</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-48" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(sex<span class="sc">:</span>time, tip) <span class="sc">|&gt;</span> <span class="co"># sex부터 time까지와 tip을 맨 앞으로 이동</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 244 x 7
   sex    smoker day   time     tip total_bill  size
@@ -1024,10 +1017,10 @@ Note
 # i 242 more rows</code></pre>
 </div>
 </div>
-<div id="cell-49" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span> </span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(day<span class="sc">:</span>size, <span class="at">.after =</span> tip) <span class="sc">|&gt;</span>   <span class="co"># .before: 앞에, .after: 뒤에</span></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-49" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>tips <span class="sc">|&gt;</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(day<span class="sc">:</span>size, <span class="at">.after =</span> tip) <span class="sc">|&gt;</span> <span class="co"># .before: 앞에, .after: 뒤에</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 244 x 7
   total_bill   tip day   time    size sex    smoker
@@ -1041,12 +1034,12 @@ Note
 <section id="rename" class="level3">
 <h3 class="anchored" data-anchor-id="rename"><code>rename()</code></h3>
 <p>Columns의 이름을 변경</p>
-<div id="cell-51" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="22">
+<div id="cell-51" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">education =</span> educ, <span class="at">marital =</span> married) <span class="sc">|&gt;</span> <span class="co"># new = old</span></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">education =</span> educ, <span class="at">marital =</span> married) <span class="sc">|&gt;</span> <span class="co"># new = old</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 534 × 11
+<pre><code># A tibble: 534 x 11
    wage education race  sex   hispanic south marital exper union   age sector  
   &lt;dbl&gt;     &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt;   
 1   9          10 W     M     NH       NS    Married    27 Not      43 const   
@@ -1055,16 +1048,16 @@ Note
 4  10.5        12 W     F     NH       NS    Married    29 Not      47 clerical
 5  15          12 W     M     NH       NS    Married    40 Union    58 const   
 6   9          16 W     F     NH       NS    Married    27 Not      49 clerical
-# … with 528 more rows</code></pre>
+# i 528 more rows</code></pre>
 </div>
 </div>
 <p>변수를 select할 때 동시에 이름도 바꿀 수 있음</p>
-<div id="cell-53" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
+<div id="cell-53" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="at">education =</span> educ, <span class="at">marital =</span> married) <span class="sc">|&gt;</span> <span class="co"># new = old</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">education =</span> educ, <span class="at">marital =</span> married) <span class="sc">|&gt;</span> <span class="co"># new = old</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 534 × 2
+<pre><code># A tibble: 534 x 2
   education marital
       &lt;int&gt; &lt;fct&gt;  
 1        10 Married
@@ -1073,7 +1066,7 @@ Note
 4        12 Married
 5        12 Married
 6        16 Married
-# … with 528 more rows</code></pre>
+# i 528 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -1087,12 +1080,12 @@ Note
 <p>데이터셋을 분석을 위해 의미있는 그룹으로 나눔</p>
 <p>다음은 성별로 데이터셋을 나눈 것인데, 실제 데이터를 수정하는 것은 아니고, 내부적으로 grouping되어 있음.<br>
 맨 위 줄에 보면 <code>Groups:  sex [2]</code>로 표시되어 grouped data frame임을 명시함</p>
-<div id="cell-57" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
+<div id="cell-57" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span> </span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 534 × 11
+<pre><code># A tibble: 534 x 11
 # Groups:   sex [2]
    wage  educ race  sex   hispanic south married exper union   age sector  
   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt; &lt;fct&gt;   
@@ -1102,7 +1095,7 @@ Note
 4  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical
 5  15      12 W     M     NH       NS    Married    40 Union    58 const   
 6   9      16 W     F     NH       NS    Married    27 Not      49 clerical
-# … with 528 more rows</code></pre>
+# i 528 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -1110,17 +1103,17 @@ Note
 <h3 class="anchored" data-anchor-id="summarise"><code>summarise()</code></h3>
 <p><code>summarize()</code>와 동일<br>
 group별로 통계치를 구해 하나의 행으로 산출</p>
-<div id="cell-59" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
+<div id="cell-59" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 남녀별로 임금의 평균을 구함</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">avg_wage =</span> <span class="fu">mean</span>(wage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),  <span class="co"># mean(): 평균, na.rm: NA를 remove할 것인가</span></span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">n =</span> <span class="fu">n</span>()  <span class="co"># n(): 개수</span></span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_wage =</span> <span class="fu">mean</span>(wage, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># mean(): 평균, na.rm: NA를 remove할 것인가</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>() <span class="co"># n(): 개수</span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
+<pre><code># A tibble: 2 x 3
   sex   avg_wage     n
   &lt;fct&gt;    &lt;dbl&gt; &lt;int&gt;
 1 F         7.88   245
@@ -1128,19 +1121,20 @@ group별로 통계치를 구해 하나의 행으로 산출</p>
 </div>
 </div>
 <p>2개 이상의 변수들로 grouping할 수 있음</p>
-<div id="cell-61" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="26">
+<div id="cell-61" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(sex, married) <span class="sc">|&gt;</span></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ave_wage =</span> <span class="fu">mean</span>(wage),</span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">sd_wage =</span> <span class="fu">sd</span>(wage)) <span class="sc">|&gt;</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, married) <span class="sc">|&gt;</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ave_wage =</span> <span class="fu">mean</span>(wage),</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_wage =</span> <span class="fu">sd</span>(wage)</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'sex'. You can override using the `.groups`
 argument.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
+<pre><code># A tibble: 4 x 4
 # Groups:   sex [2]
   sex   married ave_wage sd_wage
   &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;   &lt;dbl&gt;
@@ -1189,10 +1183,10 @@ grouping을 해제하려면 <code>ungroup()</code>이 필요함.<br>
 <li>실제로 조건문의 결과는 TRUE, FALSE로 이루어지짐</li>
 </ul>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">one =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="cn">NA</span>), </span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">two =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">10</span>, <span class="cn">NA</span>), </span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">three =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"b"</span>)</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">one =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="cn">NA</span>), </span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">two =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">10</span>, <span class="cn">NA</span>), </span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">three =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"b"</span>)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>df</span>
 <span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     one   two three</span></span>
 <span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;</span></span>
@@ -1239,12 +1233,12 @@ grouping을 해제하려면 <code>ungroup()</code>이 필요함.<br>
 <span id="cb68-49"><a href="#cb68-49" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>na.rm = TRUE</code>로 얻은 계산값에서 몇 개의 데이터로 계산되었는지 알기 위해서는</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">|&gt;</span> </span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    group_by(three) <span class="op">|&gt;</span> </span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    summarise(</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>        ave <span class="op">=</span> mean(two, na.rm <span class="op">=</span> TRUE), </span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> n(), </span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>        n_notna <span class="op">=</span> <span class="bu">sum</span>(<span class="op">!</span><span class="kw">is</span>.na(two))  <span class="co"># TRUE는 1로, FALSE는 0으로 계산됨</span></span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  group_by(three) <span class="op">|&gt;</span> </span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  summarise(</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>      ave <span class="op">=</span> mean(two, na.rm <span class="op">=</span> TRUE), </span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>      n <span class="op">=</span> n(), </span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>      n_notna <span class="op">=</span> <span class="bu">sum</span>(<span class="op">!</span><span class="kw">is</span>.na(two))  <span class="co"># TRUE는 1로, FALSE는 0으로 계산됨</span></span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   three   ave     n n_notna</span></span>
 <span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   &lt;chr&gt; &lt;dbl&gt; &lt;int&gt;   &lt;int&gt;</span></span>
 <span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 a      3.33     4       3</span></span>

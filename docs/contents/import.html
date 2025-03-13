@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sungkyun Cho">
 <meta name="dcterms.date" content="2023-02-17">
 
 <title>Import –  CHA Statistics in R</title>
@@ -73,12 +72,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-12896e8dc30ce81e00b132f57ec535bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-12896e8dc30ce81e00b132f57ec535bf.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0bbb64b4a1e49b1e976a097d291c12e3.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fa0b399ecf8f97af4bef71fc0a0b9ef2.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8c2a554fa25fe1e5300a2bc813b3e9f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-b3891df1003e29f2b049059d236db6bf.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cc856a340135e8ae090ba9ee20c68339.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-77203ff250d404907a53d7991494cb80.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -363,12 +362,6 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Sungkyun Cho </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -397,26 +390,23 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 <section id="csv-파일-읽기" class="level3">
 <h3 class="anchored" data-anchor-id="csv-파일-읽기">csv 파일 읽기</h3>
 <p><a href="https://www.dropbox.com/s/fvuoi6jev84bnkc/altruism.csv?dl=1">altruism.csv 파일 링크</a></p>
-<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
+<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/altruism.csv"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 12
-      id pho_1 pho_2 pho_3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1   250    95    95    95     1  2004      80      NA      80      80      70
- 2    32    58    62    NA     0  2003      62      58      59      57      56
- 3   109   100    50    50    NA  2003      90      51      51      51      52
- 4   209    77    77    64     1  2004      66      72      88      82      67
- 5    94    77    50    77     1  2003     100     100     100      51      78
- 6   260   100    75   100     0  2004     100      60      70      55      70
- 7   258    77    94    86     1  2004      91      93      85      91      73
- 8   244    90    68    20     0  2004      67      66      31      67      63
- 9   180   100    79    77     0  2003      61      51      30      51      51
-10   182    75    50    64     1  2003      80      80      70      65      70
-# … with 110 more rows, and 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 120 x 12
+     id pho_1 pho_2 pho_3   sex   age emp_q20 emp_q22 emp_q23 emp_q24 emp_q25
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1     1    95    95    95     1  2004      80      NA      80      80      70
+2     2    58    62    NA     0  2003      62      58      59      57      56
+3     3   100    50    50    NA  2003      90      51      51      51      52
+4     4    77    77    64     1  2004      66      72      88      82      67
+5     5    NA    NA    NA    NA    NA      NA      NA      NA      NA      NA
+6     6   100    75   100     0  2004     100      60      70      55      70
+# i 114 more rows
+# i 1 more variable: emp_q26 &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -439,7 +429,7 @@ Note
 <h3 class="anchored" data-anchor-id="csv-파일-쓰기">csv 파일 쓰기</h3>
 <p><code>write_csv()</code>: 단, 쓰기를 하면서 변수 타입 소멸</p>
 <div id="cell-7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(helping, <span class="at">file=</span><span class="st">"data/helping_new.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(helping, <span class="at">file =</span> <span class="st">"data/helping_new.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -450,13 +440,16 @@ Note
 <section id="엑셀-파일-읽기" class="level3">
 <h3 class="anchored" data-anchor-id="엑셀-파일-읽기">엑셀 파일 읽기</h3>
 <p><a href="https://www.dropbox.com/s/f5z7vu8is2fbnvt/students.xlsx?dl=1">stduents.xlsx 파일 링크</a></p>
-<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># install.packages("readxl")</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>stud <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/students.xlsx"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>stud <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>stud <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/students.xlsx"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>stud <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"data/students.xlsx"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>stud <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,000 × 93
+<pre><code># A tibble: 1,000 x 93
   stu_id sch_id sstratid   sex  race ethnic bys42a bys42b bys44a bys44b bys44c
    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 1 124966   1249        1     2     4      1      3      4      2      4      4
@@ -465,13 +458,13 @@ Note
 4 180660   1806        1     1     4      1      2     NA      1      4      4
 5 180672   1806        1     2     4      1      2      3      1      4      3
 6 298885   2988        2     1     3      0      5      4      2      3      3
-# … with 994 more rows, and 82 more variables: bys44d &lt;dbl&gt;, bys44e &lt;dbl&gt;,
-#   bys44f &lt;dbl&gt;, bys44g &lt;dbl&gt;, bys44h &lt;dbl&gt;, bys44i &lt;dbl&gt;, bys44j &lt;dbl&gt;,
-#   bys44k &lt;dbl&gt;, bys44l &lt;dbl&gt;, bys44m &lt;dbl&gt;, bys48a &lt;dbl&gt;, bys48b &lt;dbl&gt;,
-#   bys79a &lt;dbl&gt;, byfamsiz &lt;dbl&gt;, famcomp &lt;dbl&gt;, bygrads &lt;dbl&gt;, byses &lt;dbl&gt;,
-#   byfaminc &lt;dbl&gt;, parocc &lt;dbl&gt;, bytxrstd &lt;dbl&gt;, bytxmstd &lt;dbl&gt;,
-#   bytxsstd &lt;dbl&gt;, bytxhstd &lt;dbl&gt;, bypared &lt;dbl&gt;, bytests &lt;dbl&gt;,
-#   par_inv &lt;dbl&gt;, f1s36a1 &lt;dbl&gt;, f1s36a2 &lt;dbl&gt;, f1s36b1 &lt;dbl&gt;, …</code></pre>
+# i 994 more rows
+# i 82 more variables: bys44d &lt;dbl&gt;, bys44e &lt;dbl&gt;, bys44f &lt;dbl&gt;, bys44g &lt;dbl&gt;,
+#   bys44h &lt;dbl&gt;, bys44i &lt;dbl&gt;, bys44j &lt;dbl&gt;, bys44k &lt;dbl&gt;, bys44l &lt;dbl&gt;,
+#   bys44m &lt;dbl&gt;, bys48a &lt;dbl&gt;, bys48b &lt;dbl&gt;, bys79a &lt;dbl&gt;, byfamsiz &lt;dbl&gt;,
+#   famcomp &lt;dbl&gt;, bygrads &lt;dbl&gt;, byses &lt;dbl&gt;, byfaminc &lt;dbl&gt;, parocc &lt;dbl&gt;,
+#   bytxrstd &lt;dbl&gt;, bytxmstd &lt;dbl&gt;, bytxsstd &lt;dbl&gt;, bytxhstd &lt;dbl&gt;,
+#   bypared &lt;dbl&gt;, bytests &lt;dbl&gt;, par_inv &lt;dbl&gt;, f1s36a1 &lt;dbl&gt;, ...</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -495,26 +488,25 @@ Note
 <h2 class="anchored" data-anchor-id="statistical-packages">Statistical packages</h2>
 <p>SPSS의 데이터: <code>read_sav()</code></p>
 <p><a href="https://www.dropbox.com/s/jwda3wib8dbf9rx/students-shorter.sav?dl=1">students-shorter.sav 파일 링크</a></p>
-<div id="cell-13" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div id="cell-13" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="co"># install.packages("haven")</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>stud_spss <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"data/students-shorter.sav"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>stud_spss <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>stud_spss <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"data/students-shorter.sav"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 또는</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>stud_spss <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_sav</span>(<span class="st">"data/students-shorter.sav"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>stud_spss <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 x 93
-   stu_id    sch_id   sstratid sex     race    ethnic  bys42a   bys42b   bys44a 
-   &lt;dbl+lbl&gt; &lt;dbl+lb&gt; &lt;dbl+lb&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+lb&gt; &lt;dbl+lb&gt; &lt;dbl+l&gt;
- 1 124966    1249     1        2 [Fem~ 4 [Whi~ 1 [whi~  3 [2-3~  4 [3-4~ 2 [Agr~
- 2 124972    1249     1        1 [Mal~ 4 [Whi~ 1 [whi~  4 [3-4~  5 [4-5~ 1 [Str~
- 3 175551    1755     1        2 [Fem~ 3 [Bla~ 0 [blk~ NA        3 [2-3~ 2 [Agr~
- 4 180660    1806     1        1 [Mal~ 4 [Whi~ 1 [whi~  2 [1-2~ NA       1 [Str~
- 5 180672    1806     1        2 [Fem~ 4 [Whi~ 1 [whi~  2 [1-2~  3 [2-3~ 1 [Str~
- 6 298885    2988     2        1 [Mal~ 3 [Bla~ 0 [blk~  5 [4-5~  4 [3-4~ 2 [Agr~
- 7 604419    6044     6        2 [Fem~ 4 [Whi~ 1 [whi~  4 [3-4~  5 [4-5~ 2 [Agr~
- 8 605355    6053     6        2 [Fem~ 4 [Whi~ 1 [whi~  2 [1-2~  3 [2-3~ 1 [Str~
- 9 605377    6053     6        2 [Fem~ 4 [Whi~ 1 [whi~  3 [2-3~  5 [4-5~ 2 [Agr~
-10 637529    6375     6        1 [Mal~ 3 [Bla~ 0 [blk~  5 [4-5~  6 [Ove~ 2 [Agr~
-# i 990 more rows
+  stu_id    sch_id    sstratid sex     race    ethnic  bys42a   bys42b   bys44a 
+  &lt;dbl+lbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lb&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+lb&gt; &lt;dbl+lb&gt; &lt;dbl+l&gt;
+1 124966    1249      1        2 [Fem~ 4 [Whi~ 1 [whi~  3 [2-3~  4 [3-4~ 2 [Agr~
+2 124972    1249      1        1 [Mal~ 4 [Whi~ 1 [whi~  4 [3-4~  5 [4-5~ 1 [Str~
+3 175551    1755      1        2 [Fem~ 3 [Bla~ 0 [blk~ NA        3 [2-3~ 2 [Agr~
+4 180660    1806      1        1 [Mal~ 4 [Whi~ 1 [whi~  2 [1-2~ NA       1 [Str~
+5 180672    1806      1        2 [Fem~ 4 [Whi~ 1 [whi~  2 [1-2~  3 [2-3~ 1 [Str~
+6 298885    2988      2        1 [Mal~ 3 [Bla~ 0 [blk~  5 [4-5~  4 [3-4~ 2 [Agr~
+# i 994 more rows
 # i 84 more variables: bys44b &lt;dbl+lbl&gt;, bys44c &lt;dbl+lbl&gt;, bys44d &lt;dbl+lbl&gt;,
 #   bys44e &lt;dbl+lbl&gt;, bys44f &lt;dbl+lbl&gt;, bys44g &lt;dbl+lbl&gt;, bys44h &lt;dbl+lbl&gt;,
 #   bys44i &lt;dbl+lbl&gt;, bys44j &lt;dbl+lbl&gt;, bys44k &lt;dbl+lbl&gt;, bys44l &lt;dbl+lbl&gt;,
@@ -523,10 +515,10 @@ Note
 #   byfaminc &lt;dbl+lbl&gt;, parocc &lt;dbl&gt;, bytxrstd &lt;dbl+lbl&gt;, ...</code></pre>
 </div>
 </div>
-<div id="cell-14" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div id="cell-14" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>stud_spss <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(ethnic) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ethnic) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 x 1
   ethnic            
@@ -540,16 +532,34 @@ Note
 # i 994 more rows</code></pre>
 </div>
 </div>
-<p><a href="https://cran.r-project.org/web/packages/labelled/vignettes/intro_labelled.html">labelled 데이터 참고</a></p>
-<div id="cell-16" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"labelled"</span>)</span>
+<p><a href="https://larmarange.github.io/labelled/">labelled 데이터 참고</a></p>
+<div id="cell-16" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("labelled")</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(labelled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-17" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># labelled 변수를 factor로 변환</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>stud_spss <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unlabelled</span>() <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># label 확인</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">val_labels</span>(stud_spss<span class="sc">$</span>race) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Asian/Pacific islndr             Hispanic   Black not Hispanic 
+                   1                    2                    3 
+  White not Hispanic   Amer ind/AK Native              MISSING 
+                   4                    5                    8 </code></pre>
+</div>
+</div>
+<div id="cell-18" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># label 확인</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">val_labels</span>(stud_spss<span class="sc">$</span>ethnic) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>blk,namer,hisp    white-asian        missing 
+             0              1              8 </code></pre>
+</div>
+</div>
+<div id="cell-19" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># labelled 변수를 factor로 변환</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>stud <span class="ot">&lt;-</span> stud_spss <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlabelled</span>()</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>stud <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 x 93
   stu_id sch_id sstratid sex    race   ethnic bys42a bys42b bys44a bys44b bys44c
@@ -569,11 +579,25 @@ Note
 #   bypared &lt;fct&gt;, bytests &lt;dbl&gt;, par_inv &lt;dbl&gt;, f1s36a1 &lt;fct&gt;, ...</code></pre>
 </div>
 </div>
+<div id="cell-20" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>stud <span class="sc">|&gt;</span> <span class="fu">count</span>(race) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 x 2
+  race                     n
+  &lt;fct&gt;                &lt;int&gt;
+1 Asian/Pacific islndr    61
+2 Hispanic               114
+3 Black not Hispanic     100
+4 White not Hispanic     704
+5 Amer ind/AK Native      10
+6 NA                      11</code></pre>
+</div>
+</div>
 <p>Labels 제거하기</p>
-<div id="cell-19" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>stud <span class="ot">&lt;-</span> stud_spss <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">remove_val_labels</span>()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>stud <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>stud2 <span class="ot">&lt;-</span> stud_spss <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_val_labels</span>()</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>stud2 <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 x 93
   stu_id sch_id sstratid   sex  race ethnic bys42a bys42b bys44a bys44b bys44c

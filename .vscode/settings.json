@@ -1,5 +1,7 @@
 {
     "[quarto]": {
         "editor.snippetSuggestions": "inline"
-    }
+    },
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
 }
