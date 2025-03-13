@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-02-17">
+<meta name="dcterms.date" content="2025-03-13">
 
 <title>Import –  CHA Statistics in R</title>
 <style>
@@ -366,7 +366,7 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 17, 2023</p>
+      <p class="date">March 13, 2025</p>
     </div>
   </div>
   
@@ -390,10 +390,10 @@ gtag('config', 'G-3JGE58SZ6T', { 'anonymize_ip': true});
 <section id="csv-파일-읽기" class="level3">
 <h3 class="anchored" data-anchor-id="csv-파일-읽기">csv 파일 읽기</h3>
 <p><a href="https://www.dropbox.com/s/fvuoi6jev84bnkc/altruism.csv?dl=1">altruism.csv 파일 링크</a></p>
-<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/altruism.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>helping <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/altruism.csv"</span>)  <span class="co"># tidyverse 패키지의 함수</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>helping <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 120 x 12
@@ -440,7 +440,7 @@ Note
 <section id="엑셀-파일-읽기" class="level3">
 <h3 class="anchored" data-anchor-id="엑셀-파일-읽기">엑셀 파일 읽기</h3>
 <p><a href="https://www.dropbox.com/s/f5z7vu8is2fbnvt/students.xlsx?dl=1">stduents.xlsx 파일 링크</a></p>
-<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div id="cell-10" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># install.packages("readxl")</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>stud <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"data/students.xlsx"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
