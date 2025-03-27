@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-03-13">
+<meta name="dcterms.date" content="2025-03-27">
 
 <title>Overview –  CHA Statistics in R</title>
 <style>
@@ -347,7 +347,13 @@ window.Quarto = {
   </ul></li>
   <li><a href="#causal-인과관계의-분석" id="toc-causal-인과관계의-분석" class="nav-link" data-scroll-target="#causal-인과관계의-분석">Causal: 인과관계의 분석</a>
   <ul>
-  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a></li>
+  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding">Confounding</a>
+  <ul class="collapse">
+  <li><a href="#common-causefork" id="toc-common-causefork" class="nav-link" data-scroll-target="#common-causefork"><strong>Common cause/Fork</strong></a></li>
+  <li><a href="#colliderimmorality" id="toc-colliderimmorality" class="nav-link" data-scroll-target="#colliderimmorality"><strong>Collider/Immorality</strong></a></li>
+  <li><a href="#mediationschainsmechanisms" id="toc-mediationschainsmechanisms" class="nav-link" data-scroll-target="#mediationschainsmechanisms"><strong>Mediations/Chains(Mechanisms)</strong></a></li>
+  </ul></li>
+  <li><a href="#directed-acyclic-graph-dag" id="toc-directed-acyclic-graph-dag" class="nav-link" data-scroll-target="#directed-acyclic-graph-dag">Directed acyclic graph (DAG)</a></li>
   <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias">Selection Bias</a></li>
   <li><a href="#experimental-study" id="toc-experimental-study" class="nav-link" data-scroll-target="#experimental-study">Experimental study</a></li>
   <li><a href="#case-1-1" id="toc-case-1-1" class="nav-link" data-scroll-target="#case-1-1">Case 1</a></li>
@@ -377,7 +383,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 13, 2025</p>
+      <p class="date">March 27, 2025</p>
     </div>
   </div>
   
@@ -717,7 +723,8 @@ Answer!
 </div>
 </div>
 </div>
-<p><strong>Common cause/Fork</strong></p>
+<section id="common-causefork" class="level4">
+<h4 class="anchored" data-anchor-id="common-causefork"><strong>Common cause/Fork</strong></h4>
 <p>맨 처음 든 예도 마찬가지로   <img src="images/path3.png" class="img-fluid" width="210"></p>
 <p>올바른 관계를 파악하려면, 동일한 나이에 대해 그 관계를 파악한 후 각 나이에서의 효과를 (weighted) 평균해서 살펴봐야함</p>
 <p>통계에서는 이를 나이를 <strong>통제 (control for age)</strong>한다고 표현하며, 같은 의미로 다음과 같은 표현을 씀<br>
@@ -781,12 +788,40 @@ Yes and No!</p>
 </div>
 <p>관찰 데이터로부터 진정한 관계를 파악하기 위해서는 이와 같은 <strong>인과 추론</strong>이라는 좀 더 큰 프레임에서 분석해야 하며, 통계 안에서 해결하기 어려움.<br>
 예를 들어, <strong>collider</strong>인 경우 통제하면 spurious association이 생길 수 있음.</p>
-<p>운동능력이 뛰어나면 지능이 떨어지는가? <br></p>
-<p><img src="images/collider.png" class="img-fluid" width="300"></p>
+</section>
+<section id="colliderimmorality" class="level4">
+<h4 class="anchored" data-anchor-id="colliderimmorality"><strong>Collider/Immorality</strong></h4>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>운동능력이 뛰어나면 지능이 떨어지는가?</strong><br>
+<img src="images/collider.png" class="img-fluid" width="250"></p>
+</div><div class="column" style="width:50%;">
+<p><strong>미모가 뛰어나면 연기력이 떨어지는가?</strong><br>
+<img src="images/collider3.png" class="img-fluid" width="250"></p>
+</div>
+</div>
+</section>
+<section id="mediationschainsmechanisms" class="level4">
+<h4 class="anchored" data-anchor-id="mediationschainsmechanisms"><strong>Mediations/Chains(Mechanisms)</strong></h4>
+<ul>
+<li>1990년대 최악의 시카고 공립학교의 개혁 정책</li>
+<li>고1에서 보충 과목을 없애고, 대학 진학 준비 과목을 수강하도록 함.</li>
+<li>이 중 대수 1 과목(“Algebra for All”)의 경우 3년 간 유의한 성적 개선이 없었음.</li>
+<li>Guanglei Hong(시카고대 인간발달)은 정책의 직접적 효과는 존재한다고 판별했음!
+<ul>
+<li>정책이 두 가지 방식으로 (다른 방향으로) 작용했음.</li>
+<li>이후 “Double-Dose Algebra”으로 개선했음.<br>
+<img src="images/bookofwhy-fig-9-10.png" class="img-fluid" width="320"></li>
+</ul></li>
+</ul>
 <p><strong>학생들의 과제는 성적에 영향을 주는가?</strong><br>
 Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
 <p><img src="images/path4.png" class="img-fluid" width="450"></p>
-<p><strong>Directed acyclic graph (DAG): 인과 관계 다이어그램</strong></p>
+</section>
+</section>
+<section id="directed-acyclic-graph-dag" class="level3">
+<h3 class="anchored" data-anchor-id="directed-acyclic-graph-dag">Directed acyclic graph (DAG)</h3>
+<p>인과 관계 다이어그램</p>
 <p><img src="images/DAG.png" class="img-fluid" width="830"></p>
 <div style="line-height: 1.5em; font-size: .9em">
 <p>Source: <em>Causality: Models, Reasoning, and Inference (2000) by Judea Pearl</em></p>
@@ -794,34 +829,53 @@ Source: <em>National Education Longitudinal Study of 1988 (NELS:88)</em></p>
 </section>
 <section id="selection-bias" class="level3">
 <h3 class="anchored" data-anchor-id="selection-bias">Selection Bias</h3>
-<p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding, internal validity)<br>
-일반화할 수 있는 대상의 범위가 제한됨(external validity)</p>
+<p>수집된 데이터의 특성에 따라 인과추론을 방해하거나(confounding); internal validity(내적 타당도)<br>
+일반화할 수 있는 대상의 범위가 제한됨; external validity(외적 타당도)</p>
 <ul>
 <li>노인에 관한 데이터: 누가 사망했는가?
 <ul>
 <li>Survival bias: 일종의 collider bias</li>
-<li>예를 들어, 비만이 사망율에 미치는 효과에 대한 추정치에 대한 오류</li>
+<li>예를 들어, 비만이 사망율에 미치는 효과에 대한 과소추정<br>
+<img src="images/collider-life-expectancy.png" class="img-fluid" width="320"></li>
 </ul></li>
-<li>과거 기록을 이용?; 수녀들의 기록 연구</li>
+<li>의료 분야에서 발견되는 패러독스
+<ul>
+<li>비만은 당뇨 환자에게 이익이 되는가?</li>
+</ul></li>
+<li>과거 기록을 이용?; 수녀들의 자서전 연구
+<ul>
+<li>추적조사/종단연구(longitudinal study)</li>
+</ul></li>
 <li>회사 구성원에 대한 조사: 근속년수에 따른 샘플 속성의 변화</li>
 <li>누가 참여(안)했는가? 어떤 방식으로 참여했는가?
 <ul>
 <li>관측되지 않은 데이터: 어떤 사람/대상이 왜 누락되었는가?</li>
-<li>“Where are the missing holes?” by Abraham Wald <img src="images/missing-holes.png" class="img-fluid" width="400"><br>
-<a href="https://www.warhistoryonline.com/war-articles/abraham-wald.html">Source: War History Online</a></li>
+<li>어떤 사람들이 설문/실험에 참여했는가? 혹은 어떤 문항에 응답했는가?/하지 않았는가?</li>
 </ul></li>
-<li>어떤 유저들의 데이터인가?: SNS의 기록은 누가 남기는가?</li>
-<li>코호트/특정세대의 특성: 그들의 특성인가?</li>
+<li>어떤 유저들의 데이터인가? 가령, SNS의 기록은 누가 남기는가?</li>
+<li>코호트/특정세대의 특성: 그들만의 특성인가?</li>
 </ul>
+<div style="line-height: 1.5em; font-size: .9em">
+<blockquote class="blockquote">
+<p><em>Abraham Wald: “Where are the missing holes?”</em></p>
+<p><img src="images/missing-holes.png" class="img-fluid" width="400"></p>
+<p><a href="https://www.warhistoryonline.com/war-articles/abraham-wald.html">Source: War History Online</a></p>
+</blockquote>
+</div>
 <hr>
 </section>
 <section id="experimental-study" class="level3">
 <h3 class="anchored" data-anchor-id="experimental-study">Experimental study</h3>
 <p>앞서 살펴본 관찰 연구들이 모두 confounding의 위험을 안고 있기에 결정적인 인과관계를 파악하기 위해, 전통적으로 “통계학”의 시각에서 인과문제에 대해서는 보통 임상테스트에서 실시하는 RCT (randomized controlled trial)라고 부르는 소위 gold standard한 <strong>실험 연구</strong>를 통해서 해결하고자 했음<br>
-개념적으로는 <strong>물리적 통제</strong>라고 볼 수 있으며, 두 그룹으로 집단을 <strong>randomly assign</strong>(무선/무작위 배정/할당)하면 모든 면에서 동질한 성향을 가짐. 예를 들어, 두 집단의 연령이 평균적으로 동일해짐.<br>
-<br></p>
-<p><img src="images/RCT.png" class="img-fluid" width="400"></p>
-<p>Source: <a href="https://blogs.kcl.ac.uk/behaviouralinsights/2017/11/20/the-whats-and-whys-of-rcts-part-1/"><em>The whats and whys of RCTs</em></a></p>
+개념적으로는 <strong>물리적 통제</strong>라고 볼 수 있으며, 두 그룹으로 집단을 <strong>randomly assign</strong>(무선/무작위 배정/할당)하면 모든 면에서 동질한 성향을 가짐. 예를 들어, 두 집단의 연령이 평균적으로 동일해짐.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="images/RCT.png" class="img-fluid" width="400"><br>
+Source: <a href="https://blogs.kcl.ac.uk/behaviouralinsights/2017/11/20/the-whats-and-whys-of-rcts-part-1/"><em>The whats and whys of RCTs</em></a></p>
+</div><div class="column" style="width:50%;">
+<p><img src="images/experiment-validity.png" class="img-fluid" width="400"></p>
+</div>
+</div>
 <p>앞서 든 예에서, 걷기가 사망율에 미치는 효과를 검증하려면, 가령 600명을 300명씩 두 그룹으로 무작위로 나눈 후 한쪽은 1마일 이하를 걷도록 하고 나머지는 2마일 이상을 걷게 한 후 12년 후 사망율을 확인해야 함.</p>
 <p>분야마다 효과를 제대로 검증하기 위한 많은 실험 설계들이 발전되었음 &gt;&gt; 연구방법론</p>
 <p>그럼에도 불구하고, 실험 연구는 자체로 한계를 지님</p>
@@ -942,7 +996,9 @@ Note
 <section id="case-3-1" class="level3">
 <h3 class="anchored" data-anchor-id="case-3-1">Case 3</h3>
 <p>상담치료 (dialectical behavior therapy)에 대한 효과 검증</p>
+<div style="line-height: 1.5em; font-size: .8em">
 <p>Zeifman, R. J., Boritz, T., Barnhart, R., Labrish, C., &amp; McMain, S. F. (2020). The independent roles of mindfulness and distress tolerance in treatment outcomes in dialectical behavior therapy skills training. Personality Disorders: Theory, Research, and Treatment, 11(3), 181.</p>
+</div>
 <p><strong>연구 절차</strong></p>
 <p><img src="images/DBT.png" class="img-fluid" width="600"></p>
 <p><strong>연구 설계</strong></p>
@@ -967,7 +1023,9 @@ Note
 <section id="case-4" class="level3">
 <h3 class="anchored" data-anchor-id="case-4">Case 4</h3>
 <p>요양원의 노인들을 대상으로, 독립적 행동의 기회 증가가 그들의 정신 건강에 미치는 영향</p>
+<div style="line-height: 1.5em; font-size: .8em">
 <p>Langer, E. J., &amp; Rodin, J. (1976). The effects of choice and enhanced personal responsibility for the aged: <strong>A field experiment</strong> in an institutional setting. Journal of Personality and Social Psychology, 34, 191–198.</p>
+</div>
 <p><img src="images/nursing_home.png" class="img-fluid" width="900"></p>
 <ul>
 <li>두 층의 노인들의 특성은 동일한가?
@@ -1104,7 +1162,7 @@ Source: <em>The Truthful Art</em> by Albert Cairo.</p>
 <div>
 
 </div>
-<div id="cell-61" class="cell quarto-layout-panel" data-layout-ncol="2" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="25">
+<div id="cell-61" class="cell quarto-layout-panel" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2" data-execution_count="25">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="overview_files/figure-html/cell-15-output-1.png" class="img-fluid" width="495"></p>
