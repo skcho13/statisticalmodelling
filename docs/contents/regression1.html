@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-01">
+<meta name="dcterms.date" content="2025-04-10">
 
 <title>Correlation/Simple Regression –  CHA Statistics in R</title>
 <style>
@@ -73,12 +73,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-12896e8dc30ce81e00b132f57ec535bf.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-12896e8dc30ce81e00b132f57ec535bf.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0bbb64b4a1e49b1e976a097d291c12e3.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fa0b399ecf8f97af4bef71fc0a0b9ef2.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8c2a554fa25fe1e5300a2bc813b3e9f1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-b3891df1003e29f2b049059d236db6bf.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cc856a340135e8ae090ba9ee20c68339.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-77203ff250d404907a53d7991494cb80.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -422,7 +422,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 1, 2024</p>
+      <p class="date">April 10, 2025</p>
     </div>
   </div>
   
@@ -485,7 +485,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="linear-correlation의-계산">Linear correlation의 계산</h2>
 <p>교수의 연봉(salary), 학위를 받은 후 지난 시간(time since Ph.D.), 출판물의 수(pubs)의 관계<br>
 Data: <a href="https://www.dropbox.com/s/c5gb1lme5crkql5/C0301DT.csv?dl=1">c0301dt.csv</a></p>
-<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>acad0 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/c0301dt.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>acad0 <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -513,15 +513,15 @@ Data: <a href="https://www.dropbox.com/s/c5gb1lme5crkql5/C0301DT.csv?dl=1">c0301
 <p><span class="math inline">\(X, Y\)</span>에 대한 standardize (Z score); <span class="math inline">\(\displaystyle z_X = \frac{X-M_X}{sd_X}, \thinspace z_Y = \frac{Y-M_Y}{sd_Y}\)</span></p>
 <p><span class="math inline">\(r_{XY} = \displaystyle 1 - \frac{\sum{(z_X - z_Y)^2}}{2n}\)</span>   <span class="math inline">\(z_X, z_Y\)</span> : 각각 standardized <span class="math inline">\(X, Y\)</span></p>
 <p><span class="math inline">\(r_{XY} = \displaystyle\frac{\sum_{i=1}^{n}{(x_i - \bar x)(y_i - \bar y)}}{\sqrt{\sum_{i=1}^{n}{(x_i - \bar x)^2}} \sqrt{\sum_{i=1}^{n}{(y_i - \bar y)^2}}}\)</span>   <span class="math inline">\(\bar x : X\)</span> 의 평균, &nbsp; <span class="math inline">\(\bar y :Y\)</span> 의 평균</p>
-<div id="cell-7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div id="cell-7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> acad0 <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">z_time =</span> (time <span class="sc">-</span> <span class="fu">mean</span>(time)) <span class="sc">/</span> <span class="fu">sd</span>(time),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">z_pubs =</span> (pubs <span class="sc">-</span> <span class="fu">mean</span>(pubs)) <span class="sc">/</span> <span class="fu">sd</span>(pubs),</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">diff =</span> z_time <span class="sc">-</span> z_pubs,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">squared =</span> diff<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">z_time =</span> (time <span class="sc">-</span> <span class="fu">mean</span>(time)) <span class="sc">/</span> <span class="fu">sd</span>(time),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">z_pubs =</span> (pubs <span class="sc">-</span> <span class="fu">mean</span>(pubs)) <span class="sc">/</span> <span class="fu">sd</span>(pubs),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">diff =</span> z_time <span class="sc">-</span> z_pubs,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">squared =</span> diff<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 x 7
     time  pubs salary  z_time  z_pubs   diff squared
@@ -549,10 +549,10 @@ Data: <a href="https://www.dropbox.com/s/c5gb1lme5crkql5/C0301DT.csv?dl=1">c0301
 <pre><code>[1] 0.6566546</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
+<div id="cell-9" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(acad0) <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="dv">2</span>) <span class="sc">|&gt;</span>  <span class="co"># 반올림 함수</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="co"># 반올림 함수</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       time pubs salary
 time   1.00 0.66   0.71
@@ -588,7 +588,7 @@ vignette 참고
 </div>
 </div>
 </div>
-<div id="cell-12" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div id="cell-12" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrr)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>acad0 <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">quiet =</span> T) <span class="sc">|&gt;</span>  <span class="co"># quiet = True: 간결한 output, 숫자형 변수만 선택됨</span></span>
@@ -619,7 +619,7 @@ vignette 참고
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># psych 패키지의 corr.test() 또는 lowerCor()이용</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych) </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">corr.test</span>(acad0) <span class="co"># NA를 pairwise deletion으로 처리해줌</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">corTest</span>(acad0) <span class="co"># NA를 pairwise deletion으로 처리해줌</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation matrix </span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="do">##        time pubs salary</span></span>
@@ -650,17 +650,17 @@ vignette 참고
 <h2 class="anchored" data-anchor-id="시각화를-통한-상관계수">시각화를 통한 상관계수</h2>
 <p><code>corrgram()</code>, <code>ggpairs()</code></p>
 <p><a href="https://cran.r-project.org/web/packages/corrgram/vignettes/corrgram_examples.html">vignette for corrgram</a></p>
-<div id="cell-17" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
+<div id="cell-17" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrgram)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrgram</span>(acad0,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">order =</span> <span class="cn">TRUE</span>,  <span class="co"># 상관계수가 높은 변수들을 가까이 위치시킴</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper.panel =</span> panel.cor,   <span class="co"># 상관계수</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">lower.panel =</span> panel.pie,  <span class="co"># 파이 차트</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">order =</span> <span class="cn">TRUE</span>, <span class="co"># 상관계수가 높은 변수들을 가까이 위치시킴</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper.panel =</span> panel.cor, <span class="co"># 상관계수</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower.panel =</span> panel.pie, <span class="co"># 파이 차트</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-9-output-1.png" width="180" height="180" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-9-output-1.png" width="300" height="300" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -692,47 +692,47 @@ tip: use a function
 </div>
 <p>Data from the 1985 Current Population Survey (CPS85)<br>
 임금, 교육수준, 연차, 나이, 성별 간의 상관관계</p>
-<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> mosaicData<span class="sc">::</span>CPS85</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(wage, educ, exper, age, sex) <span class="sc">|&gt;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">as.numeric</span>(sex)) <span class="sc">|&gt;</span>   <span class="co"># factor를 숫자로 변환: 1, 2, ...</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">corrgram</span>(</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">order =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper.panel =</span> panel.cor, </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">lower.panel =</span> panel.pie, </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(wage, educ, exper, age, sex) <span class="sc">|&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">as.numeric</span>(sex)) <span class="sc">|&gt;</span> <span class="co"># factor를 숫자로 변환: 1, 2, ...</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">corrgram</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">order =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">upper.panel =</span> panel.cor,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">lower.panel =</span> panel.pie,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-11-output-1.png" width="210" height="210" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-11-output-1.png" width="360" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrgram</span>(acad0,</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">order =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">lower.panel =</span> panel.pts,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper.panel =</span> panel.cor,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">diag.panel =</span> panel.density</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">order =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower.panel =</span> panel.pts,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper.panel =</span> panel.cor,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">diag.panel =</span> panel.density</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-13-output-1.png" width="245" height="175" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-13-output-1.png" width="420" height="300" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
+<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GGally 패키지의 ggpairs()</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>(acad0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-15-output-1.png" width="300" height="200" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-15-output-1.png" width="450" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -772,7 +772,11 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>명목변수인 경우에도 measure of association을 계산하는 방법이 있는데, 자세한 사항은 <a href="https://journals.sagepub.com/doi/pdf/10.1177/8756479308317006"><em>Measures of Association - How to Choose?</em></a> 참고</p>
-<p>R에서 계산은 <code>corrr::correlate(df, method="")</code>의 옵션 method를 “pearson”, “spearman”, “kendall” 중 선택</p>
+<p>R에서 계산은 correlation 함수에서 method 옵션이 있음: method를 “pearson”, “spearman”, “kendall” 중 선택</p>
+<ul>
+<li><code>psych::corTest(df, method="")</code></li>
+<li><code>corrr::correlate(df, method="")</code></li>
+</ul>
 <p>명목변수의 예</p>
 <ul>
 <li>한 변수가 binary 인 경우: 물건의 가격 ~ 구매 여부</li>
@@ -792,7 +796,7 @@ rank인 경우: 1, 2, 3… 로 코딩</p>
 <p>단순한 상관관계를 넘어서서,<br>
 Y가 X에 의해 영향을 받거나 X에 의해 예측되는 변수라는 연구자의 가정이 있음.</p>
 <ul>
-<li>Y: 종속변수 (dependent variable), regressand, <strong>response</strong><br>
+<li>Y: 종속변수 (dependent variable), regressand, outcome, <strong>response</strong><br>
 </li>
 <li>X: 독립변수 (independent variable), regressor, <strong>예측변수 (predictor)</strong></li>
 </ul>
@@ -822,13 +826,13 @@ Y가 X에 의해 영향을 받거나 X에 의해 예측되는 변수라는 연�
 <div>
 
 </div>
-<div id="cell-29" class="cell quarto-layout-panel" data-execution_count="9" data-layout="[1, 1]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div id="cell-29" class="cell quarto-layout-panel" data-execution_count="45" data-layout="[1, 1]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-16-output-1.png" class="img-fluid" width="270"></p>
+<p><img src="regression1_files/figure-html/cell-16-output-1.png" class="img-fluid" width="360"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-16-output-2.png" class="img-fluid" width="270"></p>
+<p><img src="regression1_files/figure-html/cell-16-output-2.png" class="img-fluid" width="360"></p>
 </div>
 </div>
 </div>
@@ -897,11 +901,11 @@ Note
 <ul>
 <li>이 때, fitted model의 기울기는 2.05, y절편은 4.22임</li>
 </ul>
-<div id="cell-32" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
+<div id="cell-32" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="47">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-17-output-1.png" width="300" height="200" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-17-output-1.png" width="450" height="300" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -950,19 +954,19 @@ Note
 </li>
 <li>앞서 구한 모형 <span class="math inline">\(Y = 4.22 + 2.05X\)</span> 을 데이터와 함께 그려보면,</li>
 </ul>
-<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="16">
+<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="49">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-18-output-1.png" width="300" height="200" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-18-output-1.png" width="450" height="300" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>이 모형에 의한 예측값들(<code>pred</code>)과 잔차(<code>resid</code>)들은</p>
-<div id="cell-38" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="17">
+<div id="cell-38" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="50">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 30 × 4
+<pre><code># A tibble: 30 x 4
       x     y  pred  resid
   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 1     1  4.20  6.27 -2.07 
@@ -973,7 +977,7 @@ Note
 6     2 11.3   8.32  2.97 
 7     3  7.36 10.4  -3.02 
 8     3 10.5  10.4   0.130
-# … with 22 more rows</code></pre>
+# i 22 more rows</code></pre>
 </div>
 </div>
 <p>Residuals의 분포를 시각화해서 살펴보면,</p>
@@ -981,11 +985,11 @@ Note
 <li>residuals의 평균은 항상 0</li>
 <li>residuals의 분포는 predictions이 관측치로부터 전반적으로 얼마나 벗어났는지에 평가할 수 있음</li>
 </ul>
-<div id="cell-40" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="18">
+<div id="cell-40" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="51">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-20-output-1.png" width="270" height="180" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-20-output-1.png" width="360" height="240" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -995,11 +999,11 @@ Note
 <li>이 residuals은 특별한 패턴을 보이지 않아야 모델이 데이터의 패턴을 잘 잡아낸 것으로 판단할 수 있음</li>
 <li>또한 어떤 부분에서 예측이 벗어났는지도 판별할 수 있음</li>
 </ul>
-<div id="cell-42" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
+<div id="cell-42" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="52">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-21-output-1.png" width="270" height="180" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-21-output-1.png" width="360" height="240" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1010,13 +1014,13 @@ Note
 <div>
 
 </div>
-<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="13" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-44" class="cell quarto-layout-panel" data-execution_count="53" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-22-output-1.png" class="img-fluid" width="225"></p>
+<p><img src="regression1_files/figure-html/cell-22-output-1.png" class="img-fluid" width="300"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-22-output-2.png" class="img-fluid" width="225"></p>
+<p><img src="regression1_files/figure-html/cell-22-output-2.png" class="img-fluid" width="300"></p>
 </div>
 </div>
 </div>
@@ -1039,11 +1043,11 @@ Note
 # … with 9 more rows</code></pre>
 </div>
 </div>
-<div id="cell-48" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
+<div id="cell-48" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-25-output-1.png" width="300" height="200" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-25-output-1.png" width="540" height="360" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1063,7 +1067,7 @@ Note
 <section id="fit-a-model-to-data" class="level3">
 <h3 class="anchored" data-anchor-id="fit-a-model-to-data">Fit a model to data</h3>
 <p>데이터에 가장 근접한 모델</p>
-<div id="cell-52" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
+<div id="cell-52" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> time, <span class="at">data =</span> acad0)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span> pubs, <span class="at">data =</span> acad0)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1085,13 +1089,13 @@ Note
 <div>
 
 </div>
-<div id="cell-54" class="cell quarto-layout-panel" data-execution_count="25" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-54" class="cell quarto-layout-panel" data-execution_count="59" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-27-output-1.png" class="img-fluid" width="225"></p>
+<p><img src="regression1_files/figure-html/cell-27-output-1.png" class="img-fluid" width="375"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-27-output-2.png" class="img-fluid" width="225"></p>
+<p><img src="regression1_files/figure-html/cell-27-output-2.png" class="img-fluid" width="375"></p>
 </div>
 </div>
 </div>
@@ -1327,13 +1331,13 @@ Important
 <div>
 
 </div>
-<div id="cell-70" class="cell quarto-layout-panel" data-execution_count="34" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-70" class="cell quarto-layout-panel" data-execution_count="60" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-34-output-1.png" class="img-fluid" width="225"></p>
+<p><img src="regression1_files/figure-html/cell-34-output-1.png" class="img-fluid" width="375"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-34-output-2.png" class="img-fluid" width="225"></p>
+<p><img src="regression1_files/figure-html/cell-34-output-2.png" class="img-fluid" width="375"></p>
 </div>
 </div>
 </div>
@@ -1355,7 +1359,7 @@ demgroup 2: those who will eventually be diagnosed with dementia later in the st
 demgroup 3: those who already have been diagnosed with dementia (current group = 3; 7.64%)</p>
 </blockquote>
 <p><a href="https://www.dropbox.com/s/vt1kq4wlc7b7oiw/spss_chapter2.csv?dl=1">spss_chapter2.csv</a></p>
-<div id="cell-73" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
+<div id="cell-73" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/spss_chapter2.csv"</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1437,19 +1441,19 @@ Tip
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(cognition, age, grip) <span class="sc">|&gt;</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">corr.test</span>()</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">corTest</span>()</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>          cognition   age  grip</span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cognition      1.00 -0.17  0.24</span></span>
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># age           -0.17  1.00 -0.18</span></span>
 <span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># grip           0.24 -0.18  1.00</span></span>
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">corr.test</span>(cognition[<span class="st">"cognition"</span>], cognition[<span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"grip"</span>)])</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">corTest</span>(cognition[<span class="st">"cognition"</span>], cognition[<span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"grip"</span>)])</span>
 <span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation matrix </span></span>
 <span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">#             age grip</span></span>
 <span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># cognition -0.17 0.24</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="cell-79" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div id="cell-79" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
@@ -1457,7 +1461,7 @@ Tip
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-39-output-1.png" width="270" height="225" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-39-output-1.png" width="450" height="375" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1545,7 +1549,7 @@ Tip: summ()
 </ul></li>
 <li>반면, 주어진 샘플의 평균과 표준편차를 사용함으로 샘플마다 변동이 생길 수 있음을 인지해야 함.</li>
 </ul>
-<div id="cell-84" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
+<div id="cell-84" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a> cognition <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">select</span>(<span class="at">cog_std =</span> cognition, <span class="at">grip_std =</span> grip) <span class="sc">|&gt;</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale</span>() <span class="sc">|&gt;</span>  <span class="co"># standardize 함수</span></span>
@@ -1554,15 +1558,19 @@ Tip: summ()
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 550 x 8
-  cog_std grip_std PersonID cognition   age  grip sexMW demgroup
-    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
-1 -0.166   -0.0378        1        23  92.6     9     1        1
-2 -0.0748   0.633         2        24  91.8    11     0        2
-3  0.380    0.968         3        29  92.6    12     0        1
-4 -0.803   -1.04          4        16  94.4     6     1        1
-5  0.198   -0.0378        5        27  85.8     9     1        1
-6  1.11     0.633         6        37  83.1    11     0        1
-# i 544 more rows</code></pre>
+   cog_std grip_std PersonID cognition   age  grip sexMW demgroup
+     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1 -0.166   -0.0378        1        23  92.6     9     1        1
+ 2 -0.0748   0.633         2        24  91.8    11     0        2
+ 3  0.380    0.968         3        29  92.6    12     0        1
+ 4 -0.803   -1.04          4        16  94.4     6     1        1
+ 5  0.198   -0.0378        5        27  85.8     9     1        1
+ 6  1.11     0.633         6        37  83.1    11     0        1
+ 7 -2.08     0.297         7         2  93.9    10     1        2
+ 8  1.29    -0.0378        8        39  83.3     9     0        1
+ 9  1.20     0.633         9        38  80.6    11     0        1
+10  0.653    0.297        10        32  85.9    10     0        1
+# i 540 more rows</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1589,13 +1597,13 @@ Tip
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> cognition)) <span class="sc">+</span></span>
 <span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span> </span>
 <span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-87" class="cell quarto-layout-panel" data-execution_count="11" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-87" class="cell quarto-layout-panel" data-execution_count="66" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-43-output-1.png" class="img-fluid" width="270"></p>
+<p><img src="regression1_files/figure-html/cell-43-output-1.png" class="img-fluid" width="450"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-43-output-2.png" class="img-fluid" width="270"></p>
+<p><img src="regression1_files/figure-html/cell-43-output-2.png" class="img-fluid" width="450"></p>
 </div>
 </div>
 </div>
@@ -1609,13 +1617,13 @@ Tip
 <span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> grip, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span></span>
 <span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_overlay_normal_density</span>(<span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-90" class="cell quarto-layout-panel" data-execution_count="108" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
+<div id="cell-90" class="cell quarto-layout-panel" data-execution_count="68" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-45-output-1.png" class="img-fluid" width="200"></p>
+<p><img src="regression1_files/figure-html/cell-45-output-1.png" class="img-fluid" width="300"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="regression1_files/figure-html/cell-45-output-2.png" class="img-fluid" width="200"></p>
+<p><img src="regression1_files/figure-html/cell-45-output-2.png" class="img-fluid" width="300"></p>
 </div>
 </div>
 </div>
@@ -1685,24 +1693,28 @@ Tip: <code>summ(df, scale = TRUE, transform.response = TRUE)</code>
 <h2 class="anchored" data-anchor-id="case-3">Case 3</h2>
 <p>성별에 따라 인지능력(<code>cognition</code>)에 차이가 있는가?<br>
 성별에 따라 악력(<code>grip</code>)에 차이가 있는가?</p>
-<div id="cell-95" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
+<div id="cell-95" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">factor</span>(sexMW, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)))</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 550 x 9
-  cog_std grip_std PersonID cognition   age  grip sexMW demgroup sex   
-    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt; 
-1 -0.166   -0.0378        1        23  92.6     9     1        1 female
-2 -0.0748   0.633         2        24  91.8    11     0        2 male  
-3  0.380    0.968         3        29  92.6    12     0        1 male  
-4 -0.803   -1.04          4        16  94.4     6     1        1 female
-5  0.198   -0.0378        5        27  85.8     9     1        1 female
-6  1.11     0.633         6        37  83.1    11     0        1 male  
-# i 544 more rows</code></pre>
+   cog_std grip_std PersonID cognition   age  grip sexMW demgroup sex   
+     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt; 
+ 1 -0.166   -0.0378        1        23  92.6     9     1        1 female
+ 2 -0.0748   0.633         2        24  91.8    11     0        2 male  
+ 3  0.380    0.968         3        29  92.6    12     0        1 male  
+ 4 -0.803   -1.04          4        16  94.4     6     1        1 female
+ 5  0.198   -0.0378        5        27  85.8     9     1        1 female
+ 6  1.11     0.633         6        37  83.1    11     0        1 male  
+ 7 -2.08     0.297         7         2  93.9    10     1        2 female
+ 8  1.29    -0.0378        8        39  83.3     9     0        1 male  
+ 9  1.20     0.633         9        38  80.6    11     0        1 male  
+10  0.653    0.297        10        32  85.9    10     0        1 male  
+# i 540 more rows</code></pre>
 </div>
 </div>
-<div id="cell-97" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="175">
+<div id="cell-97" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="71">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
@@ -1722,12 +1734,12 @@ Tip: <code>summ(df, scale = TRUE, transform.response = TRUE)</code>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-49-output-1.png" width="360" height="157" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-49-output-1.png" width="600" height="262" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-99" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="173">
+<div id="cell-99" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="73">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> cognition <span class="sc">|&gt;</span></span>
@@ -1752,7 +1764,7 @@ Tip: <code>summ(df, scale = TRUE, transform.response = TRUE)</code>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="regression1_files/figure-html/cell-51-output-1.png" width="360" height="292" class="figure-img"></p>
+<p><img src="regression1_files/figure-html/cell-51-output-1.png" width="600" height="487" class="figure-img"></p>
 </figure>
 </div>
 </div>
