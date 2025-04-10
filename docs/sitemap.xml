@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://r.modellings.art/contents/visualize.html</loc>
-    <lastmod>2025-02-27T16:27:52.270Z</lastmod>
+    <lastmod>2025-04-10T15:43:38.539Z</lastmod>
   </url>
   <url>
     <loc>https://r.modellings.art/contents/tidyverse.html</loc>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://r.modellings.art/contents/regression1.html</loc>
-    <lastmod>2025-04-10T09:45:35.268Z</lastmod>
+    <lastmod>2025-04-10T17:27:33.696Z</lastmod>
   </url>
   <url>
     <loc>https://r.modellings.art/contents/inspection.html</loc>
@@ -115,5 +115,17 @@
   <url>
     <loc>https://r.modellings.art/contents/transform.html</loc>
     <lastmod>2023-03-01T12:27:07.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/NELS88-codebook.html</loc>
+    <lastmod>2025-04-10T17:15:47.838Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/NELS88-codebook1.html</loc>
+    <lastmod>2025-04-10T17:16:42.450Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r.modellings.art/contents/NELS88-codebook2.html</loc>
+    <lastmod>2025-04-10T17:15:47.838Z</lastmod>
   </url>
 </urlset>
