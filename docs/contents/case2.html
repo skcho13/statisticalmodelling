@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-03-06">
+<meta name="dcterms.date" content="2025-05-15">
 
 <title>Case 2 –  CHA Statistics in R</title>
 <style>
@@ -396,7 +396,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 6, 2025</p>
+      <p class="date">May 15, 2025</p>
     </div>
   </div>
   
@@ -687,7 +687,8 @@ Column names: names, mod0, mod2, mod3, mod4, mod5</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcPlots</span>(mod4, <span class="at">overlaid =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># marginal vs. added-variable plots</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcPlots</span>(mod4, <span class="at">overlaid =</span> <span class="cn">FALSE</span>) <span class="co"># library(car)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -695,7 +696,8 @@ Column names: names, mod0, mod2, mod3, mod4, mod5</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod5) <span class="co"># library(car)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># added-variable plots</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod5) <span class="co"># library(car)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -708,9 +710,20 @@ Column names: names, mod0, mod2, mod3, mod4, mod5</code></pre>
 <ul>
 <li>상관관계가 높은 변수들은 서로 partial out되어 남은 잔차들의 변량이 줄어 Y와의 관계를 온전히 테스트하기 어려워짐</li>
 <li>구체적으로는 standard error를 높여서 회귀계수에 대한 모집단에 대한 신뢰도를 낮춤</li>
-<li>이를 다중공선성(multicollinearity)이라고 함</li>
+<li>이를 다중공선성(multicollinearity)이라고 함
+<ul>
+<li>variance inflation factor (VIF)로 측정함</li>
+<li>표준오차를 <span class="math inline">\(sqrt(vif)\)</span>배 만큼 증가시킨다고 해석</li>
+</ul></li>
 <li>이들을 하나의 “묶음”(set)으로 취급해도 무방함</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(mod5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Salary    Expend LogPctSAT 
+ 4.531896  4.128730  1.609542 </code></pre>
+</div>
+</div>
 
 
 </section>
