@@ -1118,27 +1118,5 @@
       "R tutorial",
       "Setup"
     ]
-  },
-  {
-    "objectID": "contents/regression1.html#다음은-multiple-regression-and-beyond-3e-by-timothy-z.-keith의-p.87에서-제시된-경로모형입니다.-저자가-설정한-인과관계를-참고하여-데이터를-cleaning하고-변수들-간의-관계를-탐색해보세요.",
-    "href": "contents/regression1.html#다음은-multiple-regression-and-beyond-3e-by-timothy-z.-keith의-p.87에서-제시된-경로모형입니다.-저자가-설정한-인과관계를-참고하여-데이터를-cleaning하고-변수들-간의-관계를-탐색해보세요.",
-    "title": "Correlation/Simple Regression",
-    "section": "1. 다음은 Multiple Regression and Beyond (3e) by Timothy Z. Keith의 p.87에서 제시된 경로모형입니다. 저자가 설정한 인과관계를 참고하여 데이터를 cleaning하고 변수들 간의 관계를 탐색해보세요.",
-    "text": "1. 다음은 Multiple Regression and Beyond (3e) by Timothy Z. Keith의 p.87에서 제시된 경로모형입니다. 저자가 설정한 인과관계를 참고하여 데이터를 cleaning하고 변수들 간의 관계를 탐색해보세요.\n데이터셋: NELS88 sample 5-9.csv\nFigure 5.9에서는 자존감과 자기통제력이 학업성취도에 미치는 영향에 대해 설정한 관계를 보여줍니다. \n\nSelf-esteem과 locus of control에 대해서 composite score 만들고\nSex 변수는 factor로 변환하여 male, female로 표시합니다.\n사회경제적 지표에 대해서 어떤 방식으로 사용하는 것이 타당할지 논의해보세요.\n\nSES의 여러 변수들을 적절히 factor로 변환하거나\nprestige score값을 사용하거나,\ncomposite score인 byses를 사용\n\n\n\n\nFigure 5.9 변수\n\n\n\n\n\n\n\n그림 변수명\n데이터 변수명\n설명\n\n\n\n\nSelf-Esteem\n\n다음 진술에 대해 어떻게 느끼십니까?\n\n\n\nf1s62a\n나는 나 자신에 대해 좋게 느낀다\n\n\n\nf1s62d\n나는 내가 가치 있는 사람이며, 다른 사람들과 동등하다고 느낀다\n\n\n\nf1s62e\n나는 대부분의 다른 사람들만큼 일을 잘 할 수 있다\n\n\n\nf1s62h\n전반적으로, 나는 나 자신에 대해 만족한다\n\n\n\nf1s62i\n때때로 나는 쓸모없다고 느낀다\n\n\n\nf1s62j\n때때로, 나는 내가 좋지 않다고 생각한다\n\n\n\nf1s62l\n나는 자랑할 것이 많지 않다고 느낀다\n\n\nLocus of Control\n\n다음 진술에 대해 어떻게 느끼십니까?\n\n\n\nf1s62b\n나는 내 삶의 방향에 대한 충분한 통제력이 없다\n\n\n\nf1s62c\n내 삶에서, 성공을 위해 열심히 일하는 것보다 행운이 더 중요하다\n\n\n\nf1s62f\n내가 앞으로 나아가려고 할 때마다, 무언가 또는 누군가가 나를 막는다\n\n\n\nf1s62g\n내 계획은 거의 실현되지 않으므로, 계획을 세우는 것은 나를 불행하게 만들 뿐이다\n\n\n\nf1s62k\n내가 계획을 세울 때, 나는 그것을 실현할 수 있다고 거의 확신한다\n\n\n\nf1s62m\n우연과 행운은 내 삶에서 일어나는 일에 매우 중요하다\n\n\nSES\n\n\n\n\n\nbyp30\n귀하가 완료한 최고 교육 수준은 무엇입니까?\n\n\n\nbyp31\n귀하의 배우자/파트너가 완료한 최고 교육 수준은 무엇입니까?\n\n\n\nbyp34b\n현재 직업 설명\n\n\n\nbyp34b_prest\nbyp34b의 각 직업에 대해 Duncan의 직업별 prestige 지표를 적용한 값\n\n\n\nbyp37b\n배우자의 현재 직업 설명\n\n\n\nbyp37b_prest\nbyp37b의 각 직업에 대해 Duncan의 직업별 prestige 지표를 적용한 값\n\n\n\nbyp80\n1987년 모든 출처에서 가족의 총 수입은 얼마였습니까? (확실하지 않은 경우 추정해 주세요.)\n\n\nAchievement\nf1txhstd\n10학년 역사, 공민학, 지리학(또는 사회 과목) 표준화 시험 점수\n\n\nPrevious Grades\nbygrads\n6-8학년 때의 평균 학점\n\n\nSex\nsex\n성별\n\n\n\n\n이미 위 문항들을 composite score로 변환한 변수들\n\n\nComposite score\n\n\n그림 변수명\n데이터 변수명\n설명\n\n\n\n\nSelf-Esteem\nf1cncpt2\n10학년 자존감\n\n\nLocus of Control\nf1locus2\n10학년 통제 위치\n\n\nSES\nbyses\n광범위한 사회경제적 지위(SES)",
-    "crumbs": [
-      "Statistics",
-      "Simple Regression"
-    ]
-  },
-  {
-    "objectID": "contents/regression1.html#다음은-multiple-regression-and-beyond-3e-by-timothy-z.-keith의-p.69에서-제시된-경로모형입니다.-저자가-설정한-인과관계를-참고하여-변수들-간의-관계를-탐색해보세요.",
-    "href": "contents/regression1.html#다음은-multiple-regression-and-beyond-3e-by-timothy-z.-keith의-p.69에서-제시된-경로모형입니다.-저자가-설정한-인과관계를-참고하여-변수들-간의-관계를-탐색해보세요.",
-    "title": "Correlation/Simple Regression",
-    "section": "2. 다음은 Multiple Regression and Beyond (3e) by Timothy Z. Keith의 p.69에서 제시된 경로모형입니다. 저자가 설정한 인과관계를 참고하여 변수들 간의 관계를 탐색해보세요.",
-    "text": "2. 다음은 Multiple Regression and Beyond (3e) by Timothy Z. Keith의 p.69에서 제시된 경로모형입니다. 저자가 설정한 인과관계를 참고하여 변수들 간의 관계를 탐색해보세요.\nNELS88 sample 4-11.csv\nFigure 4.10, 4.11에서는 숙제(homework)이 학업성취에 미치는 영향에 대해 설정한 관계를 보여줍니다.\n\n\n\nFigure 4.10, 4.11 변수\n\n\n\n\n\n\n\n그림 변수명\n데이터 변수명\n설명\n\n\n\n\nFFU Grades\nffugrad\n10학년 학생들의 영어, 수학, 과학, 사회과목 평균 성적\n\n\nParent Education\nbypared\n학생 부모(부 또는 모 중 더 높은 쪽)의 교육 수준\n\n\nHomework in School\nf1s36a1\n10학년 학생들이 매주 평균적으로 학교에서 보내는 과제 시간\n\n\nHomework out of School\nf1s36a2\n10학년 학생들이 매주 평균적으로 학교 밖에서 보내는 과제 시간\n\n\nPrevious Achievement\nbytests\n8학년 성취도 시험 (평균)",
-    "crumbs": [
-      "Statistics",
-      "Simple Regression"
-    ]
   }
 ]

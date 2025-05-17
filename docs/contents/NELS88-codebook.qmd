@@ -1,7 +1,0 @@
----
-title: NELS88
----
-
-:::{.column-screen-inset-right}
-![](images/NELS88-labels2.pdf){width=100% height=1200}
-:::
