@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-07">
+<meta name="dcterms.date" content="2025-05-29">
 
 <title>Interaction Effects –  CHA Statistics in R</title>
 <style>
@@ -419,7 +419,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 7, 2024</p>
+      <p class="date">May 29, 2025</p>
     </div>
   </div>
   
@@ -486,14 +486,18 @@ endurance -0.13  0.34  1.00</code></pre>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>acad2 <span class="sc">%&gt;%</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> endurance)) <span class="sc">+</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">span =</span> <span class="dv">1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>acad2 <span class="sc">%&gt;%</span> </span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> exercise, <span class="at">y =</span> endurance)) <span class="sc">+</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">span =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" data-layout="[1, 1]">
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>acad2 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> exercise)) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-layout-panel" data-layout="[1, 1, 1]">
 <div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -502,11 +506,20 @@ endurance -0.13  0.34  1.00</code></pre>
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="interaction_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="interaction_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -525,7 +538,7 @@ endurance -0.13  0.34  1.00</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
@@ -539,7 +552,7 @@ endurance -0.13  0.34  1.00</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
@@ -551,7 +564,7 @@ endurance -0.13  0.34  1.00</code></pre>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(endurance <span class="sc">~</span> age <span class="sc">+</span> exercise, <span class="at">data =</span> acad2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_s1, mod_s2, mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="cell-output-display">
@@ -712,7 +725,7 @@ endurance 0.69</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -726,7 +739,7 @@ endurance 0.69</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -788,7 +801,7 @@ Note: The range of observed values of exercise is [0.00, 26.00]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -799,7 +812,7 @@ Note: The range of observed values of exercise is [0.00, 26.00]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -808,7 +821,7 @@ Note: The range of observed values of exercise is [0.00, 26.00]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -845,7 +858,7 @@ F-statistic:  19.3 on 3 and 239 DF,  p-value: 3.063e-11
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mod_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(endurance <span class="sc">~</span> age <span class="sc">*</span> exercise, <span class="at">data =</span> acad2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod, mod_interact, <span class="at">error_format =</span> <span class="st">"({p.value})"</span>, <span class="at">number_format =</span> <span class="st">"%.4f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="cell-output-display">
@@ -1077,7 +1090,7 @@ Interaction의 패턴
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1123,7 +1136,7 @@ F-statistic: 11.01 on 3 and 52 DF,  p-value: 1.046e-05
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -1136,7 +1149,7 @@ F-statistic: 11.01 on 3 and 52 DF,  p-value: 1.046e-05
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
@@ -1149,7 +1162,7 @@ F-statistic: 11.01 on 3 and 52 DF,  p-value: 1.046e-05
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -1193,7 +1206,7 @@ Note: The range of observed values of support_c is [-18.96, 21.04]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1204,7 +1217,7 @@ Note: The range of observed values of support_c is [-18.96, 21.04]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1212,7 +1225,7 @@ Note: The range of observed values of support_c is [-18.96, 21.04]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-29-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-30-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1221,7 +1234,7 @@ Note: The range of observed values of support_c is [-18.96, 21.04]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-29-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-30-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1314,7 +1327,7 @@ Linear vs.&nbsp;Nonlinear Interaction
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -1345,7 +1358,7 @@ F-statistic: 11.41 on 3 and 46 DF,  p-value: 1.028e-05
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
@@ -1434,7 +1447,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1469,7 +1482,7 @@ F-statistic: 22.54 on 3 and 207 DF,  p-value: 1.138e-12
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1489,7 +1502,7 @@ Note: The range of observed values of skeptic is [1.00, 9.00]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1533,7 +1546,7 @@ Note: The range of observed values of skeptic is [1.00, 9.00]</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
@@ -1566,7 +1579,7 @@ F-statistic: 6.722 on 5 and 144 DF,  p-value: 1.167e-05
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1574,7 +1587,7 @@ F-statistic: 6.722 on 5 and 144 DF,  p-value: 1.167e-05
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-43-2.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-44-2.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1658,7 +1671,7 @@ F-statistic: 10.28 on 6 and 143 DF,  p-value: 1.874e-09
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1681,12 +1694,12 @@ F-statistic: 10.28 on 6 and 143 DF,  p-value: 1.874e-09
 <pre><code># A tibble: 6 × 5
      ya    yb    yc lesion  drug   
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
-1  9.74  9.74 11.7  SURGERY PLACEBO
-2  9.99 14.0  12.0  SHAM    PLACEBO
-3  7.71 11.7   7.71 SHAM    PLACEBO
-4  3.66  3.66  1.66 SHAM    ACTIVE 
-5  4.06  4.06  2.06 SHAM    ACTIVE 
-6  7.26 11.3   9.26 SHAM    PLACEBO</code></pre>
+1 12.3  12.3  14.3  SURGERY PLACEBO
+2  8.20 12.2  10.2  SHAM    PLACEBO
+3  7.35 11.3   9.35 SHAM    PLACEBO
+4  5.17  5.17  3.17 SHAM    ACTIVE 
+5  4.33  4.33  2.33 SHAM    ACTIVE 
+6  7.35 15.3   9.35 SURGERY ACTIVE </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1722,7 +1735,7 @@ F-statistic: 768.6 on 3 and 147 DF,  p-value: &lt; 2.2e-16
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1750,7 +1763,7 @@ F-statistic: 768.6 on 3 and 147 DF,  p-value: &lt; 2.2e-16
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
@@ -1796,7 +1809,7 @@ F-statistic: 13.94 on 3 and 530 DF,  p-value: 9.234e-09
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
@@ -1816,7 +1829,7 @@ married* -0.28  0.01  1.00</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
@@ -1956,7 +1969,7 @@ F-statistic:  13.8 on 1 and 58 DF,  p-value: 0.000459
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1964,7 +1977,7 @@ F-statistic:  13.8 on 1 and 58 DF,  p-value: 0.000459
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-55-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-56-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
