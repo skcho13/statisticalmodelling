@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-06-05">
+<meta name="dcterms.date" content="2025-06-06">
 
 <title>Interaction Effects –  CHA Statistics in R</title>
 <style>
@@ -419,7 +419,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 5, 2025</p>
+      <p class="date">June 6, 2025</p>
     </div>
   </div>
   
@@ -564,7 +564,7 @@ endurance -0.13  0.34  1.00</code></pre>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(endurance <span class="sc">~</span> age <span class="sc">+</span> exercise, <span class="at">data =</span> acad2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_s1, mod_s2, mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
+<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="cell-output-display">
@@ -858,7 +858,7 @@ F-statistic:  19.3 on 3 and 239 DF,  p-value: 3.063e-11
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mod_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(endurance <span class="sc">~</span> age <span class="sc">*</span> exercise, <span class="at">data =</span> acad2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod, mod_interact, <span class="at">error_format =</span> <span class="st">"({p.value})"</span>, <span class="at">number_format =</span> <span class="st">"%.4f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
+<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="cell-output-display">
@@ -1676,6 +1676,14 @@ F-statistic: 10.28 on 6 and 143 DF,  p-value: 1.874e-09
 </figure>
 </div>
 </div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predictorEffects</span>(mod3, <span class="sc">~</span>pub_c, <span class="at">xlevels =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="interaction_files/figure-html/unnamed-chunk-48-2.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1688,21 +1696,21 @@ F-statistic: 10.28 on 6 and 143 DF,  p-value: 1.874e-09
 <p>Data: <a href="https://www.dropbox.com/s/6hjg2fxdkubxupy/C0901DT.csv?dl=1">C0901DT.csv</a><br>
 <em>2 X 2인 경우: lesion(2 levels) x drug(2 levels)</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>rats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/C0901DT.csv"</span>)</span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>rats <span class="ot">&lt;-</span> rats <span class="sc">|&gt;</span> <span class="fu">rename_with</span>(str_to_lower)  <span class="co"># 변수명 소문자로 변경</span></span>
-<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">sample_n</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>rats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/C0901DT.csv"</span>)</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>rats <span class="ot">&lt;-</span> rats <span class="sc">|&gt;</span> <span class="fu">rename_with</span>(str_to_lower)  <span class="co"># 변수명 소문자로 변경</span></span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">sample_n</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
      ya    yb    yc lesion  drug   
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
-1  9.22  9.22 11.2  SURGERY PLACEBO
-2  9.58 13.6  11.6  SHAM    PLACEBO
-3  9.67  9.67 11.7  SURGERY PLACEBO
-4  4.40  4.40  2.40 SHAM    ACTIVE 
-5  5.52 13.5   7.52 SURGERY ACTIVE 
-6  7.26 11.3   9.26 SHAM    PLACEBO</code></pre>
+1  9.58 13.6  11.6  SHAM    PLACEBO
+2  7.28 15.3   9.28 SURGERY ACTIVE 
+3  4.19  4.19  2.19 SHAM    ACTIVE 
+4  8.35 12.4  10.4  SHAM    PLACEBO
+5  7.80 11.8   9.80 SHAM    PLACEBO
+6  6.65 10.7   9.65 SHAM    PLACEBO</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   lesion  drug    yc_mean
@@ -1712,8 +1720,8 @@ F-statistic: 10.28 on 6 and 143 DF,  p-value: 1.874e-09
 3 SURGERY ACTIVE     8.02
 4 SURGERY PLACEBO   12.0 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(yb <span class="sc">~</span> lesion <span class="sc">*</span> drug, <span class="at">data =</span> rats)</span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(yb <span class="sc">~</span> lesion <span class="sc">*</span> drug, <span class="at">data =</span> rats)</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = yb ~ lesion * drug, data = rats)
 
@@ -1732,7 +1740,7 @@ F-statistic: 768.6 on 3 and 147 DF,  p-value: &lt; 2.2e-16
    AIC    BIC 
 427.07 442.15 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod, <span class="sc">~</span>drug) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod, <span class="sc">~</span>drug) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1744,9 +1752,9 @@ F-statistic: 768.6 on 3 and 147 DF,  p-value: &lt; 2.2e-16
 <p>Data: <a href="https://www.dropbox.com/s/9qmrra523pffikh/C0902DT.csv?dl=1">C0902DT.csv</a><br>
 <em>4 X 3인 경우: hospital(4 levels) x treatment(3 levels)</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/C0902DT.csv"</span>)</span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> treat <span class="sc">|&gt;</span> <span class="fu">rename_with</span>(str_to_lower) <span class="co"># 변수명 소문자로 변경</span></span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>treat <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/C0902DT.csv"</span>)</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> treat <span class="sc">|&gt;</span> <span class="fu">rename_with</span>(str_to_lower) <span class="co"># 변수명 소문자로 변경</span></span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>treat <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   hospital treatmen     y
@@ -1757,10 +1765,10 @@ F-statistic: 768.6 on 3 and 147 DF,  p-value: &lt; 2.2e-16
 4        1        1  46.4
 5        1        1  54.3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> treat <span class="sc">|&gt;</span> </span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hospital =</span> <span class="fu">factor</span>(hospital), <span class="at">treatmen =</span> <span class="fu">factor</span>(treatmen))</span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> hospital <span class="sc">*</span> treatmen, <span class="at">data =</span> treat)</span>
-<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod, <span class="sc">~</span>treatmen) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>treat <span class="ot">&lt;-</span> treat <span class="sc">|&gt;</span> </span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hospital =</span> <span class="fu">factor</span>(hospital), <span class="at">treatmen =</span> <span class="fu">factor</span>(treatmen))</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> hospital <span class="sc">*</span> treatmen, <span class="at">data =</span> treat)</span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod, <span class="sc">~</span>treatmen) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1774,8 +1782,8 @@ F-statistic: 768.6 on 3 and 147 DF,  p-value: &lt; 2.2e-16
 <h3 class="anchored" data-anchor-id="관찰연구의-예">관찰연구의 예</h3>
 <p>성별과 결혼 여부에 따른 임금차이</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> mosaicData<span class="sc">::</span>CPS85 <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>cps <span class="ot">&lt;-</span> mosaicData<span class="sc">::</span>CPS85 <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 11
    wage  educ race  sex   hispanic south married exper union   age sector  
@@ -1786,8 +1794,8 @@ F-statistic: 768.6 on 3 and 147 DF,  p-value: &lt; 2.2e-16
 4  10.5    12 W     F     NH       NS    Married    29 Not      47 clerical
 5  15      12 W     M     NH       NS    Married    40 Union    58 const   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> sex <span class="sc">*</span> married, <span class="at">data =</span> cps)</span>
-<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> sex <span class="sc">*</span> married, <span class="at">data =</span> cps)</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = wage ~ sex * married, data = cps)
 
@@ -1806,7 +1814,7 @@ F-statistic: 13.94 on 3 and 530 DF,  p-value: 9.234e-09
     AIC     BIC 
 3232.05 3253.45 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1817,16 +1825,16 @@ F-statistic: 13.94 on 3 and 530 DF,  p-value: 9.234e-09
 </div>
 <p>관찰연구의 경우 confounding이 될만한 통제 변수를 충분히 고려해야 하고, 나이가 성별과 결혼 여부와 상관관계가 있으므로 통제 변수로 포함.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="fu">select</span>(age, sex, married) <span class="sc">|&gt;</span> <span class="fu">lowerCor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>cps <span class="sc">|&gt;</span> <span class="fu">select</span>(age, sex, married) <span class="sc">|&gt;</span> <span class="fu">lowerCor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         age   sex*  mrrd*
 age       1.00            
 sex*     -0.08  1.00      
 married* -0.28  0.01  1.00</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># age와 wage의 관계는 비선형적: spline regression (piecewise polynomial) fit을 고려할 필요있음</span></span>
-<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> sex <span class="sc">*</span> married <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps)  </span>
-<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod2, <span class="sc">~</span> sex <span class="sc">+</span> married) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># age와 wage의 관계는 비선형적: spline regression (piecewise polynomial) fit을 고려할 필요있음</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> sex <span class="sc">*</span> married <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps)  </span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod2, <span class="sc">~</span> sex <span class="sc">+</span> married) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1834,7 +1842,7 @@ married* -0.28  0.01  1.00</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = wage ~ sex * married + age + I(age^2), data = cps)
 
@@ -1859,8 +1867,8 @@ F-statistic:  15.8 on 5 and 528 DF,  p-value: 1.649e-14
 <p>결혼 유무에 따른 임금의 차이는 여성의 경우 미혼이 $1.32(p = 0.047) 높음.<br>
 남성의 경우는 아래와 같이 factor level을 변경해서 보면, 남성인 경우 미혼이 $1.29(p = 0.041) 낮음.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>mod2_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> <span class="fu">fct_relevel</span>(sex, <span class="st">"M"</span>) <span class="sc">*</span> married <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps)</span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod2_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>mod2_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> <span class="fu">fct_relevel</span>(sex, <span class="st">"M"</span>) <span class="sc">*</span> married <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cps)</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod2_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: lm(formula = wage ~ fct_relevel(sex, "M") * married + age + I(age^2),
          data = cps)
@@ -1920,16 +1928,16 @@ Important
 </div>
 </div>
 <p><img src="images/moderated-mediation.png" class="img-fluid" width="500"></p>
-<p>Data: <a href="https://afhayes.com/introduction-to-mediation-moderation-and-conditional-process-analysis.html">Introduction to Mediation, Moderation, and Conditional Process Analysis</a>; “data files and code”</p>
+<p>Data: <a href="https://www.dropbox.com/scl/fi/jqtq2wbm0zd5e8i40hknj/teams.csv?rlkey=eqqelvonxyh0sk178qf555uc5&amp;dl=1">teams.csv</a> 또는 <a href="https://afhayes.com/introduction-to-mediation-moderation-and-conditional-process-analysis.html">Andrew F. Hayes website</a> 안에 “data files and code”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hayes2022data/teams/teams.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>teams <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hayes2022data/teams/teams.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>뒷 부분: <span class="math inline">\(Y \leftarrow X, M (W)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>mod_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(perform <span class="sc">~</span> dysfunc <span class="sc">+</span> negtone <span class="sc">+</span> negexp <span class="sc">+</span> negtone<span class="sc">:</span>negexp, <span class="at">data =</span> teams)</span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 위와 동일: dysfunc은 통제 변수로 볼 수 있음</span></span>
-<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>mod_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(perform <span class="sc">~</span> dysfunc <span class="sc">+</span> <span class="fu">center</span>(negtone) <span class="sc">*</span> <span class="fu">center</span>(negexp), <span class="at">data =</span> teams)</span>
-<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_m, <span class="at">brief =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>mod_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(perform <span class="sc">~</span> dysfunc <span class="sc">+</span> negtone <span class="sc">+</span> negexp <span class="sc">+</span> negtone<span class="sc">:</span>negexp, <span class="at">data =</span> teams)</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 위와 동일: dysfunc은 통제 변수로 볼 수 있음</span></span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>mod_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(perform <span class="sc">~</span> dysfunc <span class="sc">+</span> <span class="fu">center</span>(negtone) <span class="sc">*</span> <span class="fu">center</span>(negexp), <span class="at">data =</span> teams)</span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_m, <span class="at">brief =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coefficients:
                                Estimate Std. Error t value Pr(&gt;|t|)   
@@ -1950,8 +1958,8 @@ F-statistic: 6.235 on 4 and 55 DF,  p-value: 0.0003276
 </div>
 <p>앞 부분: <span class="math inline">\(M \leftarrow X\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>mod_x <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">center</span>(negtone) <span class="sc">~</span> dysfunc, <span class="at">data =</span> teams)</span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_x, <span class="at">brief =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>mod_x <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">center</span>(negtone) <span class="sc">~</span> dysfunc, <span class="at">data =</span> teams)</span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">S</span>(mod_x, <span class="at">brief =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
@@ -1966,7 +1974,7 @@ F-statistic:  13.8 on 1 and 58 DF,  p-value: 0.000459
   AIC   BIC 
 85.23 91.51 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod_m, <span class="sc">~</span>negtone) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictorEffects</span>(mod_m, <span class="sc">~</span>negtone) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1974,7 +1982,7 @@ F-statistic:  13.8 on 1 and 58 DF,  p-value: 0.000459
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(mod_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2003,104 +2011,104 @@ F-statistic:  13.8 on 1 and 58 DF,  p-value: 0.000459
 <li>Index of moderated mediation: 조절변수가 1 변할 때, 간접효과의 변화가 얼마나 되는지를 나타내는 지수. 즉 간접효과가 얼마나 조절되는가?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(<span class="at">data=</span>teams, <span class="at">y=</span><span class="st">"perform"</span>, <span class="at">m=</span><span class="st">"negtone"</span>, <span class="at">w=</span><span class="st">"negexp"</span>, <span class="at">x=</span><span class="st">"dysfunc"</span>, <span class="at">jn=</span><span class="dv">0</span>, <span class="at">moments=</span><span class="dv">1</span>, <span class="at">center=</span><span class="dv">1</span>, <span class="at">model=</span><span class="dv">14</span>)</span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ********************* PROCESS for R Version 4.3.1 ********************* </span></span>
-<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="co">#            Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              </span></span>
-<span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="co">#    Documentation available in Hayes (2022). www.guilford.com/p/hayes3   </span></span>
-<span id="cb118-7"><a href="#cb118-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb118-8"><a href="#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="co"># *********************************************************************** </span></span>
-<span id="cb118-9"><a href="#cb118-9" aria-hidden="true" tabindex="-1"></a>               </span>
-<span id="cb118-10"><a href="#cb118-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Model : 14     </span></span>
-<span id="cb118-11"><a href="#cb118-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     Y : perform</span></span>
-<span id="cb118-12"><a href="#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     X : dysfunc</span></span>
-<span id="cb118-13"><a href="#cb118-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     M : negtone</span></span>
-<span id="cb118-14"><a href="#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="co">#     W : negexp </span></span>
-<span id="cb118-15"><a href="#cb118-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-16"><a href="#cb118-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample size: 60</span></span>
-<span id="cb118-17"><a href="#cb118-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-18"><a href="#cb118-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Random seed: 791081</span></span>
-<span id="cb118-19"><a href="#cb118-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-20"><a href="#cb118-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-21"><a href="#cb118-21" aria-hidden="true" tabindex="-1"></a><span class="co"># *********************************************************************** </span></span>
-<span id="cb118-22"><a href="#cb118-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Outcome Variable: negtone</span></span>
-<span id="cb118-23"><a href="#cb118-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-24"><a href="#cb118-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Summary: </span></span>
-<span id="cb118-25"><a href="#cb118-25" aria-hidden="true" tabindex="-1"></a><span class="co">#           R      R-sq       MSE         F       df1       df2         p</span></span>
-<span id="cb118-26"><a href="#cb118-26" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.4384    0.1922    0.2268   13.7999    1.0000   58.0000    0.0005</span></span>
-<span id="cb118-27"><a href="#cb118-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-28"><a href="#cb118-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Model: </span></span>
-<span id="cb118-29"><a href="#cb118-29" aria-hidden="true" tabindex="-1"></a><span class="co">#              coeff        se         t         p      LLCI      ULCI</span></span>
-<span id="cb118-30"><a href="#cb118-30" aria-hidden="true" tabindex="-1"></a><span class="co"># constant   -0.0215    0.0618   -0.3479    0.7292   -0.1451    0.1021</span></span>
-<span id="cb118-31"><a href="#cb118-31" aria-hidden="true" tabindex="-1"></a><span class="co"># dysfunc     0.6198    0.1668    3.7148    0.0005    0.2858    0.9537</span></span>
-<span id="cb118-32"><a href="#cb118-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-33"><a href="#cb118-33" aria-hidden="true" tabindex="-1"></a><span class="co"># *********************************************************************** </span></span>
-<span id="cb118-34"><a href="#cb118-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Outcome Variable: perform</span></span>
-<span id="cb118-35"><a href="#cb118-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-36"><a href="#cb118-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Summary: </span></span>
-<span id="cb118-37"><a href="#cb118-37" aria-hidden="true" tabindex="-1"></a><span class="co">#           R      R-sq       MSE         F       df1       df2         p</span></span>
-<span id="cb118-38"><a href="#cb118-38" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.5586    0.3120    0.2015    6.2350    4.0000   55.0000    0.0003</span></span>
-<span id="cb118-39"><a href="#cb118-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-40"><a href="#cb118-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Model: </span></span>
-<span id="cb118-41"><a href="#cb118-41" aria-hidden="true" tabindex="-1"></a><span class="co">#              coeff        se         t         p      LLCI      ULCI</span></span>
-<span id="cb118-42"><a href="#cb118-42" aria-hidden="true" tabindex="-1"></a><span class="co"># constant   -0.0321    0.0587   -0.5467    0.5868   -0.1496    0.0855</span></span>
-<span id="cb118-43"><a href="#cb118-43" aria-hidden="true" tabindex="-1"></a><span class="co"># dysfunc     0.3661    0.1778    2.0585    0.0443    0.0097    0.7224</span></span>
-<span id="cb118-44"><a href="#cb118-44" aria-hidden="true" tabindex="-1"></a><span class="co"># negtone    -0.4314    0.1312   -3.2890    0.0018   -0.6943   -0.1686</span></span>
-<span id="cb118-45"><a href="#cb118-45" aria-hidden="true" tabindex="-1"></a><span class="co"># negexp     -0.0436    0.1134   -0.3841    0.7024   -0.2709    0.1838</span></span>
-<span id="cb118-46"><a href="#cb118-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Int_1      -0.5170    0.2409   -2.1458    0.0363   -0.9998   -0.0341</span></span>
-<span id="cb118-47"><a href="#cb118-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-48"><a href="#cb118-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Product terms key:</span></span>
-<span id="cb118-49"><a href="#cb118-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Int_1  :  negtone  x  negexp      </span></span>
-<span id="cb118-50"><a href="#cb118-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-51"><a href="#cb118-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Test(s) of highest order unconditional interaction(s):</span></span>
-<span id="cb118-52"><a href="#cb118-52" aria-hidden="true" tabindex="-1"></a><span class="co">#       R2-chng         F       df1       df2         p</span></span>
-<span id="cb118-53"><a href="#cb118-53" aria-hidden="true" tabindex="-1"></a><span class="co"># M*W    0.0576    4.6043    1.0000   55.0000    0.0363</span></span>
-<span id="cb118-54"><a href="#cb118-54" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------</span></span>
-<span id="cb118-55"><a href="#cb118-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Focal predictor: negtone (M)</span></span>
-<span id="cb118-56"><a href="#cb118-56" aria-hidden="true" tabindex="-1"></a><span class="co">#       Moderator: negexp (W)</span></span>
-<span id="cb118-57"><a href="#cb118-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-58"><a href="#cb118-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Conditional effects of the focal predictor at values of the moderator(s):</span></span>
-<span id="cb118-59"><a href="#cb118-59" aria-hidden="true" tabindex="-1"></a><span class="co">#      negexp    effect        se         t         p      LLCI      ULCI</span></span>
-<span id="cb118-60"><a href="#cb118-60" aria-hidden="true" tabindex="-1"></a><span class="co">#     -0.5437   -0.1504    0.2129   -0.7063    0.4830   -0.5770    0.2763</span></span>
-<span id="cb118-61"><a href="#cb118-61" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.0000   -0.4314    0.1312   -3.2890    0.0018   -0.6943   -0.1686</span></span>
-<span id="cb118-62"><a href="#cb118-62" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.5437   -0.7125    0.1530   -4.6565    0.0000   -1.0192   -0.4059</span></span>
-<span id="cb118-63"><a href="#cb118-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-64"><a href="#cb118-64" aria-hidden="true" tabindex="-1"></a><span class="co"># *********************************************************************** </span></span>
-<span id="cb118-65"><a href="#cb118-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Bootstrapping progress:</span></span>
-<span id="cb118-66"><a href="#cb118-66" aria-hidden="true" tabindex="-1"></a><span class="co">#   |&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;| 100%</span></span>
-<span id="cb118-67"><a href="#cb118-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-68"><a href="#cb118-68" aria-hidden="true" tabindex="-1"></a><span class="co"># **************** DIRECT AND INDIRECT EFFECTS OF X ON Y ****************</span></span>
-<span id="cb118-69"><a href="#cb118-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-70"><a href="#cb118-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Direct effect of X on Y:</span></span>
-<span id="cb118-71"><a href="#cb118-71" aria-hidden="true" tabindex="-1"></a><span class="co">#      effect        se         t         p      LLCI      ULCI</span></span>
-<span id="cb118-72"><a href="#cb118-72" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.3661    0.1778    2.0585    0.0443    0.0097    0.7224</span></span>
-<span id="cb118-73"><a href="#cb118-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-74"><a href="#cb118-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Conditional indirect effects of X on Y:</span></span>
-<span id="cb118-75"><a href="#cb118-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-76"><a href="#cb118-76" aria-hidden="true" tabindex="-1"></a><span class="co"># INDIRECT EFFECT:</span></span>
-<span id="cb118-77"><a href="#cb118-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-78"><a href="#cb118-78" aria-hidden="true" tabindex="-1"></a><span class="co"># dysfunc    -&gt;    negtone    -&gt;    perform</span></span>
-<span id="cb118-79"><a href="#cb118-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-80"><a href="#cb118-80" aria-hidden="true" tabindex="-1"></a><span class="co">#      negexp    Effect    BootSE  BootLLCI  BootULCI</span></span>
-<span id="cb118-81"><a href="#cb118-81" aria-hidden="true" tabindex="-1"></a><span class="co">#     -0.5437   -0.0932    0.1537   -0.3751    0.2613</span></span>
-<span id="cb118-82"><a href="#cb118-82" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.0000   -0.2674    0.1193   -0.5282   -0.0591</span></span>
-<span id="cb118-83"><a href="#cb118-83" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.5437   -0.4416    0.1610   -0.7788   -0.1448</span></span>
-<span id="cb118-84"><a href="#cb118-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-85"><a href="#cb118-85" aria-hidden="true" tabindex="-1"></a><span class="co">#      Index of moderated mediation:</span></span>
-<span id="cb118-86"><a href="#cb118-86" aria-hidden="true" tabindex="-1"></a><span class="co">#            Index    BootSE  BootLLCI  BootULCI</span></span>
-<span id="cb118-87"><a href="#cb118-87" aria-hidden="true" tabindex="-1"></a><span class="co"># negexp   -0.3204    0.1887   -0.7753   -0.0491</span></span>
-<span id="cb118-88"><a href="#cb118-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-89"><a href="#cb118-89" aria-hidden="true" tabindex="-1"></a><span class="co"># ******************** ANALYSIS NOTES AND ERRORS ************************ </span></span>
-<span id="cb118-90"><a href="#cb118-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-91"><a href="#cb118-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Level of confidence for all confidence intervals in output: 95</span></span>
-<span id="cb118-92"><a href="#cb118-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-93"><a href="#cb118-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of bootstraps for percentile bootstrap confidence intervals: 5000</span></span>
-<span id="cb118-94"><a href="#cb118-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-95"><a href="#cb118-95" aria-hidden="true" tabindex="-1"></a><span class="co"># W values in conditional tables are the mean and +/- SD from the mean.</span></span>
-<span id="cb118-96"><a href="#cb118-96" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb118-97"><a href="#cb118-97" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: The following variables were mean centered prior to analysis: </span></span>
-<span id="cb118-98"><a href="#cb118-98" aria-hidden="true" tabindex="-1"></a><span class="co">#          negexp negtone</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">process</span>(<span class="at">data=</span>teams, <span class="at">y=</span><span class="st">"perform"</span>, <span class="at">m=</span><span class="st">"negtone"</span>, <span class="at">w=</span><span class="st">"negexp"</span>, <span class="at">x=</span><span class="st">"dysfunc"</span>, <span class="at">jn=</span><span class="dv">0</span>, <span class="at">moments=</span><span class="dv">1</span>, <span class="at">center=</span><span class="dv">1</span>, <span class="at">model=</span><span class="dv">14</span>)</span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ********************* PROCESS for R Version 4.3.1 ********************* </span></span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="co">#            Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              </span></span>
+<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="co">#    Documentation available in Hayes (2022). www.guilford.com/p/hayes3   </span></span>
+<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="co"># *********************************************************************** </span></span>
+<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Model : 14     </span></span>
+<span id="cb119-11"><a href="#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     Y : perform</span></span>
+<span id="cb119-12"><a href="#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     X : dysfunc</span></span>
+<span id="cb119-13"><a href="#cb119-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     M : negtone</span></span>
+<span id="cb119-14"><a href="#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="co">#     W : negexp </span></span>
+<span id="cb119-15"><a href="#cb119-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-16"><a href="#cb119-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample size: 60</span></span>
+<span id="cb119-17"><a href="#cb119-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-18"><a href="#cb119-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Random seed: 791081</span></span>
+<span id="cb119-19"><a href="#cb119-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-20"><a href="#cb119-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-21"><a href="#cb119-21" aria-hidden="true" tabindex="-1"></a><span class="co"># *********************************************************************** </span></span>
+<span id="cb119-22"><a href="#cb119-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Outcome Variable: negtone</span></span>
+<span id="cb119-23"><a href="#cb119-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-24"><a href="#cb119-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Summary: </span></span>
+<span id="cb119-25"><a href="#cb119-25" aria-hidden="true" tabindex="-1"></a><span class="co">#           R      R-sq       MSE         F       df1       df2         p</span></span>
+<span id="cb119-26"><a href="#cb119-26" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.4384    0.1922    0.2268   13.7999    1.0000   58.0000    0.0005</span></span>
+<span id="cb119-27"><a href="#cb119-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-28"><a href="#cb119-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Model: </span></span>
+<span id="cb119-29"><a href="#cb119-29" aria-hidden="true" tabindex="-1"></a><span class="co">#              coeff        se         t         p      LLCI      ULCI</span></span>
+<span id="cb119-30"><a href="#cb119-30" aria-hidden="true" tabindex="-1"></a><span class="co"># constant   -0.0215    0.0618   -0.3479    0.7292   -0.1451    0.1021</span></span>
+<span id="cb119-31"><a href="#cb119-31" aria-hidden="true" tabindex="-1"></a><span class="co"># dysfunc     0.6198    0.1668    3.7148    0.0005    0.2858    0.9537</span></span>
+<span id="cb119-32"><a href="#cb119-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-33"><a href="#cb119-33" aria-hidden="true" tabindex="-1"></a><span class="co"># *********************************************************************** </span></span>
+<span id="cb119-34"><a href="#cb119-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Outcome Variable: perform</span></span>
+<span id="cb119-35"><a href="#cb119-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-36"><a href="#cb119-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Summary: </span></span>
+<span id="cb119-37"><a href="#cb119-37" aria-hidden="true" tabindex="-1"></a><span class="co">#           R      R-sq       MSE         F       df1       df2         p</span></span>
+<span id="cb119-38"><a href="#cb119-38" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.5586    0.3120    0.2015    6.2350    4.0000   55.0000    0.0003</span></span>
+<span id="cb119-39"><a href="#cb119-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-40"><a href="#cb119-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Model: </span></span>
+<span id="cb119-41"><a href="#cb119-41" aria-hidden="true" tabindex="-1"></a><span class="co">#              coeff        se         t         p      LLCI      ULCI</span></span>
+<span id="cb119-42"><a href="#cb119-42" aria-hidden="true" tabindex="-1"></a><span class="co"># constant   -0.0321    0.0587   -0.5467    0.5868   -0.1496    0.0855</span></span>
+<span id="cb119-43"><a href="#cb119-43" aria-hidden="true" tabindex="-1"></a><span class="co"># dysfunc     0.3661    0.1778    2.0585    0.0443    0.0097    0.7224</span></span>
+<span id="cb119-44"><a href="#cb119-44" aria-hidden="true" tabindex="-1"></a><span class="co"># negtone    -0.4314    0.1312   -3.2890    0.0018   -0.6943   -0.1686</span></span>
+<span id="cb119-45"><a href="#cb119-45" aria-hidden="true" tabindex="-1"></a><span class="co"># negexp     -0.0436    0.1134   -0.3841    0.7024   -0.2709    0.1838</span></span>
+<span id="cb119-46"><a href="#cb119-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Int_1      -0.5170    0.2409   -2.1458    0.0363   -0.9998   -0.0341</span></span>
+<span id="cb119-47"><a href="#cb119-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-48"><a href="#cb119-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Product terms key:</span></span>
+<span id="cb119-49"><a href="#cb119-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Int_1  :  negtone  x  negexp      </span></span>
+<span id="cb119-50"><a href="#cb119-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-51"><a href="#cb119-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Test(s) of highest order unconditional interaction(s):</span></span>
+<span id="cb119-52"><a href="#cb119-52" aria-hidden="true" tabindex="-1"></a><span class="co">#       R2-chng         F       df1       df2         p</span></span>
+<span id="cb119-53"><a href="#cb119-53" aria-hidden="true" tabindex="-1"></a><span class="co"># M*W    0.0576    4.6043    1.0000   55.0000    0.0363</span></span>
+<span id="cb119-54"><a href="#cb119-54" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------</span></span>
+<span id="cb119-55"><a href="#cb119-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Focal predictor: negtone (M)</span></span>
+<span id="cb119-56"><a href="#cb119-56" aria-hidden="true" tabindex="-1"></a><span class="co">#       Moderator: negexp (W)</span></span>
+<span id="cb119-57"><a href="#cb119-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-58"><a href="#cb119-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Conditional effects of the focal predictor at values of the moderator(s):</span></span>
+<span id="cb119-59"><a href="#cb119-59" aria-hidden="true" tabindex="-1"></a><span class="co">#      negexp    effect        se         t         p      LLCI      ULCI</span></span>
+<span id="cb119-60"><a href="#cb119-60" aria-hidden="true" tabindex="-1"></a><span class="co">#     -0.5437   -0.1504    0.2129   -0.7063    0.4830   -0.5770    0.2763</span></span>
+<span id="cb119-61"><a href="#cb119-61" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.0000   -0.4314    0.1312   -3.2890    0.0018   -0.6943   -0.1686</span></span>
+<span id="cb119-62"><a href="#cb119-62" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.5437   -0.7125    0.1530   -4.6565    0.0000   -1.0192   -0.4059</span></span>
+<span id="cb119-63"><a href="#cb119-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-64"><a href="#cb119-64" aria-hidden="true" tabindex="-1"></a><span class="co"># *********************************************************************** </span></span>
+<span id="cb119-65"><a href="#cb119-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Bootstrapping progress:</span></span>
+<span id="cb119-66"><a href="#cb119-66" aria-hidden="true" tabindex="-1"></a><span class="co">#   |&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;| 100%</span></span>
+<span id="cb119-67"><a href="#cb119-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-68"><a href="#cb119-68" aria-hidden="true" tabindex="-1"></a><span class="co"># **************** DIRECT AND INDIRECT EFFECTS OF X ON Y ****************</span></span>
+<span id="cb119-69"><a href="#cb119-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-70"><a href="#cb119-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Direct effect of X on Y:</span></span>
+<span id="cb119-71"><a href="#cb119-71" aria-hidden="true" tabindex="-1"></a><span class="co">#      effect        se         t         p      LLCI      ULCI</span></span>
+<span id="cb119-72"><a href="#cb119-72" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.3661    0.1778    2.0585    0.0443    0.0097    0.7224</span></span>
+<span id="cb119-73"><a href="#cb119-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-74"><a href="#cb119-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Conditional indirect effects of X on Y:</span></span>
+<span id="cb119-75"><a href="#cb119-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-76"><a href="#cb119-76" aria-hidden="true" tabindex="-1"></a><span class="co"># INDIRECT EFFECT:</span></span>
+<span id="cb119-77"><a href="#cb119-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-78"><a href="#cb119-78" aria-hidden="true" tabindex="-1"></a><span class="co"># dysfunc    -&gt;    negtone    -&gt;    perform</span></span>
+<span id="cb119-79"><a href="#cb119-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-80"><a href="#cb119-80" aria-hidden="true" tabindex="-1"></a><span class="co">#      negexp    Effect    BootSE  BootLLCI  BootULCI</span></span>
+<span id="cb119-81"><a href="#cb119-81" aria-hidden="true" tabindex="-1"></a><span class="co">#     -0.5437   -0.0932    0.1537   -0.3751    0.2613</span></span>
+<span id="cb119-82"><a href="#cb119-82" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.0000   -0.2674    0.1193   -0.5282   -0.0591</span></span>
+<span id="cb119-83"><a href="#cb119-83" aria-hidden="true" tabindex="-1"></a><span class="co">#      0.5437   -0.4416    0.1610   -0.7788   -0.1448</span></span>
+<span id="cb119-84"><a href="#cb119-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-85"><a href="#cb119-85" aria-hidden="true" tabindex="-1"></a><span class="co">#      Index of moderated mediation:</span></span>
+<span id="cb119-86"><a href="#cb119-86" aria-hidden="true" tabindex="-1"></a><span class="co">#            Index    BootSE  BootLLCI  BootULCI</span></span>
+<span id="cb119-87"><a href="#cb119-87" aria-hidden="true" tabindex="-1"></a><span class="co"># negexp   -0.3204    0.1887   -0.7753   -0.0491</span></span>
+<span id="cb119-88"><a href="#cb119-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-89"><a href="#cb119-89" aria-hidden="true" tabindex="-1"></a><span class="co"># ******************** ANALYSIS NOTES AND ERRORS ************************ </span></span>
+<span id="cb119-90"><a href="#cb119-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-91"><a href="#cb119-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Level of confidence for all confidence intervals in output: 95</span></span>
+<span id="cb119-92"><a href="#cb119-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-93"><a href="#cb119-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of bootstraps for percentile bootstrap confidence intervals: 5000</span></span>
+<span id="cb119-94"><a href="#cb119-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-95"><a href="#cb119-95" aria-hidden="true" tabindex="-1"></a><span class="co"># W values in conditional tables are the mean and +/- SD from the mean.</span></span>
+<span id="cb119-96"><a href="#cb119-96" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb119-97"><a href="#cb119-97" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: The following variables were mean centered prior to analysis: </span></span>
+<span id="cb119-98"><a href="#cb119-98" aria-hidden="true" tabindex="-1"></a><span class="co">#          negexp negtone</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercises" class="level1">
@@ -2121,8 +2129,8 @@ demgroup 3: those who already have been diagnosed with dementia (current group =
 <li>선형모형 <code>cognition ~ grip * age + demgroup * sexMW</code>을 세우고, 해석해보세요.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/spss_chapter2.csv"</span>)</span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>cognition <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/spss_chapter2.csv"</span>)</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>cognition <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 6
   PersonID cognition   age  grip sexMW demgroup
@@ -2144,8 +2152,8 @@ Data: <a href="https://www.dropbox.com/s/v1f14em6qx7fwf9/tv_ability.csv?dl=1">tv
 <li>SES(<code>ses</code>) 변수를 통제할 필요성이 있는지 살펴보고, 통제한 경우와 하지 않은 경우를 비교해보세요.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>tv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/tv_ability.csv"</span>)</span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>tv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>tv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/tv_ability.csv"</span>)</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>tv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 500 × 4
      ses ability    tv achieve
