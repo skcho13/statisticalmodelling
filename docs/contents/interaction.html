@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-05-29">
+<meta name="dcterms.date" content="2025-06-05">
 
 <title>Interaction Effects –  CHA Statistics in R</title>
 <style>
@@ -419,7 +419,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 29, 2025</p>
+      <p class="date">June 5, 2025</p>
     </div>
   </div>
   
@@ -1420,6 +1420,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p><img src="images/disaster.png" class="img-fluid" width="500"></p>
+<p>데이터셋: <a href="https://www.dropbox.com/scl/fi/3xamjy9owify2vx144a33/disaster.csv?rlkey=22v4h5uw4teyy7pytzbj1mhhy&amp;dl=1">disaster.csv</a> 또는 <a href="https://afhayes.com/index.html">Andrew F. Hayes website</a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>disaster <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hayes2022data/disaster/disaster.csv"</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>disaster <span class="ot">&lt;-</span> disaster <span class="sc">|&gt;</span> </span>
@@ -1694,12 +1695,12 @@ F-statistic: 10.28 on 6 and 143 DF,  p-value: 1.874e-09
 <pre><code># A tibble: 6 × 5
      ya    yb    yc lesion  drug   
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
-1 12.3  12.3  14.3  SURGERY PLACEBO
-2  8.20 12.2  10.2  SHAM    PLACEBO
-3  7.35 11.3   9.35 SHAM    PLACEBO
-4  5.17  5.17  3.17 SHAM    ACTIVE 
-5  4.33  4.33  2.33 SHAM    ACTIVE 
-6  7.35 15.3   9.35 SURGERY ACTIVE </code></pre>
+1  9.22  9.22 11.2  SURGERY PLACEBO
+2  9.58 13.6  11.6  SHAM    PLACEBO
+3  9.67  9.67 11.7  SURGERY PLACEBO
+4  4.40  4.40  2.40 SHAM    ACTIVE 
+5  5.52 13.5   7.52 SURGERY ACTIVE 
+6  7.26 11.3   9.26 SHAM    PLACEBO</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
