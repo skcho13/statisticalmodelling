@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2024-06-14">
+<meta name="dcterms.date" content="2025-06-12">
 
 <title>Diagnostics –  CHA Statistics in R</title>
 <style>
@@ -415,7 +415,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 14, 2024</p>
+      <p class="date">June 12, 2025</p>
     </div>
   </div>
   
@@ -525,6 +525,14 @@ OLS 방식으로 모집단에 대한 추론을 하려면, OLS가 요구하는 <s
 연구자는 관찰된 표본이 “LINE 가정들을 만족하는 모집단”으로부터 표집된 표본이라고 볼만한 충분한 확신이 있어야 함.<br>
 이를 위해서 표본들로부터 대략적인 추정을 할 수 밖에 없음.</p>
 <p>예제: Prestige 데이터셋</p>
+<ul>
+<li>education: Average education of occupational incumbents, years, in 1971.</li>
+<li>income: Average income of incumbents, dollars, in 1971.</li>
+<li>women: Percentage of incumbents who are women.</li>
+<li>prestige: Pineo-Porter prestige score for occupation, from a social survey conducted in the mid-1960s.</li>
+<li>census: Canadian Census occupational code.</li>
+<li>type: Type of occupation. A factor with levels (note: out of order): bc, Blue Collar; prof, Professional, Managerial, and Technical; wc, White Collar.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -695,9 +703,9 @@ t2          |       2.035 |   0.094 | [   1.849,   2.220] | 21.567 | &lt; .001</
 <pre><code># A tibble: 3 × 5
   Parameter   Coefficient  CI_low CI_high     p
   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 (Intercept)      147.   -220.    542.    0.44
-2 t1                 5.52    4.02    6.68  0   
-3 t2                 2.03    1.74    2.34  0   </code></pre>
+1 (Intercept)      141.   -221.    536.   0.434
+2 t1                 5.49    4.18    6.80 0    
+3 t2                 2.02    1.75    2.34 0    </code></pre>
 </div>
 </div>
 </div>
@@ -1173,7 +1181,7 @@ F(3,98) = 129.19, p = 0.00
 R² = 0.80
 Adj. R² = 0.79 
 
-Standard errors: OLS
+Standard errors:OLS
 -------------------------------------------------------
                      Est.   S.E.   t val.      p    VIF
 ----------------- ------- ------ -------- ------ ------
