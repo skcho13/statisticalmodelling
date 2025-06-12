@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-06-06">
+<meta name="dcterms.date" content="2025-06-13">
 
 <title>Interaction Effects –  CHA Statistics in R</title>
 <style>
@@ -419,7 +419,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 6, 2025</p>
+      <p class="date">June 13, 2025</p>
     </div>
   </div>
   
@@ -564,7 +564,7 @@ endurance -0.13  0.34  1.00</code></pre>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(endurance <span class="sc">~</span> age <span class="sc">+</span> exercise, <span class="at">data =</span> acad2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod_s1, mod_s2, mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="cell-output-display">
@@ -858,7 +858,7 @@ F-statistic:  19.3 on 3 and 239 DF,  p-value: 3.063e-11
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mod_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(endurance <span class="sc">~</span> age <span class="sc">*</span> exercise, <span class="at">data =</span> acad2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_summs</span>(mod, mod_interact, <span class="at">error_format =</span> <span class="st">"({p.value})"</span>, <span class="at">number_format =</span> <span class="st">"%.4f"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" data-layout="[1, 1]" style="line-height: 1.5em; font-size: .9em">
+<div class="quarto-layout-panel" style="line-height: 1.5em; font-size: .9em" data-layout="[1, 1]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="cell-output-display">
@@ -1703,12 +1703,12 @@ F-statistic: 10.28 on 6 and 143 DF,  p-value: 1.874e-09
 <pre><code># A tibble: 6 × 5
      ya    yb    yc lesion  drug   
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  
-1  9.58 13.6  11.6  SHAM    PLACEBO
-2  7.28 15.3   9.28 SURGERY ACTIVE 
-3  4.19  4.19  2.19 SHAM    ACTIVE 
-4  8.35 12.4  10.4  SHAM    PLACEBO
-5  7.80 11.8   9.80 SHAM    PLACEBO
-6  6.65 10.7   9.65 SHAM    PLACEBO</code></pre>
+1  5.93 13.9   7.93 SURGERY ACTIVE 
+2  6.61 14.6   8.61 SURGERY ACTIVE 
+3  7.26 11.3   9.26 SHAM    PLACEBO
+4  8.81  8.81 10.8  SURGERY PLACEBO
+5  5.78 13.8   7.78 SURGERY ACTIVE 
+6 10.2  10.2  12.2  SURGERY PLACEBO</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>rats <span class="sc">|&gt;</span> <span class="fu">group_by</span>(lesion, drug) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">yc_mean =</span> <span class="fu">mean</span>(yc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

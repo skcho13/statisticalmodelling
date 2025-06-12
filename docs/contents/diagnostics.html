@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-06-12">
+<meta name="dcterms.date" content="2025-06-13">
 
 <title>Diagnostics –  CHA Statistics in R</title>
 <style>
@@ -415,7 +415,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 12, 2025</p>
+      <p class="date">June 13, 2025</p>
     </div>
   </div>
   
@@ -591,7 +591,7 @@ F-statistic: 117.5 on 4 and 93 DF,  p-value: &lt; 2.2e-16
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  mod_prestige, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id=</span><span class="fu">list</span>(<span class="at">n=</span><span class="dv">3</span>), <span class="co"># outliers의 수</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth=</span><span class="cn">TRUE</span>, <span class="co"># loess smooth 커브</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">quadratic=</span><span class="cn">FALSE</span> <span class="co"># 3차 fitted 커브</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">quadratic=</span><span class="cn">FALSE</span> <span class="co"># 2차 fitted 커브</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -703,9 +703,9 @@ t2          |       2.035 |   0.094 | [   1.849,   2.220] | 21.567 | &lt; .001</
 <pre><code># A tibble: 3 × 5
   Parameter   Coefficient  CI_low CI_high     p
   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 (Intercept)      141.   -221.    536.   0.434
-2 t1                 5.49    4.18    6.80 0    
-3 t2                 2.02    1.75    2.34 0    </code></pre>
+1 (Intercept)      161.   -216.    529.   0.408
+2 t1                 5.51    4.11    6.72 0    
+3 t2                 2.02    1.75    2.32 0    </code></pre>
 </div>
 </div>
 </div>
@@ -955,7 +955,7 @@ SE           0.0983  0.0987
 </section>
 <section id="선형성에-대한-진단" class="level2">
 <h2 class="anchored" data-anchor-id="선형성에-대한-진단">선형성에 대한 진단</h2>
-<p>Component-Plus-Residual (partial-residual plots): <span class="math inline">\(\displaystyle e+{\hat {\beta }}_{i}X_{i}\)</span><br>
+<p>Component-Plus-Residual (partial-residual plots): 예측변수 <span class="math inline">\(X_i\)</span>에 대해서 <span class="math inline">\(\displaystyle e+{\hat {\beta }}_{i}X_{i}\)</span><br>
 <code>crPlots()</code></p>
 <p>초기 탐색적 분석이나 모형을 세우 후 <code>residualPlots</code>으로도 살펴볼 수 있음.</p>
 <p>비선형성에 대해서는 변수를 변환(transform)하거나 고차 다항함수 모형, 혹은 더 복잡한 spline 모형을 이용.</p>
