@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Sungkyun Cho">
-<meta name="dcterms.date" content="2025-06-14">
+<meta name="dcterms.date" content="2025-06-19">
 
 <title>Statistical Inference –  CHA Statistics in R</title>
 <style>
@@ -409,7 +409,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 14, 2025</p>
+      <p class="date">June 19, 2025</p>
     </div>
   </div>
   
@@ -880,12 +880,12 @@ Defined Parameters:
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_c =</span> <span class="fu">center</span>(negtone),</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">negexp_c =</span> <span class="fu">center</span>(negexp),</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_negexp_c =</span> negtone_c<span class="sc">*</span>negexp_c,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">negtone_c_negexp_c =</span> negtone_c<span class="sc">*</span>negexp_c,</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="st">"</span></span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="st">  # models</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="st">    perform ~ c*dysfunc + b1*negtone_c + b2*negexp_c + b3*negtone_negexp_c</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="st">    perform ~ c*dysfunc + b1*negtone_c + b2*negexp_c + b3*negtone_c_negexp_c</span></span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="st">    negtone_c ~ a*dysfunc</span></span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="st">  # conditional effects: m-sd, m, m+sd</span></span>
@@ -931,7 +931,7 @@ Regressions:
     dysfunc    (c)    0.366    0.194    1.891    0.059   -0.109    0.669
     negtone_c (b1)   -0.431    0.129   -3.337    0.001   -0.648   -0.129
     negexp_c  (b2)   -0.044    0.102   -0.428    0.669   -0.255    0.148
-    ngtn_ngx_ (b3)   -0.517    0.235   -2.200    0.028   -1.052   -0.126
+    ngtn_c_n_ (b3)   -0.517    0.235   -2.200    0.028   -1.052   -0.126
   negtone_c ~                                                           
     dysfunc    (a)    0.620    0.227    2.729    0.006    0.221    1.119
 
@@ -951,50 +951,34 @@ Defined Parameters:
     index_Mod_Med    -0.320    0.190   -1.682    0.093   -0.791   -0.046</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 모든 parameter에 대한 결과</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type =</span> <span class="st">"bca.simple"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fit, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">boot.ci.type =</span> <span class="st">"bca.simple"</span>) <span class="sc">|&gt;</span> <span class="fu">subset</span>(op <span class="sc">!=</span> <span class="st">"~~"</span>)  <span class="co"># (공)분산(~~) 제외</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                lhs op              rhs         label    est    se      z
-1           perform  ~          dysfunc             c  0.366 0.194  1.891
-2           perform  ~        negtone_c            b1 -0.431 0.129 -3.337
-3           perform  ~         negexp_c            b2 -0.044 0.102 -0.428
-4           perform  ~ negtone_negexp_c            b3 -0.517 0.235 -2.200
-5         negtone_c  ~          dysfunc             a  0.620 0.227  2.729
-6           perform ~~          perform                0.185 0.032  5.713
-7         negtone_c ~~        negtone_c                0.219 0.051  4.272
-8           dysfunc ~~          dysfunc                0.136 0.000     NA
-9           dysfunc ~~         negexp_c               -0.001 0.000     NA
-10          dysfunc ~~ negtone_negexp_c               -0.003 0.000     NA
-11         negexp_c ~~         negexp_c                0.291 0.000     NA
-12         negexp_c ~~ negtone_negexp_c                0.046 0.000     NA
-13 negtone_negexp_c ~~ negtone_negexp_c                0.072 0.000     NA
-14            b_low :=  b1+b3*(-0.5437)         b_low -0.150 0.221 -0.681
-15           b_mean :=          b1+b3*0        b_mean -0.431 0.129 -3.335
-16           b_high :=     b1+b3*0.5437        b_high -0.713 0.132 -5.407
-17           ab_low :=          a*b_low        ab_low -0.093 0.150 -0.619
-18          ab_mean :=         a*b_mean       ab_mean -0.267 0.118 -2.270
-19          ab_high :=         a*b_high       ab_high -0.442 0.163 -2.710
-20    index_Mod_Med :=             a*b3 index_Mod_Med -0.320 0.190 -1.682
-   pvalue ci.lower ci.upper
-1   0.059   -0.014    0.716
-2   0.001   -0.660   -0.149
-3   0.669   -0.251    0.151
-4   0.028   -1.072   -0.142
-5   0.006    0.216    1.109
-6   0.000    0.137    0.279
-7   0.000    0.135    0.355
-8      NA    0.136    0.136
-9      NA   -0.001   -0.001
-10     NA   -0.003   -0.003
-11     NA    0.291    0.291
-12     NA    0.046    0.046
-13     NA    0.072    0.072
-14  0.496   -0.509    0.346
-15  0.001   -0.660   -0.149
-16  0.000   -1.008   -0.499
-17  0.536   -0.426    0.190
-18  0.023   -0.584   -0.086
-19  0.007   -0.772   -0.138
-20  0.093   -0.797   -0.049</code></pre>
+<pre><code>             lhs op                rhs         label    est    se      z pvalue
+1        perform  ~            dysfunc             c  0.366 0.194  1.891  0.059
+2        perform  ~          negtone_c            b1 -0.431 0.129 -3.337  0.001
+3        perform  ~           negexp_c            b2 -0.044 0.102 -0.428  0.669
+4        perform  ~ negtone_c_negexp_c            b3 -0.517 0.235 -2.200  0.028
+5      negtone_c  ~            dysfunc             a  0.620 0.227  2.729  0.006
+14         b_low :=    b1+b3*(-0.5437)         b_low -0.150 0.221 -0.681  0.496
+15        b_mean :=            b1+b3*0        b_mean -0.431 0.129 -3.335  0.001
+16        b_high :=       b1+b3*0.5437        b_high -0.713 0.132 -5.407  0.000
+17        ab_low :=            a*b_low        ab_low -0.093 0.150 -0.619  0.536
+18       ab_mean :=           a*b_mean       ab_mean -0.267 0.118 -2.270  0.023
+19       ab_high :=           a*b_high       ab_high -0.442 0.163 -2.710  0.007
+20 index_Mod_Med :=               a*b3 index_Mod_Med -0.320 0.190 -1.682  0.093
+   ci.lower ci.upper
+1    -0.014    0.716
+2    -0.660   -0.149
+3    -0.251    0.151
+4    -1.072   -0.142
+5     0.216    1.109
+14   -0.509    0.346
+15   -0.660   -0.149
+16   -1.008   -0.499
+17   -0.426    0.190
+18   -0.584   -0.086
+19   -0.772   -0.138
+20   -0.797   -0.049</code></pre>
 </div>
 </div>
 <p>Claude Sonnet4 모델의 생성 결과</p>
